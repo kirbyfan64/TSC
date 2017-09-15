@@ -35,7 +35,7 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
     copy_deps
 
     export APP=TSC
-    export VERSION=2.1.0-dev
+    export VERSION=2.1.0-dev-$TRAVIS_COMMIT
     mkdir TSC.AppDir
     mv usr TSC.AppDir
     cp ../tsc/extras/tsc.desktop TSC.AppDir/TSC.desktop

@@ -52,5 +52,6 @@ deploy:
   user: "secretchronicles"
   on:
     condition: "$TRAVIS_SUDO = true"
+    all_branches: true
   key:
     secure: W+c8DOZvdgFg/XqgIQ5Nxm+XXwiXrPVPsEKhGnm9FATIIBKMLqp0b/pm7FHq3ffogEoDmoHq3dUA8XTJeGcr5cyX89erR1BC86glnqYM7eZodg7eFOwf8H/b4Lfnzbk+16IBbK1c4Q6KdWa0DJtpdSkI8XJr08osQz4kowfckxk=
