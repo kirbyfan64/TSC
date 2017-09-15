@@ -12,18 +12,17 @@
     "licenses": ["GPL-3.0"],
     "labels": [],
     "public_download_numbers": true,
-    "public_stats": true,
-    "",
+    "public_stats": true
   },
 
   "version": {
     "name": "2.1.0-dev",
     "desc": "2.1.0",
     "release": "3000-00-00",
-    "vcs_tag": "master",
+    "vcs_tag": "master"
   },
 
   "files": [
-      {"includePattern", "build/out/(TSC-(?:.*)\.AppImage)", "uploadPattern": "$1"},
+      {"includePattern", "build/out/(TSC-(?:.*)\.AppImage)", "uploadPattern": "$1"}
   ],
 }
