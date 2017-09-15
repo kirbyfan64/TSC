@@ -23,6 +23,6 @@
   },
 
   "files": [
-      {"includePattern", "build/out/(TSC-(?:.*)\.AppImage)", "uploadPattern": "$1"}
-  ],
+      {"includePattern": "build/out/(TSC-(?:.*)\.AppImage)", "uploadPattern": "$1"}
+  ]
 }
