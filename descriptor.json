@@ -23,6 +23,9 @@
   },
 
   "files": [
-      {"includePattern": "build/out/(TSC-(?:.*)\.AppImage)", "uploadPattern": "$1"}
+    {
+      "includePattern": "build/Secretchronicles/TSC/out/(TSC-(?:.*)\.AppImage)",
+      "uploadPattern": "$1"
+    }
   ]
 }
