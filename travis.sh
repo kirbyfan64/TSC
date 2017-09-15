@@ -47,4 +47,5 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
 
     generate_appimage
     gzip $ROOT/out/TSC*.AppImage
+    du -h $ROOT/out/*
 fi
