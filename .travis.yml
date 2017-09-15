@@ -1,53 +1,56 @@
 dist: trusty
 sudo: false
 language: cpp
-
 notifications:
   email:
     on_success: change
     on_failure: change
-
 matrix:
   include:
-    - sudo: false
-      compiler: gcc
-    - sudo: false
-      compiler: clang
-    - sudo: true
-      compiler: clang
-
+  - sudo: false
+    compiler: gcc
+  - sudo: false
+    compiler: clang
+  - sudo: true
+    compiler: clang
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - cmake
-      - gettext
-      - bison
-      - pkg-config
-      - gperf
-      - ruby-full
-      - rake
-      - libglew-dev
-      - libpng-dev
-      - libpcre3-dev
-      - libxml++2.6-dev
-      - libfreetype6-dev
-      - libdevil-dev
-      - libboost-filesystem-dev
-      - libboost-chrono-dev
-      - libboost-thread-dev
-      - libglew-dev
-      - libglm-dev
-      - libglfw-dev  # For CEGUI
-      - libopenal1
-      - libstdc++6
-
+    - cmake
+    - gettext
+    - bison
+    - pkg-config
+    - gperf
+    - ruby-full
+    - rake
+    - libglew-dev
+    - libpng-dev
+    - libpcre3-dev
+    - libxml++2.6-dev
+    - libfreetype6-dev
+    - libdevil-dev
+    - libboost-filesystem-dev
+    - libboost-chrono-dev
+    - libboost-thread-dev
+    - libglew-dev
+    - libglm-dev
+    - libglfw-dev
+    - libopenal1
+    - libstdc++6
 before_script:
-  - git submodule update --init --recursive
-  - curl -Lo ninja-linux.zip "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip"
-  - unzip ninja-linux.zip
-  - export PATH=$PATH:$PWD
-
+- git submodule update --init --recursive
+- curl -Lo ninja-linux.zip "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip"
+- unzip ninja-linux.zip
+- export PATH=$PATH:$PWD
 script:
-  - ./travis.sh
+- "./travis.sh"
+deploy:
+  provider: bintray
+  file: "descriptor.json"
+  user: "secretchronicles"
+  on:
+    condition: "$TRAVIS_SUDO = true"
+  key:
+    secure: W+c8DOZvdgFg/XqgIQ5Nxm+XXwiXrPVPsEKhGnm9FATIIBKMLqp0b/pm7FHq3ffogEoDmoHq3dUA8XTJeGcr5cyX89erR1BC86glnqYM7eZodg7eFOwf8H/b4Lfnzbk+16IBbK1c4Q6KdWa0DJtpdSkI8XJr08osQz4kowfckxk=

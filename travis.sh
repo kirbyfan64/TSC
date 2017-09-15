@@ -14,7 +14,7 @@ ninja install
 cd ../..
 
 curl -Lo sfml.tgz https://www.sfml-dev.org/files/SFML-2.4.2-linux-gcc-64-bit.tar.gz
-tar xvf sfml.tgz
+tar xf sfml.tgz
 cp -r SFML-2.4.2/* $INSTALL_PREFIX
 
 mkdir build
@@ -35,7 +35,7 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
     copy_deps
 
     export APP=TSC
-    export VERSION=2.0.0
+    export VERSION=2.1.0-dev
     mkdir TSC.AppDir
     mv usr TSC.AppDir
     cp ../tsc/extras/tsc.desktop TSC.AppDir/TSC.desktop
