@@ -3,7 +3,8 @@
 set -e
 
 mkdir install
-export INSTALL_PREFIX=$PWD/install
+export ROOT=$PWD
+export INSTALL_PREFIX=$ROOT/install
 
 hg clone -b v0-8 https://bitbucket.org/cegui/cegui
 cd cegui
@@ -45,5 +46,5 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
     cd ..
 
     generate_appimage
-    gzip out/TSC*.AppImage
+    gzip $ROOT/out/TSC*.AppImage
 fi
