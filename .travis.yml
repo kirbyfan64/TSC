@@ -49,7 +49,7 @@ script:
 deploy:
   provider: bintray
   file: "descriptor.json"
-  user: "secretchronicles"
+  user: "refi64"
   on:
     condition: "$TRAVIS_SUDO = true"
     all_branches: true
