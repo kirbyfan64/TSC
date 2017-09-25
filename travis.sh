@@ -11,6 +11,8 @@ cd cegui
 mkdir build
 cd build
 cmake -G Ninja .. -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
+
+sed -i 's:"$INSTALL_PREFIX":/usr:' cegui/include/CEGUI/Config.h
 ninja install
 cd ../..
 
