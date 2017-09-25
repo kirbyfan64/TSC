@@ -48,6 +48,6 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
 
     generate_appimage
     cd $ROOT/out
-    file=TSC*.AppImage
-    curl -F "file=@$file" https://file.io
+    set -- *.AppImage
+    curl -F "file=@$1" https://file.io
 fi
