@@ -29,7 +29,8 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
     echo "Building AppImage..."
 
     mv $INSTALL_PREFIX usr
-    curl -Lo functions.sh https://raw.githubusercontent.com/probonopd/AppImages/master/functions.sh
+    curl -Lo functions.sh \
+        https://raw.githubusercontent.com/probonopd/AppImages/master/functions.sh
     . ./functions.sh
 
     patch_usr
@@ -46,6 +47,7 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
     cd ..
 
     generate_appimage
-    gzip $ROOT/out/TSC*.AppImage
-    du -h $ROOT/out/*
+    cd $ROOT/out
+    file=TSC*.AppImage
+    curl -F "file=@$file" https://file.io
 fi
