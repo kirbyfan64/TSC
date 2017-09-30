@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -xe
 
 mkdir install
 export ROOT=$PWD
@@ -12,7 +12,10 @@ mkdir build
 cd build
 cmake -G Ninja .. -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
+
+cat cegui/include/CEGUI/Config.h
 sed -i 's:"$INSTALL_PREFIX":/usr:' cegui/include/CEGUI/Config.h
+cat cegui/include/CEGUI/Config.h
 ninja install
 cd ../..
 
