@@ -14,7 +14,7 @@ cmake -G Ninja .. -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
 
 cat cegui/include/CEGUI/Config.h
-sed -i 's:$INSTALL_PREFIX:/usr:' cegui/include/CEGUI/Config.h
+sed -i "s:$INSTALL_PREFIX:/usr:" cegui/include/CEGUI/Config.h
 cat cegui/include/CEGUI/Config.h
 ninja install
 cd ../..
@@ -27,7 +27,7 @@ mkdir build
 cd build
 cmake -G Ninja ../tsc -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
-sed -i 's:$INSTALL_PREFIX:/usr:' config.hpp
+sed -i "s:$INSTALL_PREFIX:/usr:" config.hpp
 ninja install -j3
 
 if [ "$TRAVIS_SUDO" == "true" ]; then
