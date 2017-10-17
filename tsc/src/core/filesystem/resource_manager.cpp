@@ -316,7 +316,7 @@ void cResource_Manager::init_directories()
     boost::filesystem::path datadir = utf8_to_path(INSTALL_DATADIR);
 
     if (datadir.is_relative())
-        datadir = utf8_to_path(INSTALL_PREFIX) / datadir;
+        datadir = fs::absolute(datadir, utf8_to_path(INSTALL_PREFIX));
 
     // Append our program-specific subdirectory
     datadir /= utf8_to_path("tsc");

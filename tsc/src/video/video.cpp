@@ -802,7 +802,7 @@ cGL_Surface* cVideo :: Get_Surface_Helper(fs::path filename, bool print_errors /
                 filename.replace_extension(".png");
         }
         else {
-            filename = pResource_Manager->Get_Game_Pixmaps_Directory() / filename;
+            filename = fs::absolute(filename, pResource_Manager->Get_Game_Pixmaps_Directory());
         }
     }
 
