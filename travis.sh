@@ -40,6 +40,7 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
 
     patch_usr
     copy_deps
+    cp /lib/x86_64-linux-gnu/libpng12.so.* usr/lib/x86_64-linux-gnu
 
     export APP=TSC
     export VERSION=2.1.0-dev-$TRAVIS_COMMIT
