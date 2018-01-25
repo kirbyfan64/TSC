@@ -12,11 +12,11 @@ mkdir build
 cd build
 cmake -G Ninja .. -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
 
-
 cat cegui/include/CEGUI/Config.h
 sed -i "s:$INSTALL_PREFIX:././:" cegui/include/CEGUI/Config.h
 cat cegui/include/CEGUI/Config.h
 ninja install
+rm $INSTALL_PREFIX/bin/CEGUI*
 cd ../..
 
 curl -Lo sfml.tgz https://www.sfml-dev.org/files/SFML-2.4.2-linux-gcc-64-bit.tar.gz
