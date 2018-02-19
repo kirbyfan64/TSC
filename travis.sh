@@ -44,6 +44,7 @@ if [ "$TRAVIS_SUDO" == "true" ]; then
       /lib/x86_64-linux-gnu/libpng12.so.* \
       /lib/x86_64-linux-gnu/libpcre.so.* \
       usr/lib/x86_64-linux-gnu
+    delete_blacklisted
 
     export APP=TSC
     export VERSION=2.1.0-dev-$TRAVIS_COMMIT
