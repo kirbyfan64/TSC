@@ -55,7 +55,7 @@ mrb_value Bind(mrb_state* p_state, mrb_value self)
     if (!p_obj)
         mrb_raise(p_state, MRB_RUNTIME_ERROR(p_state), "No associated C++ object found.");
 
-    debug_print("Registering callback for event '%s' for MRuby object %d of class '%s'\n", evtname, mrb_obj_id(self), mrb_obj_classname(p_state, self));
+    debug_print("Registering callback for event '%s' for MRuby object %ld of class '%s'\n", evtname, mrb_obj_id(self), mrb_obj_classname(p_state, self));
 
     // Set `callbacks' instance variable (without @, so invisible to the Ruby
     // side) to an empty array if it isn’t set already.
