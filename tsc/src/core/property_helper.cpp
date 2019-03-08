@@ -1161,6 +1161,8 @@ string Get_SFML_Key_Name(sf::Keyboard::Key key)
             return "pause";
         case sf::Keyboard::KeyCount:
             return "Number of keys recognized by SFML";
+        default: // Should never happen, just silence compiler warning
+            return "Unknown key";
     }
 }
 
