@@ -363,7 +363,7 @@ msgstr "standard"
 
 #: ../../src/core/property_helper.cpp:854
 msgid "white"
-msgstr "weiss"
+msgstr "weiß"
 
 #: ../../src/core/property_helper.cpp:856
 msgid "black"
@@ -965,7 +965,7 @@ msgstr "Zeige Bilder"
 
 #: ../../src/gui/menu_data.cpp:1975
 msgid "Item image size"
-msgstr "Objekt Bildgrösse"
+msgstr "Objekt Bildgröße"
 
 #: ../../src/gui/menu_data.cpp:1984
 msgid "Auto-Hide Mouse"
@@ -993,7 +993,7 @@ msgstr "Springen"
 
 #: ../../src/gui/menu_data.cpp:2284 ../../src/gui/menu_data.cpp:2300
 msgid "Shoot"
-msgstr "Schiessen"
+msgstr "Schießen"
 
 #: ../../src/gui/menu_data.cpp:2285 ../../src/gui/menu_data.cpp:2302
 #: ../../src/objects/bonusbox.cpp:502
