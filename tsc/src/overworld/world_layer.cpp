@@ -287,7 +287,7 @@ void cLayer_Line_Point_Start::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // origin
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "layer_line_origin"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "layer_line_origin"));
     pWorld_Editor->Add_Config_Widget(UTF8_("Waypoint origin"), UTF8_("Waypoint origin"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");

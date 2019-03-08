@@ -529,7 +529,7 @@ void cLevel_Settings::Load_BG_Image_List(void)
 
         CEGUI::ListboxTextItem* item = new CEGUI::ListboxTextItem(float_to_string(background->m_pos_z).c_str(), 0, background);
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox->addItem(item);
     }
 

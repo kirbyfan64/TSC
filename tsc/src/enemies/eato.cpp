@@ -270,7 +270,7 @@ void cEato::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_eato_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_eato_direction"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("top_left"));
     combobox->addItem(new CEGUI::ListboxTextItem("top_right"));
@@ -286,7 +286,7 @@ void cEato::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Direction"), combobox);
 
     // image dir
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_eato_image_dir"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_eato_image_dir"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image directory"), UTF8_("Directory containing the images"), editbox);
 
     editbox->setText(path_to_utf8(m_img_dir).c_str());

@@ -563,7 +563,7 @@ void cGee::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_gee_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_gee_direction"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("horizontal"));
     combobox->addItem(new CEGUI::ListboxTextItem("vertical"));
@@ -573,7 +573,7 @@ void cGee::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Starting direction."), combobox);
 
     // max distance
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_gee_max_distance"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_gee_max_distance"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Distance"), UTF8_("Movable distance"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -581,7 +581,7 @@ void cGee::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cGee::Editor_Max_Distance_Text_Changed, this));
 
     // always fly
-    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_gee_always_fly"));
+    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_gee_always_fly"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Enabled")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));
@@ -597,7 +597,7 @@ void cGee::Editor_Activate(void)
     combobox->subscribeEvent(CEGUI::Combobox::EventListSelectionAccepted, CEGUI::Event::Subscriber(&cGee::Editor_Always_Fly_Select, this));
 
     // wait time
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_gee_wait_time"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_gee_wait_time"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Wait time"), UTF8_("Time to wait until moving again after a stop"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -605,7 +605,7 @@ void cGee::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cGee::Editor_Wait_Time_Text_Changed, this));
 
     // fly distance
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_gee_fly_distance"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_gee_fly_distance"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Fly distance"), UTF8_("The distance to move each time"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");

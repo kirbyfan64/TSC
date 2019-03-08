@@ -263,7 +263,7 @@ void cBeetle::Editor_Activate()
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* p_combo = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_beetle_direction"));
+    CEGUI::Combobox* p_combo = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_beetle_direction"));
     p_combo->addItem(new CEGUI::ListboxTextItem("left"));
     p_combo->addItem(new CEGUI::ListboxTextItem("right"));
     p_combo->setText(Get_Direction_Name(m_start_direction));
@@ -271,7 +271,7 @@ void cBeetle::Editor_Activate()
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Starting direction."), p_combo);
 
     // color
-    p_combo = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_beetle_color"));
+    p_combo = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_beetle_color"));
     p_combo->addItem(new CEGUI::ListboxTextItem("blue"));
     p_combo->addItem(new CEGUI::ListboxTextItem("green"));
     p_combo->addItem(new CEGUI::ListboxTextItem("red"));

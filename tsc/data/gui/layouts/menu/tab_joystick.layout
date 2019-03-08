@@ -6,7 +6,7 @@
     <Property name="InheritsAlpha" value="False"/>
     <Property name="MaxSize" value="{{1,0},{1,0}}"/>
     <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
-    <Window type="TaharezLook/Combobox" name="joystick_combo">
+    <Window type="TSCLook256/Combobox" name="joystick_combo">
       <Property name="Text" value="none"/>
       <Property name="TooltipText" value="Select the Joystick to use."/>
       <Property name="ReadOnly" value="True"/>
@@ -15,14 +15,14 @@
       <Property name="Area" value="{{0.3,0},{0.05,0},{0.95,0},{0.34,0}}"/>
       <Property name="MaxTextLength" value="1073741823"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_name">
+    <Window type="TSCLook256/StaticText" name="joystick_text_name">
       <Property name="Text" value="_Joystick"/>
       <Property name="FrameEnabled" value="False"/>
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.01,0},{0.05,0},{0.25,0},{0.15,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_shortcuts">
+    <Window type="TSCLook256/StaticText" name="joystick_text_shortcuts">
       <Property name="Text" value="_Shortcuts"/>
       <Property name="FrameEnabled" value="False"/>
       <Property name="HorzFormatting" value="HorzCentred"/>
@@ -30,11 +30,11 @@
       <Property name="Area" value="{{0.08,0},{0.32,0},{0.36,0},{0.42,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/MultiColumnList" name="joystick_listbox">
+    <Window type="TSCLook256/MultiColumnList" name="joystick_listbox">
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.05,0},{0.43,0},{0.4,0},{0.88,0}}"/>
     </Window>
-    <Window type="TaharezLook/Spinner" name="joystick_spinner_axis_hor">
+    <Window type="TSCLook256/Spinner" name="joystick_spinner_axis_hor">
       <Property name="StepSize" value="1"/>
       <Property name="CurrentValue" value="0"/>
       <Property name="MaximumValue" value="32767"/>
@@ -42,7 +42,7 @@
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.58,0},{0.55,0},{0.68,0},{0.63,0}}"/>
     </Window>
-    <Window type="TaharezLook/Spinner" name="joystick_spinner_axis_ver">
+    <Window type="TSCLook256/Spinner" name="joystick_spinner_axis_ver">
       <Property name="StepSize" value="1"/>
       <Property name="CurrentValue" value="0"/>
       <Property name="MaximumValue" value="32767"/>
@@ -50,7 +50,7 @@
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.81,0},{0.55,0},{0.91,0},{0.63,0}}"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_axis_hor">
+    <Window type="TSCLook256/StaticText" name="joystick_text_axis_hor">
       <Property name="Text" value="_Axis Hor"/>
       <Property name="TooltipText" value="Joystick first horizontal axis."/>
       <Property name="FrameEnabled" value="False"/>
@@ -58,7 +58,7 @@
       <Property name="Area" value="{{0.42,0},{0.55,0},{0.57,0},{0.63,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_axis_ver">
+    <Window type="TSCLook256/StaticText" name="joystick_text_axis_ver">
       <Property name="Text" value="_Ver"/>
       <Property name="TooltipText" value="Joystick first vertical axis."/>
       <Property name="FrameEnabled" value="False"/>
@@ -66,7 +66,7 @@
       <Property name="Area" value="{{0.71,0},{0.55,0},{0.79,0},{0.63,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/Spinner" name="joystick_spinner_axis_hor2">
+    <Window type="TSCLook256/Spinner" name="joystick_spinner_axis_hor2">
       <Property name="StepSize" value="1"/>
       <Property name="CurrentValue" value="0"/>
       <Property name="MaximumValue" value="32767"/>
@@ -74,7 +74,7 @@
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.58,0.0},{0.65,0},{0.68,0.0},{0.73,0}}"/>
     </Window>
-    <Window type="TaharezLook/Spinner" name="joystick_spinner_axis_ver2">
+    <Window type="TSCLook256/Spinner" name="joystick_spinner_axis_ver2">
       <Property name="StepSize" value="1"/>
       <Property name="CurrentValue" value="0"/>
       <Property name="MaximumValue" value="32767"/>
@@ -82,7 +82,7 @@
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.81,0},{0.65,0},{0.91,0},{0.73,0}}"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_axis_hor2">
+    <Window type="TSCLook256/StaticText" name="joystick_text_axis_hor2">
       <Property name="Text" value="_Axis Hor2"/>
       <Property name="TooltipText" value="Joystick second horizontal axis."/>
       <Property name="FrameEnabled" value="False"/>
@@ -90,7 +90,7 @@
       <Property name="Area" value="{{0.42,0},{0.65,0},{0.57,0},{0.73,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_axis_ver2">
+    <Window type="TSCLook256/StaticText" name="joystick_text_axis_ver2">
       <Property name="Text" value="_Ver2"/>
       <Property name="TooltipText" value="Joystick second vertical axis."/>
       <Property name="FrameEnabled" value="False"/>
@@ -98,19 +98,19 @@
       <Property name="Area" value="{{0.71,0},{0.65,0},{0.79,0},{0.73,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/Button" name="joystick_button_reset">
+    <Window type="TSCLook256/Button" name="joystick_button_reset">
       <Property name="Text" value="_Reset"/>
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.02,0},{0.9,0},{0.16,0},{0.98,0}}"/>
     </Window>
-    <Window type="TaharezLook/StaticText" name="joystick_text_sensitivity">
+    <Window type="TSCLook256/StaticText" name="joystick_text_sensitivity">
       <Property name="Text" value="_Sensitivity"/>
       <Property name="FrameEnabled" value="False"/>
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.01,0},{0.19,0},{0.25,0},{0.3,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>
     </Window>
-    <Window type="TaharezLook/Slider" name="joystick_slider_sensitivity">
+    <Window type="TSCLook256/Slider" name="joystick_slider_sensitivity">
       <Property name="CurrentValue" value="0"/>
       <Property name="MaximumValue" value="32767"/>
       <Property name="ClickStepSize" value="1000"/>

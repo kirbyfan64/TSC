@@ -356,7 +356,7 @@ void cPip::Editor_Activate()
     CEGUI::WindowManager& wm = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* p_combo = static_cast<CEGUI::Combobox*>(wm.createWindow("TaharezLook/Combobox", "editor_pip_direction"));
+    CEGUI::Combobox* p_combo = static_cast<CEGUI::Combobox*>(wm.createWindow("TSCLook256/Combobox", "editor_pip_direction"));
 
     p_combo->addItem(new CEGUI::ListboxTextItem("left"));
     p_combo->addItem(new CEGUI::ListboxTextItem("right"));

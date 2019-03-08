@@ -96,7 +96,7 @@ cMouseCursor::cMouseCursor(cSprite_Manager* sprite_manager)
 
     m_dragmode = DRAGMODE_SELECTION;
 
-    mp_coords_label = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/Label", "editor_coords");
+    mp_coords_label = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/Label", "editor_coords");
     CEGUI::GUIContext& ctx = CEGUI::System::getSingleton().getDefaultGUIContext();
     ctx.getRootWindow()->addChild(mp_coords_label);
     mp_coords_label->setMousePassThroughEnabled(true);
@@ -138,7 +138,7 @@ void cMouseCursor::Reset(bool clear_copy_buffer /* = 1 */)
 
     // change to default cursor
     if (m_mover_mode) {
-        CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TaharezLook/MouseArrow");
+        CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TSCLook256/MouseArrow");
     }
 
     m_mover_mode = 0;
@@ -1510,10 +1510,10 @@ void cMouseCursor::Toggle_Mover_Mode(void)
     m_mover_center_y = m_y * global_upscaley;
 
     if (m_mover_mode) {
-        CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TaharezLook/MouseMoveCursor");
+        CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TSCLook256/MouseMoveCursor");
     }
     else {
-        CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TaharezLook/MouseArrow");
+        CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setImage("TSCLook256/MouseArrow");
     }
 }
 

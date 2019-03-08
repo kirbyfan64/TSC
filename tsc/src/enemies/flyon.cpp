@@ -557,7 +557,7 @@ void cFlyon::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_flyon_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_flyon_direction"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("up"));
     combobox->addItem(new CEGUI::ListboxTextItem("down"));
@@ -569,14 +569,14 @@ void cFlyon::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Direction it moves into."), combobox);
 
     // image dir
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_flyon_image_dir"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_flyon_image_dir"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image directory"), UTF8_("Directory containing the images"), editbox);
 
     editbox->setText(path_to_utf8(m_img_dir).c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cFlyon::Editor_Image_Dir_Text_Changed, this));
 
     // max distance
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_flyon_max_distance"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_flyon_max_distance"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Distance"), _("Movable Distance into its direction"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -584,7 +584,7 @@ void cFlyon::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cFlyon::Editor_Max_Distance_Text_Changed, this));
 
     // speed
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_flyon_speed"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_flyon_speed"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Speed"), UTF8_("Initial speed when jumping out"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");

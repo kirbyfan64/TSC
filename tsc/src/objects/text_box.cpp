@@ -104,7 +104,7 @@ void cText_Box::Activate(void)
     cBaseBox::Activate();
 
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
-    CEGUI::MultiLineEditbox* editbox = static_cast<CEGUI::MultiLineEditbox*>(wmgr.createWindow("TaharezLook/MultiLineEditbox", "text_box_text"));
+    CEGUI::MultiLineEditbox* editbox = static_cast<CEGUI::MultiLineEditbox*>(wmgr.createWindow("TSCLook256/MultiLineEditbox", "text_box_text"));
 
     // add to main window
     CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild(editbox);
@@ -236,7 +236,7 @@ void cText_Box::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // text
-    CEGUI::MultiLineEditbox* editbox = static_cast<CEGUI::MultiLineEditbox*>(wmgr.createWindow("TaharezLook/MultiLineEditbox", "text_box_text"));
+    CEGUI::MultiLineEditbox* editbox = static_cast<CEGUI::MultiLineEditbox*>(wmgr.createWindow("TSCLook256/MultiLineEditbox", "text_box_text"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Text"), UTF8_("Text to display when activated"), editbox, static_cast<float>(text_box_window_height));
 
     editbox->setWordWrapping(false);

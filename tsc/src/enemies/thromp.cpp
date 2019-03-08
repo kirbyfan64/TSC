@@ -676,7 +676,7 @@ void cThromp::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_thromp_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_thromp_direction"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("up"));
     combobox->addItem(new CEGUI::ListboxTextItem("down"));
@@ -688,14 +688,14 @@ void cThromp::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Direction it moves into."), combobox);
 
     // image dir
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_thromp_image_dir"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_thromp_image_dir"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image directory"), UTF8_("Directory containing the images"), editbox);
 
     editbox->setText(path_to_utf8(m_img_dir).c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cThromp::Editor_Image_Dir_Text_Changed, this));
 
     // max distance
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_thromp_max_distance"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_thromp_max_distance"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Distance"), UTF8_("Detection distance into its direction"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -703,7 +703,7 @@ void cThromp::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cThromp::Editor_Max_Distance_Text_Changed, this));
 
     // speed
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_thromp_speed"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_thromp_speed"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Speed"), UTF8_("Speed when activated"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");

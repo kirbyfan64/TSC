@@ -313,14 +313,14 @@ void cStaticEnemy::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // image
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_static_enemy_image"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_static_enemy_image"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image"), UTF8_("Image filename"), editbox);
 
     editbox->setText(m_image_filename.c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cStaticEnemy::Editor_Image_Text_Changed, this));
 
     // rotation speed
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_static_enemy_rotation_speed"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_static_enemy_rotation_speed"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Rotation Speed"), UTF8_("Rotation Speed"), editbox);
 
     editbox->setValidationString("[-+]?[0-9]*\\.?[0-9]*");
@@ -328,14 +328,14 @@ void cStaticEnemy::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cStaticEnemy::Editor_Rotation_Speed_Text_Changed, this));
 
     // path
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_static_enemy_path_identifier"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_static_enemy_path_identifier"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Path Identifier"), UTF8_("Name of the Path to move along."), editbox);
 
     editbox->setText(m_path_state.m_path_identifier.c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cStaticEnemy::Editor_Path_Identifier_Text_Changed, this));
 
     // speed
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_static_enemy_speed"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_static_enemy_speed"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Speed"), UTF8_("Maximum speed"), editbox);
 
     editbox->setValidationString("[-+]?[0-9]*\\.?[0-9]*");
@@ -343,7 +343,7 @@ void cStaticEnemy::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cStaticEnemy::Editor_Speed_Text_Changed, this));
 
     // fire resistant
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_static_enemy_fire_resistant"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_static_enemy_fire_resistant"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Enabled")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));
@@ -359,7 +359,7 @@ void cStaticEnemy::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Fire Resistant"), UTF8_("If it is resistant against fire"), combobox);
 
     // ice resistance
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_static_enemy_ice_resistance"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_static_enemy_ice_resistance"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Ice Resistance"), UTF8_("Resistance against Ice (0.0-1.0)"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");

@@ -505,7 +505,7 @@ cMiniPoints::cMiniPoints(std::string pointstext, float x, float y, Color color)
 
     // TODO: Apply color
 
-    mp_label = wmgr.createWindow("TaharezLook/Label");
+    mp_label = wmgr.createWindow("TSCLook256/Label");
     mp_label->setText(pointstext);
     p_root->addChild(mp_label);
 }

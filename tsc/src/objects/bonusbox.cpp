@@ -442,7 +442,7 @@ void cBonusBox::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // Animation
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_bonusbox_animation"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_bonusbox_animation"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("Default"));
     combobox->addItem(new CEGUI::ListboxTextItem("Bonus"));
@@ -454,7 +454,7 @@ void cBonusBox::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Animation"), UTF8_("Use the Power animation if the box has a good or needed item for this level"), combobox);
 
     // Item
-    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_bonusbox_item"));
+    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_bonusbox_item"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Empty")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Random")));
@@ -502,7 +502,7 @@ void cBonusBox::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Item"), UTF8_("The item that gets spawned"), combobox);
 
     // Force best item
-    mp_force_best_item_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_bonusbox_force_best_item"));
+    mp_force_best_item_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_bonusbox_force_best_item"));
 
     mp_force_best_item_box->addItem(new CEGUI::ListboxTextItem(UTF8_("Enabled")));
     mp_force_best_item_box->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));
@@ -518,7 +518,7 @@ void cBonusBox::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Force item"), UTF8_("Force best available item when activated"), mp_force_best_item_box);
 
     // gold color
-    mp_gold_color_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_bonusbox_gold_color"));
+    mp_gold_color_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_bonusbox_gold_color"));
 
     mp_gold_color_box->addItem(new CEGUI::ListboxTextItem("yellow"));
     mp_gold_color_box->addItem(new CEGUI::ListboxTextItem("red"));

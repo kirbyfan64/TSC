@@ -993,7 +993,7 @@ void cTurtleBoss::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_turtle_boss_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_turtle_boss_direction"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("left"));
     combobox->addItem(new CEGUI::ListboxTextItem("right"));
@@ -1003,7 +1003,7 @@ void cTurtleBoss::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Starting direction."), combobox);
 
     // max hits
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_turtle_boss_max_hits"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_turtle_boss_max_hits"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Hits"), UTF8_("Hits until a downgrade"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -1011,7 +1011,7 @@ void cTurtleBoss::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cTurtleBoss::Editor_Max_Hits_Text_Changed, this));
 
     // max downgrades
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_turtle_boss_max_downgrade_count"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_turtle_boss_max_downgrade_count"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Downgrades"), UTF8_("Downgrades until death"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -1019,7 +1019,7 @@ void cTurtleBoss::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cTurtleBoss::Editor_Max_Downgrade_Counts_Text_Changed, this));
 
     // max shell time
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_turtle_boss_max_shell_time"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_turtle_boss_max_shell_time"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Shell Time"), UTF8_("Time running as shell to rise again"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1027,7 +1027,7 @@ void cTurtleBoss::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cTurtleBoss::Editor_Shell_Time_Text_Changed, this));
 
     // level ends if killed
-    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_turtle_boss_level_ends_if_killed"));
+    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_turtle_boss_level_ends_if_killed"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Enabled")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));

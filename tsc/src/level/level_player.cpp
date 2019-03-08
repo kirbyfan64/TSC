@@ -3968,7 +3968,7 @@ void cLevel_Player::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_player_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_player_direction"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("right"));
     combobox->addItem(new CEGUI::ListboxTextItem("left"));

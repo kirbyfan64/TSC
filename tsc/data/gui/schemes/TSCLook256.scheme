@@ -1,0 +1,59 @@
+<GUIScheme name="TSCLook256" version="5">
+	<Imageset filename="TSCLook256.imageset"/>
+    <Font filename="DejaVuSans-Regular.font"/>
+    <Font filename="DejaVuSans-Regular.large.font"/>
+    <Font filename="DejaVuSans-Regular.small.font"/>
+    <Font filename="DejaVuSans-Regular.small.bold.font"/>
+    <Font filename="DejaVuSans-Bold.font"/>
+    <Font filename="DejaVuSansMono.font"/>
+    <Font filename="DejaVuSansMono.small.font"/>
+
+	<LookNFeel filename="TSCLook256.looknfeel" />
+	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />
+
+    <FalagardMapping windowType="TSCLook256/Label" targetType="DefaultWindow" renderer="Core/Default" lookNFeel="TSCLook256/Label"/>
+	<FalagardMapping lookNFeel="TSCLook256/Button" renderer="Core/Button" targetType="CEGUI/PushButton" windowType="TSCLook256/Button" />
+	<FalagardMapping lookNFeel="TSCLook256/Checkbox" renderer="Core/ToggleButton" targetType="CEGUI/ToggleButton" windowType="TSCLook256/Checkbox" />
+	<FalagardMapping lookNFeel="TSCLook256/ImageButton" renderer="Core/Button" targetType="CEGUI/PushButton" windowType="TSCLook256/ImageButton" />
+	<FalagardMapping lookNFeel="TSCLook256/RadioButton" renderer="Core/ToggleButton" targetType="CEGUI/RadioButton" windowType="TSCLook256/RadioButton" />
+	<FalagardMapping lookNFeel="TSCLook256/FrameWindow" renderer="Core/FrameWindow" targetType="CEGUI/FrameWindow" windowType="TSCLook256/FrameWindow" />
+	<FalagardMapping lookNFeel="TSCLook256/Titlebar" renderer="Core/Titlebar" targetType="CEGUI/Titlebar" windowType="TSCLook256/Titlebar" />
+	<FalagardMapping lookNFeel="TSCLook256/Button" renderer="Core/Button" targetType="CEGUI/PushButton" windowType="TSCLook256/SystemButton" />
+	<FalagardMapping lookNFeel="TSCLook256/Editbox" renderer="Core/Editbox" targetType="CEGUI/Editbox" windowType="TSCLook256/Editbox" />
+	<FalagardMapping lookNFeel="TSCLook256/MultiLineEditbox" renderer="Core/MultiLineEditbox" targetType="CEGUI/MultiLineEditbox" windowType="TSCLook256/MultiLineEditbox" />
+	<FalagardMapping lookNFeel="TSCLook256/Menubar" renderer="Core/Menubar" targetType="CEGUI/Menubar" windowType="TSCLook256/Menubar" />
+	<FalagardMapping lookNFeel="TSCLook256/PopupMenu" renderer="Core/PopupMenu" targetType="CEGUI/PopupMenu" windowType="TSCLook256/PopupMenu" />
+	<FalagardMapping lookNFeel="TSCLook256/MenuItem" renderer="Core/MenuItem" targetType="CEGUI/MenuItem" windowType="TSCLook256/MenuItem" />
+	<FalagardMapping lookNFeel="TSCLook256/AltProgressBar" renderer="Core/ProgressBar" targetType="CEGUI/ProgressBar" windowType="TSCLook256/AlternateProgressBar" />
+	<FalagardMapping lookNFeel="TSCLook256/ProgressBar" renderer="Core/ProgressBar" targetType="CEGUI/ProgressBar" windowType="TSCLook256/ProgressBar" />
+	<FalagardMapping lookNFeel="TSCLook256/VUMeter" renderer="Core/ProgressBar" targetType="CEGUI/ProgressBar" windowType="TSCLook256/VUMeter" />
+	<FalagardMapping lookNFeel="TSCLook256/VerticalScrollbar" renderer="Core/Scrollbar" targetType="CEGUI/Scrollbar" windowType="TSCLook256/VerticalScrollbar" />
+	<FalagardMapping lookNFeel="TSCLook256/HorizontalScrollbar" renderer="Core/Scrollbar" targetType="CEGUI/Scrollbar" windowType="TSCLook256/HorizontalScrollbar" />
+	<FalagardMapping lookNFeel="TSCLook256/VerticalScrollbarThumb" renderer="Core/Button" targetType="CEGUI/Thumb" windowType="TSCLook256/VerticalScrollbarThumb" />
+	<FalagardMapping lookNFeel="TSCLook256/HorizontalScrollbarThumb" renderer="Core/Button" targetType="CEGUI/Thumb" windowType="TSCLook256/HorizontalScrollbarThumb" />
+	<FalagardMapping lookNFeel="TSCLook256/LargeVerticalScrollbar" renderer="Core/Scrollbar" targetType="CEGUI/Scrollbar" windowType="TSCLook256/LargeVerticalScrollbar" />
+	<FalagardMapping lookNFeel="TSCLook256/LargeVerticalScrollbarThumb" renderer="Core/Button" targetType="CEGUI/Thumb" windowType="TSCLook256/LargeVerticalScrollbarThumb" />
+	<FalagardMapping lookNFeel="TSCLook256/TabButton" renderer="Core/TabButton" targetType="CEGUI/TabButton" windowType="TSCLook256/TabButton" />
+	<FalagardMapping lookNFeel="TSCLook256/TabControl" renderer="Core/TabControl" targetType="CEGUI/TabControl" windowType="TSCLook256/TabControl" />
+	<FalagardMapping lookNFeel="TSCLook256/TabContentPane" renderer="Core/Default" targetType="DefaultWindow" windowType="TSCLook256/TabContentPane" />
+	<FalagardMapping lookNFeel="TSCLook256/TabButtonPane" renderer="Core/Default" targetType="DefaultWindow" windowType="TSCLook256/TabButtonPane" />
+	<FalagardMapping lookNFeel="TSCLook256/ComboDropList" renderer="Core/Listbox" targetType="CEGUI/ComboDropList" windowType="TSCLook256/ComboDropList" />
+	<FalagardMapping lookNFeel="TSCLook256/ComboEditbox" renderer="Core/Editbox" targetType="CEGUI/Editbox" windowType="TSCLook256/ComboEditbox" />
+	<FalagardMapping lookNFeel="TSCLook256/Combobox" renderer="Core/Default" targetType="CEGUI/Combobox" windowType="TSCLook256/Combobox" />
+	<FalagardMapping lookNFeel="TSCLook256/Listbox" renderer="Core/Listbox" targetType="CEGUI/Listbox" windowType="TSCLook256/Listbox" />
+	<FalagardMapping lookNFeel="TSCLook256/ListHeader" renderer="Core/ListHeader" targetType="CEGUI/ListHeader" windowType="TSCLook256/ListHeader" />
+	<FalagardMapping lookNFeel="TSCLook256/ListHeaderSegment" renderer="Core/ListHeaderSegment" targetType="CEGUI/ListHeaderSegment" windowType="TSCLook256/ListHeaderSegment" />
+	<FalagardMapping lookNFeel="TSCLook256/MultiColumnList" renderer="Core/MultiColumnList" targetType="CEGUI/MultiColumnList" windowType="TSCLook256/MultiColumnList" />
+	<FalagardMapping lookNFeel="TSCLook256/Slider" renderer="Core/Slider" targetType="CEGUI/Slider" windowType="TSCLook256/Slider" />
+	<FalagardMapping lookNFeel="TSCLook256/SliderThumb" renderer="Core/Button" targetType="CEGUI/Thumb" windowType="TSCLook256/SliderThumb" />
+	<FalagardMapping lookNFeel="TSCLook256/ScrollablePane" renderer="Core/ScrollablePane" targetType="CEGUI/ScrollablePane" windowType="TSCLook256/ScrollablePane" />
+	<FalagardMapping lookNFeel="TSCLook256/Spinner" renderer="Core/Default" targetType="CEGUI/Spinner" windowType="TSCLook256/Spinner" />
+	<FalagardMapping lookNFeel="TSCLook256/Spinner" renderer="Core/Default" targetType="CEGUI/TSC_Spinner" windowType="TSCLook256/TSC_Spinner" />
+	<FalagardMapping lookNFeel="TSCLook256/Tooltip" renderer="Core/Tooltip" targetType="CEGUI/Tooltip" windowType="TSCLook256/Tooltip" />
+	<FalagardMapping lookNFeel="TSCLook256/StaticImage" renderer="Core/StaticImage" targetType="DefaultWindow" windowType="TSCLook256/StaticImage" />
+	<FalagardMapping lookNFeel="TSCLook256/StaticText" renderer="Core/StaticText" targetType="DefaultWindow" windowType="TSCLook256/StaticText" />
+	<FalagardMapping lookNFeel="TSCLook256/ItemListbox" renderer="Core/ItemListbox" targetType="CEGUI/ItemListbox" windowType="TSCLook256/ItemListbox" />
+	<FalagardMapping lookNFeel="TSCLook256/ListboxItem" renderer="Core/ItemEntry" targetType="CEGUI/ItemEntry" windowType="TSCLook256/ListboxItem" />
+	<FalagardMapping lookNFeel="TSCLook256/GroupBox" renderer="Core/Default" targetType="CEGUI/GroupBox" windowType="TSCLook256/GroupBox" />
+      <FalagardMapping lookNFeel="TSCLook256/Tree" renderer="Core/Tree" targetType="CEGUI/Tree" windowType="TSCLook256/Tree" />
+</GUIScheme>

@@ -5,7 +5,7 @@
     <Property name="InheritsAlpha" value="False"/>
     <Property name="MaxSize" value="{{1,0},{1,0}}"/>
     <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
-    <Window type="TaharezLook/FrameWindow" name="window_options">
+    <Window type="TSCLook256/FrameWindow" name="window_options">
       <Property name="Alpha" value="0.5"/>
       <Property name="FrameEnabled" value="False"/>
       <Property name="TitlebarFont" value="DejaVuSans"/>
@@ -15,7 +15,7 @@
       <Property name="Area" value="{{0.05,0},{0.26,0},{0.95,0},{0.88,0}}"/>
       <Property name="DragMovingEnabled" value="False"/>
       <Property name="CloseButtonEnabled" value="False"/>
-      <Window type="TaharezLook/TabControl" name="tabcontrol_main">
+      <Window type="TSCLook256/TabControl" name="tabcontrol_main">
         <Property name="Alpha" value="0.7"/>
         <Property name="TabHeight" value="{0,25}"/>
         <Property name="InheritsAlpha" value="False"/>
@@ -23,7 +23,7 @@
         <Property name="TabPanePosition" value="Top"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{0.93,0}}"/>
       </Window>
-      <Window type="TaharezLook/Button" name="button_back">
+      <Window type="TSCLook256/Button" name="button_back">
         <Property name="Text" value="_Back"/>
         <Property name="InheritsAlpha" value="False"/>
         <Property name="MaxSize" value="{{1,0},{1,0}}"/>

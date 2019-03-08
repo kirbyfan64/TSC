@@ -484,7 +484,7 @@ void cWaypoint::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // Type
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_type"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_type"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Level")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("World")));
@@ -500,7 +500,7 @@ void cWaypoint::Editor_Activate(void)
     pWorld_Editor->Add_Config_Widget(UTF8_("Type"), UTF8_("Destination type"), combobox);
 
     // destination
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "waypoint_destination"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "waypoint_destination"));
     pWorld_Editor->Add_Config_Widget(UTF8_("Destination"), UTF8_("Destination level or world"), editbox);
 
     editbox->setText(Get_Destination());
@@ -509,7 +509,7 @@ void cWaypoint::Editor_Activate(void)
     // pre 2.1.0: direction backward
     if (m_direction_backward != DIR_UNDEFINED) {
         // backward direction
-        combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_backward_direction"));
+        combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_backward_direction"));
 
         combobox->addItem(new CEGUI::ListboxTextItem("up"));
         combobox->addItem(new CEGUI::ListboxTextItem("down"));
@@ -524,7 +524,7 @@ void cWaypoint::Editor_Activate(void)
     // pre 2.1.0: direction forward
     if (m_direction_forward != DIR_UNDEFINED) {
         // forward direction
-        combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_forward_direction"));
+        combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_forward_direction"));
 
         combobox->addItem(new CEGUI::ListboxTextItem("up"));
         combobox->addItem(new CEGUI::ListboxTextItem("down"));
@@ -537,7 +537,7 @@ void cWaypoint::Editor_Activate(void)
     }
 
     // Access
-    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_access"));
+    combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_access"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Enabled")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));
@@ -553,20 +553,20 @@ void cWaypoint::Editor_Activate(void)
     pWorld_Editor->Add_Config_Widget(UTF8_("Default Access"), UTF8_("Enable if the Waypoint should be always accessible."), combobox);
 
     // waypoint exits
-    mp_wp_exits_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_exit_select"));
+    mp_wp_exits_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_exit_select"));
     rebuild_waypoint_exit_list();
 
     mp_wp_exits_box->subscribeEvent(CEGUI::Combobox::EventListSelectionAccepted, CEGUI::Event::Subscriber(&cWaypoint::Editor_Waypoint_Exit_Select, this));
     pWorld_Editor->Add_Config_Widget(UTF8_("Waypoint Exit"), UTF8_("Select the waypoint exit to edit."), mp_wp_exits_box);
 
     // new waypoint exit
-    CEGUI::PushButton* button = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TaharezLook/Button", "new_waypoint_exit"));
+    CEGUI::PushButton* button = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TSCLook256/Button", "new_waypoint_exit"));
     button->setText(UTF8_("New Exit"));
     button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&cWaypoint::Editor_Waypoint_New_Exit_Clicked, this));
     pWorld_Editor->Add_Config_Widget(UTF8_("New Exit"), UTF8_("Create a new exit by clicking."), button);
 
     // Remove waypoint exit
-    button = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TaharezLook/Button", "delete_waypoint_exit"));
+    button = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TSCLook256/Button", "delete_waypoint_exit"));
     button->setText(UTF8_("Delete Exit"));
     button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&cWaypoint::Editor_Waypoint_Delete_Exit_Clicked, this));
     pWorld_Editor->Add_Config_Widget(UTF8_("Delete Exit"), UTF8_("Delete the currently selected exit by clicking."), button);
@@ -574,7 +574,7 @@ void cWaypoint::Editor_Activate(void)
     // Widgets for configuring a waypoint exit
 
     // waypoint exit direction
-    mp_wp_exit_dir_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_exit_direction"));
+    mp_wp_exit_dir_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_exit_direction"));
 
     mp_wp_exit_dir_box->addItem(new CEGUI::ListboxTextItem("up"));
     mp_wp_exit_dir_box->addItem(new CEGUI::ListboxTextItem("down"));
@@ -586,17 +586,17 @@ void cWaypoint::Editor_Activate(void)
     pWorld_Editor->Add_Config_Widget(UTF8_("Leave direction"), UTF8_("Direction key to press for leaving the waypoint for this exit"), mp_wp_exit_dir_box);
 
     // waypoint exit level exit name
-    mp_wp_exit_name_edit = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "waypoint_exit_level_exit_name"));
+    mp_wp_exit_name_edit = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "waypoint_exit_level_exit_name"));
     mp_wp_exit_name_edit->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cWaypoint::Editor_Waypoint_Exit_Level_Exit_Name_Changed, this));
     pWorld_Editor->Add_Config_Widget(UTF8_("Level Exit"), UTF8_("Name of the level exit in the level that activates this waypoint exit."), mp_wp_exit_name_edit);
 
     // waypoint exit start line point UID
-    mp_wp_exit_uid_edit = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "waypoint_exit_line_start_uid"));
+    mp_wp_exit_uid_edit = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "waypoint_exit_line_start_uid"));
     mp_wp_exit_uid_edit->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cWaypoint::Editor_Waypoint_Exit_Line_Start_UID_Changed, this));
     pWorld_Editor->Add_Config_Widget(UTF8_("Line start UID"), UTF8_("UID of the line start point to set Alex onto when taking this exit."), mp_wp_exit_uid_edit);
 
     // waypoint exit locked
-    mp_wp_exit_lock_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "waypoint_locked"));
+    mp_wp_exit_lock_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "waypoint_locked"));
 
     mp_wp_exit_lock_box->addItem(new CEGUI::ListboxTextItem(UTF8_("Locked")));
     mp_wp_exit_lock_box->addItem(new CEGUI::ListboxTextItem(UTF8_("Unlocked")));

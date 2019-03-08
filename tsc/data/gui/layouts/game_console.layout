@@ -6,20 +6,20 @@
     <Property name="MousePassThroughEnabled" value="True"/>
     <Property name="Alpha" value="0.75"/>
 
-    <Window type="TaharezLook/MultiLineEditbox" name="output">
+    <Window type="TSCLook256/MultiLineEditbox" name="output">
       <Property name="Area" value="{{0,0},{0,0},{1,0},{0.91,0}}"/>
       <Property name="Font" value="DejaVuSansMono-Small"/>
       <Property name="ReadOnly" value="True"/>
       <Property name="WordWrap" value="True"/>
     </Window>
 
-    <Window type="TaharezLook/StaticText" name="lineno">
+    <Window type="TSCLook256/StaticText" name="lineno">
       <Property name="Area" value="{{0,0},{0.9,0},{0.05,0},{1,0}}"/>
       <Property name="Font" value="DejaVuSansMono-Small"/>
       <Property name="Text" value="01>>"/>
     </Window>
 
-    <Window type="TaharezLook/Editbox" name="input">
+    <Window type="TSCLook256/Editbox" name="input">
       <Property name="Area" value="{{0.045,0},{0.9,0},{1,0},{1,0}}"/>
       <Property name="Font" value="DejaVuSansMono-Small"/>
     </Window>

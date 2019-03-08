@@ -741,7 +741,7 @@ void cFurball::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_furball_direction"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_furball_direction"));
     combobox->addItem(new CEGUI::ListboxTextItem("left"));
     combobox->addItem(new CEGUI::ListboxTextItem("right"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Starting direction."), combobox);
@@ -751,7 +751,7 @@ void cFurball::Editor_Activate(void)
 
     if (m_type == TYPE_FURBALL_BOSS) {
         // max downgrades
-        CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_furball_max_downgrade_count"));
+        CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_furball_max_downgrade_count"));
         pLevel_Editor->Add_Config_Widget(UTF8_("Downgrades"), UTF8_("Downgrades until death"), editbox);
 
         editbox->setValidationString("^[+]?\\d*$");
@@ -759,7 +759,7 @@ void cFurball::Editor_Activate(void)
         editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cFurball::Editor_Max_Downgrade_Count_Text_Changed, this));
 
         // level ends if killed
-        combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_furball_level_ends_if_killed"));
+        combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_furball_level_ends_if_killed"));
         combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Enabled")));
         combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));
         pLevel_Editor->Add_Config_Widget(UTF8_("End Level"), UTF8_("End the level if it is killed."), combobox);

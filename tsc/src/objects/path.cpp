@@ -709,14 +709,14 @@ void cPath::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // identifier
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "path_identifier"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "path_identifier"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Identifier"), UTF8_("Identifier name of the Path. This is needed for objects that can link to this."), editbox);
 
     editbox->setText(m_identifier.c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cPath::Editor_Identifier_Text_Changed, this));
 
     // show path moving line
-    CEGUI::Combobox* combobox_line = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "path_show_line"));
+    CEGUI::Combobox* combobox_line = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "path_show_line"));
 
     combobox_line->addItem(new CEGUI::ListboxTextItem("show"));
     combobox_line->addItem(new CEGUI::ListboxTextItem("hide"));
@@ -730,7 +730,7 @@ void cPath::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Show Line"), UTF8_("Wether or not to show the path's moving line ingame."), combobox_line);
 
     // move type
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "path_move_type"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "path_move_type"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("mirror"));
     combobox->addItem(new CEGUI::ListboxTextItem("rewind"));
@@ -746,7 +746,7 @@ void cPath::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Move Type"), UTF8_("Movement type. Mirror moves forth and back and rewind starts from the beginning again."), combobox);
 
     // selected segment
-    mp_segment_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "path_selected_segment"));
+    mp_segment_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "path_selected_segment"));
 
     for (unsigned int count = 0; count < m_segments.size(); count++) {
         mp_segment_box->addItem(new CEGUI::ListboxTextItem(int_to_string(count)));
@@ -758,21 +758,21 @@ void cPath::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Segment"), UTF8_("Select the Segment to edit."), mp_segment_box);
 
     // button add
-    CEGUI::PushButton* pushbutton = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TaharezLook/Button", "path_segment_add"));
+    CEGUI::PushButton* pushbutton = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TSCLook256/Button", "path_segment_add"));
     pLevel_Editor->Add_Config_Widget("-", UTF8_("Add a Segment after the selected one."), pushbutton);
 
     pushbutton->setText(UTF8_("Add"));
     pushbutton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&cPath::Editor_Button_Add_Segment_Clicked, this));
 
     // button delete
-    pushbutton = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TaharezLook/Button", "path_segment_delete"));
+    pushbutton = static_cast<CEGUI::PushButton*>(wmgr.createWindow("TSCLook256/Button", "path_segment_delete"));
     pLevel_Editor->Add_Config_Widget("-", UTF8_("Delete the selected Segment."), pushbutton);
 
     pushbutton->setText(UTF8_("Delete"));
     pushbutton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&cPath::Editor_Button_Delete_Segment_Clicked, this));
 
     // selected segment x1
-    mp_x1_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "path_segment_x1"));
+    mp_x1_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "path_segment_x1"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Pos X1"), UTF8_("Line position X1"), mp_x1_box);
 
     mp_x1_box->setValidationString("[-+]?[0-9]*\\.?[0-9]*");
@@ -780,7 +780,7 @@ void cPath::Editor_Activate(void)
     mp_x1_box->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cPath::Editor_Pos_X1_Text_Changed, this));
 
     // selected segment y1
-    mp_y1_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "path_segment_y1"));
+    mp_y1_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "path_segment_y1"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Y1"), UTF8_("Line position Y1"), mp_y1_box);
 
     mp_y1_box->setValidationString("[-+]?[0-9]*\\.?[0-9]*");
@@ -788,7 +788,7 @@ void cPath::Editor_Activate(void)
     mp_y1_box->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cPath::Editor_Pos_Y1_Text_Changed, this));
 
     // selected segment x2
-    mp_x2_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "path_segment_x2"));
+    mp_x2_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "path_segment_x2"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Pos X2"), UTF8_("Line position X2"), mp_x2_box);
 
     mp_x2_box->setValidationString("[-+]?[0-9]*\\.?[0-9]*");
@@ -796,7 +796,7 @@ void cPath::Editor_Activate(void)
     mp_x2_box->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cPath::Editor_Pos_X2_Text_Changed, this));
 
     // selected segment y2
-    mp_y2_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "path_segment_y2"));
+    mp_y2_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "path_segment_y2"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Y2"), UTF8_("Line position Y2"), mp_y2_box);
 
     mp_y2_box->setValidationString("[-+]?[0-9]*\\.?[0-9]*");

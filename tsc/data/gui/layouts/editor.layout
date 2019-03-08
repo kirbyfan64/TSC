@@ -4,14 +4,14 @@
   <Window type="DefaultWindow" name="editor">
     <Property name="MousePassThroughEnabled" value="True"/>
     <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
-    <Window type="TaharezLook/TabControl" name="editor_tabpane">
+    <Window type="TSCLook256/TabControl" name="editor_tabpane">
       <Property name="TabHeight" value="{0,24}"/>
       <Property name="TabPanePosition" value="Top"/>
       <Property name="Area" value="{{0,0},{0,0},{0.2,0},{1,0}}"/>
       <Window type="DefaultWindow" name="editor_tab_menu">
         <Property name="Text" value="Menu"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
-        <Window type="TaharezLook/Listbox" name="editor_menu">
+        <Window type="TSCLook256/Listbox" name="editor_menu">
           <Property name="Area" value="{{0.0,0},{0.01,0},{0.99,0},{0.970623,0}}"/>
         </Window>
       </Window>
@@ -19,19 +19,19 @@
         <Property name="Text" value="Items"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
         <!-- The following window is never actually used, it's a placeholder. -->
-        <Window type="TaharezLook/ScrollablePane" name="editor_items">
+        <Window type="TSCLook256/ScrollablePane" name="editor_items">
           <Property name="Area" value="{{0.0,0},{0.01,0},{0.99,0},{0.95,0}}"/>
         </Window>
       </Window>
       <Window type="DefaultWindow" name="editor_tab_selector">
         <Property name="Text" value="Selector"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
-        <Window type="TaharezLook/RadioButton" name="selection">
+        <Window type="TSCLook256/RadioButton" name="selection">
           <Property name="Position" value="{{0.2,0},{0.05,0}}"/>
           <Property name="Text" value="Selection"/>
           <Property name="GroupID" value="1"/>
         </Window>
-        <Window type="TaharezLook/RadioButton" name="secretarea">
+        <Window type="TSCLook256/RadioButton" name="secretarea">
           <Property name="Position" value="{{0.2,0},{0.1,0}}"/>
           <Property name="Text" value="Secret Area"/>
           <Property name="GroupID" value="1"/>
@@ -39,13 +39,13 @@
       </Window>
     </Window>
 
-    <Window type="TaharezLook/TabControl" name="object_config_pane">
+    <Window type="TSCLook256/TabControl" name="object_config_pane">
       <Property name="Area" value="{{0.6,0},{0,0},{1,0},{1,0}}"/>
-      <Window type="TaharezLook/TabContentPane" name="tab_config">
+      <Window type="TSCLook256/TabContentPane" name="tab_config">
         <Property name="Text" value="Object Configuration"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
 
-        <Window type="TaharezLook/ScrollablePane" name="object_config_scrollarea">
+        <Window type="TSCLook256/ScrollablePane" name="object_config_scrollarea">
           <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
           <Property name="ContentPaneAutoSized" value="True"/>
         </Window>

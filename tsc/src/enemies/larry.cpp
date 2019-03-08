@@ -401,7 +401,7 @@ void cLarry::Editor_Activate()
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // direction
-    CEGUI::Combobox* p_combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_larry_direction"));
+    CEGUI::Combobox* p_combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_larry_direction"));
 
     p_combobox->addItem(new CEGUI::ListboxTextItem("left"));
     p_combobox->addItem(new CEGUI::ListboxTextItem("right"));

@@ -678,7 +678,7 @@ void cBaseBox::Editor_Activate(void)
 
     if (m_type != TYPE_TEXT_BOX) {
         // useable count
-        CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_basebox_useable_count"));
+        CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_basebox_useable_count"));
         pLevel_Editor->Add_Config_Widget(UTF8_("Useable Count"), UTF8_("Useable Count"), editbox);
 
         editbox->setText(int_to_string(m_start_useable_count));
@@ -686,7 +686,7 @@ void cBaseBox::Editor_Activate(void)
     }
 
     // Invisible
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_basebox_invisible"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_basebox_invisible"));
 
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Disabled")));
     combobox->addItem(new CEGUI::ListboxTextItem(UTF8_("Massive")));

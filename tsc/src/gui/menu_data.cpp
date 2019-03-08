@@ -193,7 +193,7 @@ cMenu_Main::cMenu_Main(void)
     mp_current_inactive_item = NULL;
     mp_current_active_item   = NULL;
 
-    mp_credits_item = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticText");
+    mp_credits_item = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/StaticText");
     mp_credits_item->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&cMenu_Main::credits_item_clicked, this));
     mp_credits_item->subscribeEvent(CEGUI::Window::EventMouseEntersArea, CEGUI::Event::Subscriber(&cMenu_Main::credits_item_entered, this));
 
@@ -734,7 +734,7 @@ void cMenu_Start::Get_Levels(fs::path dir, CEGUI::Colour color)
 
 
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox_levels->addItem(item);
     }
 }
@@ -939,7 +939,7 @@ void cMenu_Start::Update_Lists(void)
         }
 
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox_campaigns->addItem(item);
     }
 
@@ -981,7 +981,7 @@ void cMenu_Start::Update_Lists(void)
         }
 
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox_worlds->addItem(item);
     }
 
@@ -2310,7 +2310,7 @@ void cMenu_Options::Build_Shortcut_List(bool joystick /* = 0 */)
 
         CEGUI::ListboxTextItem* item = new CEGUI::ListboxTextItem(shortcut_item.m_name, 0, shortcut_item.m_key);
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         unsigned int row_id = listbox->addRow(item, 0);
 
         // Get shortcut key name
@@ -2349,7 +2349,7 @@ void cMenu_Options::Build_Shortcut_List(bool joystick /* = 0 */)
             item->setTextColours(CEGUI::Colour(0.9f, 0.6f, 0.0f));
         }
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox->setItem(item, 1, row_id);
     }
 }
@@ -3336,7 +3336,7 @@ void cMenu_Savegames::Update_Saved_Games_Text(void)
 
         CEGUI::ListboxTextItem* p_item = new CEGUI::ListboxTextItem(reinterpret_cast<const CEGUI::utf8*>(text.c_str()));
         p_item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
-        p_item->setSelectionBrushImage("TaharezLook/ListboxSelectionBrush");
+        p_item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         p_listbox->addItem(p_item);
 
         // TODO: Use `color' variable for the text color
@@ -3603,7 +3603,7 @@ void cMenu_Credits::Add_Credits_Line(const std::string& text, float posx, float 
     CEGUI::ColourRect colrect(color.Get_cegui_Color());
     CEGUI::String strcolrect = CEGUI::PropertyHelper<CEGUI::ColourRect>::toString(colrect);
 
-    CEGUI::Window* p_line = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticText");
+    CEGUI::Window* p_line = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/StaticText");
     p_line->setText(reinterpret_cast<const CEGUI::utf8*>(text.c_str()));
     p_line->setProperty("FrameEnabled", "False");
     p_line->setProperty("BackgroundEnabled", "False");

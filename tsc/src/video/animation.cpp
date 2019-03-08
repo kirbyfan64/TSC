@@ -1383,7 +1383,7 @@ void cParticle_Emitter::Editor_Activate(void)
         throw(std::runtime_error("Unknown editing environment"));
 
     // position z
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_pos_z_base"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_pos_z_base"));
     p_editor->Add_Config_Widget(UTF8_("Position z"), UTF8_("Initial depth position. Use values from 0.00011 to 0.12."), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1391,7 +1391,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Pos_Z_Base_Text_Changed, this));
 
     // position z rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_pos_z_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_pos_z_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1399,21 +1399,21 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Pos_Z_Rand_Text_Changed, this));
 
     // image filename
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_image_filename"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_image_filename"));
     p_editor->Add_Config_Widget(UTF8_("Filename"), UTF8_("Image filename"), editbox);
 
     editbox->setText(path_to_utf8(m_image_filename).c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Filename_Text_Changed, this));
 
     // emitter position based on camera pos
-    CEGUI::ToggleButton* checkbox = static_cast<CEGUI::ToggleButton*>(wmgr.createWindow("TaharezLook/Checkbox", "emitter_based_on_camera_pos"));
+    CEGUI::ToggleButton* checkbox = static_cast<CEGUI::ToggleButton*>(wmgr.createWindow("TSCLook256/Checkbox", "emitter_based_on_camera_pos"));
     p_editor->Add_Config_Widget(UTF8_("Based on camera pos."), UTF8_("The emitter position is based on the camera position"), checkbox);
 
     checkbox->setSelected(m_emitter_based_on_camera_pos);
     checkbox->subscribeEvent(CEGUI::ToggleButton::EventSelectStateChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Emitter_Based_On_Camera_Pos_Changed, this));
 
     // particle position based on emitter pos
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_particle_based_on_emitter_pos"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_particle_based_on_emitter_pos"));
     p_editor->Add_Config_Widget(UTF8_("Particles Based on Emitter pos."), UTF8_("The particle position is based on the emitter position"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1421,7 +1421,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Particle_Based_On_Emitter_Pos_Text_Changed, this));
 
     // emitter width
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_width"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_width"));
     p_editor->Add_Config_Widget(UTF8_("Emitter width"), UTF8_("Emitter width in which the particles spawn"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1429,7 +1429,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Emitter_Width_Text_Changed, this));
 
     // emitter height
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_height"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_height"));
     p_editor->Add_Config_Widget(UTF8_("Height"), UTF8_("Emitter height in which the particles spawn"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1437,7 +1437,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Emitter_Height_Text_Changed, this));
 
     // emitter time to live
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_time_to_live"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_time_to_live"));
     p_editor->Add_Config_Widget(UTF8_("Emitter TTL"), UTF8_("Emitter time to live. Set -1 for infinite."), editbox);
 
     editbox->setValidationString("[+-]?[0-9]*\\.?[0-9]*");
@@ -1445,7 +1445,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Emitter_Time_To_Live_Text_Changed, this));
 
     // emitter interval
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_interval"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_interval"));
     p_editor->Add_Config_Widget(UTF8_("Emitter interval"), UTF8_("Time between spawning particles. Amount is the quota."), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1453,7 +1453,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Emitter_Interval_Text_Changed, this));
 
     // quota
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_quota"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_quota"));
     p_editor->Add_Config_Widget(UTF8_("Quota"), UTF8_("The amount of particles to spawn for an interval"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -1461,7 +1461,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Quota_Text_Changed, this));
 
     // time to live
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_ttl_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_ttl_base"));
     p_editor->Add_Config_Widget(UTF8_("TTL"), UTF8_("Particle time to live(TTL)"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1469,7 +1469,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_TTL_Base_Text_Changed, this));
 
     // time to live rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_ttl_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_ttl_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1477,7 +1477,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_TTL_Rand_Text_Changed, this));
 
     // velocity
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_vel_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_vel_base"));
     p_editor->Add_Config_Widget(UTF8_("Velocity"), UTF8_("Initial particle velocity or speed"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1485,7 +1485,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Velocity_Base_Text_Changed, this));
 
     // velocity rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_vel_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_vel_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1493,7 +1493,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Velocity_Rand_Text_Changed, this));
 
     // start rotation x
-    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TaharezLook/Editbox", "emitter_rotation_x_base" ));
+    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TSCLook256/Editbox", "emitter_rotation_x_base" ));
     p_editor->Add_Config_Widget( UTF8_("Rotation x"), UTF8_("Initial rotation x"), editbox);
 
     editbox->setValidationString( "[+]?[0-9]*\\.?[0-9]*" );
@@ -1501,7 +1501,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent( CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber( &cParticle_Emitter::Editor_Rotation_X_Base_Text_Changed, this ) );
     */
     // start rotation y
-    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TaharezLook/Editbox", "emitter_rotation_y_base" ));
+    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TSCLook256/Editbox", "emitter_rotation_y_base" ));
     p_editor->Add_Config_Widget( UTF8_("Rotation y"), UTF8_("Initial rotation y"), editbox);
 
     editbox->setValidationString( "[+]?[0-9]*\\.?[0-9]*" );
@@ -1510,7 +1510,7 @@ void cParticle_Emitter::Editor_Activate(void)
     */
 
     // start rotation z
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_rotation_z_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_rotation_z_base"));
     p_editor->Add_Config_Widget(UTF8_("Rotation z"), UTF8_("Initial rotation z"), editbox);
 
     editbox->setValidationString("[+-]?[0-9]*\\.?[0-9]*");
@@ -1518,14 +1518,14 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Rotation_Z_Base_Text_Changed, this));
 
     // start direction is added to the z rotation
-    checkbox = static_cast<CEGUI::ToggleButton*>(wmgr.createWindow("TaharezLook/Checkbox", "emitter_start_rot_z_uses_direction"));
+    checkbox = static_cast<CEGUI::ToggleButton*>(wmgr.createWindow("TSCLook256/Checkbox", "emitter_start_rot_z_uses_direction"));
     p_editor->Add_Config_Widget(UTF8_("Add direction"), UTF8_("Start direction is added to the z rotation"), checkbox);
 
     checkbox->setSelected(m_start_rot_z_uses_direction);
     checkbox->subscribeEvent(CEGUI::ToggleButton::EventSelectStateChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Start_Rot_Z_Uses_Direction_Changed, this));
 
     // constant rotation x
-    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TaharezLook/Editbox", "emitter_const_rotation_x_base" ));
+    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TSCLook256/Editbox", "emitter_const_rotation_x_base" ));
     p_editor->Add_Config_Widget( UTF8_("Const. rotation x"), UTF8_("Initial constant rotation x"), editbox);
 
     editbox->setValidationString( "[+]?[0-9]*\\.?[0-9]*" );
@@ -1533,7 +1533,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent( CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber( &cParticle_Emitter::Editor_Const_Rotation_X_Base_Text_Changed, this ) );
     */
     // constant rotation x rand
-    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TaharezLook/Editbox", "emitter_const_rotation_x_rand" ));
+    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TSCLook256/Editbox", "emitter_const_rotation_x_rand" ));
     p_editor->Add_Config_Widget( UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString( "[+]?[0-9]*\\.?[0-9]*" );
@@ -1541,7 +1541,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent( CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber( &cParticle_Emitter::Editor_Const_Rotation_X_Rand_Text_Changed, this ) );
     */
     // constant rotation y
-    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TaharezLook/Editbox", "emitter_const_rotation_y_base" ));
+    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TSCLook256/Editbox", "emitter_const_rotation_y_base" ));
     p_editor->Add_Config_Widget( UTF8_("Const. rotation y"), UTF8_("Initial constant rotation y"), editbox);
 
     editbox->setValidationString( "[+]?[0-9]*\\.?[0-9]*" );
@@ -1549,7 +1549,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent( CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber( &cParticle_Emitter::Editor_Const_Rotation_Y_Base_Text_Changed, this ) );
     */
     // constant rotation y rand
-    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TaharezLook/Editbox", "emitter_const_rotation_y_rand" ));
+    /*editbox = static_cast<CEGUI::Editbox *>(wmgr.createWindow( "TSCLook256/Editbox", "emitter_const_rotation_y_rand" ));
     p_editor->Add_Config_Widget( UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString( "[+]?[0-9]*\\.?[0-9]*" );
@@ -1557,7 +1557,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent( CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber( &cParticle_Emitter::Editor_Const_Rotation_Y_Rand_Text_Changed, this ) );
     */
     // constant rotation z
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_const_rotation_z_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_const_rotation_z_base"));
     p_editor->Add_Config_Widget(UTF8_("Const. rotation z"), UTF8_("Initial constant rotation z"), editbox);
 
     editbox->setValidationString("[+-]?[0-9]*\\.?[0-9]*");
@@ -1565,7 +1565,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Const_Rotation_Z_Base_Text_Changed, this));
 
     // constant rotation z rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_const_rotation_z_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_const_rotation_z_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1573,7 +1573,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Const_Rotation_Z_Rand_Text_Changed, this));
 
     // direction
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_direction_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_direction_base"));
     p_editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Initial direction/angle"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1581,7 +1581,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Direction_Base_Text_Changed, this));
 
     // direction rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_direction_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_direction_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1589,7 +1589,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Direction_Rand_Text_Changed, this));
 
     // scale
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_scale_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_scale_base"));
     p_editor->Add_Config_Widget(UTF8_("Scale"), UTF8_("Initial size scale"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1597,7 +1597,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Scale_Base_Text_Changed, this));
 
     // scale rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_scale_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_scale_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1605,7 +1605,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Scale_Rand_Text_Changed, this));
 
     // horizontal gravity
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_hor_gravity_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_hor_gravity_base"));
     p_editor->Add_Config_Widget(UTF8_("Hor gravity"), UTF8_("Initial horizontal gravity"), editbox);
 
     editbox->setValidationString("[+-]?[0-9]*\\.?[0-9]*");
@@ -1613,7 +1613,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Horizontal_Gravity_Base_Text_Changed, this));
 
     // horizontal gravity rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_hor_gravity_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_hor_gravity_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1621,7 +1621,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Horizontal_Gravity_Rand_Text_Changed, this));
 
     // vertical gravity
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_ver_gravity_base"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_ver_gravity_base"));
     p_editor->Add_Config_Widget(UTF8_("Ver gravity"), UTF8_("Initial vertical gravity"), editbox);
 
     editbox->setValidationString("[+-]?[0-9]*\\.?[0-9]*");
@@ -1629,7 +1629,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Vertical_Gravity_Base_Text_Changed, this));
 
     // vertical gravity rand
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_ver_gravity_rand"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_ver_gravity_rand"));
     p_editor->Add_Config_Widget(UTF8_("Random"), UTF8_("Additional random value"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1637,7 +1637,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Vertical_Gravity_Rand_Text_Changed, this));
 
     // clip rect x
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_clip_rect_x"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_clip_rect_x"));
     p_editor->Add_Config_Widget(UTF8_("Clip rect x"), UTF8_("Clipping rectangle position x"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1645,7 +1645,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Clip_Rect_X_Text_Changed, this));
 
     // clip rect w
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_clip_rect_w"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_clip_rect_w"));
     p_editor->Add_Config_Widget(UTF8_("Width"), UTF8_("Clipping rectangle width"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1653,7 +1653,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Clip_Rect_W_Text_Changed, this));
 
     // clip rect y
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_clip_rect_y"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_clip_rect_y"));
     p_editor->Add_Config_Widget(UTF8_("Clip rect y"), UTF8_("Clipping rectangle position y"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1661,7 +1661,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Clip_Rect_Y_Text_Changed, this));
 
     // clip rect h
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "emitter_clip_rect_h"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "emitter_clip_rect_h"));
     p_editor->Add_Config_Widget(UTF8_("Height"), UTF8_("Clipping rectangle height"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1669,7 +1669,7 @@ void cParticle_Emitter::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cParticle_Emitter::Editor_Clip_Rect_H_Text_Changed, this));
 
     // clip mode
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "emitter_clip_mode"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "emitter_clip_mode"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("move"));
     combobox->addItem(new CEGUI::ListboxTextItem("reverse"));

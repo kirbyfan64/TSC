@@ -474,7 +474,7 @@ void cLevel_Exit::Editor_Activate(void)
     // warp
     if (m_exit_type == LEVEL_EXIT_WARP) {
         // direction
-        mp_direction_combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "level_exit_direction"));
+        mp_direction_combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "level_exit_direction"));
 
         mp_direction_combobox->addItem(new CEGUI::ListboxTextItem("up"));
         mp_direction_combobox->addItem(new CEGUI::ListboxTextItem("down"));
@@ -487,7 +487,7 @@ void cLevel_Exit::Editor_Activate(void)
     }
 
     // motion
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "CAMERA_MOVEotion"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "CAMERA_MOVEotion"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("fly"));
     combobox->addItem(new CEGUI::ListboxTextItem("blink"));
@@ -511,42 +511,42 @@ void cLevel_Exit::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Motion"), UTF8_("Camera Motion"), combobox);
 
     // destination level
-    mp_destination_level_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_exit_destination_level"));
+    mp_destination_level_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_exit_destination_level"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Destination Level"), UTF8_("Name of the level that should be entered. If empty uses the current level."), mp_destination_level_box);
 
     mp_destination_level_box->setText(Get_Level());
     mp_destination_level_box->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cLevel_Exit::Editor_Destination_Level_Text_Changed, this));
 
     // destination entry
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_exit_destination_entry"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_exit_destination_entry"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Destination Entry"), UTF8_("Name of the Entry in the destination level. If empty the entry point is the player start position."), editbox);
 
     editbox->setText(m_dest_entry.c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cLevel_Exit::Editor_Destination_Entry_Text_Changed, this));
 
     // return level
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_exit_return_level"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_exit_return_level"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Return Level"), UTF8_("Name of the level that should be pushed onto return stack."), editbox);
 
     editbox->setText(m_return_level);
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cLevel_Exit::Editor_Return_Level_Text_Changed, this));
 
     // return entry
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_exit_return_entry"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_exit_return_entry"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Return Entry"), UTF8_("Name of the Entry in the return level."), editbox);
 
     editbox->setText(m_return_entry.c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cLevel_Exit::Editor_Return_Entry_Text_Changed, this));
 
     // exit name (for overworld path determination)
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_exit_name"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_exit_name"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Exit Name"), UTF8_("Name of the Exit (use this in the overworld editor to set the path selected by this exit)."), editbox);
 
     editbox->setText(m_exit_name.c_str());
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cLevel_Exit::Editor_Exit_Name_Text_Changed, this));
 
     // path identifier
-    mp_path_ident_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_exit_path_identifier"));
+    mp_path_ident_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_exit_path_identifier"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Path Identifier"), UTF8_("Name of the Path to use for the camera movement."), mp_path_ident_box);
 
     mp_path_ident_box->setText(m_path_identifier.c_str());

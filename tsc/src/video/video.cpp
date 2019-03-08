@@ -137,11 +137,11 @@ void cVideo::Init_CEGUI(void)
     }
 
     // Load our CEGUI theme
-    CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+    CEGUI::SchemeManager::getSingleton().createFromFile("TSCLook256.scheme");
 
     // Have CEGUI draw a mouse cursor
     CEGUI::GUIContext& gui_context = CEGUI::System::getSingleton().getDefaultGUIContext();
-    gui_context.getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+    gui_context.getMouseCursor().setDefaultImage("TSCLook256/MouseArrow");
 
     // set initial mouse position
     sf::Vector2i mousepos = sf::Mouse::getPosition(*pVideo->mp_window);
@@ -155,7 +155,7 @@ void cVideo::Init_CEGUI(void)
     // Create default tooltip widget (see http://static.cegui.org.uk/docs/0.8.7/classCEGUI_1_1Tooltip.html#details),
     // where CEGUI::System::setTooltip() has been renamed to CEGUI::GUIContext::setDefaultTooltipObject()
     // (documentation bug).
-    mp_default_tooltip = static_cast<CEGUI::Tooltip*>(CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/Tooltip", "default_tooltip"));
+    mp_default_tooltip = static_cast<CEGUI::Tooltip*>(CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/Tooltip", "default_tooltip"));
     gui_context.setDefaultTooltipObject(mp_default_tooltip);
 }
 

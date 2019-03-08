@@ -6,7 +6,7 @@
         <Property name="MaxSize" value="{{1,0},{1,0}}"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
         <Property name="MousePassThroughEnabled" value="True"/>
-        <Window type="TaharezLook/StaticText" name="text_version">
+        <Window type="TSCLook256/StaticText" name="text_version">
             <Property name="Text" value="Version"/>
             <Property name="TooltipText" value="Current Game Version."/>
             <Property name="TextColours" value="tl:FF00BB00 tr:FF00CC00 bl:FF00CC00 br:FF00FF00"/>
@@ -14,7 +14,7 @@
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.8,0},{0.94,0},{0.99,0},{0.99,0}}"/>
         </Window>
-        <Window type="TaharezLook/StaticText" name="text_website">
+        <Window type="TSCLook256/StaticText" name="text_website">
             <Property name="Text" value="https://secretchronicles.org"/>
             <Property name="TooltipText" value="Latest News, User Levels and Worlds, Wiki and a Community Forum."/>
             <Property name="TextColours" value="tl:FFFFAA22 tr:FFFFAA22 bl:FFFF8822 br:FFFF8822"/>

@@ -39,11 +39,11 @@ void TSC::Loading_Screen_Init(void)
     guicontext.getRootWindow()->addChild(p_loadingscreen);
 
     CEGUI::ProgressBar* p_progress_bar =
-        static_cast<CEGUI::ProgressBar*>(winmanager.createWindow("TaharezLook/ProgressBar", PROGRESSBAR_NAME));
+        static_cast<CEGUI::ProgressBar*>(winmanager.createWindow("TSCLook256/ProgressBar", PROGRESSBAR_NAME));
     CEGUI::Window* p_progress_text =
-        winmanager.createWindow("TaharezLook/StaticText", LOADING_TEXT_NAME);
+        winmanager.createWindow("TSCLook256/StaticText", LOADING_TEXT_NAME);
     CEGUI::Window* p_license_text =
-        winmanager.createWindow("TaharezLook/StaticText", GPL_TEXT_NAME);
+        winmanager.createWindow("TSCLook256/StaticText", GPL_TEXT_NAME);
 
     p_progress_bar->setStepSize(0.01f);
     p_progress_bar->setSize(CEGUI::USize(CEGUI::UDim(0.7, 0), CEGUI::UDim(0, 58)));

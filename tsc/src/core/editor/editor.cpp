@@ -219,7 +219,7 @@ void cEditor::Add_Config_Widget(const CEGUI::String& name, const CEGUI::String& 
     // get window manager
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
-    CEGUI::Window* p_label = wmgr.createWindow("TaharezLook/StaticText");
+    CEGUI::Window* p_label = wmgr.createWindow("TSCLook256/StaticText");
     p_label->setText(name);
     p_label->setTooltipText(tooltip);
 
@@ -411,7 +411,7 @@ bool cEditor::Key_Down(const sf::Event& evt)
             on_help_window_exit_clicked(CEGUI::EventArgs());
         }
         else {
-            CEGUI::FrameWindow* p_helpframe = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/FrameWindow", "editor_help"));
+            CEGUI::FrameWindow* p_helpframe = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/FrameWindow", "editor_help"));
             p_helpframe->setPosition(CEGUI::UVector2(CEGUI::UDim(0, (game_res_w * 0.1f) * global_upscalex), CEGUI::UDim(0, (game_res_h * 0.1f) * global_upscalex)));
             p_helpframe->setSize(CEGUI::USize(CEGUI::UDim(0, (game_res_w * 0.8f) * global_upscalex), CEGUI::UDim(0, (game_res_h * 0.8f) * global_upscalex)));
             // TRANS: Title of the editor help window
@@ -419,7 +419,7 @@ bool cEditor::Key_Down(const sf::Event& evt)
 
             p_helpframe->getCloseButton()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&cEditor::on_help_window_exit_clicked, this));
 
-            CEGUI::Window* p_helptext = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticText", "editor_help_text");
+            CEGUI::Window* p_helptext = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/StaticText", "editor_help_text");
             p_helptext->setPosition(CEGUI::UVector2(CEGUI::UDim(0.00f, 0.0f), CEGUI::UDim(0.00f, 0.0f)));
             p_helptext->setSize(CEGUI::USize(CEGUI::UDim(1, 0.0f), CEGUI::UDim(1, 0.0f)));
             p_helptext->setProperty("VertScrollbar", "True");
@@ -1117,7 +1117,7 @@ cEditor_Menu_Entry::cEditor_Menu_Entry(std::string name)
 
     // Prepare the CEGUI items window. This will be shown whenever
     // this menu entry is clicked.
-    mp_tab_pane = static_cast<CEGUI::ScrollablePane*>(CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/ScrollablePane", std::string("editor_items_") + name));
+    mp_tab_pane = static_cast<CEGUI::ScrollablePane*>(CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/ScrollablePane", std::string("editor_items_") + name));
     mp_tab_pane->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0.01, 0)));
     mp_tab_pane->setSize(CEGUI::USize(CEGUI::UDim(0.99, 0), CEGUI::UDim(0.95, 0)));
     mp_tab_pane->setContentPaneAutoSized(true);
@@ -1194,13 +1194,13 @@ void cEditor_Menu_Entry::Add_Item(cSprite* p_template_sprite, std::string cegui_
     static const int imageheight = 48; /* Also image width (square) */
     static const int yskip = 24;
 
-    CEGUI::Window* p_label = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticText"/* , std::string("label-of-") + name */);
+    CEGUI::Window* p_label = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/StaticText"/* , std::string("label-of-") + name */);
     p_label->setText(name);
     p_label->setSize(CEGUI::USize(CEGUI::UDim(1, 0), CEGUI::UDim(0, labelheight)));
     p_label->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, m_element_y)));
     p_label->setProperty("FrameEnabled", "False");
 
-    CEGUI::Window* p_image = CEGUI::WindowManager::getSingleton().createWindow("TaharezLook/StaticImage"/* , std::string("image-of-") + name */);
+    CEGUI::Window* p_image = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/StaticImage"/* , std::string("image-of-") + name */);
     p_image->setProperty("Image", cegui_img_ident);
     p_image->setSize(CEGUI::USize(CEGUI::UDim(0, imageheight), CEGUI::UDim(0, imageheight)));
     p_image->setPosition(CEGUI::UVector2(CEGUI::UDim(0.5, -imageheight/2) /* center on X */, CEGUI::UDim(0, m_element_y + labelheight)));

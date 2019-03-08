@@ -358,7 +358,7 @@ void cLevel_Entry::Editor_Activate(void)
     // warp
     if (m_entry_type == LEVEL_ENTRY_WARP) {
         // direction
-        CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "level_entry_direction"));
+        CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "level_entry_direction"));
 
         combobox->addItem(new CEGUI::ListboxTextItem("up"));
         combobox->addItem(new CEGUI::ListboxTextItem("down"));
@@ -371,7 +371,7 @@ void cLevel_Entry::Editor_Activate(void)
     }
 
     // destination entry
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "level_entry_name"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "level_entry_name"));
     pLevel_Editor->Add_Config_Widget(reinterpret_cast<const CEGUI::utf8*>(C_("level", "Name")), UTF8_("Name for identification"), editbox);
 
     editbox->setText(m_entry_name.c_str());

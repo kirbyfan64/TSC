@@ -917,7 +917,7 @@ void cMoving_Platform::Editor_Activate(void)
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
 
     // move type
-    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_moving_platform_move_type"));
+    CEGUI::Combobox* combobox = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_moving_platform_move_type"));
 
     combobox->addItem(new CEGUI::ListboxTextItem("line"));
     combobox->addItem(new CEGUI::ListboxTextItem("circle"));
@@ -941,14 +941,14 @@ void cMoving_Platform::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Move Type"), UTF8_("Movement type."), combobox);
 
     // path identifier
-    mp_path_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_path_identifier"));
+    mp_path_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_path_identifier"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Path Identifier"), UTF8_("Name of the Path to move along."), mp_path_box);
 
     mp_path_box->setText(m_path_state.m_path_identifier.c_str());
     mp_path_box->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Path_Identifier_Text_Changed, this));
 
     // direction
-    mp_direction_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TaharezLook/Combobox", "editor_moving_platform_direction"));
+    mp_direction_box = static_cast<CEGUI::Combobox*>(wmgr.createWindow("TSCLook256/Combobox", "editor_moving_platform_direction"));
 
     mp_direction_box->addItem(new CEGUI::ListboxTextItem("up"));
     mp_direction_box->addItem(new CEGUI::ListboxTextItem("down"));
@@ -960,7 +960,7 @@ void cMoving_Platform::Editor_Activate(void)
     pLevel_Editor->Add_Config_Widget(UTF8_("Direction"), UTF8_("Starting direction."), mp_direction_box);
 
     // max distance
-    mp_distance_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_max_distance"));
+    mp_distance_box = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_max_distance"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Distance"), UTF8_("Movable distance into its direction if type is line or radius if circle."), mp_distance_box);
 
     mp_distance_box->setValidationString("^[+]?\\d*$");
@@ -968,7 +968,7 @@ void cMoving_Platform::Editor_Activate(void)
     mp_distance_box->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Max_Distance_Text_Changed, this));
 
     // speed
-    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_speed"));
+    CEGUI::Editbox* editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_speed"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Speed"), UTF8_("Maximum speed"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -976,7 +976,7 @@ void cMoving_Platform::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Speed_Text_Changed, this));
 
     // touch time
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_touch_time"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_touch_time"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Touch time"), UTF8_("Time when touched until shaking starts"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -984,7 +984,7 @@ void cMoving_Platform::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Touch_Time_Text_Changed, this));
 
     // shake time
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_shake_time"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_shake_time"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Shake time"), UTF8_("Time it's shaking until falling"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -992,7 +992,7 @@ void cMoving_Platform::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Shake_Time_Text_Changed, this));
 
     // touch move time
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_move_time"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_move_time"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Touch move time"), UTF8_("If set does not move until this time has elapsed after touched"), editbox);
 
     editbox->setValidationString("[+]?[0-9]*\\.?[0-9]*");
@@ -1000,7 +1000,7 @@ void cMoving_Platform::Editor_Activate(void)
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Touch_Move_Time_Text_Changed, this));
 
     // horizontal middle image count
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_hor_middle_count"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_hor_middle_count"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Hor image count"), UTF8_("Horizontal middle image count"), editbox);
 
     editbox->setValidationString("^[+]?\\d*$");
@@ -1010,21 +1010,21 @@ void cMoving_Platform::Editor_Activate(void)
     fs::path rel;
 
     // image top left
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_image_top_left"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_image_top_left"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image top left"), UTF8_("Image top left"), editbox);
 
     editbox->setText(path_to_utf8(m_left_filename));
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Image_Top_Left_Text_Changed, this));
 
     // image top middle
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_image_top_middle"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_image_top_middle"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image top middle"), UTF8_("Image top middle"), editbox);
 
     editbox->setText(path_to_utf8(m_middle_filename));
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cMoving_Platform::Editor_Image_Top_Middle_Text_Changed, this));
 
     // image top right
-    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TaharezLook/Editbox", "editor_moving_platform_image_top_right"));
+    editbox = static_cast<CEGUI::Editbox*>(wmgr.createWindow("TSCLook256/Editbox", "editor_moving_platform_image_top_right"));
     pLevel_Editor->Add_Config_Widget(UTF8_("Image top right"), UTF8_("Image top right"), editbox);
 
     editbox->setText(path_to_utf8(m_right_filename));
