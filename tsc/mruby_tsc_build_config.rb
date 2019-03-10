@@ -28,6 +28,7 @@ config = lambda do |conf, root|
   conf.gem :core => "mruby-math"
   conf.gem :core => "mruby-time"
   conf.gem :core => "mruby-struct"
+  conf.gem :core => "mruby-sleep"
   conf.gem :core => "mruby-enum-ext"
   conf.gem :core => "mruby-string-ext"
   conf.gem :core => "mruby-numeric-ext"
@@ -42,7 +43,6 @@ config = lambda do |conf, root|
   conf.gem :core => "mruby-compiler"
 
   # Additional things
-  conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-sleep"         # Sleep
   conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-pcre-regexp"   # PCRE Regular Expressions
   conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-md5"           # MD5
   conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-json"          # JSON
