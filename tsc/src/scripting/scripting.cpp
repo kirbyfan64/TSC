@@ -233,12 +233,24 @@ void cMRuby_Interpreter::Load_Scripts()
     // Load the main scripting file. This file is supposed to
     // do any custom user scripting startup stuff.
     boost::filesystem::path mainfile = pResource_Manager->Get_Game_Scripting("main.rb");
+    std::vector<boost::filesystem::path> scriptfiles;
 
-    // Warn user if user’s main.rb errors.
-    if (!Run_File(mainfile)) {
-        std::cerr << "Warning: Error loading main mruby script '"
-                  << path_to_utf8(mainfile)
-                  << "'!" << std::endl;
+    for (boost::filesystem::directory_iterator diter(pResource_Manager->Get_Game_Scripting_Directory()); diter != boost::filesystem::directory_iterator(); diter++) {
+        if (diter->path().extension() == utf8_to_path(".rb")) {
+            scriptfiles.push_back(diter->path());
+        }
+    }
+
+    debug_print("Scripting engine: loading %ld script files\n", scriptfiles.size());
+    std::sort(scriptfiles.begin(), scriptfiles.end());
+
+    for (boost::filesystem::path scriptfile: scriptfiles) {
+        debug_print("Scripting engine: loading script file '%s'\n", path_to_utf8(scriptfile).c_str());
+        if (!Run_File(scriptfile)) {
+            std::cerr << "Scripting engine: warning: error loading mruby script file '"
+                      << path_to_utf8(scriptfile)
+                      << "'!" << std::endl;
+        }
     }
 }
 

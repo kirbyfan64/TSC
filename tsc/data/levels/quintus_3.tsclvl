@@ -17636,9 +17636,7 @@
     <property name="width" value="104.000000"/>
     <property name="height" value="277.000000"/>
   </secretarea>
-  <script>TSC.require "std/enable"
-
-UIDS[143].on_enter do
+  <script>UIDS[143].on_enter do
   Audio.play_sound("enemy/rokko/activate.wav")
   Player.velocity_x = 40
   Player.velocity_y = -40

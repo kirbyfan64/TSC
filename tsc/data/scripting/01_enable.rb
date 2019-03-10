@@ -29,4 +29,6 @@ module Std
 
 end
 
-Sprite.send(:include, Std::Enable)
+class Sprite
+  include Std::Enable
+end

@@ -6811,8 +6811,6 @@
     <property name="color" value="yellow"/>
   </item>
   <script>
-	TSC.require "std/enable"
-	TSC.require "std/switch"
 	enabling = false;
 	enabled = false;
 	disabling = false;

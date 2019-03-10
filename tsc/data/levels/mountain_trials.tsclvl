@@ -24369,9 +24369,6 @@
     <property name="type" value="passive"/>
   </sprite>
   <script>
-  TSC.require "std/enable"
-  TSC.require "std/message"
-
   #Welcome message
   shown_greeting = false
   GREETING = Std::Message.new("Welcome to Mountain Trials!

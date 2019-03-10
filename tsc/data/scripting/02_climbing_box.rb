@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-TSC.require "std/enable"
 
 module Std
 

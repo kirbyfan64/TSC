@@ -4136,10 +4136,7 @@
     <property name="useable_count" value="1"/>
     <property name="force_best_item" value="0"/>
   </box>
-  <script>TSC.require "std/message"
-TSC.require "std/switch"
-
-# the first jewel on the left
+  <script># the first jewel on the left
 
 UIDS[147].on_activate do
   if UIDS[144].active?() == true

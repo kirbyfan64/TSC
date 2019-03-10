@@ -17941,9 +17941,7 @@
     <property name="width" value="122.000000"/>
     <property name="height" value="94.000000"/>
   </secretarea>
-  <script>TSC.require "std/enable"
-
-dead = false
+  <script>dead = false
 
 UIDS[107].disable
 UIDS[52].on_die do
@@ -17960,6 +17958,5 @@ Level.on_load do |store|
     UIDS[107].enable
   end
 end
-
 </script>
 </level>

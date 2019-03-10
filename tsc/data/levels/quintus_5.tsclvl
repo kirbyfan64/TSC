@@ -24921,10 +24921,7 @@
     <property name="image" value="ground/snow_1/ground/middle/1.png"/>
     <property name="type" value="passive"/>
   </sprite>
-  <script>TSC.require "std/climbing_box"
-TSC.require "std/switch"
-
-Std::ClimbingBox.new(UIDS[1064], count: 12).attach
+  <script>Std::ClimbingBox.new(UIDS[1064], count: 12).attach
 
 platforms = ([2104] + (2106..2110).to_a).map{|uid| UIDS[uid]}
 fire = UIDS[1576..1577]

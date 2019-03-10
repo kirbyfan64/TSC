@@ -8921,9 +8921,7 @@
     <property name="image" value="ground/sand_1/ground/right_up.png"/>
     <property name="type" value="massive"/>
   </sprite>
-  <script>TSC.require "std/climbing_box"
-
-Std::ClimbingBox.new(UIDS[1267], count: 29).attach
+  <script>Std::ClimbingBox.new(UIDS[1267], count: 29).attach
 
 coins           = [889, 872, 871, 895, 976, 1002, 941, 977]
 coins_collected = []

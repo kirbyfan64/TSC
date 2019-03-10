@@ -29,68 +29,6 @@
 using namespace TSC;
 namespace fs = boost::filesystem;
 
-
-/**
- * Method: TSC::require
- *
- *   require( path [, package ] )
- *
- * Minimalistic file loading capability. Loads a file
- * relative to TSC’s scripting/ directory into the running
- * MRuby instance.  If a package is provided, it will search
- * the user and game package scripting directory for the script.
- *
- * Using this outside of the initialisation sequence doesn’t
- * make much sense.
- */
-static mrb_value Require(mrb_state* p_state, mrb_value self)
-{
-    using namespace TSC;
-
-    // Get the path argument
-    char* cpath = NULL;
-    char* cpackage = NULL;
-    mrb_get_args(p_state, "z|z", &cpath, &cpackage);
-
-    // Append ".rb" and convert to a platform-independent boost path
-    std::string spath(cpath);
-    spath.append(".rb");
-    fs::path path = utf8_to_path(spath);
-
-    // Disallow absolute pathes, we don’t want load external files
-    // accidentally
-    if (path.is_absolute())
-        mrb_raise(p_state, MRB_ARGUMENT_ERROR(p_state), "Absolute paths are not allowed.");
-
-    // Open the MRuby file for reading
-    fs::path scriptfile = pPackage_Manager->Get_Scripting_Path(cpackage ? cpackage : "", spath);
-    fs::ifstream file(scriptfile);
-    debug_print("require: Loading '%s'\n", path_to_utf8(scriptfile).c_str());
-    if (!file.is_open())
-        mrb_raisef(p_state, MRB_RUNTIME_ERROR(p_state), "Cannot open file '%s' for reading", scriptfile.generic_string().c_str());
-
-    // Read it
-    std::string code = readfile(file);
-    file.close();
-
-    // Create our context for exception handling
-    mrbc_context* p_context = mrbc_context_new(p_state);
-    p_context->capture_errors = true;
-    p_context->lineno = 1;
-    mrbc_filename(p_state, p_context, path_to_utf8(scriptfile.filename()).c_str());
-
-    // Compile and run the MRuby code
-    mrb_load_nstring_cxt(p_state, code.c_str(), code.length(), p_context);
-
-    // Check for exceptions
-    if (p_state->exc)
-        mrb_exc_raise(p_state, mrb_obj_value(p_state->exc)); // Reraise
-
-    // Finish
-    mrbc_context_free(p_state, p_context);
-    return mrb_nil_value();
-}
-
 /**
  * Method: TSC::platform
  *
@@ -249,7 +187,6 @@ void TSC::Scripting::Init_TSC(mrb_state* p_state)
 {
     struct RClass* p_rmTSC = mrb_define_module(p_state, "TSC");
 
-    mrb_define_module_function(p_state, p_rmTSC, "require", Require, MRB_ARGS_ARG(1,1));
     mrb_define_module_function(p_state, p_rmTSC, "platform", Platform, MRB_ARGS_NONE());
     mrb_define_module_function(p_state, p_rmTSC, "quit", Quit, MRB_ARGS_NONE());
     mrb_define_module_function(p_state, p_rmTSC, "exit", Exit, MRB_ARGS_REQ(1));

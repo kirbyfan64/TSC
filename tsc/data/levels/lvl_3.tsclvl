@@ -10551,8 +10551,6 @@
     <property name="image" value="game/box/brown1_1.png"/>
     <property name="type" value="passive"/>
   </sprite>
-  <script>TSC.require "std/climbing_box"
-
-Std::ClimbingBox.new(UIDS[1130], count: 9).attach
+  <script>Std::ClimbingBox.new(UIDS[1130], count: 9).attach
 </script>
 </level>

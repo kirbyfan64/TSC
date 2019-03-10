@@ -10706,10 +10706,7 @@
     <property name="image" value="ground/underground/cain_end.png"/>
     <property name="type" value="climbable"/>
   </sprite>
-  <script>TSC.require "std/switch"
-TSC.require "std/enable"
-
-Std::Switch.new(UIDS[398]) do
+  <script>Std::Switch.new(UIDS[398]) do
   UIDS[541].disable
   UIDS[540].disable
   UIDS[410].disable

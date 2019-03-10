@@ -10946,9 +10946,7 @@
     <property name="width" value="312.570312"/>
     <property name="height" value="181.000000"/>
   </secretarea>
-  <script>TSC.require "std/climbing_box"
-
-Std::ClimbingBox.new(UIDS[1012], count: 8).attach
+  <script>Std::ClimbingBox.new(UIDS[1012], count: 8).attach
 
 </script>
 </level>

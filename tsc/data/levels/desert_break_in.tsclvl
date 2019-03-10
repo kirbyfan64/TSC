@@ -31584,10 +31584,7 @@
     <property name="image" value="game/box/brown1_1.png"/>
     <property name="type" value="passive"/>
   </sprite>
-  <script>TSC.require "std/enable"
-TSC.require "std/switch"
-
-doingTimer = false  #Boolean for whether timer is running (can then be saved)
+  <script>doingTimer = false  #Boolean for whether timer is running (can then be saved)
 
 #Objects for all draw bridge blocks
 blocks = [3090, 3089, 3068, 3069, 3091, 3092, 3093, 3094, 3096, 3095, 3097, 3098, 3099, 3100, 4292, 4293, 4294, 4295].map{|uid| UIDS[uid]};
