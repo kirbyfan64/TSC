@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<campaign >
+    <information >
+        <property name="save_time" value="1552227807" />
+	<property name="name" value="The Secret Chronicles of Dr. M." />
+        <property name="description" value="DO NOT USE YET. This is the placeholder for the new TSC-specific story around Dr.M." />
+    </information>
+    <target >
+        <property name="name" value="World 4" />
+        <property name="is_level" value="0" />
+    </target>
+</campaign>
