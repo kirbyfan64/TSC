@@ -15,6 +15,7 @@
 */
 
 #include "scene_actions.hpp"
+#include "../audio/audio.hpp"
 #include "scene.hpp"
 
 namespace fs = boost::filesystem;
@@ -41,4 +42,37 @@ bool ImageChange::Execute()
 {
     mp_scene->Set_Scene_Image(m_scene_image);
     return true;
+}
+
+MusicChange::MusicChange(cScene* p_scene, std::string music)
+    : Action(p_scene),
+      m_music(music)
+{
+}
+
+bool MusicChange::Execute()
+{
+    pAudio->Play_Music(m_music, true, 0, 1000);
+    return true;
+}
+
+WaitReturn::WaitReturn(cScene* p_scene)
+    : Action(p_scene),
+      m_return_pressed(false)
+{
+}
+
+bool WaitReturn::Execute()
+{
+    return m_return_pressed;
+}
+
+bool WaitReturn::Key_Down(const sf::Event& evt)
+{
+    if (evt.key.code == sf::Keyboard::Return) {
+        m_return_pressed = true;
+        return true;
+    }
+
+    return false;
 }

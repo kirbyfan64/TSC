@@ -52,8 +52,6 @@ namespace TSC {
         // Set the background image of the scene
         // scene_image is relative to the pixmaps/ directory.
         void Set_Scene_Image(std::string scene_image);
-        // Set the background music of the scene.
-        void Set_Music(std::string music);
 
         /* handle key down event
          * returns true processed
@@ -81,6 +79,7 @@ namespace TSC {
         bool Joy_Button_Up(unsigned int button);
 
         cSprite_Manager* mp_sprite_manager;
+        cCamera* mp_camera;
 
         // The actions to play in this scene, one after the other.
         vector<SceneActions::Action*> m_action_sequence;

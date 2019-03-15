@@ -483,9 +483,10 @@ void cLevel::Init(void)
     }
 
 #ifdef ENABLE_MRUBY
-    /* For unknown reasons, Init() is public. And for even more unknown reasons,
-     * it is called from the outside at some totally unfitting places such as
-     * when returning from a sublevel. We do NOT want to reload all the scripting
+    /* For unknown reasons, Init() is public. And for even more
+     * unknown reasons, it is called from the outside at some totally
+     * unfitting places such as when returning from a sublevel or
+     * ending a scene. We do NOT want to reload all the scripting
      * stuff in such a case, but rather continue where we left off.
      * This is a HACK. It should be removed when Init() is made private as it
      * should be with regard to the secrecy principle of OOP. */

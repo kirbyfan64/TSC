@@ -33,16 +33,19 @@ using namespace TSC;
 
 cScene::cScene(void)
     : mp_sprite_manager(new cSprite_Manager()),
+      mp_camera(new cCamera(mp_sprite_manager)),
       mp_scene_image(new cSprite(mp_sprite_manager))
 {
     mp_scene_image->Set_Massive_Type(MASS_PASSIVE);
     mp_scene_image->Set_Active(true);
     mp_scene_image->Set_Spawned(false);
+    mp_scene_image->Set_Scale_Affects_Rect(true);
     mp_sprite_manager->Add(mp_scene_image);
 }
 
 cScene::~cScene(void)
 {
+    delete mp_camera;
     delete mp_sprite_manager; // Delete mp_scene_image
 }
 
@@ -50,8 +53,11 @@ void cScene::Enter(const GameMode old_mode)
 {
     pMouseCursor->Set_Sprite_Manager(mp_sprite_manager);
     pMouseCursor->Set_Active(false);
-    pAudio->Play_Music("story/theme_1", true, 0, 1000);
     gp_hud->Hide();
+
+    pActive_Camera = mp_camera;
+
+    mp_scene_image->Set_Pos(0, -game_res_h, true);
 }
 
 void cScene::Leave(const GameMode next_mode)
@@ -76,31 +82,35 @@ void cScene::Update(void)
         }
     }
 
-    // End the scene if the action sequence is empty.
+    pActive_Camera->Update();
+
+    // End the scene if the action sequence is empty, and return
+    // to the active level.
     // (Changing Game_Action subsequently causes the main loop
     // to call cScene::Leave() and then destroy it).
     if (m_action_sequence.size() == 0) {
-        Game_Action = GA_ENTER_MENU;
-        Game_Action_Data_Start.add("screen_fadeout_speed", "1.5");
-        Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_START));
-        Game_Action_Data_Middle.add("menu_start_current_level", path_to_utf8(Trim_Filename(pActive_Level->m_level_filename, 0, 0)));
-        Game_Action_Data_End.add("screen_fadein_speed", "1.5");
+        Game_Action = GA_ENTER_LEVEL;
+        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+        Game_Action_Data_Start.add("screen_fadeout_speed", "3");
+        Game_Action_Data_Middle.add("load_level", pActive_Level->Get_Level_Name().c_str());
+        //Game_Action_Data_Middle.add("load_level_entry", str_entry.c_str()); // TODO: Use this to prevent player reset to initial position
+        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
+        Game_Action_Data_End.add("screen_fadein_speed", "3");
+        //Game_Action_Data_End.add("activate_level_entry", str_entry.c_str());
     }
 }
 
 void cScene::Draw(void)
 {
+    // clear
+    pVideo->Clear_Screen();
+    // Draw scene
     mp_sprite_manager->Draw_Items();
 }
 
 void cScene::Set_Scene_Image(std::string scene_image)
 {
     mp_scene_image->Set_Image(pVideo->Get_Surface(utf8_to_path(scene_image)), true);
-}
-
-void cScene::Set_Music(std::string music)
-{
-    // TODO
 }
 
 bool cScene::Key_Down(const sf::Event& evt)

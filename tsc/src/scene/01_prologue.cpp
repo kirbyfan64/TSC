@@ -26,8 +26,10 @@ cPrologueScene::cPrologueScene(void)
 {
     namespace TSA = TSC::SceneActions;
 
-    m_action_sequence.push_back(
-        new TSA::ImageChange(this, "placeholder")); // deleted in Update()
+    m_action_sequence.push_back(new TSA::ImageChange(this, "scene_images/placeholder.png"));
+    m_action_sequence.push_back(new TSA::MusicChange(this, "story/theme_1.ogg"));
+    m_action_sequence.push_back(new TSA::WaitReturn(this));
+
     //m_action_sequence.push_back(
     //    new TSA::MusicChange("story/theme_1"));
     //m_action_sequence.push_back(

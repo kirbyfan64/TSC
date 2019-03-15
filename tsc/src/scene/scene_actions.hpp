@@ -59,9 +59,19 @@ namespace TSC {
         };
 
         class MusicChange: public Action {
+        public:
+            MusicChange(cScene* p_scene, std::string music);
+            virtual bool Execute();
+            std::string m_music;
         };
 
         class WaitReturn: public Action {
+        public:
+            WaitReturn(cScene* p_scene);
+            virtual bool Execute();
+            virtual bool Key_Down(const sf::Event& evt);
+        private:
+            bool m_return_pressed;
         };
 
         class WaitTime: public Action {

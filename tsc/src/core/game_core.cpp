@@ -150,6 +150,9 @@ void Handle_Game_Events(void)
             else if (current_game_action == GA_ENTER_LEVEL_SETTINGS) {
                 new_mode = MODE_LEVEL_SETTINGS;
             }
+            else if (current_game_action == GA_ENTER_SCENE) {
+                new_mode = MODE_SCENE;
+            }
 
             Handle_Generic_Game_Events(current_game_action_data_start);
             Leave_Game_Mode(new_mode);
