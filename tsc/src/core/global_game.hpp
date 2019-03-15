@@ -99,7 +99,8 @@ namespace TSC {
         MODE_LEVEL          = 1,
         MODE_OVERWORLD      = 2,
         MODE_MENU           = 3,
-        MODE_LEVEL_SETTINGS = 4
+        MODE_LEVEL_SETTINGS = 4,
+        MODE_SCENE          = 5
     };
 
     enum GameModeType {
@@ -416,6 +417,7 @@ namespace TSC {
     class cLine_collision;
     class cLine_Request;
     class cLevel_Settings;
+    class cScene;
     class cMenu_Base;
     class cObjectCollisionType;
     class cObjectCollision;

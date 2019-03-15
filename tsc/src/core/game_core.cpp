@@ -23,6 +23,7 @@
 #include "sprite_manager.hpp"
 #include "../level/level_editor.hpp"
 #include "../level/level_player.hpp"
+#include "../scene/scene.hpp"
 #include "../video/loading_screen.hpp"
 #include "../video/renderer.hpp"
 #include "../level/level.hpp"
@@ -252,6 +253,9 @@ void Handle_Generic_Game_Events(const CEGUI::XMLAttributes& action_data)
     if (action_data.exists("load_savegame")) {
         pSavegame->Load_Game(action_data.getValueAsInteger("load_savegame"));
     }
+    if (action_data.exists("load_scene")) {
+        pActive_Scene = cScene::Load_Scene(static_cast<enum Scenes>(action_data.getValueAsInteger("load_scene")));
+    }
     if (action_data.exists("play_music")) {
         pAudio->Play_Music(action_data.getValueAsString("play_music").c_str(), action_data.getValueAsBool("music_loops"), action_data.getValueAsBool("music_force", 1), action_data.getValueAsInteger("music_fadein"));
     }
@@ -301,6 +305,11 @@ void Leave_Game_Mode(const GameMode next_mode)
         std::cerr << "In-game editor disabled by compilation option." << std::endl;
 #endif
     }
+    else if (Game_Mode == MODE_SCENE) {
+        pActive_Scene->Leave(next_mode);
+        delete pActive_Scene;
+        pActive_Scene = nullptr;
+    }
 }
 
 void Enter_Game_Mode(const GameMode new_mode)
@@ -329,6 +338,9 @@ void Enter_Game_Mode(const GameMode new_mode)
 #else
         std::cerr << "In-game editor disabled by compilation option." << std::endl;
 #endif
+    }
+    else if (new_mode == MODE_SCENE) {
+        pActive_Scene->Enter(old_mode);
     }
 }
 

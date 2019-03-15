@@ -20,6 +20,7 @@
 #include "../user/preferences.hpp"
 #include "../core/game_core.hpp"
 #include "../level/level_player.hpp"
+#include "../scene/scene.hpp"
 #include "../gui/hud.hpp"
 #include "../gui/menu.hpp"
 #include "../level/level.hpp"
@@ -361,6 +362,12 @@ bool cJoystick::Handle_Button_Down_Event(const sf::Event& evt)
             return 1;
         }
     }
+    else if (Game_Mode == MODE_SCENE) {
+        // processed by the active scene
+        if (pActive_Scene->Joy_Button_Down(evt.joystickButton.button)) {
+            return 1;
+        }
+    }
 
     // Jump
     if (evt.joystickButton.button == pPreferences->m_joy_button_jump) {
@@ -430,6 +437,12 @@ bool cJoystick::Handle_Button_Up_Event(const sf::Event& evt)
     else if (Game_Mode == MODE_MENU) {
         // processed by the menu
         if (pMenuCore->Joy_Button_Up(evt.joystickButton.button)) {
+            return 1;
+        }
+    }
+    else if (Game_Mode == MODE_SCENE) {
+        // processed by the active scene
+        if (pActive_Scene->Joy_Button_Up(evt.joystickButton.button)) {
             return 1;
         }
     }
