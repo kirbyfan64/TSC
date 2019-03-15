@@ -78,6 +78,11 @@ namespace TSC {
         };
 
         class Narration: public Action {
+        public:
+            Narration(cScene* p_scene, std::initializer_list<std::string> messages);
+            virtual bool Execute();
+            virtual bool Key_Down(const sf::Event& evt);
+            std::vector<std::string> m_messages;
         };
 
     }

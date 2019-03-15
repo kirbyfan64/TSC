@@ -15,6 +15,7 @@
 */
 
 #include "01_prologue.hpp"
+#include "../core/i18n.hpp"
 #include "scene_actions.hpp"
 
 namespace fs = boost::filesystem;
@@ -28,15 +29,14 @@ cPrologueScene::cPrologueScene(void)
 
     m_action_sequence.push_back(new TSA::ImageChange(this, "scene_images/placeholder.png"));
     m_action_sequence.push_back(new TSA::MusicChange(this, "story/theme_1.ogg"));
-    m_action_sequence.push_back(new TSA::WaitReturn(this));
 
-    //m_action_sequence.push_back(
-    //    new TSA::MusicChange("story/theme_1"));
-    //m_action_sequence.push_back(
-    //    new TSA::Narration(
-    //        _("The sinking sun sent out its last colourful beams over the Eastern Desert when a single individual was making his way through the ups and downs of the sandy dunes."),
-    //        _("When he reached the top of the highest dune, he glazed around, to only see sand followed by more sand, by even more sand."),
-    //        _("He took out a map, but with the stars not yet visible on the darkening sky there was no means of orientation in this infinite sea of equally hostile sand dunes.")));
+    m_action_sequence.push_back(new TSA::Narration(this, {
+        _("The sinking sun sent out its last colourful beams over the Eastern Desert when a single individual was making his way through the ups and downs of the sandy dunes."),
+        _("When he reached the top of the highest dune, he glazed around, to only see sand followed by more sand, by even more sand."),
+        _("He took out a map, but with the stars not yet visible on the darkening sky there was no means of orientation in this infinite sea of equally hostile sand dunes.")
+    }));
+
+    m_action_sequence.push_back(new TSA::WaitReturn(this));
 }
 
 cPrologueScene::~cPrologueScene(void)

@@ -76,3 +76,21 @@ bool WaitReturn::Key_Down(const sf::Event& evt)
 
     return false;
 }
+
+Narration::Narration(cScene* p_scene, std::initializer_list<std::string> messages)
+    : Action(p_scene),
+      m_messages(messages)
+{
+}
+
+bool Narration::Execute()
+{
+    // TODO
+    return true;
+}
+
+bool Narration::Key_Down(const sf::Event& evt)
+{
+    // TODO
+    return false;
+}
