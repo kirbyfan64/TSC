@@ -57,6 +57,7 @@ cScene::cScene(void)
     mp_story_box->setSize(CEGUI::USize(CEGUI::UDim(0.6f, 0), CEGUI::UDim(0.2f, 0)));
     mp_story_box->setAlpha(0.8f);
     mp_story_box->setTextParsingEnabled(true);
+    mp_story_box->setFont(&CEGUI::FontManager::getSingleton().get("DejaVuSerif"));
     mp_story_box->setProperty("HorzFormatting", "WordWrapLeftAligned"); // You'll never find the CEGUI property documentation if you don't know where it is. It's here: http://static.cegui.org.uk/static/TaharezLookProperties.html#HorzFormatting
     mp_story_box->hide();
 }

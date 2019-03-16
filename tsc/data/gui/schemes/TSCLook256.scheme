@@ -7,6 +7,10 @@
     <Font filename="DejaVuSans-Bold.font"/>
     <Font filename="DejaVuSansMono.font"/>
     <Font filename="DejaVuSansMono.small.font"/>
+    <Font filename="DejaVuSerif-Regular.font"/>
+    <Font filename="DejaVuSerif-Italic.font"/>
+    <Font filename="DejaVuSerif-Bold.font"/>
+    <Font filename="DejaVuSerif-BoldItalic.font"/>
 
 	<LookNFeel filename="TSCLook256.looknfeel" />
 	<WindowRendererSet filename="CEGUICoreWindowRendererSet" />
