@@ -36,7 +36,8 @@ cScene::cScene(void)
     : mp_sprite_manager(new cSprite_Manager()),
       mp_camera(new cCamera(mp_sprite_manager)),
       mp_scene_image(new cSprite(mp_sprite_manager)),
-      mp_story_box(nullptr)
+      mp_story_box(nullptr),
+      m_credits(false)
 {
     mp_scene_image->Set_Massive_Type(MASS_PASSIVE);
     mp_scene_image->Set_Active(true);
@@ -118,11 +119,25 @@ void cScene::Update(void)
 
     pActive_Camera->Update();
 
-    // End the scene if the action sequence is empty, and return
-    // to the active level.
-    // (Changing Game_Action subsequently causes the main loop
-    // to call cScene::Leave() and then destroy it).
+    // End the scene if the action sequence is empty
     if (m_action_sequence.size() == 0) {
+        End_Scene();
+    }
+}
+
+// End the scene, and return to the requested level or the credits.
+// (Changing Game_Action subsequently causes the main loop to call
+// cScene::Leave() and then destroy it).
+void cScene::End_Scene()
+{
+    if (m_credits) {
+        Game_Action = GA_ENTER_MENU;
+        Game_Action_Data_Start.add("music_fadeout", "1500");
+        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+        Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_CREDITS));
+        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
+    }
+    else {
         Game_Action = GA_ENTER_LEVEL;
         Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
         Game_Action_Data_Start.add("screen_fadeout_speed", "3");
@@ -162,6 +177,11 @@ void cScene::Set_Next_Level(std::string level, std::string entry)
 {
     m_next_level = level;
     m_next_level_entry = entry;
+}
+
+void cScene::Set_Credits()
+{
+    m_credits = true;
 }
 
 void cScene::Set_Scene_Image(std::string scene_image)

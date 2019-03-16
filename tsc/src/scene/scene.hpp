@@ -57,6 +57,9 @@ namespace TSC {
          * whatever is in pActive_Level currently (crashes
          * if pActive_Level is nil in that case!). */
         void Set_Next_Level(std::string level, std::string entry = "");
+        // Instead, you can also call this function. The scene will
+        // exit to the credits screen in that case.
+        void Set_Credits();
 
         // Set the background image of the scene
         // scene_image is relative to the pixmaps/ directory.
@@ -98,6 +101,10 @@ namespace TSC {
          */
         bool Joy_Button_Up(unsigned int button);
 
+    private:
+        void End_Scene();
+
+    protected:
         cSprite_Manager* mp_sprite_manager;
         cCamera* mp_camera;
 
@@ -111,6 +118,8 @@ namespace TSC {
         // Next level to start and its level entry.
         std::string m_next_level;
         std::string m_next_level_entry;
+        // Or go to credits.
+        bool m_credits;
     };
 
     extern cScene* pActive_Scene;
