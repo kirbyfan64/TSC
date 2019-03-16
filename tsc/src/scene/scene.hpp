@@ -57,7 +57,9 @@ namespace TSC {
          * bottom of the screen. Note that calling Set_Story_Text()
          * does not automatically show the box. Set_Story_Text()'s
          * argument will automatically be broken when the text hits
-         * the box' right edge. */
+         * the box' right edge. It can also make use of colours
+         * and all other formatting directives documented at
+         * <http://cegui.org.uk/wiki/Formatting_Tags_in_CEGUI>. */
         void Show_Story_Box();
         void Hide_Story_Box();
         void Set_Story_Text(std::string text);
@@ -95,7 +97,7 @@ namespace TSC {
         // The scene's background image, i.e. the scene image that is in use.
         cSprite* mp_scene_image;
         // The story narration box shown in the lower third of the window.
-        CEGUI::MultiLineEditbox* mp_story_box;
+        CEGUI::Window* mp_story_box;
 
         int m_engine_version;
     };

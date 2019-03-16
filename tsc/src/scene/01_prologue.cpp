@@ -32,7 +32,7 @@ cPrologueScene::cPrologueScene(void)
 
     m_action_sequence.push_back(new TSA::Narration(this, {
         _("The sinking sun sent out its last colourful beams over the Eastern Desert when a single individual was making his way through the ups and downs of the sandy dunes."),
-        _("When he reached the top of the highest dune, he glazed around, to only see sand followed by more sand, by even more sand."),
+        _("When he reached the top of the highest dune, he glazed around, to only see sand followed by more sand, by even more [colour='FFFFF000']sand[colour='FFFFFFFF']."),
         _("He took out a map, but with the stars not yet visible on the darkening sky there was no means of orientation in this infinite sea of equally hostile sand dunes.")
     }));
 }

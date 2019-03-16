@@ -50,11 +50,12 @@ cScene::cScene(void)
      * It is shown when Show_Story_Box() is called during the
      * action sequence execution. */
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
-    mp_story_box = static_cast<CEGUI::MultiLineEditbox*>(wmgr.createWindow("TSCLook256/MultiLineEditbox", "story_box"));
+    mp_story_box = wmgr.createWindow("TSCLook256/StaticText", "story_box");
     mp_story_box->setPosition(CEGUI::UVector2(CEGUI::UDim(0.2f, 0), CEGUI::UDim(0.7f, 0)));
     mp_story_box->setSize(CEGUI::USize(CEGUI::UDim(0.6f, 0), CEGUI::UDim(0.2f, 0)));
     mp_story_box->setAlpha(0.8f);
-    mp_story_box->getHorzScrollbar()->hide();
+    mp_story_box->setTextParsingEnabled(true);
+    mp_story_box->setProperty("HorzFormatting", "WordWrapLeftAligned"); // You'll never find the CEGUI property documentation if you don't know where it is. It's here: http://static.cegui.org.uk/static/TaharezLookProperties.html#HorzFormatting
     mp_story_box->hide();
 }
 
