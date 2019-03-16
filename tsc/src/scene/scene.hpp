@@ -85,6 +85,8 @@ namespace TSC {
         vector<SceneActions::Action*> m_action_sequence;
         // The scene's background image, i.e. the scene image that is in use.
         cSprite* mp_scene_image;
+        // The story narration box shown in the lower third of the window.
+        CEGUI::MultiLineEditbox* mp_story_box;
 
         int m_engine_version;
     };

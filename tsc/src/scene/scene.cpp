@@ -34,17 +34,37 @@ using namespace TSC;
 cScene::cScene(void)
     : mp_sprite_manager(new cSprite_Manager()),
       mp_camera(new cCamera(mp_sprite_manager)),
-      mp_scene_image(new cSprite(mp_sprite_manager))
+      mp_scene_image(new cSprite(mp_sprite_manager)),
+      mp_story_box(nullptr)
 {
     mp_scene_image->Set_Massive_Type(MASS_PASSIVE);
     mp_scene_image->Set_Active(true);
     mp_scene_image->Set_Spawned(false);
     mp_scene_image->Set_Scale_Affects_Rect(true);
     mp_sprite_manager->Add(mp_scene_image);
+
+    /* Construct the story narration box.
+     * The box is shown and attached in Enter(), hidden
+     * and detached in Leave(), and destroyed in the destructor.
+     * This allows having multiple cScene instances around without
+     * CEGUI complaining about colliding window names. */
+    CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
+    mp_story_box = static_cast<CEGUI::MultiLineEditbox*>(wmgr.createWindow("TSCLook256/MultiLineEditbox", "story_box"));
+    mp_story_box->setPosition(CEGUI::UVector2(CEGUI::UDim(0.2f, 0), CEGUI::UDim(0.7f, 0)));
+    mp_story_box->setSize(CEGUI::USize(CEGUI::UDim(0.6f, 0), CEGUI::UDim(0.2f, 0)));
+    mp_story_box->setAlpha(0.8f);
+    mp_story_box->getHorzScrollbar()->hide();
+    mp_story_box->setText("This is line one\nThis is line two\nThis is line three.");
+
+    mp_story_box->hide();
 }
 
 cScene::~cScene(void)
 {
+    // Already detached in Leave(). If not, CEGUI's destroyWindow()
+    // probably takes care of detaching the window from its parent.
+    CEGUI::WindowManager::getSingleton().destroyWindow(mp_story_box);
+
     delete mp_camera;
     delete mp_sprite_manager; // Delete mp_scene_image
 }
@@ -58,6 +78,13 @@ void cScene::Enter(const GameMode old_mode)
     pActive_Camera = mp_camera;
 
     mp_scene_image->Set_Pos(0, -game_res_h, true);
+
+    // Attach and show the story narration box
+    CEGUI::System::getSingleton().
+        getDefaultGUIContext().
+        getRootWindow()->
+        addChild(mp_story_box);
+    mp_story_box->show();
 }
 
 void cScene::Leave(const GameMode next_mode)
@@ -65,6 +92,13 @@ void cScene::Leave(const GameMode next_mode)
     pMouseCursor->Reset(false);
     pAudio->Fadeout_Music(1000);
     pJoystick->Reset_keys();
+
+    // Hide and detach story narration box
+    mp_story_box->hide();
+    CEGUI::System::getSingleton().
+        getDefaultGUIContext().
+        getRootWindow()->
+        removeChild(mp_story_box);
 }
 
 void cScene::Update(void)
