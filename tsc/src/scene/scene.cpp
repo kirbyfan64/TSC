@@ -23,6 +23,7 @@
 #include "../input/joystick.hpp"
 #include "../audio/audio.hpp"
 #include "../gui/hud.hpp"
+#include "../gui/game_console.hpp"
 #include "../level/level.hpp"
 #include "scene_actions.hpp"
 #include "01_prologue.hpp"
@@ -74,6 +75,7 @@ void cScene::Enter(const GameMode old_mode)
     pMouseCursor->Set_Sprite_Manager(mp_sprite_manager);
     pMouseCursor->Set_Active(false);
     gp_hud->Hide();
+    gp_game_console->Hide();
 
     pActive_Camera = mp_camera;
 
@@ -124,11 +126,27 @@ void cScene::Update(void)
         Game_Action = GA_ENTER_LEVEL;
         Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
         Game_Action_Data_Start.add("screen_fadeout_speed", "3");
-        Game_Action_Data_Middle.add("load_level", pActive_Level->Get_Level_Name().c_str());
-        //Game_Action_Data_Middle.add("load_level_entry", str_entry.c_str()); // TODO: Use this to prevent player reset to initial position
+
+        if (m_next_level.empty()) { // Resume pActive_level
+            if (!pActive_Level) { // This is an error by the scene author!
+                throw(std::runtime_error("Bug: Requested resume of pActive_Level, but it is NULL"));
+            }
+
+            if (!m_next_level_entry.empty()) { // Switch to level entry in pActive_Level
+                Game_Action_Data_Middle.add("activate_level_entry", m_next_level_entry);
+            }
+        }
+        else { // Switch to given level
+            Game_Action_Data_Middle.add("load_level", m_next_level);
+            if (!m_next_level_entry.empty()) { // Switch to level entry in target level
+                Game_Action_Data_Middle.add("load_level_entry", m_next_level_entry);
+                // Note: load_level shouldn't be combined with activate_level_entry,
+                // as there's load_level_entry for it, which is more specific.
+            }
+        }
+
         Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
         Game_Action_Data_End.add("screen_fadein_speed", "3");
-        //Game_Action_Data_End.add("activate_level_entry", str_entry.c_str());
     }
 }
 
@@ -138,6 +156,12 @@ void cScene::Draw(void)
     pVideo->Clear_Screen();
     // Draw scene
     mp_sprite_manager->Draw_Items();
+}
+
+void cScene::Set_Next_Level(std::string level, std::string entry)
+{
+    m_next_level = level;
+    m_next_level_entry = entry;
 }
 
 void cScene::Set_Scene_Image(std::string scene_image)

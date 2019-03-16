@@ -49,6 +49,15 @@ namespace TSC {
         void Update(void);
         void Draw(void);
 
+        /* When the scene finishes, load the given level and place
+         * Alex at the given level entry. If the level is already
+         * loaded, resume it at the given level entry.
+         * If `entry' is empty, set the player to the level's
+         * start position. If `level' is empty, simply resume
+         * whatever is in pActive_Level currently (crashes
+         * if pActive_Level is nil in that case!). */
+        void Set_Next_Level(std::string level, std::string entry = "");
+
         // Set the background image of the scene
         // scene_image is relative to the pixmaps/ directory.
         void Set_Scene_Image(std::string scene_image);
@@ -99,7 +108,9 @@ namespace TSC {
         // The story narration box shown in the lower third of the window.
         CEGUI::Window* mp_story_box;
 
-        int m_engine_version;
+        // Next level to start and its level entry.
+        std::string m_next_level;
+        std::string m_next_level_entry;
     };
 
     extern cScene* pActive_Scene;
