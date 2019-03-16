@@ -38,9 +38,11 @@ namespace TSC {
              * that. Execute() is mostly Update() for actions. */
             virtual bool Execute() = 0;
 
-            // Only if Execute() returned false: the following event
-            // handlers will be called when this action is active.
-            // They do nothing by default.
+            /* Only if Execute() returned false: the following event
+             * handlers will be called when this action is active.
+             * They do nothing by default. Please return true from a
+             * handler if you handled the event (otherwise it will get
+             * passed by the event loop to other parts of TSC). */
             virtual bool Key_Down(const sf::Event& evt) {return false;}
             virtual bool Key_Up(const sf::Event& evt) {return false;}
             virtual bool Joy_Button_Down(unsigned int button) {return false;}
@@ -82,7 +84,9 @@ namespace TSC {
             Narration(cScene* p_scene, std::initializer_list<std::string> messages);
             virtual bool Execute();
             virtual bool Key_Down(const sf::Event& evt);
+        private:
             std::vector<std::string> m_messages;
+            bool m_read;
         };
 
     }

@@ -69,6 +69,7 @@ bool WaitReturn::Execute()
 
 bool WaitReturn::Key_Down(const sf::Event& evt)
 {
+    // TODO: Better use the action key than hardcoded Return key
     if (evt.key.code == sf::Keyboard::Return) {
         m_return_pressed = true;
         return true;
@@ -79,18 +80,48 @@ bool WaitReturn::Key_Down(const sf::Event& evt)
 
 Narration::Narration(cScene* p_scene, std::initializer_list<std::string> messages)
     : Action(p_scene),
-      m_messages(messages)
+      m_messages(messages),
+      m_read(true)
 {
 }
 
 bool Narration::Execute()
 {
-    // TODO
-    return true;
+    // If the user read the last message, advance to the next
+    // one (or terminate if no messages remain to be shown).
+    if (!m_read)
+        return false;
+
+    if (m_messages.empty()) {
+        // Signal end of this action.
+        mp_scene->Hide_Story_Box();
+        return true;
+    }
+    else {
+        // Get next message and remove it from message list.
+        std::string text = m_messages.front();
+        m_messages.erase(m_messages.begin());
+
+        // Display it to the user.
+        mp_scene->Set_Story_Text(text);
+        mp_scene->Show_Story_Box();
+
+        // Mark message as unread.
+        m_read = false;
+
+        // Signal this action is not finished.
+        return false;
+    }
 }
 
 bool Narration::Key_Down(const sf::Event& evt)
 {
-    // TODO
+    // Mark message as read on return.
+    // TODO: Better use the action key than hardcoded Return key
+    if (evt.key.code == sf::Keyboard::Return) {
+        m_read = true;
+        return true;
+    }
+
     return false;
 }

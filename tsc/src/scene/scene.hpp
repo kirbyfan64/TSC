@@ -53,6 +53,15 @@ namespace TSC {
         // scene_image is relative to the pixmaps/ directory.
         void Set_Scene_Image(std::string scene_image);
 
+        /* These functions control the story box shown at the
+         * bottom of the screen. Note that calling Set_Story_Text()
+         * does not automatically show the box. Set_Story_Text()'s
+         * argument will automatically be broken when the text hits
+         * the box' right edge. */
+        void Show_Story_Box();
+        void Hide_Story_Box();
+        void Set_Story_Text(std::string text);
+
         /* handle key down event
          * returns true processed
          */
