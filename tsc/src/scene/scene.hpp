@@ -104,12 +104,9 @@ namespace TSC {
     private:
         void End_Scene();
 
-    protected:
         cSprite_Manager* mp_sprite_manager;
         cCamera* mp_camera;
 
-        // The actions to play in this scene, one after the other.
-        vector<SceneActions::Action*> m_action_sequence;
         // The scene's background image, i.e. the scene image that is in use.
         cSprite* mp_scene_image;
         // The story narration box shown in the lower third of the window.
@@ -120,6 +117,10 @@ namespace TSC {
         std::string m_next_level_entry;
         // Or go to credits.
         bool m_credits;
+
+    protected:
+        // The actions to play in this scene, one after the other.
+        vector<SceneActions::Action*> m_action_sequence;
     };
 
     extern cScene* pActive_Scene;
