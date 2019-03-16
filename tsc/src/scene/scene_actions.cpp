@@ -16,6 +16,7 @@
 
 #include "scene_actions.hpp"
 #include "../audio/audio.hpp"
+#include "../user/preferences.hpp"
 #include "scene.hpp"
 
 namespace fs = boost::filesystem;
@@ -69,8 +70,8 @@ bool WaitReturn::Execute()
 
 bool WaitReturn::Key_Down(const sf::Event& evt)
 {
-    // TODO: Better use the action key than hardcoded Return key
-    if (evt.key.code == sf::Keyboard::Return) {
+    // React on some sensible keys
+    if (evt.key.code == pPreferences->m_key_jump || evt.key.code == pPreferences->m_key_shoot || evt.key.code == sf::Keyboard::Return) {
         m_return_pressed = true;
         return true;
     }
@@ -116,9 +117,8 @@ bool Narration::Execute()
 
 bool Narration::Key_Down(const sf::Event& evt)
 {
-    // Mark message as read on return.
-    // TODO: Better use the action key than hardcoded Return key
-    if (evt.key.code == sf::Keyboard::Return) {
+    // Mark message as read on keypress
+    if (evt.key.code == pPreferences->m_key_jump || evt.key.code == pPreferences->m_key_shoot || evt.key.code == sf::Keyboard::Return) {
         m_read = true;
         return true;
     }
