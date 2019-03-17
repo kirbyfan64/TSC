@@ -182,6 +182,10 @@ void cScene::End_Scene()
             Game_Action_Data_Middle.add("enter_world", m_next_name);
         }
         break;
+    case GA_ENTER_SCENE: // Switch from one scene to another
+        Game_Action = GA_ENTER_SCENE;
+        Game_Action_Data_Middle.add("load_scene", m_next_name);
+        break;
     case GA_ENTER_MENU: // Slight abuse of GA_ENTER_MENU, because it is assumed the credits menu is meant and no other menu
         Game_Action = GA_ENTER_MENU;
         Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.

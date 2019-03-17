@@ -59,6 +59,8 @@ namespace TSC {
          *   exit named `arg`. `arg` is ignored if `name` is not empty.
          * * GA_ENTER_MENU: Show the credits screen. `name` and `arg`
          *   arguments are ignored.
+         * * GA_ENTER_SCENE: Switch to another scene denoted with
+         *   `name`. `arg` is ignored.
          */
         void Set_Next_Game_Action(enum GameAction next, std::string name = "", std::string arg = "");
 
