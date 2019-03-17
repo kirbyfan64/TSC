@@ -74,7 +74,7 @@ A full scene draft contains these elements:
 * When the scene should be entered.
 * What should happen when it exits.
 
-The full-screen images should target a size of 1024x768 px. The game
+The full-screen images should target a size of 1280x960 px. The game
 can be played at any resolution that is a multiple of this aspect
 ratio, though, down to 800x600 as the minimum resolution.
 
