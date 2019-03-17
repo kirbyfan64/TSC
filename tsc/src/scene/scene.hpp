@@ -45,17 +45,17 @@ namespace TSC {
         void Update(void);
         void Draw(void);
 
-        /* When the scene finishes, load the given level and place
-         * Alex at the given level entry. If the level is already
-         * loaded, resume it at the given level entry.
-         * If `entry' is empty, set the player to the level's
-         * start position. If `level' is empty, simply resume
-         * whatever is in pActive_Level currently (crashes
-         * if pActive_Level is nil in that case!). */
-        void Set_Next_Level(std::string level, std::string entry = "");
-        // Instead, you can also call this function. The scene will
-        // exit to the credits screen in that case.
-        void Set_Credits();
+        /* When the scene finishes, initiate the given GameAction.
+         * Supported are:
+         * * GA_ENTER_LEVEL (default). Loads the level `name` and places
+         *   Alex at the level entry `entry`. If `name` is empty, resume
+         *   the current level. You can still use `entry` to transfer
+         *   Alex to another level entry in the current level. If there
+         *   is no current level, crashes if `name` is empty.
+         * * GA_ENTER_MENU: Show the credits screen. `name` and `entry`
+         *   arguments are ignored.
+         */
+        void Set_Next_Game_Action(enum GameAction next, std::string name = "", std::string entry = "");
 
         // Set the background image of the scene
         // scene_image is relative to the pixmaps/ directory.
@@ -108,11 +108,10 @@ namespace TSC {
         // The story narration box shown in the lower third of the window.
         CEGUI::Window* mp_story_box;
 
-        // Next level to start and its level entry.
-        std::string m_next_level;
-        std::string m_next_level_entry;
-        // Or go to credits.
-        bool m_credits;
+        // Next mode to start
+        enum GameAction m_next_game_action;
+        std::string m_next_name;
+        std::string m_next_entry;
 
     protected:
         // The actions to play in this scene, one after the other.

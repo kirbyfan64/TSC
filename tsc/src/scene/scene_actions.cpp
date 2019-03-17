@@ -149,9 +149,9 @@ NextUp::NextUp(cScene* p_scene, std::string level, std::string entry)
 bool NextUp::Execute()
 {
     if (m_level == "credits")
-        mp_scene->Set_Credits();
+        mp_scene->Set_Next_Game_Action(GA_ENTER_MENU);
     else
-        mp_scene->Set_Next_Level(m_level, m_entry);
+        mp_scene->Set_Next_Game_Action(GA_ENTER_LEVEL, m_level, m_entry);
 
     return true;
 }

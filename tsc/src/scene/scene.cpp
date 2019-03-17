@@ -37,7 +37,7 @@ cScene::cScene(void)
       mp_camera(new cCamera(mp_sprite_manager)),
       mp_scene_image(new cSprite(mp_sprite_manager)),
       mp_story_box(nullptr),
-      m_credits(false)
+      m_next_game_action(GA_ENTER_LEVEL)
 {
     mp_scene_image->Set_Massive_Type(MASS_PASSIVE);
     mp_scene_image->Set_Active(true);
@@ -135,32 +135,26 @@ void cScene::Update(void)
 // cScene::Leave() and then destroy it).
 void cScene::End_Scene()
 {
-    if (m_credits) {
-        Game_Action = GA_ENTER_MENU;
-        Game_Action_Data_Start.add("music_fadeout", "1500");
-        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
-        Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_CREDITS));
-        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
-    }
-    else {
+    switch (m_next_game_action) {
+    case GA_ENTER_LEVEL:
         Game_Action = GA_ENTER_LEVEL;
         Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
         Game_Action_Data_Start.add("screen_fadeout_speed", "3");
 
-        if (m_next_level.empty()) { // Resume pActive_level
+        if (m_next_name.empty()) { // Resume pActive_level
             if (!pActive_Level) { // This is an error by the scene author!
                 throw(std::runtime_error("Bug: Requested resume of pActive_Level, but it is NULL"));
             }
 
-            if (!m_next_level_entry.empty()) { // Switch to level entry in pActive_Level
-                Game_Action_Data_Middle.add("activate_level_entry", m_next_level_entry);
+            if (!m_next_entry.empty()) { // Switch to level entry in pActive_Level
+                Game_Action_Data_Middle.add("activate_level_entry", m_next_entry);
             }
         }
         else { // Switch to given level
             Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
-            Game_Action_Data_Middle.add("load_level", m_next_level);
-            if (!m_next_level_entry.empty()) { // Switch to level entry in target level
-                Game_Action_Data_Middle.add("load_level_entry", m_next_level_entry);
+            Game_Action_Data_Middle.add("load_level", m_next_name);
+            if (!m_next_entry.empty()) { // Switch to level entry in target level
+                Game_Action_Data_Middle.add("load_level_entry", m_next_entry);
                 // Note: load_level shouldn't be combined with activate_level_entry,
                 // as there's load_level_entry for it, which is more specific.
             }
@@ -168,6 +162,22 @@ void cScene::End_Scene()
 
         Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
         Game_Action_Data_End.add("screen_fadein_speed", "3");
+        break;
+    case GA_ENTER_MENU: // Slight abuse of GA_ENTER_MENU, because it is assumed the credits menu is meant
+        Game_Action = GA_ENTER_MENU;
+        Game_Action_Data_Start.add("music_fadeout", "1500");
+        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+        Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_CREDITS));
+        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
+        break;
+    default:
+        debug_print("Warning: unsupported next game action for scene ending, showing main menu\n");
+        Game_Action = GA_ENTER_MENU;
+        Game_Action_Data_Start.add("music_fadeout", "1500");
+        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+        Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_START));
+        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
+        break;
     }
 }
 
@@ -179,15 +189,11 @@ void cScene::Draw(void)
     mp_sprite_manager->Draw_Items();
 }
 
-void cScene::Set_Next_Level(std::string level, std::string entry)
+void cScene::Set_Next_Game_Action(enum GameAction next, std::string name, std::string entry)
 {
-    m_next_level = level;
-    m_next_level_entry = entry;
-}
-
-void cScene::Set_Credits()
-{
-    m_credits = true;
+    m_next_game_action = next;
+    m_next_name = name;
+    m_next_entry = entry;
 }
 
 void cScene::Set_Scene_Image(std::string scene_image)
