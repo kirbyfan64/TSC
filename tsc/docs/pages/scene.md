@@ -64,7 +64,7 @@ what you would like to do.
 
 A full scene draft contains these elements:
 
-* All images to be shown during the course of the scene, in SVG
+* All images to be shown during the course of the scene, in SVG or XCF
   format. It is assumed that scene images are not re-usable across
   multiple scenes, so you probably can't do without drawing.
 * All music files to be played during the course of the scene, in OGG
@@ -73,6 +73,10 @@ A full scene draft contains these elements:
 * The action sequence.
 * When the scene should be entered.
 * What should happen when it exits.
+
+The full-screen images should target a size of 1024x768 px. The game
+can be played at any resolution that is a multiple of this aspect
+ratio, though, down to 800x600 as the minimum resolution.
 
 The action sequence draft should be a numbered list of actions. It
 should look like the following example:
