@@ -29,9 +29,11 @@ using namespace TSC::Scripting;
 static void Play_Scene(std::string scene)
 {
     Game_Action = GA_ENTER_SCENE;
+    Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
     Game_Action_Data_Start.add("screen_fadeout_speed", "1.5");
     Game_Action_Data_Middle.add("load_scene", scene.c_str());
-    Game_Action_Data_End.add("screen_fadein_speed", "1.5");
+    Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
+    Game_Action_Data_End.add("screen_fadein_speed", "3");
 }
 
 /**
