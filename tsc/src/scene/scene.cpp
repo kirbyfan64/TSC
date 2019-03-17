@@ -74,6 +74,8 @@ cScene::~cScene(void)
 
 void cScene::Enter(const GameMode old_mode)
 {
+    debug_print("Entering scene\n");
+
     pMouseCursor->Set_Sprite_Manager(mp_sprite_manager);
     pMouseCursor->Set_Active(false);
     gp_hud->Hide();
@@ -101,6 +103,8 @@ void cScene::Leave(const GameMode next_mode)
         getDefaultGUIContext().
         getRootWindow()->
         removeChild(mp_story_box);
+
+    debug_print("Leaving scene\n");
 }
 
 void cScene::Update(void)
@@ -153,6 +157,7 @@ void cScene::End_Scene()
             }
         }
         else { // Switch to given level
+            Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
             Game_Action_Data_Middle.add("load_level", m_next_level);
             if (!m_next_level_entry.empty()) { // Switch to level entry in target level
                 Game_Action_Data_Middle.add("load_level_entry", m_next_level_entry);
