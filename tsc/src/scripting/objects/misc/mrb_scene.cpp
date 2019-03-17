@@ -26,11 +26,11 @@ using namespace TSC;
 using namespace TSC::Scripting;
 
 // Helper method
-static void Play_Scene(enum Scenes scene)
+static void Play_Scene(std::string scene)
 {
     Game_Action = GA_ENTER_SCENE;
     Game_Action_Data_Start.add("screen_fadeout_speed", "1.5");
-    Game_Action_Data_Middle.add("load_scene", int_to_string(scene));
+    Game_Action_Data_Middle.add("load_scene", scene.c_str());
     Game_Action_Data_End.add("screen_fadein_speed", "1.5");
 }
 
@@ -40,27 +40,35 @@ static void Play_Scene(enum Scenes scene)
  *   play( scene )
  *
  * Calling this method plays the scene with the name `scene`, which
- * has to be a symbol, e.g. `:prologue` (to play the prologue scene).
+ * has to be a string, e.g. "01_prologue" (to play the prologue scene).
+ * The canonical scene name mapping can be found in the source code
+ * of the cScene::Load_Scene() function.
  *
  * This method returns, but on the next frame update after return
  * the game mode switches to scene mode. Once the scene has completed,
  * the game mode returns to level mode in the level that was active
  * when scene play was started.
  *
+ * An exception is raised if the requested scene does not exist.
+ *
  * *Remark*: This means that this method does not block until the
  * scene has finished!
  */
 static mrb_value Play(mrb_state* p_state, mrb_value self)
 {
-    mrb_sym ident;
-    mrb_get_args(p_state, "n", &ident);
-    std::string identstr = mrb_sym2name(p_state, ident);
+    char* scene_name = NULL;
+    mrb_get_args(p_state, "z", &scene_name);
 
-    if (identstr == "prologue") {
-        Play_Scene(SCENE_PROLOGUE);
+    // In order to give early feedback on nonexisting scenes,
+    // try to load the scene here temporaryly. If that fails,
+    // raise. Otherwise register the scene for regular play.
+    cScene* p_scene = cScene::Load_Scene(scene_name);
+    if (p_scene) {
+        delete p_scene;
+        Play_Scene(scene_name);
     }
     else {
-        mrb_raisef(p_state, MRB_ARGUMENT_ERROR(p_state), "Invalid scene '%s'.", identstr.c_str());
+        mrb_raisef(p_state, MRB_ARGUMENT_ERROR(p_state), "Invalid scene '%s'.", scene_name);
     }
 
     return mrb_nil_value();

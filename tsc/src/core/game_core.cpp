@@ -257,7 +257,7 @@ void Handle_Generic_Game_Events(const CEGUI::XMLAttributes& action_data)
         pSavegame->Load_Game(action_data.getValueAsInteger("load_savegame"));
     }
     if (action_data.exists("load_scene")) {
-        pActive_Scene = cScene::Load_Scene(static_cast<enum Scenes>(action_data.getValueAsInteger("load_scene")));
+        pActive_Scene = cScene::Load_Scene(action_data.getValueAsString("load_scene").c_str());
     }
     if (action_data.exists("play_music")) {
         pAudio->Play_Music(action_data.getValueAsString("play_music").c_str(), action_data.getValueAsBool("music_loops"), action_data.getValueAsBool("music_force", 1), action_data.getValueAsInteger("music_fadein"));

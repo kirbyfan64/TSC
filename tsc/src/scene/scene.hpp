@@ -27,21 +27,17 @@ namespace TSC {
         class Action;
     }
 
-    // List of all possible scenes that can be loaded.
-    enum Scenes {
-        SCENE_PROLOGUE
-    };
-
     class cScene {
     public:
         cScene(void);
         virtual ~cScene(void);
 
         /* Allocates the appropriate instance of a subclass of cScene
-         * for the given scene number and returns a pointer to the
+         * for the given scene name and returns a pointer to the
          * allocated storage. Do not use directly; this function is
-         * only meant to be called from the main game loop. */
-        static cScene* Load_Scene(enum Scenes);
+         * only meant to be called from the main game loop.
+         * Returns NULL if the scene name does not exist. */
+        static cScene* Load_Scene(std::string name);
 
         void Enter(const GameMode old_mode = MODE_NOTHING);
         void Leave(const GameMode next_mode = MODE_NOTHING);

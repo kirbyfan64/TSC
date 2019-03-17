@@ -240,14 +240,14 @@ bool cScene::Joy_Button_Up(unsigned int button)
     return m_action_sequence[0]->Joy_Button_Up(button);
 }
 
-cScene* cScene::Load_Scene(enum Scenes scene)
+// Note: This function contains the canonical mapping of
+// scene name -> subclass of cScene.
+cScene* cScene::Load_Scene(std::string name)
 {
-    switch (scene) {
-    case SCENE_PROLOGUE:
+    if (name == "01_prologue")
         return new cPrologueScene();
-    default:
-        throw(std::runtime_error("Unknown scene requested; terminating."));
-    }
+    else
+        return nullptr;
 }
 
 // Currently running scene, NULL if no scene is active
