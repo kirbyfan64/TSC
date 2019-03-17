@@ -125,6 +125,9 @@ cMyScene::cMyScene(void)
   // Append to action sequence
   m_action_sequence.push_back(new TSA::ImageChange(this, "scene_images/foo.png"));
   // ...
+
+  // Set what happens after the scene finished
+  m_action_sequence.push_back(new TSA::NextUp(this, GA_ENTER_LEVEL, "lvl_78"));
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -140,6 +143,13 @@ The first thing any scene should do is to issue the
 `TSC::SceneActions::ImageChange` and `TSC::SceneActions::MusicChange`
 actions, otherwise only a black screen is shown and whatever was the
 previous background music continues to play.
+
+The last thing any scene should do is to issue the
+`TSC::SceneActions::NextUp` action, unless the scene is okay with
+resuming the last active level from the point where it was
+halted. This action defines what happens after the scene has finished;
+options include resuming the level (default), changing the level, or
+advancing on the overworld.
 
 Story text narration deserves an additional comment. The
 `TSC::SceneActions::Narration` class' constructor takes an
