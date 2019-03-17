@@ -114,7 +114,7 @@ scenes are to appear in the game.
 The scene is implemented by filling the action sequence in its
 constructor. A typical scene constructor looks like this:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.cpp}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ c++
 cMyScene::cMyScene(void)
   : cScene()
 {
@@ -156,7 +156,7 @@ a `// TRANS:` comment to notify translators that this line break only
 serves optical purpose and must not be copied into the translated text
 if the line break looks good there already:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.cpp}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ c++
 m_action_sequence.push_back(new TSA::Narration, this {
   _("This line is broken okay. This line is broken okay. This line is broken okay. This line is broken okay."),
   // TRANS: Line break only for optical purposes. Remove if not
