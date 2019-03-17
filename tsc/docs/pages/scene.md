@@ -22,7 +22,7 @@ to halt, a transition occurs (darkening the screen and reopening
 view), and a large full-screen image is shown to the user. Then, story
 is narrated using a story text box shown in the lower third of the
 screen. The user can advance the story text by pressing either of
-Return, the Action key, or the Shoot key. Depending on the
+Return, the Action, or the Shoot key. Depending on the
 configuration of the scene, new text appears, the full-screen image
 changes, or something else happens on advancement.
 
@@ -77,8 +77,8 @@ A full scene draft contains these elements:
 The action sequence draft should be a numbered list of actions. It
 should look like the following example:
 
-> 1. Change background music to story/theme_1.ogg.
-> 2. Change background image to scene_images/papers.png
+> 1. Change background music to `story/theme_1.ogg`.
+> 2. Change background image to `scene_images/papers.png`.
 > 3. Wait 5 seconds.
 > 4. Narrate story:
 >   > The first ray of light which illumines the gloom, and converts
@@ -86,7 +86,7 @@ should look like the following example:
 >   > history of the public career of the immortal Pickwick would
 >   > appear to be involved, is derived from the perusal of the
 >   > following entry in the Transactions of the Pickwick Club...✝
-> 5. Change background to to scene_images/transcript.png
+> 5. Change background to to `scene_images/transcript.png`.
 > 6. Narrate story:
 >   > May 12, 1817. Joseph Smiggers, Esq., P.V.P.M.P.C. presiding.
 >   > The following resolutions unanimously agreed to.✝
