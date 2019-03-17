@@ -25,6 +25,7 @@ namespace TSC {
 
     namespace SceneActions {
 
+        /// Parent class of all scene actions.
         class Action {
         public:
             Action(cScene* p_scene);
@@ -53,6 +54,8 @@ namespace TSC {
             cScene* mp_scene;
         };
 
+        /// Change the full-screen background image to the given image.
+        /// Path needs to be relative to pixmaps/.
         class ImageChange: public Action {
         public:
             ImageChange(cScene* p_scene, std::string scene_image);
@@ -60,6 +63,7 @@ namespace TSC {
             std::string m_scene_image;
         };
 
+        /// Change background music to the specified music.
         class MusicChange: public Action {
         public:
             MusicChange(cScene* p_scene, std::string music);
@@ -67,6 +71,7 @@ namespace TSC {
             std::string m_music;
         };
 
+        /// Wait until the user presses Return or Action or Shoot.
         class WaitReturn: public Action {
         public:
             WaitReturn(cScene* p_scene);
@@ -79,6 +84,12 @@ namespace TSC {
         class WaitTime: public Action {
         };
 
+        /**
+         * Narrate story. Each element in `messages` in the constructor is one
+         * story box content (and thus needs to fit in there -- consider
+         * translations may take up more space than English). Lines are
+         * broken automatically by CEGUI.
+         */
         class Narration: public Action {
         public:
             Narration(cScene* p_scene, std::initializer_list<std::string> messages);
@@ -87,6 +98,21 @@ namespace TSC {
         private:
             std::vector<std::string> m_messages;
             bool m_read;
+        };
+
+        /**
+         * Configure what happens after the scene. If `level`
+         * in the constructor is set to "credits", the credits will
+         * be shown. Otherwise the arguments are forwarded to
+         * cScene::Set_Next_Level().
+         */
+        class NextUp: public Action {
+        public:
+            NextUp(cScene* p_scene, std::string level, std::string entry = "");
+            virtual bool Execute();
+        private:
+            std::string m_level;
+            std::string m_entry;
         };
 
     }

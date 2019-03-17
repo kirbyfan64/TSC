@@ -35,6 +35,8 @@ cPrologueScene::cPrologueScene(void)
         _("When he reached the top of the highest dune, he glazed around, to only see sand followed by more sand, by even more [colour='FFFFF000']sand[colour='FFFFFFFF']."),
         _("He took out a map, but with the stars not yet visible on the darkening sky there was no means of orientation in this infinite sea of equally hostile sand dunes.")
     }));
+
+    m_action_sequence.push_back(new TSA::NextUp(this, "lvl_1"));
 }
 
 cPrologueScene::~cPrologueScene(void)
