@@ -15,6 +15,7 @@
 */
 
 #include "scene_actions.hpp"
+#include "../core/framerate.hpp"
 #include "../audio/audio.hpp"
 #include "../user/preferences.hpp"
 #include "scene.hpp"
@@ -77,6 +78,18 @@ bool WaitReturn::Key_Down(const sf::Event& evt)
     }
 
     return false;
+}
+
+WaitTime::WaitTime(cScene* p_scene, float seconds)
+    : Action(p_scene),
+      m_wait_counter(speedfactor_fps * seconds)
+{
+}
+
+bool WaitTime::Execute()
+{
+    m_wait_counter -= pFramerate->m_speed_factor;
+    return m_wait_counter <= 0.0f;
 }
 
 Narration::Narration(cScene* p_scene, std::initializer_list<std::string> messages)

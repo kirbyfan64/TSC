@@ -81,7 +81,13 @@ namespace TSC {
             bool m_return_pressed;
         };
 
+        /// Wait approximiately the given amount of seconds.
         class WaitTime: public Action {
+        public:
+            WaitTime(cScene* p_scene, float seconds);
+            virtual bool Execute();
+        private:
+            float m_wait_counter;
         };
 
         /**
