@@ -139,19 +139,17 @@ bool Narration::Key_Down(const sf::Event& evt)
     return false;
 }
 
-NextUp::NextUp(cScene* p_scene, std::string level, std::string entry)
+NextUp::NextUp(cScene* p_scene, enum GameAction ga, std::string name, std::string arg)
     : Action(p_scene),
-      m_level(level),
-      m_entry(entry)
+      m_ga(ga),
+      m_name(name),
+      m_arg(arg)
 {
 }
 
 bool NextUp::Execute()
 {
-    if (m_level == "credits")
-        mp_scene->Set_Next_Game_Action(GA_ENTER_MENU);
-    else
-        mp_scene->Set_Next_Game_Action(GA_ENTER_LEVEL, m_level, m_entry);
+    mp_scene->Set_Next_Game_Action(m_ga, m_name, m_arg);
 
     return true;
 }

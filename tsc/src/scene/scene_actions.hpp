@@ -17,6 +17,7 @@
 #ifndef TSC_SCENE_ACTIONS_HPP
 #define TSC_SCENE_ACTIONS_HPP
 #include "../core/global_basic.hpp"
+#include "../core/global_game.hpp"
 
 namespace TSC {
 
@@ -107,18 +108,17 @@ namespace TSC {
         };
 
         /**
-         * Configure what happens after the scene. If `level`
-         * in the constructor is set to "credits", the credits will
-         * be shown. Otherwise the arguments are forwarded to
-         * cScene::Set_Next_Level().
+         * Configure what happens after the scene. The arguments are
+         * forwarded to cScene::Set_Next_Level().
          */
         class NextUp: public Action {
         public:
-            NextUp(cScene* p_scene, std::string level, std::string entry = "");
+            NextUp(cScene* p_scene, enum GameAction ga, std::string name = "", std::string arg = "");
             virtual bool Execute();
         private:
-            std::string m_level;
-            std::string m_entry;
+            enum GameAction m_ga;
+            std::string m_name;
+            std::string m_arg;
         };
 
     }

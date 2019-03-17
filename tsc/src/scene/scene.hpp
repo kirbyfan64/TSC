@@ -48,14 +48,19 @@ namespace TSC {
         /* When the scene finishes, initiate the given GameAction.
          * Supported are:
          * * GA_ENTER_LEVEL (default). Loads the level `name` and places
-         *   Alex at the level entry `entry`. If `name` is empty, resume
-         *   the current level. You can still use `entry` to transfer
+         *   Alex at the level entry `arg`. If `name` is empty, resume
+         *   the current level. You can still use `arg` to transfer
          *   Alex to another level entry in the current level. If there
          *   is no current level, crashes if `name` is empty.
-         * * GA_ENTER_MENU: Show the credits screen. `name` and `entry`
+         * * GA_ENTER_WORLD: Loads the overworld `name` and places Alex
+         *   at the initial waypoint. If `name` is empty, resumes the
+         *   active overworld (crashes if there is none). If `arg` is
+         *   not empty, advance to the next waypoint via the waypoint
+         *   exit named `arg`. `arg` is ignored if `name` is not empty.
+         * * GA_ENTER_MENU: Show the credits screen. `name` and `arg`
          *   arguments are ignored.
          */
-        void Set_Next_Game_Action(enum GameAction next, std::string name = "", std::string entry = "");
+        void Set_Next_Game_Action(enum GameAction next, std::string name = "", std::string arg = "");
 
         // Set the background image of the scene
         // scene_image is relative to the pixmaps/ directory.
@@ -111,7 +116,7 @@ namespace TSC {
         // Next mode to start
         enum GameAction m_next_game_action;
         std::string m_next_name;
-        std::string m_next_entry;
+        std::string m_next_arg;
 
     protected:
         // The actions to play in this scene, one after the other.

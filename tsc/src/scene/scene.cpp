@@ -25,6 +25,7 @@
 #include "../gui/hud.hpp"
 #include "../gui/game_console.hpp"
 #include "../level/level.hpp"
+#include "../overworld/overworld.hpp"
 #include "scene_actions.hpp"
 #include "01_prologue.hpp"
 
@@ -146,15 +147,15 @@ void cScene::End_Scene()
                 throw(std::runtime_error("Bug: Requested resume of pActive_Level, but it is NULL"));
             }
 
-            if (!m_next_entry.empty()) { // Switch to level entry in pActive_Level
-                Game_Action_Data_Middle.add("activate_level_entry", m_next_entry);
+            if (!m_next_arg.empty()) { // Switch to level entry in pActive_Level
+                Game_Action_Data_Middle.add("activate_level_entry", m_next_arg);
             }
         }
         else { // Switch to given level
             Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
             Game_Action_Data_Middle.add("load_level", m_next_name);
-            if (!m_next_entry.empty()) { // Switch to level entry in target level
-                Game_Action_Data_Middle.add("load_level_entry", m_next_entry);
+            if (!m_next_arg.empty()) { // Switch to level entry in target level
+                Game_Action_Data_Middle.add("load_level_entry", m_next_arg);
                 // Note: load_level shouldn't be combined with activate_level_entry,
                 // as there's load_level_entry for it, which is more specific.
             }
@@ -163,10 +164,36 @@ void cScene::End_Scene()
         Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
         Game_Action_Data_End.add("screen_fadein_speed", "3");
         break;
-    case GA_ENTER_MENU: // Slight abuse of GA_ENTER_MENU, because it is assumed the credits menu is meant
+    case GA_ENTER_WORLD:
+        Game_Action = GA_ENTER_WORLD;
+        Game_Action_Data_Start.add("music_fadeout", "1000");
+        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_BLACK));
+        Game_Action_Data_Start.add("screen_fadeout_speed", "3");
+        Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
+
+        if (m_next_name.empty()) { // Resume current overworld
+            if (!pActive_Overworld) { // This is an error by the scene author!
+                throw(std::runtime_error("Bug: Requested resume of pActive_Overworld, but it is NULL"));
+            }
+
+            /* Advance via the requested waypoint exit (if m_next_arg
+             * is empty, this is a legacy world (< 2.1.0) without
+             * waypoint exit directions). If the requested waypoint
+             * exit does not exist, Alex will not advance. */
+            pActive_Overworld->Goto_Next_Level(m_next_arg);
+        }
+        else { // Switch to given overworld
+            Game_Action_Data_Middle.add("enter_world", m_next_name);
+        }
+
+        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
+        Game_Action_Data_End.add("screen_fadein_speed", "3");
+        break;
+    case GA_ENTER_MENU: // Slight abuse of GA_ENTER_MENU, because it is assumed the credits menu is meant and no other menu
         Game_Action = GA_ENTER_MENU;
         Game_Action_Data_Start.add("music_fadeout", "1500");
         Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+        Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
         Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_CREDITS));
         Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
         break;
@@ -193,7 +220,7 @@ void cScene::Set_Next_Game_Action(enum GameAction next, std::string name, std::s
 {
     m_next_game_action = next;
     m_next_name = name;
-    m_next_entry = entry;
+    m_next_arg = entry;
 }
 
 void cScene::Set_Scene_Image(std::string scene_image)
