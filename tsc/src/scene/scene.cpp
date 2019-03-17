@@ -136,11 +136,13 @@ void cScene::Update(void)
 // cScene::Leave() and then destroy it).
 void cScene::End_Scene()
 {
+    Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+    Game_Action_Data_Start.add("screen_fadeout_speed", "3");
+    Game_Action_Data_Start.add("music_fadeout", "1000");
+
     switch (m_next_game_action) {
     case GA_ENTER_LEVEL:
         Game_Action = GA_ENTER_LEVEL;
-        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
-        Game_Action_Data_Start.add("screen_fadeout_speed", "3");
 
         if (m_next_name.empty()) { // Resume pActive_level
             if (!pActive_Level) { // This is an error by the scene author!
@@ -160,15 +162,9 @@ void cScene::End_Scene()
                 // as there's load_level_entry for it, which is more specific.
             }
         }
-
-        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
-        Game_Action_Data_End.add("screen_fadein_speed", "3");
         break;
     case GA_ENTER_WORLD:
         Game_Action = GA_ENTER_WORLD;
-        Game_Action_Data_Start.add("music_fadeout", "1000");
-        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_BLACK));
-        Game_Action_Data_Start.add("screen_fadeout_speed", "3");
         Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
 
         if (m_next_name.empty()) { // Resume current overworld
@@ -185,27 +181,22 @@ void cScene::End_Scene()
         else { // Switch to given overworld
             Game_Action_Data_Middle.add("enter_world", m_next_name);
         }
-
-        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
-        Game_Action_Data_End.add("screen_fadein_speed", "3");
         break;
     case GA_ENTER_MENU: // Slight abuse of GA_ENTER_MENU, because it is assumed the credits menu is meant and no other menu
         Game_Action = GA_ENTER_MENU;
-        Game_Action_Data_Start.add("music_fadeout", "1500");
-        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
         Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
         Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_CREDITS));
-        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
         break;
     default:
         debug_print("Warning: unsupported next game action for scene ending, showing main menu\n");
         Game_Action = GA_ENTER_MENU;
-        Game_Action_Data_Start.add("music_fadeout", "1500");
-        Game_Action_Data_Start.add("screen_fadeout", int_to_string(EFFECT_OUT_HORIZONTAL_VERTICAL));
+        Game_Action_Data_Middle.add("unload_levels", "1"); // Leave active level, if any.
         Game_Action_Data_Middle.add("load_menu", int_to_string(MENU_START));
-        Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_RANDOM));
         break;
     }
+
+    Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
+    Game_Action_Data_End.add("screen_fadein_speed", "3");
 }
 
 void cScene::Draw(void)
