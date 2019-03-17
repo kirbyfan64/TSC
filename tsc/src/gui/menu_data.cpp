@@ -829,16 +829,23 @@ void cMenu_Start::Load_Campaign(std::string name)
         gp_hud->Set_Text(_("Couldn't load campaign ") + name);
     }
     else {
-        // enter level
-        if (new_campaign->m_is_target_level) {
+        switch (new_campaign->m_target_type) {
+        case CMP_TARGET_LEVEL: // enter level
             Game_Action = GA_ENTER_LEVEL;
             Game_Mode_Type = MODE_TYPE_LEVEL_CUSTOM;
             Game_Action_Data_Middle.add("load_level", new_campaign->m_target.c_str());
-        }
-        // enter world
-        else {
+            break;
+        case CMP_TARGET_WORLD: // enter world
             Game_Action = GA_ENTER_WORLD;
             Game_Action_Data_Middle.add("enter_world", new_campaign->m_target.c_str());
+            break;
+        case CMP_TARGET_SCENE: // enter scene
+            Game_Action = GA_ENTER_SCENE;
+            Game_Action_Data_Middle.add("load_scene", new_campaign->m_target.c_str());
+            break;
+        default:
+            gp_hud->Set_Text(_("Couldn't load campaign ") + name);
+            break;
         }
 
         Game_Action_Data_Start.add("music_fadeout", "1000");

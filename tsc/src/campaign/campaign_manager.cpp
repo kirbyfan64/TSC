@@ -34,7 +34,7 @@ namespace TSC {
 
 cCampaign::cCampaign(void)
 {
-    m_is_target_level = 0;
+    m_target_type = CMP_TARGET_WORLD;
     m_user = 0;
 }
 
@@ -67,7 +67,20 @@ void cCampaign::Save_To_File(const fs::path& filename)
     p_node = p_root->add_child("target");
 #endif
     Add_Property(p_node, "name", m_target);
-    Add_Property(p_node, "is_level", m_is_target_level);
+
+    switch (m_target_type) {
+    case CMP_TARGET_LEVEL:
+        Add_Property(p_node, "type", "level");
+        break;
+    case CMP_TARGET_WORLD:
+        Add_Property(p_node, "type", "world");
+        break;
+    case CMP_TARGET_SCENE:
+        Add_Property(p_node, "type", "scene");
+        break;
+    default:
+        throw(std::runtime_error("Invalid target type"));
+    }
     // </target>
 
     doc.write_to_file_formatted(Glib::filename_from_utf8(path_to_utf8(filename)));

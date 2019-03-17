@@ -8,6 +8,6 @@
     </information>
     <target >
         <property name="name" value="World 1" />
-        <property name="is_level" value="0" />
+        <property name="type" value="world" />
     </target>
 </campaign>
