@@ -20,6 +20,7 @@
 #include "../input/mouse.hpp"
 #include "../input/joystick.hpp"
 #include "../level/level_player.hpp"
+#include "../scene/scene.hpp"
 #include "../gui/menu.hpp"
 #include "../overworld/overworld.hpp"
 #include "../core/framerate.hpp"
@@ -74,6 +75,12 @@ bool cKeyboard::Key_Up(const sf::Event& evt)
     else if (Game_Mode == MODE_MENU) {
         // got processed
         if (pMenuCore->Key_Up(evt)) {
+            return 1;
+        }
+    }
+    else if (Game_Mode == MODE_SCENE) {
+        // got processed
+        if (pActive_Scene->Key_Up(evt)) {
             return 1;
         }
     }
@@ -153,7 +160,7 @@ bool cKeyboard::Key_Down(const sf::Event& evt)
         }
     }
 
-    // handle key in the current mode
+    // ## then handle key in the current mode
     if (Game_Mode == MODE_LEVEL) {
         // processed by the level
         if (pActive_Level->Key_Down(evt)) {
@@ -178,9 +185,13 @@ bool cKeyboard::Key_Down(const sf::Event& evt)
         if (pLevel_Editor->m_settings_screen.Key_Down(evt)) {
             return 1;
         }
-#else
-        return 0;
 #endif
+    }
+    else if (Game_Mode == MODE_SCENE) {
+        // processed by the scene
+        if (pActive_Scene->Key_Down(evt)) {
+            return 1;
+        }
     }
 
     // set fixed speed factor mode

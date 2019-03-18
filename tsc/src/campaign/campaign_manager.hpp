@@ -25,6 +25,12 @@ namespace TSC {
 
     /* *** *** *** *** *** cCampaign *** *** *** *** *** *** *** *** *** *** *** *** */
 
+    enum CampaignTargetType {
+        CMP_TARGET_LEVEL,
+        CMP_TARGET_WORLD,
+        CMP_TARGET_SCENE
+    };
+
     class cCampaign {
     public:
         cCampaign(void);
@@ -37,8 +43,8 @@ namespace TSC {
         std::string m_name;
         // target
         std::string m_target;
-        // if not set it is a world
-        bool m_is_target_level;
+        // Type of target
+        enum CampaignTargetType m_target_type;
         // description
         std::string m_description;
         // last save time

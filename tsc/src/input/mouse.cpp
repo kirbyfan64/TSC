@@ -19,6 +19,7 @@
 #include "../input/keyboard.hpp"
 #include "../core/game_core.hpp"
 #include "../level/level_settings.hpp"
+#include "../scene/scene.hpp"
 #include "../core/sprite_manager.hpp"
 #include "../level/level_editor.hpp"
 #include "../overworld/world_editor.hpp"
@@ -201,6 +202,7 @@ bool cMouseCursor::Handle_Mouse_Down(sf::Mouse::Button button)
 {
     CEGUI::GUIContext& gui_context = CEGUI::System::getSingleton().getDefaultGUIContext();
 
+    // First submit the event to CEGUI for processing
     switch (button) {
     // mouse buttons
     case sf::Mouse::Left: {
@@ -229,7 +231,7 @@ bool cMouseCursor::Handle_Mouse_Down(sf::Mouse::Button button)
     }
     }
 
-    // handle button in the current mode
+    // if CEGUI didn't handle it, forward to the current mode
     if (Game_Mode == MODE_LEVEL) {
         // processed by the level
         if (pActive_Level->Mouse_Down(button)) {
@@ -245,6 +247,12 @@ bool cMouseCursor::Handle_Mouse_Down(sf::Mouse::Button button)
     else if (Game_Mode == MODE_MENU) {
         // processed by the menu
         if (pMenuCore->Mouse_Down(button)) {
+            return 1;
+        }
+    }
+    else if (Game_Mode == MODE_SCENE) {
+        // processed by the active scene
+        if (pActive_Scene->Mouse_Down(button)) {
             return 1;
         }
     }
@@ -265,6 +273,7 @@ bool cMouseCursor::Handle_Mouse_Up(sf::Mouse::Button button)
 {
     CEGUI::GUIContext& gui_context = CEGUI::System::getSingleton().getDefaultGUIContext();
 
+    // First submit the button release to CEGUI
     switch (button) {
     case sf::Mouse::Left: {
         m_left = 0;
@@ -292,7 +301,7 @@ bool cMouseCursor::Handle_Mouse_Up(sf::Mouse::Button button)
     }
     }
 
-    // handle button in the current mode
+    // if CEGUI didn't want it, forward button to the current mode
     if (Game_Mode == MODE_LEVEL) {
         // processed by the level
         if (pActive_Level->Mouse_Up(button)) {
@@ -308,6 +317,12 @@ bool cMouseCursor::Handle_Mouse_Up(sf::Mouse::Button button)
     else if (Game_Mode == MODE_MENU) {
         // processed by the menu
         if (pMenuCore->Mouse_Up(button)) {
+            return 1;
+        }
+    }
+    else if (Game_Mode == MODE_SCENE) {
+        // processed by the active scene
+        if (pActive_Scene->Mouse_Up(button)) {
             return 1;
         }
     }

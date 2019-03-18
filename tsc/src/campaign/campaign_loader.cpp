@@ -116,5 +116,14 @@ void cCampaignLoader::Handle_Information()
 void cCampaignLoader::Handle_Target()
 {
     mp_campaign->m_target = m_current_properties["name"];
-    mp_campaign->m_is_target_level = m_current_properties.retrieve<bool>("is_level");
+
+    std::string type = m_current_properties.retrieve<std::string>("type");
+    if (type == "level")
+        mp_campaign->m_target_type = CMP_TARGET_LEVEL;
+    else if (type == "world")
+        mp_campaign->m_target_type = CMP_TARGET_WORLD;
+    else if (type == "scene")
+        mp_campaign->m_target_type = CMP_TARGET_SCENE;
+    else
+        throw(std::runtime_error("Invalid campaign target type found"));
 }

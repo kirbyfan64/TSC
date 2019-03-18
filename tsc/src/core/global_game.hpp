@@ -99,7 +99,8 @@ namespace TSC {
         MODE_LEVEL          = 1,
         MODE_OVERWORLD      = 2,
         MODE_MENU           = 3,
-        MODE_LEVEL_SETTINGS = 4
+        MODE_LEVEL_SETTINGS = 4,
+        MODE_SCENE          = 5
     };
 
     enum GameModeType {
@@ -117,7 +118,8 @@ namespace TSC {
         GA_DOWNGRADE_PLAYER = 4,
         GA_ACTIVATE_LEVEL_EXIT  = 5,
         GA_ENTER_LEVEL_SETTINGS = 6,
-        GA_RESET                = 7
+        GA_RESET                = 7,
+        GA_ENTER_SCENE          = 8
     };
 
     /* *** *** *** *** *** Level draw type *** *** *** *** *** *** *** *** *** *** *** *** */
@@ -416,6 +418,7 @@ namespace TSC {
     class cLine_collision;
     class cLine_Request;
     class cLevel_Settings;
+    class cScene;
     class cMenu_Base;
     class cObjectCollisionType;
     class cObjectCollision;

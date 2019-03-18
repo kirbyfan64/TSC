@@ -21,6 +21,7 @@
 #include "../core/filesystem/package_manager.hpp"
 #include "../core/filesystem/filesystem.hpp"
 #include "../level/level.hpp"
+#include "../scene/scene.hpp"
 #include "../gui/menu.hpp"
 #include "../core/framerate.hpp"
 #include "../user/preferences.hpp"
@@ -647,6 +648,9 @@ void Update_Game(void)
         pLevel_Editor->m_settings_screen.Update();
 #endif
     }
+    else if (Game_Mode == MODE_SCENE) {
+        pActive_Scene->Update();
+    }
 
     // gui
     Gui_Handle_Time();
@@ -675,6 +679,9 @@ void Draw_Game(void)
 #ifdef ENABLE_EDITOR
         pLevel_Editor->m_settings_screen.Draw();
 #endif
+    }
+    else if (Game_Mode == MODE_SCENE) {
+        pActive_Scene->Draw();
     }
 
     // Mouse

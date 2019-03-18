@@ -3,11 +3,11 @@
 <campaign >
     <information >
         <property name="save_time" value="1552227807" />
-	<property name="name" value="The Secret Chronicles of Dr. M." />
+        <property name="name" value="The Secret Chronicles of Dr. M." />
         <property name="description" value="DO NOT USE YET. This is the placeholder for the new TSC-specific story around Dr.M." />
     </information>
     <target >
-        <property name="name" value="World 4" />
-        <property name="is_level" value="0" />
+        <property name="name" value="01_prologue" />
+        <property name="type" value="scene" />
     </target>
 </campaign>
