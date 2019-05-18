@@ -7,15 +7,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Secretchronicles\n"
-"Report-Msgid-Bugs-To: https://github.com/Secretchronicles/TSC/issues\n"
-"POT-Creation-Date: 2019-03-15 22:37+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-18 23:23+0300\n"
 "PO-Revision-Date: 2019-05-18 19:05+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 18.12.3\n"
 
@@ -183,7 +183,8 @@ msgstr ""
 "Ctrl + A - Összes objektum kijelölése\n"
 "Ctrl + X - Jelenleg kijelölt objektumok kivágása\n"
 "Ctrl + C - Jelenleg kijelölt objektumok másolása\n"
-"Ctrl + V vagy Insert - Jelenleg másolt vagy kivágott objektumok beillesztése\n"
+"Ctrl + V vagy Insert - Jelenleg másolt vagy kivágott objektumok "
+"beillesztése\n"
 "Ctrl + R - A kijelölt alap képmontázs képének cseréje egy másikra\n"
 "Del - Ha az egér egy objektum fölött van: jelenlegi objektum törlése\n"
 "Del - Ha az egér nem jelölt ki semmit: kijelölt objektumok törlése\n"
@@ -193,14 +194,14 @@ msgstr ""
 " 2/4/6/8 - Kijelölt objektum áthelyezése 1 képponttal az adott irányba\n"
 "Egér:\n"
 " Bal (tartás) - Objektumok húzása\n"
-" Bal (kattintás) - A Shift billentyűvel önálló objektumok kijelölése vagy a"
-" kijelölés megszüntetése\n"
+" Bal (kattintás) - A Shift billentyűvel önálló objektumok kijelölése vagy a "
+"kijelölés megszüntetése\n"
 " Jobb - Metsző objektum törlése\n"
 " Középső - Mozgató mód be- vagy kikapcsolása\n"
 " Ctrl + Shift + Bal (kattintás) - Azonos típusú objektumok kijelölése\n"
 "Nyílbillentyűk:\n"
-" Használd a nyílbillentyűket a mozgáshoz. Nyomd le a Shift billentyűt a"
-" gyorsabb mozgáshoz.\n"
+" Használd a nyílbillentyűket a mozgáshoz. Nyomd le a Shift billentyűt a "
+"gyorsabb mozgáshoz.\n"
 " \n"
 
 #: ../../src/core/editor/editor.cpp:1483
@@ -356,8 +357,8 @@ msgstr "égbolt"
 msgid "plastic"
 msgstr "műanyag"
 
-#: ../../src/core/property_helper.cpp:852 ../../src/gui/menu_data.cpp:1516
-#: ../../src/gui/menu_data.cpp:1535 ../../src/gui/menu_data.cpp:2475
+#: ../../src/core/property_helper.cpp:852 ../../src/gui/menu_data.cpp:1523
+#: ../../src/gui/menu_data.cpp:1542 ../../src/gui/menu_data.cpp:2482
 msgid "default"
 msgstr "alapértelmezett"
 
@@ -398,16 +399,14 @@ msgid "violet"
 msgstr "ibolya"
 
 #: ../../src/enemies/army.cpp:924 ../../src/enemies/beetle.cpp:271
-#: ../../src/enemies/bosses/turtle_boss.cpp:1003
-#: ../../src/enemies/eato.cpp:286 ../../src/enemies/flyon.cpp:569
-#: ../../src/enemies/furball.cpp:747 ../../src/enemies/gee.cpp:573
-#: ../../src/enemies/krush.cpp:379 ../../src/enemies/larry.cpp:410
-#: ../../src/enemies/pip.cpp:365 ../../src/enemies/rokko.cpp:582
-#: ../../src/enemies/spikeball.cpp:516 ../../src/enemies/thromp.cpp:688
-#: ../../src/level/level_player.cpp:3978 ../../src/objects/level_entry.cpp:370
-#: ../../src/objects/level_exit.cpp:486
-#: ../../src/objects/moving_platform.cpp:960
-#: ../../src/video/animation.cpp:1577
+#: ../../src/enemies/bosses/turtle_boss.cpp:1003 ../../src/enemies/eato.cpp:286
+#: ../../src/enemies/flyon.cpp:569 ../../src/enemies/furball.cpp:747
+#: ../../src/enemies/gee.cpp:573 ../../src/enemies/krush.cpp:379
+#: ../../src/enemies/larry.cpp:410 ../../src/enemies/pip.cpp:365
+#: ../../src/enemies/rokko.cpp:582 ../../src/enemies/spikeball.cpp:516
+#: ../../src/enemies/thromp.cpp:688 ../../src/level/level_player.cpp:3978
+#: ../../src/objects/level_entry.cpp:370 ../../src/objects/level_exit.cpp:486
+#: ../../src/objects/moving_platform.cpp:960 ../../src/video/animation.cpp:1577
 msgid "Direction"
 msgstr "Irány"
 
@@ -632,10 +631,10 @@ msgstr "Felismerési távolság az irányába"
 #. TRANS: then you should use its wording rather than trying to translate
 #. TRANS: it yourself.
 #: ../../src/gui/game_console.cpp:172
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "TSC Scripting Console\n"
-"Copyright \\302\\251 2012-%d The TSC Contributors\n"
+"Copyright © 2012-%d The TSC Contributors\n"
 "\n"
 "This program comes with ABSOLUTELY NO WARRANTY; for details\n"
 "see the file COPYING. This is free software, and you are\n"
@@ -706,8 +705,8 @@ msgstr "Törlés"
 msgid "Enter"
 msgstr "Belépés"
 
-#: ../../src/gui/menu_data.cpp:635 ../../src/gui/menu_data.cpp:1434
-#: ../../src/gui/menu_data.cpp:3120
+#: ../../src/gui/menu_data.cpp:635 ../../src/gui/menu_data.cpp:1441
+#: ../../src/gui/menu_data.cpp:3127
 msgid "Back"
 msgstr "Vissza"
 
@@ -758,8 +757,8 @@ msgstr ""
 "Ez csak újraindítás után lép hatályba.\n"
 "Folytatod?"
 
-#: ../../src/gui/menu_data.cpp:821 ../../src/gui/menu_data.cpp:856
-#: ../../src/gui/menu_data.cpp:882
+#: ../../src/gui/menu_data.cpp:821 ../../src/gui/menu_data.cpp:863
+#: ../../src/gui/menu_data.cpp:889
 msgid ""
 "This will reset your current progress.\n"
 "Continue ?"
@@ -767,329 +766,329 @@ msgstr ""
 "Ez visszaállítja a jelenlegi előrehaladást.\n"
 "Folytatod?"
 
-#: ../../src/gui/menu_data.cpp:829
+#: ../../src/gui/menu_data.cpp:829 ../../src/gui/menu_data.cpp:847
 msgid "Couldn't load campaign "
 msgstr "Nem sikerült betölteni a küldetést "
 
-#: ../../src/gui/menu_data.cpp:864
+#: ../../src/gui/menu_data.cpp:871
 msgid "Couldn't load overworld "
 msgstr "Nem sikerült betölteni az áttekintő térképet "
 
-#: ../../src/gui/menu_data.cpp:890
+#: ../../src/gui/menu_data.cpp:897
 msgid "Couldn't load level "
 msgstr "Nem sikerült betölteni a szintet "
 
-#: ../../src/gui/menu_data.cpp:1362
+#: ../../src/gui/menu_data.cpp:1369
 #, c-format
 msgid "Delete %s?"
 msgstr "%s törlése?"
 
-#: ../../src/gui/menu_data.cpp:1472
+#: ../../src/gui/menu_data.cpp:1479
 msgid "Always Run"
 msgstr "Mindig fusson"
 
-#: ../../src/gui/menu_data.cpp:1476 ../../src/gui/menu_data.cpp:1484
-#: ../../src/gui/menu_data.cpp:1643 ../../src/gui/menu_data.cpp:1651
-#: ../../src/gui/menu_data.cpp:1665 ../../src/gui/menu_data.cpp:1673
-#: ../../src/gui/menu_data.cpp:1756 ../../src/gui/menu_data.cpp:1764
-#: ../../src/gui/menu_data.cpp:1787 ../../src/gui/menu_data.cpp:1795
-#: ../../src/gui/menu_data.cpp:1957 ../../src/gui/menu_data.cpp:1965
-#: ../../src/gui/menu_data.cpp:1988 ../../src/gui/menu_data.cpp:1996
-#: ../../src/gui/menu_data.cpp:2051 ../../src/gui/menu_data.cpp:2143
-#: ../../src/gui/menu_data.cpp:2154 ../../src/gui/menu_data.cpp:2192
-#: ../../src/gui/menu_data.cpp:2203 ../../src/gui/menu_data.cpp:2228
-#: ../../src/gui/menu_data.cpp:2243 ../../src/gui/menu_data.cpp:2438
-#: ../../src/gui/menu_data.cpp:2571 ../../src/gui/menu_data.cpp:2587
-#: ../../src/gui/menu_data.cpp:2641 ../../src/gui/menu_data.cpp:2649
-#: ../../src/gui/menu_data.cpp:2750 ../../src/gui/menu_data.cpp:2780
-#: ../../src/gui/menu_data.cpp:3000 ../../src/gui/menu_data.cpp:3026
+#: ../../src/gui/menu_data.cpp:1483 ../../src/gui/menu_data.cpp:1491
+#: ../../src/gui/menu_data.cpp:1650 ../../src/gui/menu_data.cpp:1658
+#: ../../src/gui/menu_data.cpp:1672 ../../src/gui/menu_data.cpp:1680
+#: ../../src/gui/menu_data.cpp:1763 ../../src/gui/menu_data.cpp:1771
+#: ../../src/gui/menu_data.cpp:1794 ../../src/gui/menu_data.cpp:1802
+#: ../../src/gui/menu_data.cpp:1964 ../../src/gui/menu_data.cpp:1972
+#: ../../src/gui/menu_data.cpp:1995 ../../src/gui/menu_data.cpp:2003
+#: ../../src/gui/menu_data.cpp:2058 ../../src/gui/menu_data.cpp:2150
+#: ../../src/gui/menu_data.cpp:2161 ../../src/gui/menu_data.cpp:2199
+#: ../../src/gui/menu_data.cpp:2210 ../../src/gui/menu_data.cpp:2235
+#: ../../src/gui/menu_data.cpp:2250 ../../src/gui/menu_data.cpp:2445
+#: ../../src/gui/menu_data.cpp:2578 ../../src/gui/menu_data.cpp:2594
+#: ../../src/gui/menu_data.cpp:2648 ../../src/gui/menu_data.cpp:2656
+#: ../../src/gui/menu_data.cpp:2757 ../../src/gui/menu_data.cpp:2787
+#: ../../src/gui/menu_data.cpp:3007 ../../src/gui/menu_data.cpp:3033
 msgid "On"
 msgstr "Be"
 
-#: ../../src/gui/menu_data.cpp:1479 ../../src/gui/menu_data.cpp:1487
-#: ../../src/gui/menu_data.cpp:1646 ../../src/gui/menu_data.cpp:1654
-#: ../../src/gui/menu_data.cpp:1668 ../../src/gui/menu_data.cpp:1676
-#: ../../src/gui/menu_data.cpp:1759 ../../src/gui/menu_data.cpp:1767
-#: ../../src/gui/menu_data.cpp:1790 ../../src/gui/menu_data.cpp:1798
-#: ../../src/gui/menu_data.cpp:1960 ../../src/gui/menu_data.cpp:1968
-#: ../../src/gui/menu_data.cpp:1991 ../../src/gui/menu_data.cpp:1999
-#: ../../src/gui/menu_data.cpp:2054 ../../src/gui/menu_data.cpp:2146
-#: ../../src/gui/menu_data.cpp:2157 ../../src/gui/menu_data.cpp:2195
-#: ../../src/gui/menu_data.cpp:2206 ../../src/gui/menu_data.cpp:2231
-#: ../../src/gui/menu_data.cpp:2246 ../../src/gui/menu_data.cpp:2644
-#: ../../src/gui/menu_data.cpp:2652
+#: ../../src/gui/menu_data.cpp:1486 ../../src/gui/menu_data.cpp:1494
+#: ../../src/gui/menu_data.cpp:1653 ../../src/gui/menu_data.cpp:1661
+#: ../../src/gui/menu_data.cpp:1675 ../../src/gui/menu_data.cpp:1683
+#: ../../src/gui/menu_data.cpp:1766 ../../src/gui/menu_data.cpp:1774
+#: ../../src/gui/menu_data.cpp:1797 ../../src/gui/menu_data.cpp:1805
+#: ../../src/gui/menu_data.cpp:1967 ../../src/gui/menu_data.cpp:1975
+#: ../../src/gui/menu_data.cpp:1998 ../../src/gui/menu_data.cpp:2006
+#: ../../src/gui/menu_data.cpp:2061 ../../src/gui/menu_data.cpp:2153
+#: ../../src/gui/menu_data.cpp:2164 ../../src/gui/menu_data.cpp:2202
+#: ../../src/gui/menu_data.cpp:2213 ../../src/gui/menu_data.cpp:2238
+#: ../../src/gui/menu_data.cpp:2253 ../../src/gui/menu_data.cpp:2651
+#: ../../src/gui/menu_data.cpp:2659
 msgid "Off"
 msgstr "Ki"
 
-#: ../../src/gui/menu_data.cpp:1494
+#: ../../src/gui/menu_data.cpp:1501
 msgid "Camera Hor Speed"
 msgstr "Kamera vízszintes sebessége"
 
-#: ../../src/gui/menu_data.cpp:1503
+#: ../../src/gui/menu_data.cpp:1510
 msgid "Camera Ver Speed"
 msgstr "Kamera függőleges sebessége"
 
-#: ../../src/gui/menu_data.cpp:1512
+#: ../../src/gui/menu_data.cpp:1519
 msgid "Language"
 msgstr "Nyelv"
 
-#: ../../src/gui/menu_data.cpp:1545
+#: ../../src/gui/menu_data.cpp:1552
 msgid "Menu Level"
 msgstr "Menüszint"
 
-#: ../../src/gui/menu_data.cpp:1561 ../../src/gui/menu_data.cpp:1709
-#: ../../src/gui/menu_data.cpp:1813 ../../src/gui/menu_data.cpp:1843
-#: ../../src/gui/menu_data.cpp:1944 ../../src/gui/menu_data.cpp:2007
+#: ../../src/gui/menu_data.cpp:1568 ../../src/gui/menu_data.cpp:1716
+#: ../../src/gui/menu_data.cpp:1820 ../../src/gui/menu_data.cpp:1850
+#: ../../src/gui/menu_data.cpp:1951 ../../src/gui/menu_data.cpp:2014
 msgid "Reset"
 msgstr "Visszaállítás"
 
-#: ../../src/gui/menu_data.cpp:1570
+#: ../../src/gui/menu_data.cpp:1577
 msgid "Resolution"
 msgstr "Felbontás"
 
-#: ../../src/gui/menu_data.cpp:1622
+#: ../../src/gui/menu_data.cpp:1629
 msgid "Bpp"
 msgstr "Bpp"
 
-#: ../../src/gui/menu_data.cpp:1639
+#: ../../src/gui/menu_data.cpp:1646
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: ../../src/gui/menu_data.cpp:1661
+#: ../../src/gui/menu_data.cpp:1668
 msgid "VSync"
 msgstr "VSync"
 
-#: ../../src/gui/menu_data.cpp:1683
+#: ../../src/gui/menu_data.cpp:1690
 msgid "FPS Limit"
 msgstr "FPS korlát"
 
-#: ../../src/gui/menu_data.cpp:1692
+#: ../../src/gui/menu_data.cpp:1699
 msgid "Geometry Quality"
 msgstr "Geometria minősége"
 
-#: ../../src/gui/menu_data.cpp:1700
+#: ../../src/gui/menu_data.cpp:1707
 msgid "Texture Quality"
 msgstr "Textúra minősége"
 
-#: ../../src/gui/menu_data.cpp:1714
+#: ../../src/gui/menu_data.cpp:1721
 msgid "Apply"
 msgstr "Alkalmaz"
 
-#: ../../src/gui/menu_data.cpp:1719
+#: ../../src/gui/menu_data.cpp:1726
 msgid "Recreate Cache"
 msgstr "Gyorsítótár újra létrehozása"
 
-#: ../../src/gui/menu_data.cpp:1728
+#: ../../src/gui/menu_data.cpp:1735
 msgid "Hertz (Hz)"
 msgstr "Hertz (Hz)"
 
-#: ../../src/gui/menu_data.cpp:1729
+#: ../../src/gui/menu_data.cpp:1736
 msgid "You should only change the value if the audio is scratchy."
 msgstr "Csak akkor változtasd meg az értéket, ha a hang sercegő."
 
-#: ../../src/gui/menu_data.cpp:1751
+#: ../../src/gui/menu_data.cpp:1758
 msgid "Music"
 msgstr "Zene"
 
-#: ../../src/gui/menu_data.cpp:1752
+#: ../../src/gui/menu_data.cpp:1759
 msgid "Enable to play music. You need to have the Music Addon installed."
 msgstr "Zenelejátszás engedélyezése. Telepítve kell lennie a zenebővítménynek."
 
-#: ../../src/gui/menu_data.cpp:1774
+#: ../../src/gui/menu_data.cpp:1781
 msgid "Set the Music Volume."
 msgstr "A zene hangerejének beállítása."
 
-#: ../../src/gui/menu_data.cpp:1782
+#: ../../src/gui/menu_data.cpp:1789
 msgid "Sound"
 msgstr "Hang"
 
-#: ../../src/gui/menu_data.cpp:1783
+#: ../../src/gui/menu_data.cpp:1790
 msgid "Enable to play Sounds."
 msgstr "Hangok lejátszásának engedélyezése."
 
-#: ../../src/gui/menu_data.cpp:1805
+#: ../../src/gui/menu_data.cpp:1812
 msgid "Set the Sound Volume."
 msgstr "A hangerő beállítása."
 
-#: ../../src/gui/menu_data.cpp:1822 ../../src/gui/menu_data.cpp:1931
+#: ../../src/gui/menu_data.cpp:1829 ../../src/gui/menu_data.cpp:1938
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
 
-#: ../../src/gui/menu_data.cpp:1826 ../../src/gui/menu_data.cpp:1935
+#: ../../src/gui/menu_data.cpp:1833 ../../src/gui/menu_data.cpp:1942
 msgid "Name"
 msgstr "Név"
 
-#: ../../src/gui/menu_data.cpp:1827
+#: ../../src/gui/menu_data.cpp:1834
 msgid "Key"
 msgstr "Billentyű"
 
-#: ../../src/gui/menu_data.cpp:1834
+#: ../../src/gui/menu_data.cpp:1841
 msgid "Scroll Speed"
 msgstr "Görgetés sebessége"
 
-#: ../../src/gui/menu_data.cpp:1852
+#: ../../src/gui/menu_data.cpp:1859
 msgid "Sensitivity"
 msgstr "Érzékenység"
 
-#: ../../src/gui/menu_data.cpp:1856
+#: ../../src/gui/menu_data.cpp:1863
 msgid "Joystick"
 msgstr "Botkormány"
 
-#: ../../src/gui/menu_data.cpp:1863 ../../src/gui/menu_data.cpp:2910
+#: ../../src/gui/menu_data.cpp:1870 ../../src/gui/menu_data.cpp:2917
 #: ../../src/level/level_settings.cpp:194
 msgid "None"
 msgstr "Nincs"
 
-#: ../../src/gui/menu_data.cpp:1899
+#: ../../src/gui/menu_data.cpp:1906
 msgid "Axis Hor"
 msgstr "Vízszintes tengely"
 
-#: ../../src/gui/menu_data.cpp:1907
+#: ../../src/gui/menu_data.cpp:1914
 msgid "Ver"
 msgstr "Függőleges"
 
-#: ../../src/gui/menu_data.cpp:1915
+#: ../../src/gui/menu_data.cpp:1922
 msgid "Axis Hor2"
 msgstr "2. vízszintes tengely"
 
-#: ../../src/gui/menu_data.cpp:1923
+#: ../../src/gui/menu_data.cpp:1930
 msgid "Ver2"
 msgstr "2. függőleges"
 
-#: ../../src/gui/menu_data.cpp:1936
+#: ../../src/gui/menu_data.cpp:1943
 msgid "Button"
 msgstr "Gomb"
 
-#: ../../src/gui/menu_data.cpp:1953
+#: ../../src/gui/menu_data.cpp:1960
 msgid "Show images"
 msgstr "Képek megjelenítése"
 
-#: ../../src/gui/menu_data.cpp:1975
+#: ../../src/gui/menu_data.cpp:1982
 msgid "Item image size"
 msgstr "Tárgy képmérete"
 
-#: ../../src/gui/menu_data.cpp:1984
+#: ../../src/gui/menu_data.cpp:1991
 msgid "Auto-Hide Mouse"
 msgstr "Egér automatikus elrejtése"
 
-#: ../../src/gui/menu_data.cpp:2279
+#: ../../src/gui/menu_data.cpp:2286
 msgid "Up"
 msgstr "Fel"
 
-#: ../../src/gui/menu_data.cpp:2280
+#: ../../src/gui/menu_data.cpp:2287
 msgid "Down"
 msgstr "Le"
 
-#: ../../src/gui/menu_data.cpp:2281
+#: ../../src/gui/menu_data.cpp:2288
 msgid "Left"
 msgstr "Balra"
 
-#: ../../src/gui/menu_data.cpp:2282
+#: ../../src/gui/menu_data.cpp:2289
 msgid "Right"
 msgstr "Jobbra"
 
-#: ../../src/gui/menu_data.cpp:2283 ../../src/gui/menu_data.cpp:2299
+#: ../../src/gui/menu_data.cpp:2290 ../../src/gui/menu_data.cpp:2306
 msgid "Jump"
 msgstr "Ugrás"
 
-#: ../../src/gui/menu_data.cpp:2284 ../../src/gui/menu_data.cpp:2300
+#: ../../src/gui/menu_data.cpp:2291 ../../src/gui/menu_data.cpp:2307
 msgid "Shoot"
 msgstr "Lövés"
 
-#: ../../src/gui/menu_data.cpp:2285 ../../src/gui/menu_data.cpp:2302
+#: ../../src/gui/menu_data.cpp:2292 ../../src/gui/menu_data.cpp:2309
 #: ../../src/objects/bonusbox.cpp:502
 msgid "Item"
 msgstr "Tárgy"
 
-#: ../../src/gui/menu_data.cpp:2286 ../../src/gui/menu_data.cpp:2301
+#: ../../src/gui/menu_data.cpp:2293 ../../src/gui/menu_data.cpp:2308
 msgid "Action"
 msgstr "Művelet"
 
-#: ../../src/gui/menu_data.cpp:2287
+#: ../../src/gui/menu_data.cpp:2294
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: ../../src/gui/menu_data.cpp:2288
+#: ../../src/gui/menu_data.cpp:2295
 msgid "Editor fast copy up"
 msgstr "Szerkesztő gyors másolás fel"
 
-#: ../../src/gui/menu_data.cpp:2289
+#: ../../src/gui/menu_data.cpp:2296
 msgid "Editor fast copy down"
 msgstr "Szerkesztő gyors másolás le"
 
-#: ../../src/gui/menu_data.cpp:2290
+#: ../../src/gui/menu_data.cpp:2297
 msgid "Editor fast copy left"
 msgstr "Szerkesztő gyors másolás balra"
 
-#: ../../src/gui/menu_data.cpp:2291
+#: ../../src/gui/menu_data.cpp:2298
 msgid "Editor fast copy right"
 msgstr "Szerkesztő gyors másolás jobbra"
 
-#: ../../src/gui/menu_data.cpp:2292
+#: ../../src/gui/menu_data.cpp:2299
 msgid "Editor pixel move up"
 msgstr "Szerkesztő képpont mozgatás fel"
 
-#: ../../src/gui/menu_data.cpp:2293
+#: ../../src/gui/menu_data.cpp:2300
 msgid "Editor pixel move down"
 msgstr "Szerkesztő képpont mozgatás le"
 
-#: ../../src/gui/menu_data.cpp:2294
+#: ../../src/gui/menu_data.cpp:2301
 msgid "Editor pixel move left"
 msgstr "Szerkesztő képpont mozgatás balra"
 
-#: ../../src/gui/menu_data.cpp:2295
+#: ../../src/gui/menu_data.cpp:2302
 msgid "Editor pixel move right"
 msgstr "Szerkesztő képpont mozgatás jobbra"
 
-#: ../../src/gui/menu_data.cpp:2303
+#: ../../src/gui/menu_data.cpp:2310
 msgid "Exit"
 msgstr "Kilépés"
 
-#: ../../src/gui/menu_data.cpp:2362
+#: ../../src/gui/menu_data.cpp:2369
 msgid "Press a key"
 msgstr "Nyomj meg egy billentyűt"
 
-#: ../../src/gui/menu_data.cpp:2365
+#: ../../src/gui/menu_data.cpp:2372
 msgid "Press a button"
 msgstr "Nyomj meg egy gombot"
 
-#: ../../src/gui/menu_data.cpp:2368
+#: ../../src/gui/menu_data.cpp:2375
 msgid " for "
 msgstr " ehhez: "
 
-#: ../../src/gui/menu_data.cpp:2368
+#: ../../src/gui/menu_data.cpp:2375
 msgid ". Press ESC to cancel."
 msgstr ". Nyomd meg az ESC billentyűt a megszakításhoz."
 
-#: ../../src/gui/menu_data.cpp:2673
+#: ../../src/gui/menu_data.cpp:2680
 msgid "Reinitialization"
 msgstr "Újra-előkészítés"
 
-#: ../../src/gui/menu_data.cpp:2732
+#: ../../src/gui/menu_data.cpp:2739
 msgid "Reloading"
 msgstr "Újratöltés"
 
-#: ../../src/gui/menu_data.cpp:2891
+#: ../../src/gui/menu_data.cpp:2898
 msgid "Enabled : "
 msgstr "Engedélyezve: "
 
-#: ../../src/gui/menu_data.cpp:3106 ../../src/gui/menu_data.cpp:3108
+#: ../../src/gui/menu_data.cpp:3113 ../../src/gui/menu_data.cpp:3115
 msgid "Save"
 msgstr "Mentés"
 
-#: ../../src/gui/menu_data.cpp:3107
+#: ../../src/gui/menu_data.cpp:3114
 msgid "Save the game"
 msgstr "A játék mentése"
 
-#: ../../src/gui/menu_data.cpp:3113 ../../src/gui/menu_data.cpp:3115
+#: ../../src/gui/menu_data.cpp:3120 ../../src/gui/menu_data.cpp:3122
 msgid "Load"
 msgstr "Betöltés"
 
-#: ../../src/gui/menu_data.cpp:3114
+#: ../../src/gui/menu_data.cpp:3121
 msgid "Load a saved game"
 msgstr "Elmentett játék betöltése"
 
-#: ../../src/gui/menu_data.cpp:3272
+#: ../../src/gui/menu_data.cpp:3279
 msgid ""
 "3000 Points needed for saving in a level.\n"
 "Saving on the Overworld is free."
@@ -1097,17 +1096,17 @@ msgstr ""
 "A mentéshez 3000 pont szükséges egy szinten.\n"
 "Az áttekintőn szabadon menthető."
 
-#: ../../src/gui/menu_data.cpp:3293 ../../src/gui/menu_data.cpp:3297
-#: ../../src/gui/menu_data.cpp:3302
+#: ../../src/gui/menu_data.cpp:3300 ../../src/gui/menu_data.cpp:3304
+#: ../../src/gui/menu_data.cpp:3309
 msgid "No Description"
 msgstr "Nincs leírás"
 
-#: ../../src/gui/menu_data.cpp:3306
+#: ../../src/gui/menu_data.cpp:3313
 msgid "Enter Description"
 msgstr "Leírás megadása"
 
-#: ../../src/gui/menu_data.cpp:3324 ../../src/gui/menu_data.cpp:3329
-#: ../../src/gui/menu_data.cpp:3334
+#: ../../src/gui/menu_data.cpp:3331 ../../src/gui/menu_data.cpp:3336
+#: ../../src/gui/menu_data.cpp:3341
 msgid "Savegame loading failed"
 msgstr "A mentett játék betöltése sikertelen"
 
@@ -1191,13 +1190,11 @@ msgctxt "level"
 msgid "Name"
 msgstr "Név"
 
-#: ../../src/level/level_editor.cpp:148
-#: ../../src/overworld/world_editor.cpp:88
+#: ../../src/level/level_editor.cpp:148 ../../src/overworld/world_editor.cpp:88
 msgid " already exists"
 msgstr " már létezik"
 
-#: ../../src/level/level_editor.cpp:160
-#: ../../src/overworld/world_editor.cpp:84
+#: ../../src/level/level_editor.cpp:160 ../../src/overworld/world_editor.cpp:84
 msgid "Created "
 msgstr "Létrehozva "
 
@@ -1916,9 +1913,11 @@ msgstr ""
 "rótta az útját."
 
 #: ../../src/scene/01_prologue.cpp:35
+#, fuzzy
 msgid ""
-"When he reached the top of the highest dune, he glazed around, to only see "
-"sand followed by more sand, by even more sand."
+"When he reached the top of the highest dune, he gazed around, but to only "
+"see sand followed by more sand, by even more "
+"[colour='FFFFF000']sand[colour='FFFFFFFF']."
 msgstr ""
 "Amikor elérte a legmagasabb dűne csúcsát, körbenézett, és csak homokot, még "
 "több homokot és még annál is több homokot látott."
@@ -2169,8 +2168,7 @@ msgstr "Ez a program a GPLv3 feltételei szerint lett közreadva"
 #: ../../src/video/video.cpp:465
 msgid "Caching Images failed : Could not remove old images"
 msgstr ""
-"A képek gyorsítótárazása sikertelen: nem sikerült eltávolítani a régi "
-"képeket"
+"A képek gyorsítótárazása sikertelen: nem sikerült eltávolítani a régi képeket"
 
 #: ../../src/video/video.cpp:488
 msgid "Caching Images"
