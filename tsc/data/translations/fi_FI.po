@@ -974,7 +974,7 @@ msgstr "Esine kuvakoko"
 
 #: ../../src/gui/menu_data.cpp:1991
 msgid "Auto-Hide Mouse"
-msgstr "Piilota hiiri autom."
+msgstr "Piilota hiiri automaattisesti"
 
 #: ../../src/gui/menu_data.cpp:2286
 msgid "Up"
@@ -1905,6 +1905,8 @@ msgid ""
 "when a single individual was making his way through the ups and downs of the "
 "sandy dunes."
 msgstr ""
+"Laskeva aurinko lähetti viimeiset värikkäät säteensä Itä-aavikon ylle, kun "
+"yksi henkilö kulki hiekkadyynien ylä- ja alamäkiä."
 
 #: ../../src/scene/01_prologue.cpp:35
 msgid ""
@@ -1912,6 +1914,9 @@ msgid ""
 "see sand followed by more sand, by even more "
 "[colour='FFFFF000']sand[colour='FFFFFFFF']."
 msgstr ""
+"Kun hän saavutti korkeimman dyynin huipun, hän katseli ympärilleen, mutta "
+"näki vain hiekkaa, jota seurasi enemmän hiekkaa, ja vielä enemmän "
+"[colour='FFFFF000']hiekkaa[colour='FFFFFFFF']."
 
 #: ../../src/scene/01_prologue.cpp:36
 msgid ""
@@ -1919,6 +1924,9 @@ msgid ""
 "there was no means of orientation in this infinite sea of equally hostile "
 "sand dunes."
 msgstr ""
+"Hän otti kartan, mutta tähdet eivät vielä näkyneet pimenevällä taivaalla, "
+"joten ei ollut mitään keinoa suunnistaa samalla tavalla vihamielisten "
+"hiekkadyynien äärettömässä meressä."
 
 #. TRANS: Prompt issued in the game console
 #: ../../src/scripting/scripting.cpp:104
