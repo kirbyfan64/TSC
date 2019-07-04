@@ -55,50 +55,6 @@
     <property name="posy" value="-301"/>
     <property name="direction" value="right"/>
   </player>
-  <particle_emitter>
-    <property name="posx" value="0"/>
-    <property name="posy" value="-1"/>
-    <property name="uid" value="1"/>
-    <property name="image" value=""/>
-    <property name="type" value="passive"/>
-    <property name="particle_image" value=""/>
-    <property name="pos_z" value="0.081000"/>
-    <property name="pos_z_rand" value="0.010000"/>
-    <property name="emitter_based_on_camera_pos" value="1"/>
-    <property name="particle_based_on_emitter_pos" value="0.000000"/>
-    <property name="sizex" value="0"/>
-    <property name="sizey" value="0"/>
-    <property name="emitter_time_to_live" value="-1.000000"/>
-    <property name="emitter_interval" value="0.600000"/>
-    <property name="quota" value="1"/>
-    <property name="time_to_live" value="12.000000"/>
-    <property name="time_to_live_rand" value="0.000000"/>
-    <property name="vel" value="2.000000"/>
-    <property name="vel_rand" value="0.500000"/>
-    <property name="rot_x" value="0.000000"/>
-    <property name="rot_y" value="0.000000"/>
-    <property name="rot_z" value="0.000000"/>
-    <property name="start_rot_z_uses_direction" value="0"/>
-    <property name="const_rot_x" value="0.000000"/>
-    <property name="const_rot_x_rand" value="0.000000"/>
-    <property name="const_rot_y" value="0.000000"/>
-    <property name="const_rot_y_rand" value="0.000000"/>
-    <property name="const_rot_z" value="0.000000"/>
-    <property name="const_rot_z_rand" value="0.000000"/>
-    <property name="angle_start" value="50.000000"/>
-    <property name="angle_range" value="80.000000"/>
-    <property name="size_scale" value="2.000000"/>
-    <property name="size_scale_rand" value="0.200000"/>
-    <property name="gravity_x" value="0.000000"/>
-    <property name="gravity_x_rand" value="0.000000"/>
-    <property name="gravity_y" value="0.000000"/>
-    <property name="gravity_y_rand" value="0.000000"/>
-    <property name="clip_x" value="0"/>
-    <property name="clip_y" value="0"/>
-    <property name="clip_w" value="800"/>
-    <property name="clip_h" value="601"/>
-    <property name="clip_mode" value="0"/>
-  </particle_emitter>
   <enemy>
     <property name="posx" value="340"/>
     <property name="posy" value="-133"/>
