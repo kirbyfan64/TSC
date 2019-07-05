@@ -38,7 +38,8 @@ cLayer_Line_Point::cLayer_Line_Point(cSprite_Manager* sprite_manager, cOverworld
     m_sprite_array = ARRAY_PASSIVE;
     m_type = new_type;
     m_massive_type = MASS_PASSIVE;
-    m_pos_z = 0.087f;
+    // Show line connection points slightly above waypoints.
+    m_pos_z = cSprite::m_pos_z_massive_start + 0.007f;
 
     m_overworld = overworld;
     m_linked_point = NULL;
