@@ -114,7 +114,6 @@ namespace TSC {
         virtual void Function_Save(bool with_dialog = 0) {};
         virtual void Function_Save_as(void) {};
         virtual void Function_Delete(void) {};
-        virtual void Function_Reload(void) {};
         virtual void Function_Settings(void) {};
 
         // Loads the editor/*_items.xml file that corresponds to this

@@ -1090,8 +1090,6 @@ void cEditor::Activate_Function_Entry(cEditor_Menu_Entry* p_function_entry)
     std::vector<std::string>& tags = p_function_entry->Get_Required_Tags();
     std::vector<std::string>::const_iterator iter;
 
-    // HIER! Führt zu einer Exception!
-
     if (std::find(tags.begin(), tags.end(), std::string("new")) != tags.end())
         Function_New();
     else if (std::find(tags.begin(), tags.end(), std::string("load")) != tags.end())
@@ -1102,8 +1100,6 @@ void cEditor::Activate_Function_Entry(cEditor_Menu_Entry* p_function_entry)
         Function_Save_as();
     else if (std::find(tags.begin(), tags.end(), std::string("delete")) != tags.end())
         Function_Delete();
-    else if (std::find(tags.begin(), tags.end(), std::string("reload")) != tags.end())
-        Function_Reload();
     else if (std::find(tags.begin(), tags.end(), std::string("settings")) != tags.end())
         Function_Settings();
     else

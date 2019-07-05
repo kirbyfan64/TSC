@@ -19,7 +19,6 @@ namespace TSC {
         virtual void Function_Load(void);
         virtual void Function_Save(bool with_dialog = 0);
         //virtual void Function_Save_as( void );
-        virtual void Function_Reload(void);
         //void Function_Settings( void );
 
         virtual vector<cSprite*> Parse_Items_File();

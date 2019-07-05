@@ -133,18 +133,6 @@ void cEditor_World::Function_Save(bool with_dialog /* = 0 */)
     mp_overworld->Save();
 }
 
-void cEditor_World::Function_Reload(void)
-{
-    // if denied
-    if (!Box_Question(_("Reload World ?"))) {
-        return;
-    }
-
-    cOverworld* p_old_world = mp_overworld;
-    mp_overworld = cOverworld::Load_From_Directory(p_old_world->m_description->Get_Path());
-    delete p_old_world;
-}
-
 std::vector<cSprite*> cEditor_World::items_loader_callback(const std::string& name, XmlAttributes& attributes, int engine_version, cSprite_Manager* p_sprite_manager, void* p_data)
 {
     cSprite* p_sprite = cOverworldLoader::Create_World_Object_From_XML(name, attributes, engine_version, p_sprite_manager, pActive_Overworld);

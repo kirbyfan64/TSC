@@ -188,11 +188,6 @@
 		<property name="color" value="FFFF7000" />
 	</item>
 	<item>
-		<property name="name" value="Reload" />
-		<property name="tags" value="function;reload" />
-		<property name="color" value="FFAF8A4F" />
-	</item>
-	<item>
 		<property name="name" value="Settings" />
 		<property name="tags" value="function;settings" />
 		<property name="color" value="FFCF6AAF" />

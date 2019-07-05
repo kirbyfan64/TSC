@@ -102,9 +102,4 @@
 		<property name="tags" value="function;save" />
 		<property name="color" value="FF0FC30F" />
 	</item>
-	<item>
-		<property name="name" value="Reload" />
-		<property name="tags" value="function;reload" />
-		<property name="color" value="FFAF8A4F" />
-	</item>
 </menu>
