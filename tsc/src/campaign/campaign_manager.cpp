@@ -20,7 +20,6 @@
 #include "../core/game_core.hpp"
 #include "../core/filesystem/filesystem.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/i18n.hpp"
 #include "../core/global_basic.hpp"
 
@@ -106,8 +105,8 @@ void cCampaign_Manager::Load(void)
         Delete_All();
     }
 
-    vector<fs::path> user_files = Get_Directory_Files(pPackage_Manager->Get_User_Campaign_Path(), ".tsccpn", false, false);
-    vector<fs::path> game_files = Get_Directory_Files(pPackage_Manager->Get_Game_Campaign_Path(), ".tsccpn", false, false);
+    vector<fs::path> user_files = Get_Directory_Files(pResource_Manager->Get_User_Campaign_Directory(), ".tsccpn", false, false);
+    vector<fs::path> game_files = Get_Directory_Files(pResource_Manager->Get_Game_Campaign_Directory(), ".tsccpn", false, false);
 
     for (vector<fs::path>::iterator itr = user_files.begin(); itr != user_files.end(); ++itr) {
         fs::path user_campaign_filename = (*itr);
