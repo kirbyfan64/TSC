@@ -113,7 +113,7 @@ void cEato::Set_Image_Dir(fs::path dir)
     }
 
     // if not image directory
-    if (!File_Exists(pResource_Manager->Get_Game_Pixmap(path_to_utf8(dir)) / utf8_to_path("/main.imgset"))) {
+    if (!File_Exists(pResource_Manager->Get_Game_Pixmap(path_to_utf8(dir / utf8_to_path("/main.imgset"))))) {
         cerr    << "Warning: Eato image files not found; does the eato directory "
                 << path_to_utf8(dir) << " exist?" << endl;
         return;
