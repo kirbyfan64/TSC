@@ -276,13 +276,13 @@ void cBall::Generate_Particles(cParticle_Emitter* anim /* = NULL */) const
         unsigned int rand_image = rand() % 3;
 
         if (rand_image == 0) {
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/fire_1.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/fire_1.png"));
         }
         else if (rand_image == 1) {
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/fire_2.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/fire_2.png"));
         }
         else {
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/fire_4.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/fire_4.png"));
         }
 
         anim->Set_Time_to_Live(0.2f);
@@ -290,7 +290,7 @@ void cBall::Generate_Particles(cParticle_Emitter* anim /* = NULL */) const
     }
     // ice
     else {
-        anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/light.png"));
+        anim->Set_Image(pVideo->Get_Surface("animation/particles/light.png"));
         anim->Set_Time_to_Live(0.5f);
         anim->Set_Color(Color(static_cast<uint8_t>(90), 90, 255));
     }
@@ -425,7 +425,7 @@ void cBall::Handle_Collision_Massive(cObjectCollision* collision)
             // create animation
             cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
             anim->Set_Pos(m_pos_x + m_col_rect.m_w / 2, m_pos_y + m_col_rect.m_h / 2, 1);
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/cloud.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/cloud.png"));
             anim->Set_Direction_Range(0, 180);
             anim->Set_Quota(3);
             anim->Set_Time_to_Live(0.8f);

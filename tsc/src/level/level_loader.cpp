@@ -490,7 +490,7 @@ std::vector<cSprite*> cLevelLoader::Create_Sprites_From_XML_Tag(const std::strin
 
     // If image not available display placeholder
     if (!p_sprite->m_start_image) {
-        p_sprite->Set_Image(pVideo->Get_Package_Surface(utf8_to_path("game/image_not_found.png")), true, true);
+        p_sprite->Set_Image(pVideo->Get_Surface(utf8_to_path("game/image_not_found.png")), true, true);
         p_sprite->Set_Massive_Type(MASS_PASSIVE); // It sholdn't hinder gameplay
         p_sprite->Set_Active(false); // only display it in the editor
     }

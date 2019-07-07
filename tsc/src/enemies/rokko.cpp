@@ -453,7 +453,7 @@ void cRokko::Generate_Smoke(unsigned int amount /* = 10 */) const
 
     // - m_pos_z_delta caused a weird graphical z pos bug with an ATI card
     anim->Set_Pos_Z(m_pos_z - m_corrected_pos_z_delta);
-    anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/smoke_grey_big.png"));
+    anim->Set_Image(pVideo->Get_Surface("animation/particles/smoke_grey_big.png"));
     anim->Set_Quota(amount);
     anim->Set_Time_to_Live(0.8f, 0.8f);
     anim->Set_Speed(1.0f, 0.2f);
@@ -474,7 +474,7 @@ void cRokko::Generate_Sparks(unsigned int amount /* = 5 */) const
     anim->Set_Quota(amount);
     anim->Set_Time_to_Live(0.2f, 0.1f);
     anim->Set_Speed(1.2f, 1.1f);
-    anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/light.png"));
+    anim->Set_Image(pVideo->Get_Surface("animation/particles/light.png"));
     anim->Set_Color(Color(static_cast<uint8_t>(250), 250, 200), Color(static_cast<uint8_t>(5), 5, 0, 0));
     anim->Set_Scale(0.3f, 0.3f);
     anim->Set_Fading_Size(1);
