@@ -39,7 +39,6 @@
 #include "../core/math/size.hpp"
 #include "../core/filesystem/filesystem.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/main.hpp"
 
 using namespace std;
@@ -234,8 +233,8 @@ void cMenu_Main::Init(void)
     // Start
     mp_start_active   = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
     mp_start_inactive = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    mp_start_active   ->Set_Image(pVideo->Get_Package_Surface("menu/items/start.png"), 1);
-    mp_start_inactive ->Set_Image(pVideo->Get_Package_Surface("menu/start.png"), 1);
+    mp_start_active   ->Set_Image(pVideo->Get_Surface("menu/items/start.png"), 1);
+    mp_start_inactive ->Set_Image(pVideo->Get_Surface("menu/start.png"), 1);
 
     mp_start_inactive->Set_Pos(game_res_w * 0.5f - (mp_start_inactive->m_col_rect.m_w * 0.5f),
                                m_menu_pos_y);
@@ -253,8 +252,8 @@ void cMenu_Main::Init(void)
     m_menu_pos_y += 60;
     mp_options_active   = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
     mp_options_inactive = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    mp_options_active   ->Set_Image(pVideo->Get_Package_Surface("menu/items/options.png"), 1);
-    mp_options_inactive ->Set_Image(pVideo->Get_Package_Surface("menu/options.png"), 1);
+    mp_options_active   ->Set_Image(pVideo->Get_Surface("menu/items/options.png"), 1);
+    mp_options_inactive ->Set_Image(pVideo->Get_Surface("menu/options.png"), 1);
 
     mp_options_inactive->Set_Pos(game_res_w * 0.5f - (mp_options_inactive->m_col_rect.m_w * 0.5f),
                                  m_menu_pos_y);
@@ -272,8 +271,8 @@ void cMenu_Main::Init(void)
     m_menu_pos_y += 60;
     mp_load_active   = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
     mp_load_inactive = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    mp_load_active   ->Set_Image(pVideo->Get_Package_Surface("menu/items/load.png"), 1);
-    mp_load_inactive ->Set_Image(pVideo->Get_Package_Surface("menu/load.png"), 1);
+    mp_load_active   ->Set_Image(pVideo->Get_Surface("menu/items/load.png"), 1);
+    mp_load_inactive ->Set_Image(pVideo->Get_Surface("menu/load.png"), 1);
 
     mp_load_inactive->Set_Pos(game_res_w * 0.5f - (mp_load_inactive->m_col_rect.m_w * 0.5f),
                               m_menu_pos_y);
@@ -291,8 +290,8 @@ void cMenu_Main::Init(void)
     m_menu_pos_y += 60;
     mp_save_active   = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
     mp_save_inactive = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    mp_save_active   ->Set_Image(pVideo->Get_Package_Surface("menu/items/save.png"), 1);
-    mp_save_inactive ->Set_Image(pVideo->Get_Package_Surface("menu/save.png"), 1);
+    mp_save_active   ->Set_Image(pVideo->Get_Surface("menu/items/save.png"), 1);
+    mp_save_inactive ->Set_Image(pVideo->Get_Surface("menu/save.png"), 1);
 
     mp_save_inactive->Set_Pos(game_res_w * 0.5f - (mp_save_inactive->m_col_rect.m_w * 0.5f),
                               m_menu_pos_y);
@@ -310,8 +309,8 @@ void cMenu_Main::Init(void)
     m_menu_pos_y += 60;
     //mp_quit_active   = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
     mp_quit_inactive = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    //mp_quit_active   ->Set_Image(pVideo->Get_Package_Surface("menu/items/quit.png"), 1);
-    mp_quit_inactive ->Set_Image(pVideo->Get_Package_Surface("menu/quit.png"), 1);
+    //mp_quit_active   ->Set_Image(pVideo->Get_Surface("menu/items/quit.png"), 1);
+    mp_quit_inactive ->Set_Image(pVideo->Get_Surface("menu/quit.png"), 1);
 
     mp_quit_inactive->Set_Pos(game_res_w * 0.5f - (mp_quit_inactive->m_col_rect.m_w * 0.5f),
                               m_menu_pos_y);
@@ -342,7 +341,7 @@ void cMenu_Main::Init(void)
 
         // SFML logo
         cHudSprite* hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-        hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/logo_sfml.png"));
+        hud_sprite->Set_Image(pVideo->Get_Surface("menu/logo_sfml.png"));
         hud_sprite->Set_Pos(static_cast<float>(game_res_w) * 0.04f, static_cast<float>(game_res_h) * 0.935f);
         m_draw_list.push_back(hud_sprite);
     }
@@ -554,11 +553,11 @@ void cMenu_Start::Init(void)
     m_layout_file = "menu/start.layout";
 
     cHudSprite* hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/start.png"));
+    hud_sprite->Set_Image(pVideo->Get_Surface("menu/start.png"));
     hud_sprite->Set_Pos(static_cast<float>(game_res_w) * 0.02f, 140);
     m_draw_list.push_back(hud_sprite);
     hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/items/overworld.png"));
+    hud_sprite->Set_Image(pVideo->Get_Surface("menu/items/overworld.png"));
     hud_sprite->Set_Pos(static_cast<float>(game_res_w) / 20, 210);
     m_draw_list.push_back(hud_sprite);
 
@@ -805,17 +804,6 @@ void cMenu_Start::Load_Selected(void)
     }
 }
 
-void cMenu_Start::Load_Package(std::string name)
-{
-    if (!Box_Question(_("This will take affect after restarting.\nContinue ?"))) {
-        return;
-    }
-
-    pPreferences->m_package = name;
-    pPreferences->Save();
-    Game_Action = GA_RESET;
-}
-
 void cMenu_Start::Load_Campaign(std::string name)
 {
     if (gp_hud->Get_Points() > 0 && !Box_Question(_("This will reset your current progress.\nContinue ?"))) {
@@ -1002,9 +990,9 @@ void cMenu_Start::Update_Lists(void)
     listbox_levels->resetList();
 
     // get game level
-    Get_Levels(pPackage_Manager->Get_Game_Level_Path(), CEGUI::Colour(1, 0.8f, 0.6f));
+    Get_Levels(pResource_Manager->Get_Game_Level_Directory(), CEGUI::Colour(1, 0.8f, 0.6f));
     // get user level
-    Get_Levels(pPackage_Manager->Get_User_Level_Path(), CEGUI::Colour(0.8f, 1, 0.6f));
+    Get_Levels(pResource_Manager->Get_User_Level_Directory(), CEGUI::Colour(0.8f, 1, 0.6f));
 }
 
 bool cMenu_Start::TabControl_Selection_Changed(const CEGUI::EventArgs& e)
@@ -1423,7 +1411,7 @@ void cMenu_Options::Init(void)
 
     // options image
     cHudSprite* hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-    hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/options.png"));
+    hud_sprite->Set_Image(pVideo->Get_Surface("menu/options.png"));
     hud_sprite->Set_Pos(game_res_w * 0.01f, 100);
     m_draw_list.push_back(hud_sprite);
 
@@ -3075,21 +3063,21 @@ void cMenu_Savegames::Init(void)
 
     if (m_type_save) {
         cHudSprite* hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-        hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/save.png"));
+        hud_sprite->Set_Image(pVideo->Get_Surface("menu/save.png"));
         hud_sprite->Set_Pos(game_res_w * 0.2f, game_res_h * 0.15f);
         m_draw_list.push_back(hud_sprite);
         hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-        hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/items/save.png"));
+        hud_sprite->Set_Image(pVideo->Get_Surface("menu/items/save.png"));
         hud_sprite->Set_Pos(game_res_w * 0.07f, game_res_h * 0.24f);
         m_draw_list.push_back(hud_sprite);
     }
     else {
         cHudSprite* hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-        hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/load.png"));
+        hud_sprite->Set_Image(pVideo->Get_Surface("menu/load.png"));
         hud_sprite->Set_Pos(game_res_w * 0.2f, game_res_h * 0.15f);
         m_draw_list.push_back(hud_sprite);
         hud_sprite = new cHudSprite(pMenuCore->m_handler->m_level->m_sprite_manager);
-        hud_sprite->Set_Image(pVideo->Get_Package_Surface("menu/items/load.png"));
+        hud_sprite->Set_Image(pVideo->Get_Surface("menu/items/load.png"));
         hud_sprite->Set_Pos(game_res_w * 0.07f, game_res_h * 0.24f);
         m_draw_list.push_back(hud_sprite);
     }

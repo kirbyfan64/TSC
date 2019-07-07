@@ -28,7 +28,6 @@
 #include "../user/preferences.hpp"
 #include "../input/keyboard.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/global_basic.hpp"
 
 // Music files to play on the title and credits screens.
@@ -36,7 +35,7 @@
 #define GAME_CREDITS_MUSIC "land/hyper_1.ogg"
 
 using namespace std;
-
+namespace fs = boost::filesystem;
 
 namespace TSC {
 
@@ -44,8 +43,8 @@ namespace TSC {
 
 cMenuHandler::cMenuHandler(void)
 {
-    boost::filesystem::path lvl_path = pPackage_Manager->Get_Menu_Level_Path();
-    if (boost::filesystem::exists(lvl_path)) {
+    fs::path lvl_path = menu_level_path();
+    if (fs::exists(lvl_path)) {
         m_level = cLevel::Load_From_File(lvl_path);
     }
     else {
@@ -193,6 +192,36 @@ sf::FloatRect cMenuHandler::Get_Active_Item_Rect(void)
 unsigned int cMenuHandler::Get_Size(void) const
 {
     return static_cast<unsigned int>(m_items.size());
+}
+
+fs::path cMenuHandler::menu_level_path()
+{
+    // determine level for the menu
+    fs::path result;
+    std::string level;
+
+    // User specified menu level
+    level = pPreferences->m_menu_level;
+    if (!level.empty()) {
+        level = level + ".tsclvl";
+
+        result = pResource_Manager->Get_User_Level(level);
+        if (fs::exists(result))
+            return result;
+
+        result = pResource_Manager->Get_Game_Level(level);
+        if (fs::exists(result))
+            return result;
+    }
+
+    // Default menu level
+    level = pPreferences->m_menu_level_default + ".tsclvl";
+
+    result = pResource_Manager->Get_User_Level(level);
+    if (fs::exists(result))
+        return result;
+
+    return pResource_Manager->Get_Game_Level(level);
 }
 
 /* *** *** *** *** *** *** *** cMenuCore *** *** *** *** *** *** *** *** *** *** */

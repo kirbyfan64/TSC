@@ -83,6 +83,9 @@ namespace TSC {
         };
         typedef vector<struct MenuItem> MenuList;
 
+        // Returns the path to the menu level, taking user config into account.
+        boost::filesystem::path menu_level_path();
+
         MenuList m_items;
         cHudSprite* mp_tsc_logo;
     };
