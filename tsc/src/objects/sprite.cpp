@@ -32,7 +32,6 @@
 #include "../overworld/world_editor.hpp"
 #include "../core/file_parser.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/xml_attributes.hpp"
 #include "../core/global_basic.hpp"
 #include "../user/savegame/savegame.hpp"
@@ -333,7 +332,7 @@ cSprite::cSprite(XmlAttributes& attributes, cSprite_Manager* sprite_manager, con
     // image
     m_image_filename = attributes["image"];
     if(utf8_to_path(m_image_filename).extension() == utf8_to_path(".png")) {
-        Set_Image(pVideo->Get_Package_Surface(utf8_to_path(attributes["image"])), true) ;
+        Set_Image(pVideo->Get_Surface(utf8_to_path(attributes["image"])), true) ;
     }
     else {
         if (Add_Image_Set("main", utf8_to_path(m_image_filename)))
@@ -341,7 +340,7 @@ cSprite::cSprite(XmlAttributes& attributes, cSprite_Manager* sprite_manager, con
         else { // level XML points to invalid file
             std::cerr << "Warning: Level XML is invalid -- file does not load: " << m_image_filename << std::endl;
             m_image_filename = "game/image_not_found.png";
-            Set_Image(pVideo->Get_Package_Surface(utf8_to_path(m_image_filename)));
+            Set_Image(pVideo->Get_Surface(utf8_to_path(m_image_filename)));
         }
     }
     // Massivity.
@@ -521,7 +520,7 @@ xmlpp::Element* cSprite::Save_To_XML_Node(xmlpp::Element* p_element)
     // Only save the relative part of the filename -- otherwise the
     // generated levels wouldn’t be portable.
     if (img_filename.is_absolute())
-        img_filename = pPackage_Manager->Get_Relative_Pixmap_Path(img_filename);
+        img_filename = fs::relative(pResource_Manager->Get_Game_Pixmaps_Directory(), img_filename);
 
     Add_Property(p_node, "image", img_filename.generic_string());
 
@@ -1459,7 +1458,7 @@ void cSprite::Editor_Activate(void)
 
     p_editor->Add_Config_Widget(UTF8_("Image"), UTF8_("Image filename"), editbox);
 
-    fs::path rel = pPackage_Manager->Get_Relative_Pixmap_Path(m_start_image->Get_Path());
+    fs::path rel = fs::relative(pResource_Manager->Get_Game_Pixmaps_Directory(), m_start_image->Get_Path());
     editbox->setText(path_to_utf8(rel));
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cSprite::Editor_Image_Text_Changed, this));
 
@@ -1510,7 +1509,7 @@ bool cSprite::Editor_Image_Text_Changed(const CEGUI::EventArgs& event)
     const CEGUI::WindowEventArgs& windowEventArgs = static_cast<const CEGUI::WindowEventArgs&>(event);
     std::string str_text = static_cast<CEGUI::Editbox*>(windowEventArgs.window)->getText().c_str();
 
-    Set_Image(pVideo->Get_Package_Surface(utf8_to_path(str_text)), true);       // Automatically converted to absolute path by Get_Surface()
+    Set_Image(pVideo->Get_Surface(utf8_to_path(str_text)), true);       // Automatically converted to absolute path by Get_Surface()
 
     return 1;
 }
