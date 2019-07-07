@@ -19,7 +19,6 @@
 #include "../overworld/overworld.hpp"
 #include "../core/filesystem/filesystem.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../overworld/world_editor.hpp"
 #include "../input/mouse.hpp"
 #include "../video/animation.hpp"
@@ -81,8 +80,8 @@ void cOverworld_Manager::Init(void)
     }
 
     // Load Worlds
-    Load_Dir(pPackage_Manager->Get_User_World_Path(), true);
-    Load_Dir(pPackage_Manager->Get_Game_World_Path());
+    Load_Dir(pResource_Manager->Get_User_World_Directory(), true);
+    Load_Dir(pResource_Manager->Get_Game_Overworld_Directory());
 }
 
 void cOverworld_Manager::Load_Dir(const fs::path& dir, bool user_dir /* = false */)
@@ -157,8 +156,7 @@ void cOverworld_Manager::Reset(void)
     Set_Active("World 1");
 
     // Set Player to first Waypoint
-    if (pActive_Overworld) // World 1 may not exist in the active package
-        pOverworld_Player->Set_Waypoint(pActive_Overworld->m_player_start_waypoint);
+    pOverworld_Player->Set_Waypoint(pActive_Overworld->m_player_start_waypoint);
 
     // Reset all Waypoints
     for (vector<cOverworld*>::iterator itr = objects.begin(); itr != objects.end(); ++itr) {
