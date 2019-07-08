@@ -61,9 +61,16 @@ bool cImageSet::Parser::HandleMessage(const std::string* parts, unsigned int cou
         info.m_time_min = m_time_min;
         info.m_time_max = m_time_max;
 
-        // Skip this frame if the references file does not exist
+        // Skip this frame if the referenced file does not exist
+        // and a .settings file exists neither.
         if (!fs::exists(info.m_filename)) {
-            return 1;
+            fs::path settings_filename(info.m_filename);
+            settings_filename.replace_extension(".settings");
+
+            if (!fs::exists(settings_filename)) {
+                std::cout << "Warning: Image set " << path_to_utf8(data_file) << " references not existing file " << path_to_utf8(info.m_filename) << " and no .settings replacement exists. Skipping this frame." << std::endl;
+                return 1;
+            }
         }
 
         // parse the rest
