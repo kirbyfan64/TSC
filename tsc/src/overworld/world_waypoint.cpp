@@ -26,7 +26,6 @@
 #include "../video/gl_surface.hpp"
 #include "../core/filesystem/filesystem.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/xml_attributes.hpp"
 #include "../core/global_basic.hpp"
 #include "../core/sprite_manager.hpp"
@@ -59,7 +58,7 @@ cWaypoint::cWaypoint(XmlAttributes& attributes, cSprite_Manager* sprite_manager)
     // image
     /*
     if (attributes.exists("image"))
-        Set_Image(pVideo->Get_Package_Surface(utf8_to_path(attributes["image"])), true);
+        Set_Image(pVideo->Get_Surface(utf8_to_path(attributes["image"])), true);
     */
 
     // type
@@ -143,7 +142,7 @@ void cWaypoint::Init(void)
     mp_wp_exit_name_edit = NULL;
     mp_wp_exit_uid_edit  = NULL;
 
-    Set_Image(pVideo->Get_Package_Surface("world/waypoint/default_1.png"));
+    Set_Image(pVideo->Get_Surface("world/waypoint/default_1.png"));
 }
 
 cWaypoint* cWaypoint::Copy(void) const
@@ -314,22 +313,22 @@ void cWaypoint::Draw(cSurface_Request* request /* = NULL  */)
 
                 switch(ex.direction) {
                 case DIR_RIGHT:
-                    arrow = pVideo->Get_Package_Surface("game/arrow/small/" + color + "/right.png");
+                    arrow = pVideo->Get_Surface("game/arrow/small/" + color + "/right.png");
                     x += m_rect.m_w;
                     y += (m_rect.m_h * 0.5f) - (arrow->m_w * 0.5f);
                     break;
                 case DIR_LEFT:
-                    arrow = pVideo->Get_Package_Surface("game/arrow/small/" + color + "/left.png");
+                    arrow = pVideo->Get_Surface("game/arrow/small/" + color + "/left.png");
                     x -= arrow->m_w;
                     y += (m_rect.m_h * 0.5f) - (arrow->m_w * 0.5f);
                     break;
                 case DIR_UP:
-                    arrow = pVideo->Get_Package_Surface("game/arrow/small/" + color + "/up.png");
+                    arrow = pVideo->Get_Surface("game/arrow/small/" + color + "/up.png");
                     y -= arrow->m_h;
                     x += (m_rect.m_w * 0.5f) - (arrow->m_h * 0.5f);
                     break;
                 case DIR_DOWN:
-                    arrow = pVideo->Get_Package_Surface("game/arrow/small/" + color + "/down.png");
+                    arrow = pVideo->Get_Surface("game/arrow/small/" + color + "/down.png");
                     y += m_rect.m_h;
                     x += (m_rect.m_w * 0.5f) - (arrow->m_h * 0.5f);
                     break;
@@ -389,16 +388,16 @@ void cWaypoint::Set_Direction_Forward(ObjectDirection direction)
     m_direction_forward = direction;
 
     if (direction == DIR_LEFT) {
-        m_arrow_forward = pVideo->Get_Package_Surface("game/arrow/small/white/left.png");
+        m_arrow_forward = pVideo->Get_Surface("game/arrow/small/white/left.png");
     }
     else if (direction == DIR_RIGHT) {
-        m_arrow_forward = pVideo->Get_Package_Surface("game/arrow/small/white/right.png");
+        m_arrow_forward = pVideo->Get_Surface("game/arrow/small/white/right.png");
     }
     else if (direction == DIR_UP) {
-        m_arrow_forward = pVideo->Get_Package_Surface("game/arrow/small/white/up.png");
+        m_arrow_forward = pVideo->Get_Surface("game/arrow/small/white/up.png");
     }
     else if (direction == DIR_DOWN) {
-        m_arrow_forward = pVideo->Get_Package_Surface("game/arrow/small/white/down.png");
+        m_arrow_forward = pVideo->Get_Surface("game/arrow/small/white/down.png");
     }
 }
 
@@ -407,16 +406,16 @@ void cWaypoint::Set_Direction_Backward(ObjectDirection direction)
     m_direction_backward = direction;
 
     if (direction == DIR_LEFT) {
-        m_arrow_backward = pVideo->Get_Package_Surface("game/arrow/small/blue/left.png");
+        m_arrow_backward = pVideo->Get_Surface("game/arrow/small/blue/left.png");
     }
     else if (direction == DIR_RIGHT) {
-        m_arrow_backward = pVideo->Get_Package_Surface("game/arrow/small/blue/right.png");
+        m_arrow_backward = pVideo->Get_Surface("game/arrow/small/blue/right.png");
     }
     else if (direction == DIR_UP) {
-        m_arrow_backward = pVideo->Get_Package_Surface("game/arrow/small/blue/up.png");
+        m_arrow_backward = pVideo->Get_Surface("game/arrow/small/blue/up.png");
     }
     else if (direction == DIR_DOWN) {
-        m_arrow_backward = pVideo->Get_Package_Surface("game/arrow/small/blue/down.png");
+        m_arrow_backward = pVideo->Get_Surface("game/arrow/small/blue/down.png");
     }
 }
 
@@ -465,10 +464,10 @@ boost::filesystem::path cWaypoint::Get_Destination_Path()
     case WAYPOINT_NORMAL:
         return pLevel_Manager->Get_Path(m_destination);
     case WAYPOINT_WORLD_LINK:
-        // I don't think this function ever gets called, but use packages to determine destination anyway
-        result = pPackage_Manager->Get_User_World_Path() / m_destination;
+        // I don't think this function ever gets called
+        result = pResource_Manager->Get_User_World(m_destination);
         if (!boost::filesystem::exists(result))
-            result = pPackage_Manager->Get_Game_World_Path() / m_destination;
+            result = pResource_Manager->Get_Game_Overworld(m_destination);
         return result;
     default:
         // FIXME: Throw an exception

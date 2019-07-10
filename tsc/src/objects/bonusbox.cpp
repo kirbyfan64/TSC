@@ -154,7 +154,7 @@ void cBonusBox::Set_Bonus_Type(SpriteType bonus_type)
     else if (box_type == TYPE_POWERUP) {
         // force always best item
         m_force_best_item = 1;
-        m_item_image = pVideo->Get_Package_Surface("game/editor/unknown.png");
+        m_item_image = pVideo->Get_Surface("game/editor/unknown.png");
     }
     else if (box_type == TYPE_MUSHROOM_DEFAULT) {
         m_item_image = cImageSet::Fetch_Single_Image("game/items/berry_big.imgset");

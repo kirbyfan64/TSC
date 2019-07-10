@@ -464,12 +464,12 @@ void cBaseBox::Generate_Activation_Particles(void)
     if (m_particle_counter_active > 0.0f) {
         cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
         if (box_type == TYPE_MUSHROOM_POISON) {
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/green_ghost_light.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/green_ghost_light.png"));
             anim->Set_Speed(1.0f, 0.1f);
             anim->Set_Time_to_Live(1.4f);
         }
         else {
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/light.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/light.png"));
             anim->Set_Speed(7.0f, 0.5f);
             anim->Set_Time_to_Live(0.2f);
         }

@@ -455,7 +455,7 @@ void cFurball::Update(void)
             anim->Set_Emitter_Rect(m_col_rect.m_x, m_col_rect.m_y + m_col_rect.m_h - 2.0f, m_col_rect.m_w);
             anim->Set_Quota(static_cast<int>(m_running_particle_counter));
             anim->Set_Pos_Z(m_pos_z - m_pos_z_delta);
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/smoke_black.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/smoke_black.png"));
             anim->Set_Time_to_Live(0.6f);
             anim->Set_Scale(0.2f);
 
@@ -510,7 +510,7 @@ void cFurball::Generate_Smoke(unsigned int amount /* = 1 */, float particle_scal
     // animation
     cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
     anim->Set_Pos(m_pos_x + (m_col_rect.m_w * 0.5f), m_pos_y + (m_col_rect.m_h * 0.5f), 1);
-    anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/smoke_grey_big.png"));
+    anim->Set_Image(pVideo->Get_Surface("animation/particles/smoke_grey_big.png"));
     anim->Set_Quota(amount);
     anim->Set_Pos_Z(m_pos_z + m_pos_z_delta);
     anim->Set_Const_Rotation_Z(-6.0f, 12.0f);

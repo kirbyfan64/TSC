@@ -179,7 +179,7 @@ void cjStar::Generate_Particles(float x /* = 0.0f */, float y /* = 0.0f */, bool
 
     // create emitter
     cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
-    anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/light.png"));
+    anim->Set_Image(pVideo->Get_Surface("animation/particles/light.png"));
     anim->Set_Pos_Z(m_pos_z + 0.0001f);
 
     if (random) {

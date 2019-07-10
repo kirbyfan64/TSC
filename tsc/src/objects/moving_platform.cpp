@@ -29,7 +29,6 @@
 #include "../objects/path.hpp"
 #include "../input/mouse.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/filesystem/relative.hpp"
 #include "../core/xml_attributes.hpp"
 #include "../core/sprite_manager.hpp"

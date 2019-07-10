@@ -22,7 +22,6 @@
 #include "../core/i18n.hpp"
 #include "../core/filesystem/filesystem.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/global_basic.hpp"
 
 using namespace std;
@@ -213,7 +212,7 @@ cSound* cAudio::Get_Sound_File(fs::path filename) const
     if (!File_Exists(filename)) {
         // add sound directory if required
         if (!filename.is_absolute())
-            filename = pPackage_Manager->Get_Sound_Reading_Path(path_to_utf8(filename));
+            filename = pResource_Manager->Get_Game_Sounds_Directory() / filename;
     }
 
     cSound* sound = pSound_Manager->Get_Pointer(filename);
@@ -250,7 +249,7 @@ bool cAudio::Play_Sound(fs::path filename, int res_id /* = -1 */, int volume /* 
     if (!File_Exists(filename)) {
         // add sound directory
         if (!filename.is_absolute())
-            filename = pPackage_Manager->Get_Sound_Reading_Path(path_to_utf8(filename));
+            filename = pResource_Manager->Get_Game_Sounds_Directory() / filename;
 
         // not found
         if (!File_Exists(filename)) {
@@ -305,7 +304,7 @@ bool cAudio::Play_Sound(fs::path filename, int res_id /* = -1 */, int volume /* 
 bool cAudio::Play_Music(fs::path filename, bool loops /* = false */, bool force /* = 1 */, unsigned int fadein_ms /* = 0 */)
 {
     if (!filename.is_absolute())
-        filename = pPackage_Manager->Get_Music_Reading_Path(path_to_utf8(filename));
+        filename = pResource_Manager->Get_Game_Music_Directory() / filename;
 
     // no valid file
     if (!File_Exists(filename)) {
@@ -363,7 +362,7 @@ cAudio_Sound* cAudio::Get_Playing_Sound(fs::path filename)
 
     // add sound directory
     if (!filename.is_absolute())
-        filename = pPackage_Manager->Get_Sound_Reading_Path(path_to_utf8(filename));
+        filename = pResource_Manager->Get_Game_Sounds_Directory() / filename;
 
     // get all sounds
     for (AudioSoundList::const_iterator itr = m_active_sounds.begin(); itr != m_active_sounds.end(); ++itr) {

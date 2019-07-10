@@ -115,6 +115,11 @@ fs::path cResource_Manager::Get_User_Level(std::string filename)
     return Get_User_Level_Directory() / utf8_to_path(filename);
 }
 
+fs::path cResource_Manager::Get_User_World(std::string filename)
+{
+    return Get_User_World_Directory() / utf8_to_path(filename);
+}
+
 fs::path cResource_Manager::Get_User_Pixmap(std::string pixmap)
 {
     return Get_User_Pixmaps_Directory() / utf8_to_path("pixmaps") / utf8_to_path(pixmap);

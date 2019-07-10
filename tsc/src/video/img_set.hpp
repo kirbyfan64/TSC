@@ -48,13 +48,11 @@ namespace TSC {
             typedef std::vector<FrameInfo> List_Type;
 
             Parser(uint32_t time);
-            bool Parse(const boost::filesystem::path& filename);
             bool HandleMessage(const std::string* parts, unsigned int count, unsigned int line);
 
             List_Type m_images;
             uint32_t m_time_min;
             uint32_t m_time_max;
-            boost::filesystem::path relative_data_file;
         };
 
         /* *** *** *** *** *** *** *** Surface *** *** *** *** *** *** *** *** *** *** */

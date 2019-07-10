@@ -21,7 +21,6 @@
 #include "../user/savegame/savegame.hpp"
 #include "../core/math/utilities.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../input/mouse.hpp"
 #include "../video/gl_surface.hpp"
 #include "../core/i18n.hpp"
@@ -155,7 +154,7 @@ void cFlyon::Set_Image_Dir(fs::path dir)
     }
 
     // if not image directory
-    if (!File_Exists(pPackage_Manager->Get_Pixmap_Reading_Path(path_to_utf8(dir) + "/still.imgset"))) {
+    if (!File_Exists(pResource_Manager->Get_Game_Pixmap(path_to_utf8(dir / utf8_to_path("/still.imgset"))))) {
         cerr    << "Warning: Flyon image files not found; does the flyon directory "
                 << path_to_utf8(dir) << " exist?" << endl;
         return;

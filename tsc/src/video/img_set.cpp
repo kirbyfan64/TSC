@@ -20,7 +20,6 @@
 #include "../core/i18n.hpp"
 #include "../core/file_parser.hpp"
 #include "../core/filesystem/resource_manager.hpp"
-#include "../core/filesystem/package_manager.hpp"
 #include "../core/math/utilities.hpp"
 #include "../core/global_basic.hpp"
 
@@ -43,16 +42,6 @@ cImageSet::Parser::Parser(uint32_t time)
 {
 }
 
-bool cImageSet::Parser::Parse(const fs::path& filename)
-{
-    // We want to store a relative data path, so that the image filenames are treated
-    // as relative.  This way, an image set can reference images anywhere along the
-    // package search path and not be fixed relative to the location of the image set file.
-    relative_data_file = pPackage_Manager->Get_Relative_Pixmap_Path(filename);
-
-    return cFile_parser::Parse(filename);
-}
-
 bool cImageSet::Parser::HandleMessage(const std::string* parts, unsigned int count, unsigned int line)
 {
     if(count == 2 && parts[0] == "time") {
@@ -68,34 +57,21 @@ bool cImageSet::Parser::HandleMessage(const std::string* parts, unsigned int cou
         FrameInfo info;
 
         // initial values, combine filename with imageset path
-        fs::path tmp = relative_data_file.parent_path() / utf8_to_path(parts[0]);
+        info.m_filename = data_file.parent_path() / utf8_to_path(parts[0]);
         info.m_time_min = m_time_min;
         info.m_time_max = m_time_max;
 
-        // Normalize filename to deal with the fact that an image set located at
-        // /package1/pixmaps/mine/1.imgset containing an image ../blocks/1.png
-        // becomes mine/../blocks/1.png, and the directory mine/ may not exist
-        // in some packages or the base data.  This also means no using symbolic
-        // links in data directories.
-        for(boost::filesystem::path::iterator it = tmp.begin(); it != tmp.end(); ++it)
-        {
-            if(*it == "..")
-            {
-                if(!info.m_filename.empty()) {
-                    info.m_filename = info.m_filename.parent_path();
-                } else {
-                    cerr << "Warning: path '" << utf8_to_path(parts[0])
-                         << "' referenced from '" << data_file
-                         << "' false outside of pixmap search paths" << endl;
-                    return 1; // don't abort parsing, just continue with next line skipping this frame
-                }
-            }
-            else
-            {
-                info.m_filename /= *it;
+        // Skip this frame if the referenced file does not exist
+        // and a .settings file exists neither.
+        if (!fs::exists(info.m_filename)) {
+            fs::path settings_filename(info.m_filename);
+            settings_filename.replace_extension(".settings");
+
+            if (!fs::exists(settings_filename)) {
+                std::cout << "Warning: Image set " << path_to_utf8(data_file) << " references not existing file " << path_to_utf8(info.m_filename) << " and no .settings replacement exists. Skipping this frame." << std::endl;
+                return 1;
             }
         }
-
 
         // parse the rest
         for(unsigned int idx = 1; idx < count; idx++)
@@ -219,15 +195,16 @@ bool cImageSet::Add_Image_Set(const std::string& name, boost::filesystem::path p
     if(path.extension() == utf8_to_path(".png")) {
         // Adding a single image
         filename = path;
-        cGL_Surface* surface = pVideo->Get_Package_Surface(path);
+        cGL_Surface* surface = pVideo->Get_Surface(path);
         if(surface) {
             Add_Image(surface, time);
         }
     }
     else {
         // Parse the animation file
-        filename = pPackage_Manager->Get_Pixmap_Reading_Path(path_to_utf8(path));
-        if(filename == boost::filesystem::path()) {
+        filename = pResource_Manager->Get_Game_Pixmap(path_to_utf8(path));
+
+        if(!fs::exists(filename)) {
             cerr << "Warning: Unable to load image set: " << name << " " << Get_Identity() << endl;
             return false;
         }
@@ -245,7 +222,7 @@ bool cImageSet::Add_Image_Set(const std::string& name, boost::filesystem::path p
 
         // Add images
         for(Parser::List_Type::iterator itr = parser.m_images.begin(); itr != parser.m_images.end(); ++itr) {
-            cGL_Surface* surface = pVideo->Get_Package_Surface(itr->m_filename);
+            cGL_Surface* surface = pVideo->Get_Surface(itr->m_filename);
             if(surface) {
                 Add_Image(surface, itr->m_time_min);
 

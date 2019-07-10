@@ -149,10 +149,6 @@ namespace TSC {
         */
         void Load_Selected(void);
 
-        /* Load the Package
-         * and update other information if successfull
-        */
-        void Load_Package(std::string name);
         /* Load the Campaign
          * and exit if successful
         */
@@ -173,11 +169,6 @@ namespace TSC {
         bool TabControl_Selection_Changed(const CEGUI::EventArgs& event);
         // key down event
         bool TabControl_Keydown(const CEGUI::EventArgs& event);
-
-        // package selected event
-        bool Package_Select(const CEGUI::EventArgs& event);
-        // package selected for entering event
-        bool Package_Select_final_list(const CEGUI::EventArgs& event);
 
         // campaign selected event
         bool Campaign_Select(const CEGUI::EventArgs& event);

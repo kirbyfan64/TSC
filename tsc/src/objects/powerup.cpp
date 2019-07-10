@@ -306,7 +306,7 @@ void cMushroom::Update(void)
 
         if (m_counter > 1.0f) {
             cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
-            anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/light.png"));
+            anim->Set_Image(pVideo->Get_Surface("animation/particles/light.png"));
             anim->Set_Emitter_Rect(m_col_rect.m_x, m_col_rect.m_y, m_col_rect.m_w, m_col_rect.m_h);
             anim->Set_Quota(static_cast<int>(m_counter));
             anim->Set_Pos_Z(m_pos_z - m_pos_z_delta);
@@ -373,7 +373,7 @@ void cMushroom::Update(void)
                 anim->Set_Color(Color(static_cast<uint8_t>(120), 190, 0), Color(static_cast<uint8_t>(40), 60, 10, 0));
                 anim->Set_Blending(BLEND_ADD);
                 anim->Set_Speed(0.0f, 0.0f);
-                anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/slime_1.png"));
+                anim->Set_Image(pVideo->Get_Surface("animation/particles/slime_1.png"));
                 anim->Emit();
                 pActive_Animation_Manager->Add(anim);
 
@@ -501,7 +501,7 @@ void cFirePlant::Update(void)
 
     if (m_particle_counter > 1.0f) {
         cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
-        anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/light.png"));
+        anim->Set_Image(pVideo->Get_Surface("animation/particles/light.png"));
         anim->Set_Emitter_Rect(m_col_rect.m_x, m_col_rect.m_y + 10, m_col_rect.m_w, m_col_rect.m_h * 0.5f);
         anim->Set_Quota(static_cast<int>(m_particle_counter));
         anim->Set_Pos_Z(m_pos_z + m_pos_z_delta);
@@ -607,7 +607,7 @@ void cMoon::Update(void)
     // particles
     if (m_particle_counter >= 1.0f) {
         cParticle_Emitter* anim = new cParticle_Emitter(m_sprite_manager);
-        anim->Set_Image(pVideo->Get_Package_Surface("animation/particles/dirt.png"));
+        anim->Set_Image(pVideo->Get_Surface("animation/particles/dirt.png"));
         anim->Set_Emitter_Rect(m_pos_x, m_pos_y, m_rect.m_w, m_rect.m_h);
         anim->Set_Quota(static_cast<int>(m_particle_counter));
         anim->Set_Pos_Z(m_pos_z - 0.0001f);

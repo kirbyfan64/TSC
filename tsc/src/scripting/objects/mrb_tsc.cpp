@@ -16,7 +16,6 @@
 #include "../../core/game_core.hpp"
 #include "../../core/property_helper.hpp"
 #include "../../core/filesystem/resource_manager.hpp"
-#include "../../core/filesystem/package_manager.hpp"
 #include "../../core/framerate.hpp"
 #include "../../gui/game_console.hpp"
 

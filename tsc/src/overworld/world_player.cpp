@@ -80,22 +80,22 @@ void cOverworld_Player::Load_Images(void)
     Unload_Images();
 
     if (m_alex_state == ALEX_SMALL) {
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/down.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/down_1.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/down.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/down_2.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/up_1.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/up.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/up_1.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/up_2.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/left.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/left_1.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/left.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/left_2.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/right.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/right_1.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/right.png"));
-        Add_Image(pVideo->Get_Package_Surface("world/alex/small/right_2.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/down.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/down_1.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/down.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/down_2.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/up_1.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/up.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/up_1.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/up_2.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/left.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/left_1.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/left.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/left_2.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/right.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/right_1.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/right.png"));
+        Add_Image(pVideo->Get_Surface("world/alex/small/right_2.png"));
 
         Set_Animation(1);
     }
