@@ -119,7 +119,7 @@ Install rubygems for documentation generation etc (optional; you need
 this only if you want the docs):
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[sudo] gem install kramdown coderay
+sudo gem install kramdown coderay
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Example for Debian 10 ####
