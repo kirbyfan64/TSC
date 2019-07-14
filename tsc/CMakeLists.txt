@@ -47,6 +47,7 @@ execute_process(COMMAND git rev-parse --short HEAD
 
 option(ENABLE_MRUBY "Enable the MRuby scripting engine" ON)
 option(ENABLE_NLS "Enable translations and localisations" ON)
+option(BUILD_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(ENABLE_EDITOR "Enable the in-game editor" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
 if(WIN32 AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -204,6 +205,10 @@ if (WIN32)
   list(APPEND tsc_sources icon.rc)
 endif()
 
+file(GLOB_RECURSE scrdg_sources
+  "scrdg/*.cpp"
+  "scrdg/*.hpp")
+
 ########################################
 # Gettext internationalization
 
@@ -212,7 +217,7 @@ file(GLOB po_files "data/translations/*.po")
 gettext_process_po_files(languages ALL PO_FILES ${po_files})
 
 ########################################
-# Main target
+# Main targets
 
 add_executable(tsc ${tsc_sources} ${TSC_BINARY_DIR}/credits.cpp)
 
@@ -241,6 +246,11 @@ endif()
 
 if (ENABLE_MRUBY AND NOT USE_SYSTEM_MRUBY)
   add_dependencies(tsc mruby)
+endif()
+
+if (BUILD_SCRIPT_DOCS)
+  add_executable(scrdg ${scrdg_sources})
+  target_link_libraries(scrdg ${Boost_COMPONENTS})
 endif()
 
 ########################################
