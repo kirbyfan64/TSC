@@ -44,6 +44,9 @@ namespace TSC {
     */
     void Draw_Game(void);
 
+    /* This constant holds the entire string shown at the
+     * credits screen. It is implemented in a file generated
+     * during the build process (from credits.cpp.in). */
     extern const char* g_credits;
 
     /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
