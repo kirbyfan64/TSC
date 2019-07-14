@@ -175,7 +175,7 @@ git checkout -- install-build-dependencies.sh
 7) Build and run TSC:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./built-tsc.sh
+./build-tsc.sh
 ./run-tsc.sh
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
