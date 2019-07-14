@@ -16,6 +16,7 @@
 #include "../../../level/level.hpp"
 #include "../../../core/sprite_manager.hpp"
 #include "../../../core/property_helper.hpp"
+#include "../../events/event.hpp"
 #include "mrb_enemy.hpp"
 #include "mrb_furball.hpp"
 
@@ -42,11 +43,21 @@
  *
  * The `boss?` method can be used to check whether any given furball is
  * a furball boss.
+ *
+ * Events
+ * ------
+ *
+ * Downgrade
+ * : This event is triggered each time the furball gets hit.
+ *   It receives two arguments: the number of hits the furball
+ *   already took and the maximum number it takes before dying.
+ *   This event is only issued for the furball boss.
  */
 
 using namespace TSC;
 using namespace TSC::Scripting;
 
+MRUBY_IMPLEMENT_EVENT(downgrade);
 
 /**
  * Method: Furball::new
@@ -251,4 +262,6 @@ void TSC::Scripting::Init_Furball(mrb_state* p_state)
     mrb_define_method(p_state, p_rcFurball, "max_downgrade_count", Get_Max_Downgrade_Count, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcFurball, "level_ends_if_killed=", Set_Level_Ends_If_Killed, MRB_ARGS_REQ(1));
     mrb_define_method(p_state, p_rcFurball, "level_ends_if_killed?", Does_Level_End_If_Killed, MRB_ARGS_NONE());
+
+    mrb_define_method(p_state, p_rcFurball, "on_downgrade", MRUBY_EVENT_HANDLER(downgrade), MRB_ARGS_NONE());
 }

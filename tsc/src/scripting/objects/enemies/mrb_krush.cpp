@@ -16,6 +16,7 @@
 #include "../../../level/level.hpp"
 #include "../../../core/sprite_manager.hpp"
 #include "../../../core/property_helper.hpp"
+#include "../../events/event.hpp"
 #include "mrb_enemy.hpp"
 #include "mrb_krush.hpp"
 
@@ -27,11 +28,21 @@
  *
  * _Krush_! This big dinosour-like enemy may just do with you what its
  * name says. It even requires _two_ hits to be defeated!
+ *
+ * Events
+ * ------
+ *
+ * Downgrade
+ * : This event gets triggered each time the Krush takes a hit.
+ *   It receives two arguments: how many hits it already received,
+ *   and how many it may receive at maximum before it dies (the
+ *   latter is always 2).
  */
 
 using namespace TSC;
 using namespace TSC::Scripting;
 
+MRUBY_IMPLEMENT_EVENT(downgrade);
 
 /**
  * Method: Krush::new
@@ -61,4 +72,5 @@ void TSC::Scripting::Init_Krush(mrb_state* p_state)
     MRB_SET_INSTANCE_TT(p_rcKrush, MRB_TT_DATA);
 
     mrb_define_method(p_state, p_rcKrush, "initialize", Initialize, MRB_ARGS_NONE());
+    mrb_define_method(p_state, p_rcKrush, "on_downgrade", MRUBY_EVENT_HANDLER(downgrade), MRB_ARGS_NONE());
 }

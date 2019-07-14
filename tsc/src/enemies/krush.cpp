@@ -29,6 +29,7 @@
 #include "../level/level_settings.hpp"
 #include "../core/editor/editor.hpp"
 #include "../level/level_editor.hpp"
+#include "../scripting/events/downgrade_event.hpp"
 
 namespace TSC {
 
@@ -142,6 +143,9 @@ void cKrush::DownGrade(bool force /* = 0 */)
     if (!force) {
         // big to small walking
         if (m_state == STA_WALK) {
+            Scripting::cDowngrade_Event evt(1, 2);
+            evt.Fire(pActive_Level->m_mruby, this);
+
             Set_Moving_State(STA_RUN);
 
             if(m_big_end >= 0 && m_small_start >= 0)
@@ -156,6 +160,9 @@ void cKrush::DownGrade(bool force /* = 0 */)
             pActive_Animation_Manager->Add(anim);
         }
         else if (m_state == STA_RUN) {
+            Scripting::cDowngrade_Event evt(2, 2);
+            evt.Fire(pActive_Level->m_mruby, this);
+
             Set_Scale_Directions(1, 0, 1, 1);
             Set_Dead(1);
 

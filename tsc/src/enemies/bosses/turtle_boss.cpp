@@ -31,6 +31,7 @@
 #include "../../level/level_settings.hpp"
 #include "../../core/editor/editor.hpp"
 #include "../../level/level_editor.hpp"
+#include "../../scripting/events/downgrade_event.hpp"
 
 using namespace std;
 
@@ -242,6 +243,9 @@ void cTurtleBoss::DownGrade(bool force /* = 0 */)
 
                 m_hits = 0;
                 m_downgrade_count++;
+
+                Scripting::cDowngrade_Event evt(m_downgrade_count, m_max_downgrade_count);
+                evt.Fire(pActive_Level->m_mruby, this);
 
                 // die
                 if (m_downgrade_count == m_max_downgrade_count) {

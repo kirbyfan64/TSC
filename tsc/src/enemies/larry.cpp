@@ -28,6 +28,7 @@
 #include "../level/level_settings.hpp"
 #include "../core/editor/editor.hpp"
 #include "../level/level_editor.hpp"
+#include "../scripting/events/downgrade_event.hpp"
 
 using namespace TSC;
 
@@ -100,6 +101,11 @@ xmlpp::Element* cLarry::Save_To_XML_Node(xmlpp::Element* p_element)
 void cLarry::DownGrade(bool force /* = false */)
 {
     if (m_state == STA_RUN || force) {
+        if (!force) { // no downgrade event on falling death
+            Scripting::cDowngrade_Event evt(2, 2);
+            evt.Fire(pActive_Level->m_mruby, this);
+        }
+
         Set_Dead(true);
         m_massive_type = MASS_PASSIVE;
         m_velx = 0.0f;
@@ -108,8 +114,11 @@ void cLarry::DownGrade(bool force /* = false */)
         pAudio->Play_Sound(m_kill_sound);
         Explosion_Animation();
     }
-    else if (m_state == STA_WALK)
+    else if (m_state == STA_WALK) {
+        Scripting::cDowngrade_Event evt(1, 2);
+        evt.Fire(pActive_Level->m_mruby, this);
         Fuse();
+    }
 }
 
 void cLarry::Update()

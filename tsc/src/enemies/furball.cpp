@@ -27,7 +27,7 @@
 #include "../level/level_settings.hpp"
 #include "../core/editor/editor.hpp"
 #include "../level/level_editor.hpp"
-//#include "../script/events/downgrade_event.hpp"
+#include "../scripting/events/downgrade_event.hpp"
 #include "../core/global_basic.hpp"
 
 using namespace std;
@@ -243,8 +243,8 @@ void cFurball::DownGrade(bool force /* = 0 */)
         m_downgrade_count++;
 
         // Issue the Downgrade event
-        //Script::cDowngrade_Event evt(m_downgrade_count, m_max_downgrade_count);
-        //evt.Fire(pActive_Level->m_lua, this);
+        Scripting::cDowngrade_Event evt(m_downgrade_count, m_max_downgrade_count);
+        evt.Fire(pActive_Level->m_mruby, this);
 
         // die
         if (m_downgrade_count == m_max_downgrade_count) {

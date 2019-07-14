@@ -16,6 +16,7 @@
 #include "../../../level/level.hpp"
 #include "../../../core/sprite_manager.hpp"
 #include "../../../core/property_helper.hpp"
+#include "../../events/event.hpp"
 #include "mrb_enemy.hpp"
 #include "mrb_turtle_boss.hpp"
 
@@ -28,11 +29,21 @@
  * The _Turtle Boss_ is a giant turtle that needs multiple hits
  * to be defeated. It can throw fireballs while hiding in its
  * shell.
+ *
+ * Events
+ * ------
+ *
+ * Downgrade
+ * : This event is triggered each time the Turtle Boss takes damage.
+ *   Not it doesn't take damage for each hit. The event handler
+ *   gets passed two arguments: how often it took damage, and how
+ *   often it may take damage before it dies.
  */
 
 using namespace TSC;
 using namespace TSC::Scripting;
 
+MRUBY_IMPLEMENT_EVENT(downgrade);
 
 /**
  * Method: TurtleBoss::new
@@ -363,4 +374,6 @@ void TSC::Scripting::Init_TurtleBoss(mrb_state* p_state)
     mrb_define_method(p_state, p_rcTurtleBoss, "level_ends_if_killed=", Set_Level_Ends_If_Killed, MRB_ARGS_REQ(1));
     mrb_define_method(p_state, p_rcTurtleBoss, "level_ends_if_killed?", Does_Level_End_If_Killed, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcTurtleBoss, "downgrade_count", Get_Downgrade_Count, MRB_ARGS_NONE());
+
+    mrb_define_method(p_state, p_rcTurtleBoss, "on_downgrade", MRUBY_EVENT_HANDLER(downgrade), MRB_ARGS_NONE());
 }

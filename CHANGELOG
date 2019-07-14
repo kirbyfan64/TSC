@@ -42,6 +42,7 @@
 		Chris Jacobsen, implementation by Marvin Gülker)
 	* Feature: Make copy & paste work together with the system clipboard
 	* Feature: Add alternate overworld pathes (#19 by Marvin Gülker)
+	* Feature: Add Downgrade event to several enemies (#133 by sauer2)
 	* Fix: Tiles in Editor are not Mirrored Properly (#149 by Justin Rissler)
 	* Fix: Invibility save problem (#180 by Chris Jacobsen)
 	* Fix: Crash on wn_05_top (#389, patch by Georger Araújo)
@@ -62,6 +63,7 @@
 	* Misc: New world graphics category "Mountain"
 	* Misc: New compilation option ENABLE_EDITOR.
 	* Misc: New compilation option USE_SYSTEM_TINYCLIPBOARD.
+	* Misc: Removed package support (#656 by Marvin Gülker)
 
 2015-08-17  Marvin Gülker  <quintus@quintilianus.eu>
 

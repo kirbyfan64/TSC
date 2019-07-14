@@ -31,6 +31,7 @@
 #include "../core/editor/editor.hpp"
 #include "../level/level_editor.hpp"
 #include "../core/global_basic.hpp"
+#include "../scripting/events/downgrade_event.hpp"
 
 using namespace std;
 
@@ -217,6 +218,9 @@ namespace TSC {
     void cArmy::DownGrade(bool force /* = 0 */)
     {
         if (!force) {
+            Scripting::cDowngrade_Event evt(1, 2);
+            evt.Fire(pActive_Level->m_mruby, this);
+
             // normal walking
             if (m_army_state == ARMY_WALK) {
                 Set_Army_Moving_State(ARMY_SHELL_STAND);

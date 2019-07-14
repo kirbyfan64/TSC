@@ -16,6 +16,7 @@
 #include "../../../level/level.hpp"
 #include "../../../core/sprite_manager.hpp"
 #include "../../../core/property_helper.hpp"
+#include "../../events/event.hpp"
 #include "mrb_enemy.hpp"
 #include "mrb_armadillo.hpp"
 
@@ -28,11 +29,21 @@
  * Hit once, the _armadillo_ hides in its shell until it thinks danger
  * is over. If you hit the shell, it will start to roll and kill other
  * enemies in its way — or you if you don’t take care.
+ *
+ * Events
+ * ------
+ *
+ * Downgrade
+ * : This event gets triggered when the armadillo gets stumped upon.
+ *   The event handlers gets passed to arguments, but you should
+ *   ignore them as they are of no useful value (because an armadillo
+ *   does not die from stumping upon it).
  */
 
 using namespace TSC;
 using namespace TSC::Scripting;
 
+MRUBY_IMPLEMENT_EVENT(downgrade);
 
 /**
  * Method: Armadillo::new
@@ -192,4 +203,6 @@ void TSC::Scripting::Init_Armadillo(mrb_state* p_state)
     mrb_define_method(p_state, p_rcArmadillo, "shell_moving?", Is_Shell_Moving, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcArmadillo, "shelled?", Is_Shelled, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcArmadillo, "stand_up", Stand_Up, MRB_ARGS_NONE());
+
+    mrb_define_method(p_state, p_rcArmadillo, "on_downgrade", MRUBY_EVENT_HANDLER(downgrade), MRB_ARGS_NONE());
 }

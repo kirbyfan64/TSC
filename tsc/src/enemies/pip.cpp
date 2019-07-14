@@ -141,6 +141,11 @@ void cPip::DownGrade(bool force /* = false */)
         Set_Rotation_Z(180.0f);
     }
     else {
+        /* Note: Issueing a Downgrade event for Pip is difficult, because
+         * Pip gets split into two after the first hit. What shall happen
+         * to event handlers registered to Pip before it split? Invoking
+         * them for both small Pips on the second hit seems not right. */
+
         if (m_state == STA_WALK) { // Split big up into two small ones
             Set_Moving_State(STA_RUN);
 

@@ -15,6 +15,7 @@
 #include "../../../enemies/larry.hpp"
 #include "../../../core/sprite_manager.hpp"
 #include "../../../level/level.hpp"
+#include "../../events/event.hpp"
 #include "mrb_enemy.hpp"
 
 /**
@@ -27,11 +28,19 @@
  * On exploding, he destroys all enemies (and injures Alex) nearby. Really
  * dangerous is a situation with multiple larries, which can result
  * in a giant chain explosion.
+ *
+ * Downgrade
+ * : This event gets triggered each time the Larry takes a hit.
+ *   It receives two arguments: how many hits it already received,
+ *   and how many it may receive at maximum before it dies (the
+ *   latter is always 2). If an already fused larry dies from
+ *   reaching the end of fuse, no Downgrade event is issued.
  */
 
 using namespace TSC;
 using namespace TSC::Scripting;
 
+MRUBY_IMPLEMENT_EVENT(downgrade);
 
 /**
  * Method: Larry::new
@@ -60,4 +69,5 @@ void TSC::Scripting::Init_Larry(mrb_state* p_state)
     MRB_SET_INSTANCE_TT(p_rcLarry, MRB_TT_DATA);
 
     mrb_define_method(p_state, p_rcLarry, "initialize", Initialize, MRB_ARGS_NONE());
+    mrb_define_method(p_state, p_rcLarry, "on_downgrade", MRUBY_EVENT_HANDLER(downgrade), MRB_ARGS_NONE());
 }
