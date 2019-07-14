@@ -55,6 +55,11 @@ private:
     void parse_doctype_module(const std::string& modulename);
     void parse_doctype_method(const std::string& methodname);
 
+    boost::filesystem::path m_source_dir;
+    bool m_docblock_open;
+    int m_lino;
+    std::string m_doctext;
+
     std::vector<ClassDoc> m_classes;
     std::vector<ModuleDoc> m_modules;
     std::vector<MethodDoc> m_methods;
@@ -75,3 +80,5 @@ private:
     void generate_module(const ModuleDoc& mod);
     void generate_method(const MethodDoc& method);
 };
+
+std::string strip(std::string str);
