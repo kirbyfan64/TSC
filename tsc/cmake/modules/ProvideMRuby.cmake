@@ -6,9 +6,9 @@ if (USE_SYSTEM_MRUBY)
 else()
   message("-- Scripting engine enabled: building mruby statically")
 
-  # mruby requires Bison and ruby to compile. Ruby is checked
-  # for on the toplevel anyway.
+  # mruby requires Bison and ruby to compile.
   find_package(BISON REQUIRED)
+  find_package(Ruby REQUIRED)
 
   if(CMAKE_CROSSCOMPILING)
     # Appearently no libmruby_core.a library when crosscompiling?

@@ -86,7 +86,6 @@ endif()
 
 # Programs used in the build process
 find_package(PkgConfig REQUIRED)
-find_package(Ruby REQUIRED)
 find_package(Gettext)
 
 # External libraries we depend on directly and programs we use in the
