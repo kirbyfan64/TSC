@@ -119,7 +119,7 @@ Install rubygems for documentation generation etc (optional; you need
 this only if you want the docs):
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sudo gem install kramdown coderay
+[sudo] gem install kramdown coderay
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Example for Debian 10 ####
@@ -327,7 +327,15 @@ TSC.
 $ /opt/tsc/bin/tsc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+If you want the documentation, execute this command:
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$ rake docs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This generates TSC's entire C++ and MRuby scripting API documentation
+into the directory html tsc/htmldocs. It requires the additional
+dependencies mentioned above to successfully complete.
 
 
 
@@ -601,7 +609,7 @@ For 32-bit:
 
 Generating documentation also requires a few rubygems:
 
-    $ gem install adsf bundler coderay kramdown nanoc rdoc
+    $ gem install adsf bundler coderay kramdown rdoc
 
 ### 3.1 CMake GUI Qt requirement workaround ###
 
