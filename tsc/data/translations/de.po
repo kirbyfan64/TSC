@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secretchronicles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-18 23:23+0300\n"
+"POT-Creation-Date: 2019-07-14 13:47+0300\n"
 "PO-Revision-Date: 2017-01-15 17:01+0100\n"
 "Last-Translator: Marvin Gülker <m-guelker@phoenixmail.de>\n"
 "Language-Team: TSC German translation team\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../../src/audio/random_sound.cpp:452 ../../src/video/animation.cpp:1403
+#: ../../src/audio/random_sound.cpp:452 ../../src/video/animation.cpp:1402
 msgid "Filename"
 msgstr "Dateiname"
 
@@ -203,7 +203,7 @@ msgstr ""
 " Pfeiltasten zum Bewegen der Kamera. Umschalt für schnellere Bewegung.\n"
 " \n"
 
-#: ../../src/core/editor/editor.cpp:1483
+#: ../../src/core/editor/editor.cpp:1479
 #, c-format
 msgid "Change selected sprite's image"
 msgid_plural "Change selected %d sprites' images"
@@ -356,8 +356,8 @@ msgstr "Himmel"
 msgid "plastic"
 msgstr "Plastik"
 
-#: ../../src/core/property_helper.cpp:852 ../../src/gui/menu_data.cpp:1523
-#: ../../src/gui/menu_data.cpp:1542 ../../src/gui/menu_data.cpp:2482
+#: ../../src/core/property_helper.cpp:852 ../../src/gui/menu_data.cpp:1511
+#: ../../src/gui/menu_data.cpp:1530 ../../src/gui/menu_data.cpp:2470
 msgid "default"
 msgstr "standard"
 
@@ -397,24 +397,24 @@ msgstr "grau"
 msgid "violet"
 msgstr "violett"
 
-#: ../../src/enemies/army.cpp:924 ../../src/enemies/beetle.cpp:271
-#: ../../src/enemies/bosses/turtle_boss.cpp:1003 ../../src/enemies/eato.cpp:286
-#: ../../src/enemies/flyon.cpp:569 ../../src/enemies/furball.cpp:747
-#: ../../src/enemies/gee.cpp:573 ../../src/enemies/krush.cpp:379
-#: ../../src/enemies/larry.cpp:410 ../../src/enemies/pip.cpp:365
+#: ../../src/enemies/army.cpp:928 ../../src/enemies/beetle.cpp:271
+#: ../../src/enemies/bosses/turtle_boss.cpp:1007 ../../src/enemies/eato.cpp:285
+#: ../../src/enemies/flyon.cpp:568 ../../src/enemies/furball.cpp:747
+#: ../../src/enemies/gee.cpp:573 ../../src/enemies/krush.cpp:386
+#: ../../src/enemies/larry.cpp:419 ../../src/enemies/pip.cpp:370
 #: ../../src/enemies/rokko.cpp:582 ../../src/enemies/spikeball.cpp:516
-#: ../../src/enemies/thromp.cpp:688 ../../src/level/level_player.cpp:3978
+#: ../../src/enemies/thromp.cpp:687 ../../src/level/level_player.cpp:3977
 #: ../../src/objects/level_entry.cpp:370 ../../src/objects/level_exit.cpp:486
-#: ../../src/objects/moving_platform.cpp:960 ../../src/video/animation.cpp:1577
+#: ../../src/objects/moving_platform.cpp:959 ../../src/video/animation.cpp:1576
 msgid "Direction"
 msgstr "Richtung"
 
-#: ../../src/enemies/army.cpp:924 ../../src/enemies/beetle.cpp:271
-#: ../../src/enemies/bosses/turtle_boss.cpp:1003
+#: ../../src/enemies/army.cpp:928 ../../src/enemies/beetle.cpp:271
+#: ../../src/enemies/bosses/turtle_boss.cpp:1007
 #: ../../src/enemies/furball.cpp:747 ../../src/enemies/gee.cpp:573
-#: ../../src/enemies/krush.cpp:379 ../../src/enemies/larry.cpp:410
+#: ../../src/enemies/krush.cpp:386 ../../src/enemies/larry.cpp:419
 #: ../../src/enemies/spikeball.cpp:516
-#: ../../src/objects/moving_platform.cpp:960
+#: ../../src/objects/moving_platform.cpp:959
 msgid "Starting direction."
 msgstr "Anfangs Richtung."
 
@@ -450,100 +450,100 @@ msgstr "Anzahl"
 msgid "Number of beetles spit out at a time"
 msgstr "Anzahl an Käfern, die gleichzeitig ausgestoßen werden"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1007
+#: ../../src/enemies/bosses/turtle_boss.cpp:1011
 msgid "Hits"
 msgstr "Treffer"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1007
+#: ../../src/enemies/bosses/turtle_boss.cpp:1011
 msgid "Hits until a downgrade"
 msgstr "Treffer vor einem herunterstufen"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1015
+#: ../../src/enemies/bosses/turtle_boss.cpp:1019
 #: ../../src/enemies/furball.cpp:755
 msgid "Downgrades"
 msgstr "Herunterstufungen"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1015
+#: ../../src/enemies/bosses/turtle_boss.cpp:1019
 #: ../../src/enemies/furball.cpp:755
 msgid "Downgrades until death"
 msgstr "Herunterstufungen vor dem Niedergang"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1023
+#: ../../src/enemies/bosses/turtle_boss.cpp:1027
 msgid "Shell Time"
 msgstr "Panzer Zeit"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1023
+#: ../../src/enemies/bosses/turtle_boss.cpp:1027
 msgid "Time running as shell to rise again"
 msgstr "Zeit als fahrender Panzer vor dem aufstehen"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1032
 #: ../../src/enemies/bosses/turtle_boss.cpp:1036
-#: ../../src/enemies/bosses/turtle_boss.cpp:1093
+#: ../../src/enemies/bosses/turtle_boss.cpp:1040
+#: ../../src/enemies/bosses/turtle_boss.cpp:1097
 #: ../../src/enemies/furball.cpp:763 ../../src/enemies/furball.cpp:768
 #: ../../src/enemies/furball.cpp:785 ../../src/enemies/gee.cpp:586
 #: ../../src/enemies/gee.cpp:591 ../../src/enemies/gee.cpp:644
-#: ../../src/enemies/static.cpp:348 ../../src/enemies/static.cpp:352
-#: ../../src/enemies/static.cpp:421 ../../src/objects/bonusbox.cpp:507
+#: ../../src/enemies/static.cpp:347 ../../src/enemies/static.cpp:351
+#: ../../src/enemies/static.cpp:420 ../../src/objects/bonusbox.cpp:507
 #: ../../src/objects/bonusbox.cpp:511 ../../src/objects/bonusbox.cpp:619
-#: ../../src/overworld/world_waypoint.cpp:542
-#: ../../src/overworld/world_waypoint.cpp:546
-#: ../../src/overworld/world_waypoint.cpp:664
+#: ../../src/overworld/world_waypoint.cpp:541
+#: ../../src/overworld/world_waypoint.cpp:545
+#: ../../src/overworld/world_waypoint.cpp:663
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1033
-#: ../../src/enemies/bosses/turtle_boss.cpp:1039
+#: ../../src/enemies/bosses/turtle_boss.cpp:1037
+#: ../../src/enemies/bosses/turtle_boss.cpp:1043
 #: ../../src/enemies/furball.cpp:764 ../../src/enemies/furball.cpp:771
 #: ../../src/enemies/gee.cpp:587 ../../src/enemies/gee.cpp:594
-#: ../../src/enemies/static.cpp:349 ../../src/enemies/static.cpp:355
+#: ../../src/enemies/static.cpp:348 ../../src/enemies/static.cpp:354
 #: ../../src/objects/bonusbox.cpp:508 ../../src/objects/bonusbox.cpp:514
 #: ../../src/objects/box.cpp:691 ../../src/objects/box.cpp:706
-#: ../../src/overworld/world_waypoint.cpp:543
-#: ../../src/overworld/world_waypoint.cpp:549
+#: ../../src/overworld/world_waypoint.cpp:542
+#: ../../src/overworld/world_waypoint.cpp:548
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1042
+#: ../../src/enemies/bosses/turtle_boss.cpp:1046
 #: ../../src/enemies/furball.cpp:765
 msgid "End Level"
 msgstr "Level beenden"
 
-#: ../../src/enemies/bosses/turtle_boss.cpp:1042
+#: ../../src/enemies/bosses/turtle_boss.cpp:1046
 #: ../../src/enemies/furball.cpp:765
 msgid "End the level if it is killed."
 msgstr "Der Level wird beendet, wenn dieser Gegner besiegt wird."
 
-#: ../../src/enemies/eato.cpp:290 ../../src/enemies/flyon.cpp:573
-#: ../../src/enemies/thromp.cpp:692
+#: ../../src/enemies/eato.cpp:289 ../../src/enemies/flyon.cpp:572
+#: ../../src/enemies/thromp.cpp:691
 msgid "Image directory"
 msgstr "Bilder Verzeichnis"
 
-#: ../../src/enemies/eato.cpp:290 ../../src/enemies/flyon.cpp:573
-#: ../../src/enemies/thromp.cpp:692
+#: ../../src/enemies/eato.cpp:289 ../../src/enemies/flyon.cpp:572
+#: ../../src/enemies/thromp.cpp:691
 msgid "Directory containing the images"
 msgstr "Verzeichnis welches die Bilder enthält"
 
-#: ../../src/enemies/flyon.cpp:569 ../../src/enemies/rokko.cpp:582
-#: ../../src/enemies/thromp.cpp:688
+#: ../../src/enemies/flyon.cpp:568 ../../src/enemies/rokko.cpp:582
+#: ../../src/enemies/thromp.cpp:687
 msgid "Direction it moves into."
 msgstr "Richtung in die es sich bewegt."
 
-#: ../../src/enemies/flyon.cpp:580 ../../src/enemies/gee.cpp:577
-#: ../../src/enemies/thromp.cpp:699 ../../src/objects/moving_platform.cpp:964
+#: ../../src/enemies/flyon.cpp:579 ../../src/enemies/gee.cpp:577
+#: ../../src/enemies/thromp.cpp:698 ../../src/objects/moving_platform.cpp:963
 msgid "Distance"
 msgstr "Distanz"
 
-#: ../../src/enemies/flyon.cpp:580
+#: ../../src/enemies/flyon.cpp:579
 msgid "Movable Distance into its direction"
 msgstr "Bewegbare Distanz in seine Richtung"
 
-#: ../../src/enemies/flyon.cpp:588 ../../src/enemies/rokko.cpp:586
-#: ../../src/enemies/static.cpp:339 ../../src/enemies/thromp.cpp:707
-#: ../../src/objects/moving_platform.cpp:972
+#: ../../src/enemies/flyon.cpp:587 ../../src/enemies/rokko.cpp:586
+#: ../../src/enemies/static.cpp:338 ../../src/enemies/thromp.cpp:706
+#: ../../src/objects/moving_platform.cpp:971
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: ../../src/enemies/flyon.cpp:588
+#: ../../src/enemies/flyon.cpp:587
 msgid "Initial speed when jumping out"
 msgstr "Anfangsgeschwindigkeit beim herausspringen"
 
@@ -571,57 +571,57 @@ msgstr "Wartezeit bis zur Bewegung bei jedem halt"
 msgid "The distance to move each time"
 msgstr "Die sich jedes mal zu bewegende Distanz"
 
-#: ../../src/enemies/pip.cpp:365
+#: ../../src/enemies/pip.cpp:370
 msgid "Starting direction"
 msgstr "Startrichtung"
 
-#: ../../src/enemies/rokko.cpp:586 ../../src/enemies/thromp.cpp:707
+#: ../../src/enemies/rokko.cpp:586 ../../src/enemies/thromp.cpp:706
 msgid "Speed when activated"
 msgstr "Geschwindigkeit wenn aktiviert"
 
-#: ../../src/enemies/static.cpp:317 ../../src/objects/sprite.cpp:1460
+#: ../../src/enemies/static.cpp:316 ../../src/objects/sprite.cpp:1459
 msgid "Image"
 msgstr "Bild"
 
-#: ../../src/enemies/static.cpp:317 ../../src/objects/sprite.cpp:1460
-#: ../../src/video/animation.cpp:1403
+#: ../../src/enemies/static.cpp:316 ../../src/objects/sprite.cpp:1459
+#: ../../src/video/animation.cpp:1402
 msgid "Image filename"
 msgstr "Bild Dateiname"
 
-#: ../../src/enemies/static.cpp:324
+#: ../../src/enemies/static.cpp:323
 msgid "Rotation Speed"
 msgstr "Rotations Geschwindigkeit"
 
-#: ../../src/enemies/static.cpp:332 ../../src/objects/level_exit.cpp:550
-#: ../../src/objects/moving_platform.cpp:945
+#: ../../src/enemies/static.cpp:331 ../../src/objects/level_exit.cpp:550
+#: ../../src/objects/moving_platform.cpp:944
 msgid "Path Identifier"
 msgstr "Pfad Identifizierer"
 
-#: ../../src/enemies/static.cpp:332 ../../src/objects/moving_platform.cpp:945
+#: ../../src/enemies/static.cpp:331 ../../src/objects/moving_platform.cpp:944
 msgid "Name of the Path to move along."
 msgstr "Name des Pfades zum entlang bewegen."
 
-#: ../../src/enemies/static.cpp:339 ../../src/objects/moving_platform.cpp:972
+#: ../../src/enemies/static.cpp:338 ../../src/objects/moving_platform.cpp:971
 msgid "Maximum speed"
 msgstr "Maximale Geschwindigkeit"
 
-#: ../../src/enemies/static.cpp:359
+#: ../../src/enemies/static.cpp:358
 msgid "Fire Resistant"
 msgstr "Feuer Resistenz"
 
-#: ../../src/enemies/static.cpp:359
+#: ../../src/enemies/static.cpp:358
 msgid "If it is resistant against fire"
 msgstr "Ob es gegen Feuer resistent ist"
 
-#: ../../src/enemies/static.cpp:363
+#: ../../src/enemies/static.cpp:362
 msgid "Ice Resistance"
 msgstr "Eis Resistenz"
 
-#: ../../src/enemies/static.cpp:363
+#: ../../src/enemies/static.cpp:362
 msgid "Resistance against Ice (0.0-1.0)"
 msgstr "Resistenz gegen Eis (0.0-1.0)"
 
-#: ../../src/enemies/thromp.cpp:699
+#: ../../src/enemies/thromp.cpp:698
 msgid "Detection distance into its direction"
 msgstr "Erkennungs Distanz in seine Richtung"
 
@@ -679,48 +679,48 @@ msgstr "[colour='FFFFFF00']FPS: B: %.02f S: %.02f A: %0.2f"
 msgid "Points %08ld"
 msgstr "Punkte %08ld"
 
-#: ../../src/gui/menu_data.cpp:331
+#: ../../src/gui/menu_data.cpp:330
 msgid "Credits"
 msgstr "Mitwirkende"
 
-#: ../../src/gui/menu_data.cpp:363
+#: ../../src/gui/menu_data.cpp:362
 msgid "Version "
 msgstr "Version "
 
-#: ../../src/gui/menu_data.cpp:631
+#: ../../src/gui/menu_data.cpp:630
 msgid "New"
 msgstr "Neu"
 
-#: ../../src/gui/menu_data.cpp:632
+#: ../../src/gui/menu_data.cpp:631
 msgid "Edit"
 msgstr "Ändern"
 
-#: ../../src/gui/menu_data.cpp:633 ../../src/objects/path.cpp:771
+#: ../../src/gui/menu_data.cpp:632 ../../src/objects/path.cpp:771
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../../src/gui/menu_data.cpp:634
+#: ../../src/gui/menu_data.cpp:633
 msgid "Enter"
 msgstr "Betreten"
 
-#: ../../src/gui/menu_data.cpp:635 ../../src/gui/menu_data.cpp:1441
-#: ../../src/gui/menu_data.cpp:3127
+#: ../../src/gui/menu_data.cpp:634 ../../src/gui/menu_data.cpp:1429
+#: ../../src/gui/menu_data.cpp:3115
 msgid "Back"
 msgstr "Zurück"
 
-#: ../../src/gui/menu_data.cpp:639
+#: ../../src/gui/menu_data.cpp:638
 msgid "Select Level"
 msgstr "Level auswählen"
 
-#: ../../src/gui/menu_data.cpp:641
+#: ../../src/gui/menu_data.cpp:640
 msgid "Select Campaign"
 msgstr "Kampagne auswählen"
 
-#: ../../src/gui/menu_data.cpp:643
+#: ../../src/gui/menu_data.cpp:642
 msgid "Select Overworld"
 msgstr "Welt auswählen"
 
-#: ../../src/gui/menu_data.cpp:645 ../../src/gui/menu_data.cpp:647
+#: ../../src/gui/menu_data.cpp:644 ../../src/gui/menu_data.cpp:646
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -731,7 +731,7 @@ msgstr "Beschreibung"
 #. TRANS: personal level directory and is coloured mixedly to indicate
 #. TRANS: that. "Deprecated" are levels from very old versions
 #. TRANS: of the game.
-#: ../../src/gui/menu_data.cpp:657
+#: ../../src/gui/menu_data.cpp:656
 msgid ""
 "- Level Colors -\n"
 "\n"
@@ -747,16 +747,8 @@ msgstr ""
 "Grau: Veraltet\n"
 "Gemischt: Siehe Farben"
 
-#: ../../src/gui/menu_data.cpp:810
-msgid ""
-"This will take affect after restarting.\n"
-"Continue ?"
-msgstr ""
-"Dies wird erst nach Neustart wirksam.\n"
-"Fortfahren?"
-
-#: ../../src/gui/menu_data.cpp:821 ../../src/gui/menu_data.cpp:863
-#: ../../src/gui/menu_data.cpp:889
+#: ../../src/gui/menu_data.cpp:809 ../../src/gui/menu_data.cpp:851
+#: ../../src/gui/menu_data.cpp:877
 msgid ""
 "This will reset your current progress.\n"
 "Continue ?"
@@ -764,331 +756,331 @@ msgstr ""
 "Der Spielfortschritt wird zurückgesetzt.\n"
 "Fortfahren?"
 
-#: ../../src/gui/menu_data.cpp:829 ../../src/gui/menu_data.cpp:847
+#: ../../src/gui/menu_data.cpp:817 ../../src/gui/menu_data.cpp:835
 msgid "Couldn't load campaign "
 msgstr "Konnte Kampagne nicht laden "
 
-#: ../../src/gui/menu_data.cpp:871
+#: ../../src/gui/menu_data.cpp:859
 msgid "Couldn't load overworld "
 msgstr "Konnte Welt nicht laden : "
 
-#: ../../src/gui/menu_data.cpp:897
+#: ../../src/gui/menu_data.cpp:885
 msgid "Couldn't load level "
 msgstr "Konnte Level nicht laden : "
 
-#: ../../src/gui/menu_data.cpp:1369
+#: ../../src/gui/menu_data.cpp:1357
 #, fuzzy, c-format
 msgid "Delete %s?"
 msgstr "Lösche"
 
-#: ../../src/gui/menu_data.cpp:1479
+#: ../../src/gui/menu_data.cpp:1467
 msgid "Always Run"
 msgstr "Immer rennen"
 
-#: ../../src/gui/menu_data.cpp:1483 ../../src/gui/menu_data.cpp:1491
-#: ../../src/gui/menu_data.cpp:1650 ../../src/gui/menu_data.cpp:1658
-#: ../../src/gui/menu_data.cpp:1672 ../../src/gui/menu_data.cpp:1680
-#: ../../src/gui/menu_data.cpp:1763 ../../src/gui/menu_data.cpp:1771
-#: ../../src/gui/menu_data.cpp:1794 ../../src/gui/menu_data.cpp:1802
-#: ../../src/gui/menu_data.cpp:1964 ../../src/gui/menu_data.cpp:1972
-#: ../../src/gui/menu_data.cpp:1995 ../../src/gui/menu_data.cpp:2003
-#: ../../src/gui/menu_data.cpp:2058 ../../src/gui/menu_data.cpp:2150
-#: ../../src/gui/menu_data.cpp:2161 ../../src/gui/menu_data.cpp:2199
-#: ../../src/gui/menu_data.cpp:2210 ../../src/gui/menu_data.cpp:2235
-#: ../../src/gui/menu_data.cpp:2250 ../../src/gui/menu_data.cpp:2445
-#: ../../src/gui/menu_data.cpp:2578 ../../src/gui/menu_data.cpp:2594
-#: ../../src/gui/menu_data.cpp:2648 ../../src/gui/menu_data.cpp:2656
-#: ../../src/gui/menu_data.cpp:2757 ../../src/gui/menu_data.cpp:2787
-#: ../../src/gui/menu_data.cpp:3007 ../../src/gui/menu_data.cpp:3033
+#: ../../src/gui/menu_data.cpp:1471 ../../src/gui/menu_data.cpp:1479
+#: ../../src/gui/menu_data.cpp:1638 ../../src/gui/menu_data.cpp:1646
+#: ../../src/gui/menu_data.cpp:1660 ../../src/gui/menu_data.cpp:1668
+#: ../../src/gui/menu_data.cpp:1751 ../../src/gui/menu_data.cpp:1759
+#: ../../src/gui/menu_data.cpp:1782 ../../src/gui/menu_data.cpp:1790
+#: ../../src/gui/menu_data.cpp:1952 ../../src/gui/menu_data.cpp:1960
+#: ../../src/gui/menu_data.cpp:1983 ../../src/gui/menu_data.cpp:1991
+#: ../../src/gui/menu_data.cpp:2046 ../../src/gui/menu_data.cpp:2138
+#: ../../src/gui/menu_data.cpp:2149 ../../src/gui/menu_data.cpp:2187
+#: ../../src/gui/menu_data.cpp:2198 ../../src/gui/menu_data.cpp:2223
+#: ../../src/gui/menu_data.cpp:2238 ../../src/gui/menu_data.cpp:2433
+#: ../../src/gui/menu_data.cpp:2566 ../../src/gui/menu_data.cpp:2582
+#: ../../src/gui/menu_data.cpp:2636 ../../src/gui/menu_data.cpp:2644
+#: ../../src/gui/menu_data.cpp:2745 ../../src/gui/menu_data.cpp:2775
+#: ../../src/gui/menu_data.cpp:2995 ../../src/gui/menu_data.cpp:3021
 msgid "On"
 msgstr "An"
 
-#: ../../src/gui/menu_data.cpp:1486 ../../src/gui/menu_data.cpp:1494
-#: ../../src/gui/menu_data.cpp:1653 ../../src/gui/menu_data.cpp:1661
-#: ../../src/gui/menu_data.cpp:1675 ../../src/gui/menu_data.cpp:1683
-#: ../../src/gui/menu_data.cpp:1766 ../../src/gui/menu_data.cpp:1774
-#: ../../src/gui/menu_data.cpp:1797 ../../src/gui/menu_data.cpp:1805
-#: ../../src/gui/menu_data.cpp:1967 ../../src/gui/menu_data.cpp:1975
-#: ../../src/gui/menu_data.cpp:1998 ../../src/gui/menu_data.cpp:2006
-#: ../../src/gui/menu_data.cpp:2061 ../../src/gui/menu_data.cpp:2153
-#: ../../src/gui/menu_data.cpp:2164 ../../src/gui/menu_data.cpp:2202
-#: ../../src/gui/menu_data.cpp:2213 ../../src/gui/menu_data.cpp:2238
-#: ../../src/gui/menu_data.cpp:2253 ../../src/gui/menu_data.cpp:2651
-#: ../../src/gui/menu_data.cpp:2659
+#: ../../src/gui/menu_data.cpp:1474 ../../src/gui/menu_data.cpp:1482
+#: ../../src/gui/menu_data.cpp:1641 ../../src/gui/menu_data.cpp:1649
+#: ../../src/gui/menu_data.cpp:1663 ../../src/gui/menu_data.cpp:1671
+#: ../../src/gui/menu_data.cpp:1754 ../../src/gui/menu_data.cpp:1762
+#: ../../src/gui/menu_data.cpp:1785 ../../src/gui/menu_data.cpp:1793
+#: ../../src/gui/menu_data.cpp:1955 ../../src/gui/menu_data.cpp:1963
+#: ../../src/gui/menu_data.cpp:1986 ../../src/gui/menu_data.cpp:1994
+#: ../../src/gui/menu_data.cpp:2049 ../../src/gui/menu_data.cpp:2141
+#: ../../src/gui/menu_data.cpp:2152 ../../src/gui/menu_data.cpp:2190
+#: ../../src/gui/menu_data.cpp:2201 ../../src/gui/menu_data.cpp:2226
+#: ../../src/gui/menu_data.cpp:2241 ../../src/gui/menu_data.cpp:2639
+#: ../../src/gui/menu_data.cpp:2647
 msgid "Off"
 msgstr "Aus"
 
-#: ../../src/gui/menu_data.cpp:1501
+#: ../../src/gui/menu_data.cpp:1489
 msgid "Camera Hor Speed"
 msgstr "Kamera Hor Geschw."
 
-#: ../../src/gui/menu_data.cpp:1510
+#: ../../src/gui/menu_data.cpp:1498
 msgid "Camera Ver Speed"
 msgstr "Kamera Ver Geschw."
 
-#: ../../src/gui/menu_data.cpp:1519
+#: ../../src/gui/menu_data.cpp:1507
 msgid "Language"
 msgstr "Sprache"
 
-#: ../../src/gui/menu_data.cpp:1552
+#: ../../src/gui/menu_data.cpp:1540
 msgid "Menu Level"
 msgstr "Menü Level"
 
-#: ../../src/gui/menu_data.cpp:1568 ../../src/gui/menu_data.cpp:1716
-#: ../../src/gui/menu_data.cpp:1820 ../../src/gui/menu_data.cpp:1850
-#: ../../src/gui/menu_data.cpp:1951 ../../src/gui/menu_data.cpp:2014
+#: ../../src/gui/menu_data.cpp:1556 ../../src/gui/menu_data.cpp:1704
+#: ../../src/gui/menu_data.cpp:1808 ../../src/gui/menu_data.cpp:1838
+#: ../../src/gui/menu_data.cpp:1939 ../../src/gui/menu_data.cpp:2002
 msgid "Reset"
 msgstr "Reset"
 
-#: ../../src/gui/menu_data.cpp:1577
+#: ../../src/gui/menu_data.cpp:1565
 msgid "Resolution"
 msgstr "Auflösung"
 
-#: ../../src/gui/menu_data.cpp:1629
+#: ../../src/gui/menu_data.cpp:1617
 msgid "Bpp"
 msgstr "Bpp"
 
-#: ../../src/gui/menu_data.cpp:1646
+#: ../../src/gui/menu_data.cpp:1634
 msgid "Fullscreen"
 msgstr "Vollbild"
 
-#: ../../src/gui/menu_data.cpp:1668
+#: ../../src/gui/menu_data.cpp:1656
 msgid "VSync"
 msgstr "VSync"
 
-#: ../../src/gui/menu_data.cpp:1690
+#: ../../src/gui/menu_data.cpp:1678
 msgid "FPS Limit"
 msgstr "FPS-Grenze"
 
-#: ../../src/gui/menu_data.cpp:1699
+#: ../../src/gui/menu_data.cpp:1687
 msgid "Geometry Quality"
 msgstr "Geometrie Qualität"
 
-#: ../../src/gui/menu_data.cpp:1707
+#: ../../src/gui/menu_data.cpp:1695
 msgid "Texture Quality"
 msgstr "Textur Qualität"
 
-#: ../../src/gui/menu_data.cpp:1721
+#: ../../src/gui/menu_data.cpp:1709
 msgid "Apply"
 msgstr "Anwenden"
 
-#: ../../src/gui/menu_data.cpp:1726
+#: ../../src/gui/menu_data.cpp:1714
 msgid "Recreate Cache"
 msgstr "Cache neu erstellen"
 
-#: ../../src/gui/menu_data.cpp:1735
+#: ../../src/gui/menu_data.cpp:1723
 msgid "Hertz (Hz)"
 msgstr "Hertz (Hz)"
 
-#: ../../src/gui/menu_data.cpp:1736
+#: ../../src/gui/menu_data.cpp:1724
 msgid "You should only change the value if the audio is scratchy."
 msgstr "Wert sollte nur geändert werden wenn der Ton kratzig ist."
 
-#: ../../src/gui/menu_data.cpp:1758
+#: ../../src/gui/menu_data.cpp:1746
 msgid "Music"
 msgstr "Musik"
 
-#: ../../src/gui/menu_data.cpp:1759
+#: ../../src/gui/menu_data.cpp:1747
 msgid "Enable to play music. You need to have the Music Addon installed."
 msgstr ""
 "Aktiviere um Musik abzuspielen. Dazu musst du das Musik Addon installiert "
 "haben."
 
-#: ../../src/gui/menu_data.cpp:1781
+#: ../../src/gui/menu_data.cpp:1769
 msgid "Set the Music Volume."
 msgstr "Setze sie Musik Lautstärke."
 
-#: ../../src/gui/menu_data.cpp:1789
+#: ../../src/gui/menu_data.cpp:1777
 msgid "Sound"
 msgstr "Sound"
 
-#: ../../src/gui/menu_data.cpp:1790
+#: ../../src/gui/menu_data.cpp:1778
 msgid "Enable to play Sounds."
 msgstr "Aktiviere um Sounds abzuspielen."
 
-#: ../../src/gui/menu_data.cpp:1812
+#: ../../src/gui/menu_data.cpp:1800
 msgid "Set the Sound Volume."
 msgstr "Setze sie Sound Lautstärke."
 
-#: ../../src/gui/menu_data.cpp:1829 ../../src/gui/menu_data.cpp:1938
+#: ../../src/gui/menu_data.cpp:1817 ../../src/gui/menu_data.cpp:1926
 msgid "Shortcuts"
 msgstr "Tastenzuordnung"
 
-#: ../../src/gui/menu_data.cpp:1833 ../../src/gui/menu_data.cpp:1942
+#: ../../src/gui/menu_data.cpp:1821 ../../src/gui/menu_data.cpp:1930
 msgid "Name"
 msgstr "Name"
 
-#: ../../src/gui/menu_data.cpp:1834
+#: ../../src/gui/menu_data.cpp:1822
 msgid "Key"
 msgstr "Taste"
 
-#: ../../src/gui/menu_data.cpp:1841
+#: ../../src/gui/menu_data.cpp:1829
 msgid "Scroll Speed"
 msgstr "Scroll Geschw."
 
-#: ../../src/gui/menu_data.cpp:1859
+#: ../../src/gui/menu_data.cpp:1847
 msgid "Sensitivity"
 msgstr "Feinheit"
 
-#: ../../src/gui/menu_data.cpp:1863
+#: ../../src/gui/menu_data.cpp:1851
 msgid "Joystick"
 msgstr "Joystick"
 
-#: ../../src/gui/menu_data.cpp:1870 ../../src/gui/menu_data.cpp:2917
-#: ../../src/level/level_settings.cpp:194
+#: ../../src/gui/menu_data.cpp:1858 ../../src/gui/menu_data.cpp:2905
+#: ../../src/level/level_settings.cpp:193
 msgid "None"
 msgstr "Keinen"
 
-#: ../../src/gui/menu_data.cpp:1906
+#: ../../src/gui/menu_data.cpp:1894
 msgid "Axis Hor"
 msgstr "Achse Hor"
 
-#: ../../src/gui/menu_data.cpp:1914
+#: ../../src/gui/menu_data.cpp:1902
 msgid "Ver"
 msgstr "Ver"
 
-#: ../../src/gui/menu_data.cpp:1922
+#: ../../src/gui/menu_data.cpp:1910
 msgid "Axis Hor2"
 msgstr "Achse Hor2"
 
-#: ../../src/gui/menu_data.cpp:1930
+#: ../../src/gui/menu_data.cpp:1918
 msgid "Ver2"
 msgstr "Ver2"
 
-#: ../../src/gui/menu_data.cpp:1943
+#: ../../src/gui/menu_data.cpp:1931
 msgid "Button"
 msgstr "Knopf"
 
-#: ../../src/gui/menu_data.cpp:1960
+#: ../../src/gui/menu_data.cpp:1948
 msgid "Show images"
 msgstr "Zeige Bilder"
 
-#: ../../src/gui/menu_data.cpp:1982
+#: ../../src/gui/menu_data.cpp:1970
 msgid "Item image size"
 msgstr "Objekt Bildgröße"
 
-#: ../../src/gui/menu_data.cpp:1991
+#: ../../src/gui/menu_data.cpp:1979
 msgid "Auto-Hide Mouse"
 msgstr "Maus autom. ausbl."
 
-#: ../../src/gui/menu_data.cpp:2286
+#: ../../src/gui/menu_data.cpp:2274
 msgid "Up"
 msgstr "Hoch"
 
-#: ../../src/gui/menu_data.cpp:2287
+#: ../../src/gui/menu_data.cpp:2275
 msgid "Down"
 msgstr "Runter"
 
-#: ../../src/gui/menu_data.cpp:2288
+#: ../../src/gui/menu_data.cpp:2276
 msgid "Left"
 msgstr "Links"
 
-#: ../../src/gui/menu_data.cpp:2289
+#: ../../src/gui/menu_data.cpp:2277
 msgid "Right"
 msgstr "Rechts"
 
-#: ../../src/gui/menu_data.cpp:2290 ../../src/gui/menu_data.cpp:2306
+#: ../../src/gui/menu_data.cpp:2278 ../../src/gui/menu_data.cpp:2294
 msgid "Jump"
 msgstr "Springen"
 
-#: ../../src/gui/menu_data.cpp:2291 ../../src/gui/menu_data.cpp:2307
+#: ../../src/gui/menu_data.cpp:2279 ../../src/gui/menu_data.cpp:2295
 msgid "Shoot"
 msgstr "Schießen"
 
-#: ../../src/gui/menu_data.cpp:2292 ../../src/gui/menu_data.cpp:2309
+#: ../../src/gui/menu_data.cpp:2280 ../../src/gui/menu_data.cpp:2297
 #: ../../src/objects/bonusbox.cpp:502
 msgid "Item"
 msgstr "Gegenstand"
 
-#: ../../src/gui/menu_data.cpp:2293 ../../src/gui/menu_data.cpp:2308
+#: ../../src/gui/menu_data.cpp:2281 ../../src/gui/menu_data.cpp:2296
 msgid "Action"
 msgstr "Aktion"
 
-#: ../../src/gui/menu_data.cpp:2294
+#: ../../src/gui/menu_data.cpp:2282
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
-#: ../../src/gui/menu_data.cpp:2295
+#: ../../src/gui/menu_data.cpp:2283
 msgid "Editor fast copy up"
 msgstr "Editor schnelle Kopie aufwärts"
 
-#: ../../src/gui/menu_data.cpp:2296
+#: ../../src/gui/menu_data.cpp:2284
 msgid "Editor fast copy down"
 msgstr "Editor schnelle Kopie abwärts"
 
-#: ../../src/gui/menu_data.cpp:2297
+#: ../../src/gui/menu_data.cpp:2285
 msgid "Editor fast copy left"
 msgstr "Editor schnelle Kopie links"
 
-#: ../../src/gui/menu_data.cpp:2298
+#: ../../src/gui/menu_data.cpp:2286
 msgid "Editor fast copy right"
 msgstr "Editor schnelle Kope rechts"
 
-#: ../../src/gui/menu_data.cpp:2299
+#: ../../src/gui/menu_data.cpp:2287
 msgid "Editor pixel move up"
 msgstr "Editor Pixelbewegung aufwärts"
 
-#: ../../src/gui/menu_data.cpp:2300
+#: ../../src/gui/menu_data.cpp:2288
 msgid "Editor pixel move down"
 msgstr "Editor Pixelbewegung abwärts"
 
-#: ../../src/gui/menu_data.cpp:2301
+#: ../../src/gui/menu_data.cpp:2289
 msgid "Editor pixel move left"
 msgstr "Editor Pixelbewegung links"
 
-#: ../../src/gui/menu_data.cpp:2302
+#: ../../src/gui/menu_data.cpp:2290
 msgid "Editor pixel move right"
 msgstr "Editor Pixelbewegung rechts"
 
-#: ../../src/gui/menu_data.cpp:2310
+#: ../../src/gui/menu_data.cpp:2298
 msgid "Exit"
 msgstr "Verlassen"
 
-#: ../../src/gui/menu_data.cpp:2369
+#: ../../src/gui/menu_data.cpp:2357
 msgid "Press a key"
 msgstr "Drücke eine Taste"
 
-#: ../../src/gui/menu_data.cpp:2372
+#: ../../src/gui/menu_data.cpp:2360
 msgid "Press a button"
 msgstr "Drücke einen Knopf"
 
-#: ../../src/gui/menu_data.cpp:2375
+#: ../../src/gui/menu_data.cpp:2363
 msgid " for "
 msgstr " für "
 
-#: ../../src/gui/menu_data.cpp:2375
+#: ../../src/gui/menu_data.cpp:2363
 msgid ". Press ESC to cancel."
 msgstr ". Drücke ESC um abzubrechen."
 
-#: ../../src/gui/menu_data.cpp:2680
+#: ../../src/gui/menu_data.cpp:2668
 msgid "Reinitialization"
 msgstr "Neuinitialisierung"
 
-#: ../../src/gui/menu_data.cpp:2739
+#: ../../src/gui/menu_data.cpp:2727
 msgid "Reloading"
 msgstr "Neu laden"
 
-#: ../../src/gui/menu_data.cpp:2898
+#: ../../src/gui/menu_data.cpp:2886
 msgid "Enabled : "
 msgstr "Aktiviert : "
 
-#: ../../src/gui/menu_data.cpp:3113 ../../src/gui/menu_data.cpp:3115
+#: ../../src/gui/menu_data.cpp:3101 ../../src/gui/menu_data.cpp:3103
 msgid "Save"
 msgstr "Speichern"
 
-#: ../../src/gui/menu_data.cpp:3114
+#: ../../src/gui/menu_data.cpp:3102
 msgid "Save the game"
 msgstr "Spielstand abspeichern"
 
-#: ../../src/gui/menu_data.cpp:3120 ../../src/gui/menu_data.cpp:3122
+#: ../../src/gui/menu_data.cpp:3108 ../../src/gui/menu_data.cpp:3110
 msgid "Load"
 msgstr "Laden"
 
-#: ../../src/gui/menu_data.cpp:3121
+#: ../../src/gui/menu_data.cpp:3109
 msgid "Load a saved game"
 msgstr "Gespeicherten Spielstand laden"
 
-#: ../../src/gui/menu_data.cpp:3279
+#: ../../src/gui/menu_data.cpp:3267
 msgid ""
 "3000 Points needed for saving in a level.\n"
 "Saving on the Overworld is free."
@@ -1096,17 +1088,17 @@ msgstr ""
 "3000 Punkte werden benötigt um in einem Level zu speichern.\n"
 "Speichern auf der Welt ist frei."
 
-#: ../../src/gui/menu_data.cpp:3300 ../../src/gui/menu_data.cpp:3304
-#: ../../src/gui/menu_data.cpp:3309
+#: ../../src/gui/menu_data.cpp:3288 ../../src/gui/menu_data.cpp:3292
+#: ../../src/gui/menu_data.cpp:3297
 msgid "No Description"
 msgstr "Keine Beschreibung"
 
-#: ../../src/gui/menu_data.cpp:3313
+#: ../../src/gui/menu_data.cpp:3301
 msgid "Enter Description"
 msgstr "Beschreibung eingeben"
 
-#: ../../src/gui/menu_data.cpp:3331 ../../src/gui/menu_data.cpp:3336
-#: ../../src/gui/menu_data.cpp:3341
+#: ../../src/gui/menu_data.cpp:3319 ../../src/gui/menu_data.cpp:3324
+#: ../../src/gui/menu_data.cpp:3329
 msgid "Savegame loading failed"
 msgstr "Laden des Spielstandes fehlgeschlagen"
 
@@ -1155,28 +1147,28 @@ msgstr "  Editor Z : "
 msgid "FINISH"
 msgstr "ZIEL"
 
-#: ../../src/level/level.cpp:221
+#: ../../src/level/level.cpp:220
 msgid "Unsupported Level format : "
 msgstr "Nicht unterstütztes Levelformat :"
 
-#: ../../src/level/level.cpp:405
+#: ../../src/level/level.cpp:404
 msgid "Couldn't save level "
 msgstr "Konnte Level nicht speichern "
 
-#: ../../src/level/level.cpp:421 ../../src/level/level_editor.cpp:148
+#: ../../src/level/level.cpp:420 ../../src/level/level_editor.cpp:148
 msgid "Level "
 msgstr "Level "
 
-#: ../../src/level/level.cpp:421 ../../src/overworld/overworld.cpp:249
-#: ../../src/video/video.cpp:1495
+#: ../../src/level/level.cpp:420 ../../src/overworld/overworld.cpp:248
+#: ../../src/video/video.cpp:1430
 msgid " saved"
 msgstr " gespeichert"
 
-#: ../../src/level/level.cpp:829
+#: ../../src/level/level.cpp:828
 msgid "Omega Mode disabled"
 msgstr "Omega-Modus ausgeschaltet"
 
-#: ../../src/level/level.cpp:832
+#: ../../src/level/level.cpp:831
 msgid "Omega Mode enabled"
 msgstr "Omega-Modus eingeschaltet"
 
@@ -1207,7 +1199,7 @@ msgstr "Lade ein Level"
 msgid "Loaded "
 msgstr "Geladen "
 
-#: ../../src/level/level_editor.cpp:208 ../../src/level/level_settings.cpp:276
+#: ../../src/level/level_editor.cpp:208 ../../src/level/level_settings.cpp:275
 #: ../../src/overworld/world_editor.cpp:129
 msgid "Save "
 msgstr "Speichere "
@@ -1228,23 +1220,19 @@ msgstr "Level wurde noch nicht gespeichert"
 msgid "Delete and Unload "
 msgstr "Lösche und Entlade "
 
-#: ../../src/level/level_editor.cpp:259
-msgid "Reload Level ?"
-msgstr "Lade Level neu ?"
-
-#: ../../src/level/level_manager.cpp:477
+#: ../../src/level/level_manager.cpp:476
 msgid "Invalid target level."
 msgstr "Ungültiger Ziellevel."
 
-#: ../../src/level/level_player.cpp:3978
+#: ../../src/level/level_player.cpp:3977
 msgid "Initial direction"
 msgstr "Anfangs Richtung"
 
-#: ../../src/level/level_settings.cpp:193
-#: ../../src/level/level_settings.cpp:448
-#: ../../src/level/level_settings.cpp:604
-#: ../../src/overworld/world_waypoint.cpp:757
-#: ../../src/overworld/world_waypoint.cpp:760
+#: ../../src/level/level_settings.cpp:192
+#: ../../src/level/level_settings.cpp:447
+#: ../../src/level/level_settings.cpp:603
+#: ../../src/overworld/world_waypoint.cpp:756
+#: ../../src/overworld/world_waypoint.cpp:759
 #, fuzzy
 msgid "(None)"
 msgstr "Keinen"
@@ -1301,16 +1289,16 @@ msgstr ""
 "Gegenstand enthält"
 
 #: ../../src/objects/bonusbox.cpp:459 ../../src/objects/bonusbox.cpp:498
-#: ../../src/overworld/overworld.cpp:54
+#: ../../src/overworld/overworld.cpp:53
 msgid "Empty"
 msgstr "Leer"
 
 #: ../../src/objects/bonusbox.cpp:460 ../../src/objects/bonusbox.cpp:495
-#: ../../src/objects/bonusbox.cpp:602 ../../src/video/animation.cpp:1395
-#: ../../src/video/animation.cpp:1473 ../../src/video/animation.cpp:1489
-#: ../../src/video/animation.cpp:1569 ../../src/video/animation.cpp:1585
-#: ../../src/video/animation.cpp:1601 ../../src/video/animation.cpp:1617
-#: ../../src/video/animation.cpp:1633
+#: ../../src/objects/bonusbox.cpp:602 ../../src/video/animation.cpp:1394
+#: ../../src/video/animation.cpp:1472 ../../src/video/animation.cpp:1488
+#: ../../src/video/animation.cpp:1568 ../../src/video/animation.cpp:1584
+#: ../../src/video/animation.cpp:1600 ../../src/video/animation.cpp:1616
+#: ../../src/video/animation.cpp:1632
 msgid "Random"
 msgstr "Zufällig"
 
@@ -1529,80 +1517,80 @@ msgstr ""
 msgid "Name of the Path to use for the camera movement."
 msgstr "Name des Pfades welcher für die Kamera Bewegung benutzt wird."
 
-#: ../../src/objects/moving_platform.cpp:941 ../../src/objects/path.cpp:746
+#: ../../src/objects/moving_platform.cpp:940 ../../src/objects/path.cpp:746
 msgid "Move Type"
 msgstr "Bewegungs Typ"
 
-#: ../../src/objects/moving_platform.cpp:941
+#: ../../src/objects/moving_platform.cpp:940
 msgid "Movement type."
 msgstr "Bewegungs Typ."
 
-#: ../../src/objects/moving_platform.cpp:964
+#: ../../src/objects/moving_platform.cpp:963
 msgid ""
 "Movable distance into its direction if type is line or radius if circle."
 msgstr ""
 "Bewegbare Distanz in seine Richtung wenn der typ linie ist oder radius wenn "
 "kreis."
 
-#: ../../src/objects/moving_platform.cpp:980
+#: ../../src/objects/moving_platform.cpp:979
 msgid "Touch time"
 msgstr "Kontakt Zeit"
 
-#: ../../src/objects/moving_platform.cpp:980
+#: ../../src/objects/moving_platform.cpp:979
 msgid "Time when touched until shaking starts"
 msgstr "Zeit wenn berührt bis das rütteln anfängt"
 
-#: ../../src/objects/moving_platform.cpp:988
+#: ../../src/objects/moving_platform.cpp:987
 msgid "Shake time"
 msgstr "Rüttel Zeit"
 
-#: ../../src/objects/moving_platform.cpp:988
+#: ../../src/objects/moving_platform.cpp:987
 msgid "Time it's shaking until falling"
 msgstr "Rüttel Zeit bis es fällt"
 
-#: ../../src/objects/moving_platform.cpp:996
+#: ../../src/objects/moving_platform.cpp:995
 msgid "Touch move time"
 msgstr "Kontakt Bewegungs Zeit"
 
-#: ../../src/objects/moving_platform.cpp:996
+#: ../../src/objects/moving_platform.cpp:995
 msgid "If set does not move until this time has elapsed after touched"
 msgstr ""
 "Falls gesetzt bewegt es sich nicht sondern erst nach dieser zeit bei einer "
 "Berührung"
 
-#: ../../src/objects/moving_platform.cpp:1004
+#: ../../src/objects/moving_platform.cpp:1003
 msgid "Hor image count"
 msgstr "Hor Bilder Anzahl "
 
-#: ../../src/objects/moving_platform.cpp:1004
+#: ../../src/objects/moving_platform.cpp:1003
 msgid "Horizontal middle image count"
 msgstr "Horizontal mittlere Bilder Anzahl"
 
-#: ../../src/objects/moving_platform.cpp:1014
+#: ../../src/objects/moving_platform.cpp:1013
 msgid "Image top left"
 msgstr "Bild oben Links"
 
-#: ../../src/objects/moving_platform.cpp:1021
+#: ../../src/objects/moving_platform.cpp:1020
 msgid "Image top middle"
 msgstr "Bild oben Mitte"
 
-#: ../../src/objects/moving_platform.cpp:1028
+#: ../../src/objects/moving_platform.cpp:1027
 msgid "Image top right"
 msgstr "Bild oben Rechts"
 
-#: ../../src/objects/moving_platform.cpp:1232
+#: ../../src/objects/moving_platform.cpp:1231
 msgid "Falling "
 msgstr "Fallende "
 
-#: ../../src/objects/moving_platform.cpp:1235
+#: ../../src/objects/moving_platform.cpp:1234
 msgid "Delayed "
 msgstr "Verzögerte "
 
-#: ../../src/objects/moving_platform.cpp:1238
+#: ../../src/objects/moving_platform.cpp:1237
 msgid "Moving "
 msgstr "Bewegende "
 
-#: ../../src/objects/moving_platform.cpp:1241
+#: ../../src/objects/moving_platform.cpp:1240
 msgid "Platform - "
 msgstr "Plattform - "
 
@@ -1726,19 +1714,19 @@ msgstr "Text"
 msgid "Text to display when activated"
 msgstr "Text zum anzeigen wenn aktiviert"
 
-#: ../../src/overworld/overworld.cpp:50
+#: ../../src/overworld/overworld.cpp:49
 msgid "Unnamed"
 msgstr "Unbenannt"
 
-#: ../../src/overworld/overworld.cpp:71
+#: ../../src/overworld/overworld.cpp:70
 msgid "Couldn't save world description "
 msgstr "Konnte Welt Beschreibung nicht speichern "
 
-#: ../../src/overworld/overworld.cpp:244
+#: ../../src/overworld/overworld.cpp:243
 msgid "Couldn't save world "
 msgstr "Konnte die Welt nicht speichern : "
 
-#: ../../src/overworld/overworld.cpp:249
+#: ../../src/overworld/overworld.cpp:248
 #: ../../src/overworld/world_editor.cpp:88
 msgid "World "
 msgstr "Welt "
@@ -1758,144 +1746,140 @@ msgstr "Name"
 msgid "Load an Overworld"
 msgstr "Lade eine Welt"
 
-#: ../../src/overworld/world_editor.cpp:139
-msgid "Reload World ?"
-msgstr "Lade Welt neu ?"
-
-#: ../../src/overworld/world_layer.cpp:49
+#: ../../src/overworld/world_layer.cpp:50
 msgid "Line Start Point"
 msgstr "Linie Startpunkt"
 
-#: ../../src/overworld/world_layer.cpp:53
+#: ../../src/overworld/world_layer.cpp:54
 msgid "Line End Point"
 msgstr "Linie Endpunkt"
 
-#: ../../src/overworld/world_layer.cpp:291
+#: ../../src/overworld/world_layer.cpp:292
 msgid "Waypoint origin"
 msgstr "Wegpunkt Herkunft "
 
-#: ../../src/overworld/world_waypoint.cpp:127
+#: ../../src/overworld/world_waypoint.cpp:126
 msgid "Waypoint"
 msgstr "Wegpunkt"
 
-#: ../../src/overworld/world_waypoint.cpp:489
-#: ../../src/overworld/world_waypoint.cpp:493
-#: ../../src/overworld/world_waypoint.cpp:619
+#: ../../src/overworld/world_waypoint.cpp:488
+#: ../../src/overworld/world_waypoint.cpp:492
+#: ../../src/overworld/world_waypoint.cpp:618
 msgid "Level"
 msgstr "Level"
 
-#: ../../src/overworld/world_waypoint.cpp:490
-#: ../../src/overworld/world_waypoint.cpp:496
+#: ../../src/overworld/world_waypoint.cpp:489
+#: ../../src/overworld/world_waypoint.cpp:495
 msgid "World"
 msgstr "Welt"
 
-#: ../../src/overworld/world_waypoint.cpp:500
+#: ../../src/overworld/world_waypoint.cpp:499
 msgid "Type"
 msgstr "Typ"
 
-#: ../../src/overworld/world_waypoint.cpp:500
+#: ../../src/overworld/world_waypoint.cpp:499
 msgid "Destination type"
 msgstr "Ziel typ"
 
-#: ../../src/overworld/world_waypoint.cpp:504
+#: ../../src/overworld/world_waypoint.cpp:503
 msgid "Destination"
 msgstr "Ziel"
 
-#: ../../src/overworld/world_waypoint.cpp:504
+#: ../../src/overworld/world_waypoint.cpp:503
 msgid "Destination level or world"
 msgstr "Ziel Level oder Welt"
 
-#: ../../src/overworld/world_waypoint.cpp:521
+#: ../../src/overworld/world_waypoint.cpp:520
 msgid "Backward Direction"
 msgstr "Richtung Rückwärts"
 
-#: ../../src/overworld/world_waypoint.cpp:536
+#: ../../src/overworld/world_waypoint.cpp:535
 msgid "Forward Direction"
 msgstr "Richtung Vorwärts"
 
-#: ../../src/overworld/world_waypoint.cpp:553
+#: ../../src/overworld/world_waypoint.cpp:552
 msgid "Default Access"
 msgstr "Standard Zugriff"
 
-#: ../../src/overworld/world_waypoint.cpp:553
+#: ../../src/overworld/world_waypoint.cpp:552
 msgid "Enable if the Waypoint should be always accessible."
 msgstr "Aktiviere damit der Wegpunkt immer begehbar ist."
 
-#: ../../src/overworld/world_waypoint.cpp:560
+#: ../../src/overworld/world_waypoint.cpp:559
 #, fuzzy
 msgid "Waypoint Exit"
 msgstr "Wegpunkt"
 
-#: ../../src/overworld/world_waypoint.cpp:560
+#: ../../src/overworld/world_waypoint.cpp:559
 #, fuzzy
 msgid "Select the waypoint exit to edit."
 msgstr "Wähle das Segment zum editieren."
 
-#: ../../src/overworld/world_waypoint.cpp:564
-#: ../../src/overworld/world_waypoint.cpp:566
+#: ../../src/overworld/world_waypoint.cpp:563
+#: ../../src/overworld/world_waypoint.cpp:565
 #, fuzzy
 msgid "New Exit"
 msgstr "Level Ausgang"
 
-#: ../../src/overworld/world_waypoint.cpp:566
+#: ../../src/overworld/world_waypoint.cpp:565
 #, fuzzy
 msgid "Create a new exit by clicking."
 msgstr "Erstelle ein neues Level"
 
-#: ../../src/overworld/world_waypoint.cpp:570
-#: ../../src/overworld/world_waypoint.cpp:572
+#: ../../src/overworld/world_waypoint.cpp:569
+#: ../../src/overworld/world_waypoint.cpp:571
 #, fuzzy
 msgid "Delete Exit"
 msgstr "Lösche"
 
-#: ../../src/overworld/world_waypoint.cpp:572
+#: ../../src/overworld/world_waypoint.cpp:571
 #, fuzzy
 msgid "Delete the currently selected exit by clicking."
 msgstr "Lösche das ausgewählte Segment."
 
-#: ../../src/overworld/world_waypoint.cpp:586
+#: ../../src/overworld/world_waypoint.cpp:585
 #, fuzzy
 msgid "Leave direction"
 msgstr "Richtungs Zugabe"
 
-#: ../../src/overworld/world_waypoint.cpp:586
+#: ../../src/overworld/world_waypoint.cpp:585
 msgid "Direction key to press for leaving the waypoint for this exit"
 msgstr ""
 
-#: ../../src/overworld/world_waypoint.cpp:591
+#: ../../src/overworld/world_waypoint.cpp:590
 msgid "Level Exit"
 msgstr "Level Ausgang"
 
-#: ../../src/overworld/world_waypoint.cpp:591
+#: ../../src/overworld/world_waypoint.cpp:590
 msgid "Name of the level exit in the level that activates this waypoint exit."
 msgstr ""
 
-#: ../../src/overworld/world_waypoint.cpp:596
+#: ../../src/overworld/world_waypoint.cpp:595
 #, fuzzy
 msgid "Line start UID"
 msgstr "Linie Startpunkt"
 
-#: ../../src/overworld/world_waypoint.cpp:596
+#: ../../src/overworld/world_waypoint.cpp:595
 msgid "UID of the line start point to set Alex onto when taking this exit."
 msgstr ""
 
-#: ../../src/overworld/world_waypoint.cpp:601
-#: ../../src/overworld/world_waypoint.cpp:603
-#: ../../src/overworld/world_waypoint.cpp:771
-#: ../../src/overworld/world_waypoint.cpp:785
+#: ../../src/overworld/world_waypoint.cpp:600
+#: ../../src/overworld/world_waypoint.cpp:602
+#: ../../src/overworld/world_waypoint.cpp:770
+#: ../../src/overworld/world_waypoint.cpp:784
 msgid "Locked"
 msgstr ""
 
-#: ../../src/overworld/world_waypoint.cpp:602
-#: ../../src/overworld/world_waypoint.cpp:773
+#: ../../src/overworld/world_waypoint.cpp:601
+#: ../../src/overworld/world_waypoint.cpp:772
 msgid "Unlocked"
 msgstr ""
 
-#: ../../src/overworld/world_waypoint.cpp:606
+#: ../../src/overworld/world_waypoint.cpp:605
 msgid "Lock state"
 msgstr ""
 
-#: ../../src/overworld/world_waypoint.cpp:606
+#: ../../src/overworld/world_waypoint.cpp:605
 msgid ""
 "Is this exit locked by default? PLEASE also set access to enabled on the "
 "target waypoint if you unlock by default!"
@@ -1927,37 +1911,37 @@ msgstr ""
 msgid "(console)"
 msgstr "(Konsole)"
 
-#: ../../src/user/savegame/savegame.cpp:272
+#: ../../src/user/savegame/savegame.cpp:271
 msgid "Savegame "
 msgstr "Spielstand "
 
-#: ../../src/user/savegame/savegame.cpp:272
+#: ../../src/user/savegame/savegame.cpp:271
 msgid " loaded"
 msgstr " Geladen"
 
-#: ../../src/user/savegame/savegame.cpp:447
+#: ../../src/user/savegame/savegame.cpp:446
 msgid "Couldn't save savegame "
 msgstr "Konnte Spielstand nicht speichern "
 
-#: ../../src/user/savegame/savegame.cpp:450
+#: ../../src/user/savegame/savegame.cpp:449
 msgid "Saved to Slot "
 msgstr "Gespeichert in Slot "
 
 #. TRANS: %u is replaced by the number of the save slot, starting with 1.
-#: ../../src/user/savegame/savegame.cpp:516
+#: ../../src/user/savegame/savegame.cpp:515
 #, c-format
 msgid "%u. Free Save"
 msgstr "%u. Freier Speicherplatz"
 
-#: ../../src/user/savegame/savegame.cpp:538
+#: ../../src/user/savegame/savegame.cpp:537
 msgid " -  Level "
 msgstr " -  Level "
 
-#: ../../src/user/savegame/savegame.cpp:545
+#: ../../src/user/savegame/savegame.cpp:544
 msgid " -  Unknown"
 msgstr " - Unbekannt"
 
-#: ../../src/user/savegame/savegame.cpp:549
+#: ../../src/user/savegame/savegame.cpp:548
 msgid " - Date "
 msgstr " - Datum "
 
@@ -1965,181 +1949,181 @@ msgstr " - Datum "
 msgid "No description"
 msgstr "Keine Beschreibung"
 
-#: ../../src/video/animation.cpp:1387
+#: ../../src/video/animation.cpp:1386
 msgid "Position z"
 msgstr "Position z"
 
-#: ../../src/video/animation.cpp:1387
+#: ../../src/video/animation.cpp:1386
 msgid "Initial depth position. Use values from 0.00011 to 0.12."
 msgstr "Startposition der Tiefe. Werte von einschließlich 0.00011 bis 0.12."
 
-#: ../../src/video/animation.cpp:1395 ../../src/video/animation.cpp:1473
-#: ../../src/video/animation.cpp:1489 ../../src/video/animation.cpp:1569
-#: ../../src/video/animation.cpp:1585 ../../src/video/animation.cpp:1601
-#: ../../src/video/animation.cpp:1617 ../../src/video/animation.cpp:1633
+#: ../../src/video/animation.cpp:1394 ../../src/video/animation.cpp:1472
+#: ../../src/video/animation.cpp:1488 ../../src/video/animation.cpp:1568
+#: ../../src/video/animation.cpp:1584 ../../src/video/animation.cpp:1600
+#: ../../src/video/animation.cpp:1616 ../../src/video/animation.cpp:1632
 msgid "Additional random value"
 msgstr "Extra Zufallswert"
 
-#: ../../src/video/animation.cpp:1410
+#: ../../src/video/animation.cpp:1409
 msgid "Based on camera pos."
 msgstr "Abhängig von Kamera."
 
-#: ../../src/video/animation.cpp:1410
+#: ../../src/video/animation.cpp:1409
 msgid "The emitter position is based on the camera position"
 msgstr "Die Emitter-Position ist abhängig von der Kameraposition."
 
-#: ../../src/video/animation.cpp:1417
+#: ../../src/video/animation.cpp:1416
 msgid "Particles Based on Emitter pos."
 msgstr "Partikel abhängig von Emitterposition."
 
-#: ../../src/video/animation.cpp:1417
+#: ../../src/video/animation.cpp:1416
 msgid "The particle position is based on the emitter position"
 msgstr "Die Positionen der Partikel hängen von der Position des Emitters ab."
 
-#: ../../src/video/animation.cpp:1425
+#: ../../src/video/animation.cpp:1424
 msgid "Emitter width"
 msgstr "Emitter Breite"
 
-#: ../../src/video/animation.cpp:1425
+#: ../../src/video/animation.cpp:1424
 msgid "Emitter width in which the particles spawn"
 msgstr "Emitter Breite in welchem die Partikel erschaffen werden"
 
-#: ../../src/video/animation.cpp:1433 ../../src/video/animation.cpp:1665
+#: ../../src/video/animation.cpp:1432 ../../src/video/animation.cpp:1664
 msgid "Height"
 msgstr "Höhe"
 
-#: ../../src/video/animation.cpp:1433
+#: ../../src/video/animation.cpp:1432
 msgid "Emitter height in which the particles spawn"
 msgstr "Emitter Höhe in welchem die Partikel erschaffen werden"
 
-#: ../../src/video/animation.cpp:1441
+#: ../../src/video/animation.cpp:1440
 msgid "Emitter TTL"
 msgstr "Emitter TTL"
 
-#: ../../src/video/animation.cpp:1441
+#: ../../src/video/animation.cpp:1440
 msgid "Emitter time to live. Set -1 for infinite."
 msgstr ""
 "Emitter Zeit der Existenz (TTL = Time to live). Setze -1 für unbegrenzt."
 
-#: ../../src/video/animation.cpp:1449
+#: ../../src/video/animation.cpp:1448
 msgid "Emitter interval"
 msgstr "Emitter Intervall"
 
-#: ../../src/video/animation.cpp:1449
+#: ../../src/video/animation.cpp:1448
 msgid "Time between spawning particles. Amount is the quota."
 msgstr ""
 "Die Zeit, die gewartet wird, bevor erneut jene durch die Quote\n"
 "angegebene Anzahl Partikel ausgestoßen wird."
 
-#: ../../src/video/animation.cpp:1457
+#: ../../src/video/animation.cpp:1456
 msgid "Quota"
 msgstr "Quote"
 
-#: ../../src/video/animation.cpp:1457
+#: ../../src/video/animation.cpp:1456
 msgid "The amount of particles to spawn for an interval"
 msgstr "Die Menge der Partikel welche bei jedem Intervall erschaffen wird"
 
-#: ../../src/video/animation.cpp:1465
+#: ../../src/video/animation.cpp:1464
 msgid "TTL"
 msgstr "TTL"
 
-#: ../../src/video/animation.cpp:1465
+#: ../../src/video/animation.cpp:1464
 msgid "Particle time to live(TTL)"
 msgstr "Lebenszeit (TTL) eines Partikels"
 
-#: ../../src/video/animation.cpp:1481
+#: ../../src/video/animation.cpp:1480
 msgid "Velocity"
 msgstr "Geschwindigkeit"
 
-#: ../../src/video/animation.cpp:1481
+#: ../../src/video/animation.cpp:1480
 msgid "Initial particle velocity or speed"
 msgstr "Startgeschwindigkeit"
 
-#: ../../src/video/animation.cpp:1514
+#: ../../src/video/animation.cpp:1513
 msgid "Rotation z"
 msgstr "Rotation z"
 
-#: ../../src/video/animation.cpp:1514
+#: ../../src/video/animation.cpp:1513
 msgid "Initial rotation z"
 msgstr "Startrotation Z"
 
-#: ../../src/video/animation.cpp:1522
+#: ../../src/video/animation.cpp:1521
 msgid "Add direction"
 msgstr "Richtungs Zugabe"
 
-#: ../../src/video/animation.cpp:1522
+#: ../../src/video/animation.cpp:1521
 msgid "Start direction is added to the z rotation"
 msgstr "Die Startrichtung wird der Z-Rotation hinzugerechnet"
 
-#: ../../src/video/animation.cpp:1561
+#: ../../src/video/animation.cpp:1560
 msgid "Const. rotation z"
 msgstr "Konst. Rotation Z"
 
-#: ../../src/video/animation.cpp:1561
+#: ../../src/video/animation.cpp:1560
 msgid "Initial constant rotation z"
 msgstr "Konstante Grundrotation Z"
 
-#: ../../src/video/animation.cpp:1577
+#: ../../src/video/animation.cpp:1576
 msgid "Initial direction/angle"
 msgstr "Startrichtung/-winkel"
 
-#: ../../src/video/animation.cpp:1593
+#: ../../src/video/animation.cpp:1592
 msgid "Scale"
 msgstr "Skalierung"
 
-#: ../../src/video/animation.cpp:1593
+#: ../../src/video/animation.cpp:1592
 msgid "Initial size scale"
 msgstr "Startskalierung der Größe"
 
-#: ../../src/video/animation.cpp:1609
+#: ../../src/video/animation.cpp:1608
 msgid "Hor gravity"
 msgstr "Hor Schwerkraft"
 
-#: ../../src/video/animation.cpp:1609
+#: ../../src/video/animation.cpp:1608
 msgid "Initial horizontal gravity"
 msgstr "Horizontale Grundschwerkraft"
 
-#: ../../src/video/animation.cpp:1625
+#: ../../src/video/animation.cpp:1624
 msgid "Ver gravity"
 msgstr "Ver Schwerkraft"
 
-#: ../../src/video/animation.cpp:1625
+#: ../../src/video/animation.cpp:1624
 msgid "Initial vertical gravity"
 msgstr "Vertikale Grundschwerkraft"
 
-#: ../../src/video/animation.cpp:1641
+#: ../../src/video/animation.cpp:1640
 msgid "Clip rect x"
 msgstr "Clipping-Rechteck X"
 
-#: ../../src/video/animation.cpp:1641
+#: ../../src/video/animation.cpp:1640
 msgid "Clipping rectangle position x"
 msgstr "X-Position des Clipping-Rechtecks"
 
-#: ../../src/video/animation.cpp:1649
+#: ../../src/video/animation.cpp:1648
 msgid "Width"
 msgstr "Breite"
 
-#: ../../src/video/animation.cpp:1649
+#: ../../src/video/animation.cpp:1648
 msgid "Clipping rectangle width"
 msgstr "Breite des Clipping-Rechtecks"
 
-#: ../../src/video/animation.cpp:1657
+#: ../../src/video/animation.cpp:1656
 msgid "Clip rect y"
 msgstr "Clipping-Rechteck Y"
 
-#: ../../src/video/animation.cpp:1657
+#: ../../src/video/animation.cpp:1656
 msgid "Clipping rectangle position y"
 msgstr "Y-Position des Clipping-Rechtecks"
 
-#: ../../src/video/animation.cpp:1665
+#: ../../src/video/animation.cpp:1664
 msgid "Clipping rectangle height"
 msgstr "Höhe des Clipping-Rechtecks"
 
-#: ../../src/video/animation.cpp:1677
+#: ../../src/video/animation.cpp:1676
 msgid "Clip mode"
 msgstr "Clipping-Modus"
 
-#: ../../src/video/animation.cpp:1677
+#: ../../src/video/animation.cpp:1676
 msgid "Clipping mode if particle is out the rectangle"
 msgstr "Partikel abschneiden, wenn sie das Clipping-Rechteck verlassen"
 
@@ -2158,13 +2142,26 @@ msgstr "Wiederherstellen der Texturen"
 msgid "This program is distributed under the terms of the GPLv3"
 msgstr "Dieses Programm unterliegt der GPLv3"
 
-#: ../../src/video/video.cpp:465
+#: ../../src/video/video.cpp:464
 msgid "Caching Images failed : Could not remove old images"
 msgstr "Speichern fehlgeschlagen : Konnte alte Grafiken nicht entfernen"
 
-#: ../../src/video/video.cpp:488
+#: ../../src/video/video.cpp:487
 msgid "Caching Images"
 msgstr "Speichere Grafiken im Cache"
+
+#~ msgid ""
+#~ "This will take affect after restarting.\n"
+#~ "Continue ?"
+#~ msgstr ""
+#~ "Dies wird erst nach Neustart wirksam.\n"
+#~ "Fortfahren?"
+
+#~ msgid "Reload Level ?"
+#~ msgstr "Lade Level neu ?"
+
+#~ msgid "Reload World ?"
+#~ msgstr "Lade Welt neu ?"
 
 #~ msgid ""
 #~ "Music addon not detected.\n"
