@@ -17,7 +17,6 @@
 #include "scrdg.hpp"
 #include <iostream>
 #include <sstream>
-#include <regex>
 
 namespace fs = boost::filesystem;
 
@@ -66,13 +65,14 @@ void Parser::parse_file(const boost::filesystem::path& file_path)
     m_lino = 0;
 
     std::ifstream file(file_path.native());
-    for (std::string line; std::getline(file, line); ) {
+    for (std::string line; std::getline(file, line); ) { // getline() drops the \n
         m_lino += 1;
 
         if (m_docblock_open) { // We are in a /** block here
-            std::regex r("^\\s*\\*/$");
-            if (std::regex_search(line, r)) { // /** block closed by */
+            size_t pos = std::string::npos;
+            if ((pos = line.rfind("*/")) != std::string::npos) { // "/**" block closed by "*/"
                 m_docblock_open = false;
+                m_doctext += line.substr(0, pos); // Append contents before "*/"
                 parse_doctext(m_doctext);
                 m_doctext.clear();
             }
@@ -88,9 +88,8 @@ void Parser::parse_file(const boost::filesystem::path& file_path)
                 m_doctext += text + "\n";
             }
         }
-        else { // We are not in a /** block here
-            std::regex r("^/\\*\\*$"); // Opening block must be in line of its own
-            if (std::regex_search(line, r)) { // /** block opened
+        else { // We are not in a "/**" block here
+            if (line == "/**") { // "/**" block opened; opening block must be in line of its own.
                 m_docblock_open = true;
             } // else ignore the line
         }
