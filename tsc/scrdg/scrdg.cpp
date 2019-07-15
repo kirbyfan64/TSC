@@ -16,6 +16,7 @@
 
 #include "scrdg.hpp"
 #include <iostream>
+#include <sstream>
 #include <regex>
 
 namespace fs = boost::filesystem;
@@ -62,6 +63,7 @@ void Parser::PrintSummary()
 void Parser::parse_file(const boost::filesystem::path& file_path)
 {
     std::cout << "Examining " << file_path << std::endl;
+    m_lino = 0;
 
     std::ifstream file(file_path.native());
     for (std::string line; std::getline(file, line); ) {
@@ -95,21 +97,89 @@ void Parser::parse_file(const boost::filesystem::path& file_path)
     }
 }
 
-void Parser::parse_doctext(const std::string& text)
+void Parser::parse_doctext(std::string text)
 {
-    std::cout << ">>" << text << "<<" << std::endl;
+    std::string firstline = text.substr(0, text.find("\n"));
+
+    size_t pos = std::string::npos;
+    if ((pos = firstline.find(":")) != std::string::npos) {
+        // Remove control line from doc text
+        text = text.substr(firstline.length());
+
+        std::string type = firstline.substr(0, pos);
+        std::string name = firstline.substr(pos+2, firstline.find("\n")-1);
+
+        if (type == "Method")
+            parse_doctype_method(name, text);
+        else if (type == "Class")
+            parse_doctype_class(name, text);
+        else if (type == "Module")
+            parse_doctype_module(name, text);
+        else
+            std::cerr << "Warning: Skipping invalid documentation type '" << type << "' on line " << m_lino << std::endl;
+    }
+    else {
+        std::cerr << "Warning: Skipping invalid documentation comment block on line " << m_lino << std::endl;
+    }
 }
 
-void Parser::parse_doctype_class(const std::string& classname)
+void Parser::parse_doctype_class(const std::string& classname, const std::string& text)
 {
+    m_classes.push_back(ClassDoc{name: classname, documentation: text});
 }
 
-void Parser::parse_doctype_module(const std::string& modulename)
+void Parser::parse_doctype_module(const std::string& modulename, const std::string& text)
 {
+    m_modules.push_back(ModuleDoc{name: modulename, documentation: text});
 }
 
-void Parser::parse_doctype_method(const std::string& methodname)
+void Parser::parse_doctype_method(const std::string& methodstr, const std::string& text)
 {
+    bool is_imethod = false;
+    std::string classname;
+    std::string methodname;
+
+    // Check whether class or instance method (or invalid)
+    size_t pos = std::string::npos;
+    if ((pos = methodstr.find("#")) != std::string::npos) {
+        is_imethod = true;
+        classname  = methodstr.substr(0, pos);
+        methodname = methodstr.substr(pos+1);
+    }
+    else if ((pos = methodstr.find("::")) != std::string::npos) {
+        is_imethod = false;
+        pos        = methodstr.rfind("::");
+        methodname = methodstr.substr(pos+2);
+        classname  = methodstr.substr(0, pos);
+    }
+    else {
+        std::cerr << "Warning: Invalid method spec '" << methodstr << "' on line " << m_lino << ". Ignoring." << std::endl;
+    }
+
+    // Divide the rest of the documentation block into the call sequences
+    // and the real documentation.
+    std::stringstream stream(text);
+    std::vector<std::string> calls;
+    std::string doctext;
+    for (std::string line; std::getline(stream, line); ) {
+        // Ignore newlines surrounding the call sequences block
+        if (line.empty())
+            continue;
+        if (line[0] == ' ') {
+            calls.push_back(strip(line));
+            continue;
+        }
+        // End of call sequences reached
+        doctext = line + "\n";
+        break;
+    }
+
+    // "How to read a stream into a string in C++ as a oneliner?" - "Not possible
+    // before C++11, and afterwards you need unreadable angle code".
+    // <https://stackoverflow.com/questions/3203452>.
+    doctext += std::string(std::istreambuf_iterator<char>(stream), {});
+
+    m_methods.push_back(MethodDoc{name: methodname, classname: classname, is_instance_method: is_imethod, call_seqs: calls, documentation: doctext});
 }
 
 Generator::Generator(fs::path output_dir,

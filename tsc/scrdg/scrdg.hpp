@@ -34,7 +34,7 @@ struct MethodDoc
     std::string name;
     std::string classname;
     bool is_instance_method;
-    std::string call_seqs;
+    std::vector<std::string> call_seqs;
     std::string documentation;
 };
 
@@ -50,10 +50,10 @@ public:
     const inline std::vector<MethodDoc>& GetMethods() { return m_methods; }
 private:
     void parse_file(const boost::filesystem::path& file);
-    void parse_doctext(const std::string& text);
-    void parse_doctype_class(const std::string& classname);
-    void parse_doctype_module(const std::string& modulename);
-    void parse_doctype_method(const std::string& methodname);
+    void parse_doctext(std::string text);
+    void parse_doctype_class(const std::string& classname, const std::string& text);
+    void parse_doctype_module(const std::string& modulename, const std::string& text);
+    void parse_doctype_method(const std::string& methodname, const std::string& text);
 
     boost::filesystem::path m_source_dir;
     bool m_docblock_open;
