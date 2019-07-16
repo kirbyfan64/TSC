@@ -36,6 +36,8 @@ string(TIMESTAMP TSC_COMPILE_YEAR "%Y")
 string(TIMESTAMP TSC_COMPILE_MONTH "%m")
 string(TIMESTAMP TSC_COMPILE_DAY "%d")
 
+set (TSC_VERSION "${TSC_VERSION_MAJOR}.${TSC_VERSION_MINOR}.${TSC_VERSION_PATCH}${TSC_VERSION_POSTFIX}")
+
 # Set TSC_VERSION_GIT if possible
 execute_process(COMMAND git rev-parse --short HEAD
   WORKING_DIRECTORY ${TSC_SOURCE_DIR}
@@ -251,6 +253,12 @@ endif()
 if (BUILD_SCRIPT_DOCS)
   add_executable(scrdg ${scrdg_sources})
   target_link_libraries(scrdg ${Boost_COMPONENTS})
+
+  add_custom_target(scriptdocs
+    BYPRODUCTS "${TSC_BINARY_DIR}/scriptdocs"
+    COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT})
+
+  add_dependencies(tsc scriptdocs)
 endif()
 
 ########################################
@@ -308,6 +316,8 @@ install(DIRECTORY "${TSC_SOURCE_DIR}/data/sounds/"
 install(DIRECTORY "${TSC_SOURCE_DIR}/data/worlds/"
   DESTINATION ${CMAKE_INSTALL_DATADIR}/tsc/worlds
   COMPONENT worlds)
+install(DIRECTORY "${TSC_BINARY_DIR}/scriptdocs"
+  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/doc/tsc)
 
 if(NOT WIN32)
   install(FILES "${TSC_SOURCE_DIR}/docs/man/tsc.6"
@@ -419,7 +429,7 @@ include(CPack)
 # Print summary
 
 message(STATUS "--------------- Build info summary ----------------")
-message(STATUS "TSC version:    ${TSC_VERSION_MAJOR}.${TSC_VERSION_MINOR}.${TSC_VERSION_PATCH}${TSC_VERSION_POSTFIX}")
+message(STATUS "TSC version:    ${TSC_VERSION}")
 message(STATUS "Build type:     ${CMAKE_BUILD_TYPE}")
 if (CMAKE_CROSSCOMPILING)
   message(STATUS "Crosscompiling: ${HOST_TRIPLET}")
