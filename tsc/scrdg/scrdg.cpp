@@ -184,13 +184,17 @@ void Parser::parse_doctype_method(const std::string& methodstr, const std::strin
 
 Generator::Generator(fs::path output_dir,
                      fs::path template_file,
+                     const std::string& tsc_version,
+                     const std::string& tsc_gitrevision,
                      const std::vector<ClassDoc>& classes,
                      const std::vector<ModuleDoc>& modules,
                      const std::vector<MethodDoc>& methods)
     : m_classes(classes),
       m_modules(modules),
       m_methods(methods),
-      m_output_dir(output_dir)
+      m_output_dir(output_dir),
+      m_tsc_version(tsc_version),
+      m_tsc_gitrevision(tsc_gitrevision)
 {
     std::ifstream file(template_file.native());
     m_template = std::string(std::istreambuf_iterator<char>(file), {});
@@ -215,6 +219,7 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
     filter_methods(name, cmethods, imethods);
 
     std::string title = type + " " + name;
+    std::string version = tsc_version_str();
     std::string mainbody = "<h1>" + title + "</h1>\n";
 
     mainbody += documentation + "\n";
@@ -246,8 +251,8 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
     }
 
     // Insert into template
-    char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + 1];
-    sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str());
+    char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + version.length() + 1];
+    sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str(), version.c_str());
 
     // Construct output file name, replacing all "::" with "_"
     std::string filename = name + ".html";
@@ -286,6 +291,20 @@ void Generator::filter_methods(const std::string& classmodname, std::vector<Meth
             }
         }
     }
+}
+
+// Returns the version string for use in the HTML page footer.
+std::string Generator::tsc_version_str()
+{
+    std::string version = "Version " + m_tsc_version;
+    if (!m_tsc_gitrevision.empty()) {
+        version += " (commit <a href=\"https://github.com/Secretchronicles/TSC/commit/"
+            + m_tsc_gitrevision
+            + "\">"
+            + m_tsc_gitrevision.substr(0, 8)
+            + "</a>)";
+    }
+    return version;
 }
 
 // Cleans `str' from any characters that might not fit an HTML `ID' tag.
@@ -336,7 +355,7 @@ void copy_static_contents(const fs::path& tsc_source_dir, const fs::path& target
     std::cout << "Done." << std::endl;
 }
 
-void process_core_files(const fs::path& source_dir, const fs::path& target_dir)
+static void process_core_files(const fs::path& source_dir, const fs::path& target_dir, const std::string& tsc_version, const std::string& tsc_gitrevision)
 {
     std::cout << "Generating scripting core API documentation." << std::endl;
 
@@ -346,13 +365,15 @@ void process_core_files(const fs::path& source_dir, const fs::path& target_dir)
 
     Generator gen(target_dir,
                   source_dir / "docs" / "scripting" / "template.html.part",
+                  tsc_version,
+                  tsc_gitrevision,
                   parser.GetClasses(),
                   parser.GetModules(),
                   parser.GetMethods());
     gen.Generate();
 }
 
-void process_ssl_files(const fs::path& source_dir, const fs::path& target_dir)
+static void process_ssl_files(const fs::path& source_dir, const fs::path& target_dir)
 {
     std::cout << "Doing nothing with the SSL for now" << std::endl;
 }
@@ -361,8 +382,9 @@ int main(int argc, char* argv[])
 {
     std::cout << "TSC scripting documentation generator starting." << std::endl;
 
-    if (argc != 3) {
-        std::cerr << "Usage: scrdg OUTPUT_DIR TSC_SOURCE_DIR" << std::endl;
+    // This is an internal programme, so no sophistic commandline parsing required.
+    if (argc != 4 && argc != 5) {
+        std::cerr << "Usage: scrdg OUTPUT_DIR TSC_SOURCE_DIR TSC_VERSION [TSC_GITREVISION]" << std::endl;
         std::cerr << "(where TSC_SOURCE_DIR refers to the tsc/ directory)" << std::endl;
         return 1;
     }
@@ -370,14 +392,21 @@ int main(int argc, char* argv[])
     fs::path output_dir     = fs::path(argv[1]);
     fs::path tsc_source_dir = fs::path(argv[2]);
 
+    std::string tsc_version = std::string(argv[3]);
+    std::string tsc_gitrevision;
+
+    // Git revision is optional (not available if building from release tarball).
+    if (argc == 5)
+        tsc_gitrevision = std::string(argv[4]);
+
     // Prepare output directory
     if (fs::exists(output_dir))
         fs::remove_all(output_dir);
     fs::create_directories(output_dir);
 
     copy_static_contents(tsc_source_dir, output_dir);
-    process_core_files(tsc_source_dir, output_dir);
-    //process_ssl_files(tsc_source_dir / "data" / "scripting", output_dir);
+    process_core_files(tsc_source_dir, output_dir, tsc_version, tsc_gitrevision);
+    process_ssl_files(tsc_source_dir / "data" / "scripting", output_dir);
 
     std::cout << "TSC scripting documentation generator finished." << std::endl;
     return 0;

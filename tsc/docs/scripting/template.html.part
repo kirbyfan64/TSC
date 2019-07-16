@@ -16,7 +16,7 @@
     </main>
     <footer>
       <p style="float: right">
-        Version TODO
+        %s
       </p>
       <p style="float: left"><img src="graphics/cookie.png" style="width: 32px" alt="TSC moon" title="A clear night, isn’t it?"/></p>
       <div style="clear: both"></div>

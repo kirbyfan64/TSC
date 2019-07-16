@@ -70,6 +70,8 @@ class Generator
 public:
     Generator(boost::filesystem::path output_dir,
               boost::filesystem::path template_file,
+              const std::string& tsc_version,
+              const std::string& tsc_gitrevision,
               const std::vector<ClassDoc>& classes,
               const std::vector<ModuleDoc>& modules,
               const std::vector<MethodDoc>& methods);
@@ -82,11 +84,14 @@ private:
     void generate_indexfile();
     void filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods);
     std::string idclean(std::string str);
+    std::string tsc_version_str();
 
     const std::vector<ClassDoc>&  m_classes;
     const std::vector<ModuleDoc>& m_modules;
     const std::vector<MethodDoc>& m_methods;
     boost::filesystem::path m_output_dir;
+    const std::string& m_tsc_version;
+    const std::string& m_tsc_gitrevision;
     std::string m_template;
 };
 
