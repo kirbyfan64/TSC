@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>%s</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <p style="float: left">↑ <a href="index.html">Top</a></p>
+      <p style="float: right">Secret Chronicles of the Scripting API documentation</p>
+      <div style="clear: both"></div>
+    </header>
+    <main>
+      %s
+    </main>
+    <footer>
+      <p style="float: right">
+        Version TODO
+      </p>
+      <p style="float: left"><img src="graphics/cookie.png" style="width: 32px" alt="TSC moon" title="A clear night, isn’t it?"/></p>
+      <div style="clear: both"></div>
+    </footer>
+  </body>
+</html>

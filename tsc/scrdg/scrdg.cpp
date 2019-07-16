@@ -17,6 +17,7 @@
 #include "scrdg.hpp"
 #include <iostream>
 #include <sstream>
+#include <cstdio>
 
 namespace fs = boost::filesystem;
 
@@ -183,26 +184,125 @@ void Parser::parse_doctype_method(const std::string& methodstr, const std::strin
 
 Generator::Generator(fs::path output_dir,
                      fs::path template_file,
-                     std::vector<ClassDoc> classes,
-                     std::vector<ModuleDoc> modules,
-                     std::vector<MethodDoc> methods)
+                     const std::vector<ClassDoc>& classes,
+                     const std::vector<ModuleDoc>& modules,
+                     const std::vector<MethodDoc>& methods)
+    : m_classes(classes),
+      m_modules(modules),
+      m_methods(methods),
+      m_output_dir(output_dir)
 {
+    std::ifstream file(template_file.native());
+    m_template = std::string(std::istreambuf_iterator<char>(file), {});
 }
 
 void Generator::Generate()
 {
+    for (const ClassDoc& cd: m_classes)
+        generate_classmod("Class", cd.name, cd.documentation);
+    for (const ModuleDoc& md: m_modules)
+        generate_classmod("Module", md.name, md.documentation);
+
+    generate_indexfile();
 }
 
-void Generator::generate_class(const ClassDoc& klass)
+// Generates the HTML file for a given class or module.
+void Generator::generate_classmod(const std::string& type, const std::string& name, const std::string& documentation)
 {
+    // Select the methods for this class
+    std::vector<MethodDoc> cmethods;
+    std::vector<MethodDoc> imethods;
+    filter_methods(name, cmethods, imethods);
+
+    std::string title = type + " " + name;
+    std::string mainbody = "<h1>" + title + "</h1>\n";
+
+    mainbody += documentation + "\n";
+
+    if (!cmethods.empty()) {
+        mainbody += "<h2 id=\"classmod-methods\">" + type + " Methods</h2>\n";
+        for (const MethodDoc& md: cmethods) {
+            mainbody += "<h3 id=\"" + idclean(md.name) + "\">" + md.name + "</h3>\n";
+            mainbody += "<pre class=\"callseqs\">";
+            for (const std::string& call: md.call_seqs) {
+                mainbody += "<code>" + call + "</code>\n";
+            }
+            mainbody += "</pre>\n";
+            mainbody += md.documentation + "\n";
+        }
+    }
+
+    if (!imethods.empty()) {
+        mainbody += "<h2 id=\"instance-methods\">Instance Methods</h2>\n";
+        for (const MethodDoc& md: imethods) {
+            mainbody += "<h3 id=\"" + idclean(md.name) + "\">" + md.name + "</h3>\n";
+            mainbody += "<pre class=\"callseqs\">";
+            for (const std::string& call: md.call_seqs) {
+                mainbody += "<code>" + call + "</code>\n";
+            }
+            mainbody += "</pre>\n";
+            mainbody += md.documentation + "\n";
+        }
+    }
+
+    // Insert into template
+    char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + 1];
+    sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str());
+
+    // Construct output file name, replacing all "::" with "_"
+    std::string filename = name + ".html";
+    size_t pos = std::string::npos;
+    while ((pos = filename.find("::")) != std::string::npos)
+        filename.replace(pos, 2, "_");
+
+    std::ofstream file((m_output_dir / filename).native());
+    file.write(outbuf, strlen(outbuf));
+    file.close();
+
+    delete[] outbuf;
 }
 
 void Generator::generate_module(const ModuleDoc& mod)
 {
+    // Select the methods for this module
+    std::vector<MethodDoc> cmethods;
+    std::vector<MethodDoc> imethods;
+    filter_methods(mod.name, cmethods, imethods);
 }
 
-void Generator::generate_method(const MethodDoc& method)
+void Generator::generate_indexfile()
 {
+}
+
+void Generator::filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods)
+{
+    for (const MethodDoc& md: m_methods) {
+        if (md.classname == classmodname) {
+            if (md.is_instance_method) {
+                imethods.push_back(md);
+            }
+            else {
+                cmethods.push_back(md);
+            }
+        }
+    }
+}
+
+// Cleans `str' from any characters that might not fit an HTML `ID' tag.
+std::string Generator::idclean(std::string str)
+{
+    std::string result;
+    for (size_t i=0; i < str.length(); i++) {
+        if (str[i] >= '0' && str[i] <= '9')
+            result += str[i];
+        else if (str[i] >= 'A' && str[i] <= 'Z')
+            result += str[i];
+        else if (str[i] >= 'a' && str[i] <= 'z')
+            result += str[i];
+        else
+            result += '-';
+    }
+    return result;
 }
 
 /**************************************

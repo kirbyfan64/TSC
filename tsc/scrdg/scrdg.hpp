@@ -70,15 +70,24 @@ class Generator
 public:
     Generator(boost::filesystem::path output_dir,
               boost::filesystem::path template_file,
-              std::vector<ClassDoc> classes,
-              std::vector<ModuleDoc> modules,
-              std::vector<MethodDoc> methods);
+              const std::vector<ClassDoc>& classes,
+              const std::vector<ModuleDoc>& modules,
+              const std::vector<MethodDoc>& methods);
 
     void Generate();
 private:
+    void generate_classmod(const std::string& type, const std::string& name, const std::string& documentation);
     void generate_class(const ClassDoc& klass);
     void generate_module(const ModuleDoc& mod);
-    void generate_method(const MethodDoc& method);
+    void generate_indexfile();
+    void filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods);
+    std::string idclean(std::string str);
+
+    const std::vector<ClassDoc>&  m_classes;
+    const std::vector<ModuleDoc>& m_modules;
+    const std::vector<MethodDoc>& m_methods;
+    boost::filesystem::path m_output_dir;
+    std::string m_template;
 };
 
 std::string strip(std::string str);
