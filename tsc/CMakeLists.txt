@@ -254,11 +254,12 @@ if (BUILD_SCRIPT_DOCS)
   add_executable(scrdg ${scrdg_sources})
   target_link_libraries(scrdg ${Boost_COMPONENTS})
 
-  add_custom_target(scriptdocs
-    BYPRODUCTS "${TSC_BINARY_DIR}/scriptdocs"
+  add_custom_command(OUTPUT "${TSC_BINARY_DIR}/scriptdocs"
     COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT})
+  add_custom_target(scriptdocumentation
+    DEPENDS "${TSC_BINARY_DIR}/scriptdocs")
 
-  add_dependencies(tsc scriptdocs)
+  add_dependencies(tsc scriptdocumentation)
 endif()
 
 ########################################
