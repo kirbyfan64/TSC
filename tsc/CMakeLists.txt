@@ -211,6 +211,11 @@ file(GLOB_RECURSE scrdg_sources
   "scrdg/*.cpp"
   "scrdg/*.hpp")
 
+file(GLOB_RECURSE scriptdoc_sources
+  "src/scripting/*.cpp"
+  "src/scripting/*.hpp"
+  "data/scripting/*.rb")
+
 ########################################
 # Gettext internationalization
 
@@ -255,7 +260,9 @@ if (BUILD_SCRIPT_DOCS)
   target_link_libraries(scrdg ${Boost_COMPONENTS})
 
   add_custom_command(OUTPUT "${TSC_BINARY_DIR}/scriptdocs"
-    COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT})
+    COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT}
+    DEPENDS ${scriptdoc_sources}
+    VERBATIM)
   add_custom_target(scriptdocumentation
     DEPENDS "${TSC_BINARY_DIR}/scriptdocs")
 
