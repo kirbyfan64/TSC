@@ -15,6 +15,7 @@
 */
 
 #include <string>
+#include <initializer_list>
 #include <boost/filesystem.hpp>
 
 struct ClassDoc
@@ -38,10 +39,12 @@ struct MethodDoc
     std::string documentation;
 };
 
-class CppParser
+class Parser
 {
 public:
-    CppParser(boost::filesystem::path source_directory);
+    Parser(std::string name, boost::filesystem::path source_directory, std::initializer_list<std::string> extensions);
+    virtual ~Parser();
+
     void Parse();
     void PrintSummary();
 
@@ -49,22 +52,39 @@ public:
     const inline std::vector<ModuleDoc>& GetModules() { return m_modules; }
     const inline std::vector<MethodDoc>& GetMethods() { return m_methods; }
 private:
-    void parse_file(const boost::filesystem::path& file);
+    std::string m_parser_name;
+    std::vector<std::string> m_file_extensions;
+protected:
+    boost::filesystem::path m_source_dir;
+    std::vector<ClassDoc> m_classes;
+    std::vector<ModuleDoc> m_modules;
+    std::vector<MethodDoc> m_methods;
+
+    virtual void parse_file(const boost::filesystem::path& file) = 0;
+};
+
+// This parser extracts API documentation from the scipting core C++
+// source code files under src/scripting.
+class CppParser: public Parser
+{
+public:
+    CppParser(boost::filesystem::path source_directory);
+private:
+    virtual void parse_file(const boost::filesystem::path& file);
     void parse_doctext(std::string text);
     void parse_doctype_class(const std::string& classname, const std::string& text);
     void parse_doctype_module(const std::string& modulename, const std::string& text);
     void parse_doctype_method(const std::string& methodname, const std::string& text);
 
-    boost::filesystem::path m_source_dir;
     bool m_docblock_open;
     int m_lino;
     std::string m_doctext;
-
-    std::vector<ClassDoc> m_classes;
-    std::vector<ModuleDoc> m_modules;
-    std::vector<MethodDoc> m_methods;
 };
 
+};
+
+// This generator created HTML pages from the information harvested
+// with the two parsers defined above.
 class Generator
 {
 public:

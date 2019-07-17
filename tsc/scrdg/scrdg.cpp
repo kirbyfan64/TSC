@@ -25,19 +25,27 @@ namespace fs = boost::filesystem;
  * Class implementations
  *************************************/
 
-CppParser::CppParser(fs::path source_directory)
-    : m_source_dir(source_directory),
-      m_docblock_open(false),
-      m_lino(0)
+Parser::Parser(std::string name, fs::path source_directory, std::initializer_list<std::string> extensions)
+    : m_parser_name(name),
+      m_file_extensions(extensions),
+      m_source_dir(source_directory)
 {
 }
 
-void CppParser::Parse()
+Parser::~Parser()
+{
+}
+
+// Iterates all files in the m_source_dir and calls parse_file() for each one
+// that has a file extension matching one in m_file_extensions.
+void Parser::Parse()
 {
     for(auto iter = fs::recursive_directory_iterator(m_source_dir); iter != fs::recursive_directory_iterator(); iter++) {
-        if (iter->path().extension() == fs::path(".cpp") ||
-            iter->path().extension() == fs::path(".hpp")) {
-            parse_file(*iter);
+        for (const std::string& extension: m_file_extensions) {
+            if (iter->path().extension() == fs::path(extension)) {
+                parse_file(*iter);
+                break;
+            }
         }
     }
 
@@ -52,12 +60,19 @@ void CppParser::Parse()
     std::sort(m_methods.begin(), m_methods.end(), namesorter);
 }
 
-void CppParser::PrintSummary()
+void Parser::PrintSummary()
 {
-    std::cout << std::endl << "=== SUMMARY ===" << std::endl;
+    std::cout << std::endl << "=== SUMMARY: " << m_parser_name << " ===" << std::endl;
     std::cout << "Classes: " << m_classes.size() << std::endl;
     std::cout << "Modules: " << m_modules.size() << std::endl;
     std::cout << "Methods: " << m_methods.size() << std::endl;
+}
+
+CppParser::CppParser(fs::path source_directory)
+    : Parser("Core", source_directory, {".cpp", ".hpp"}),
+      m_docblock_open(false),
+      m_lino(0)
+{
 }
 
 void CppParser::parse_file(const boost::filesystem::path& file_path)
