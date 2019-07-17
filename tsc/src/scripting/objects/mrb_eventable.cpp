@@ -19,16 +19,16 @@
 /**
  * Module: Eventable
  *
- * Mixin module that allows objects to receive events from TSC.
+ * <p>Mixin module that allows objects to receive events from TSC.
  * Mixing in this module on the MRuby side of things is quite
  * useless as you may then receive events, but nobody actually
- * _fires_ those for you.
+ * <em>fires</em> those for you.</p>
  *
- * This module however is included by default by all classes
+ * <p>This module however is included by default by all classes
  * that can receive events from the C++ side and its methods
  * are therefore available to instances of those classes. It
  * is also used internally heavily in the implementation of
- * the `on_*` methods.
+ * the <code>on_*</code> methods.</p>
  */
 
 using namespace TSC;
@@ -40,10 +40,10 @@ using namespace TSC::Scripting;
  *
  *   bind(evtname){|evtname, *args| ...} → nil
  *
- * Listen for the event `evtname` and register the block as the
+ * <p>Listen for the event <code>evtname</code> and register the block as the
  * event handler. It gets passed the name of the event as the
  * first argument, followed by any additional arguments specific
- * to the event.
+ * to the event.</p>
  */
 mrb_value Bind(mrb_state* p_state, mrb_value self)
 {

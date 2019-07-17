@@ -24,18 +24,21 @@
 /**
  * Module: UIDS
  *
- * The `UIDS` module (yes, really, it’s a module) is a simple way to
- * refer to existing instances of class `Sprite` and its subclasses.
- * It basically just offers the module method `[]` that allows you
+ * <p>
+ * The <code>UIDS</code> module (yes, really, it’s a module) is a simple way to
+ * refer to existing instances of class <code>Sprite</code> and its subclasses.
+ * It basically just offers the module method <code>[]</code> that allows you
  * to retrieve any sprite you wish from the level, identified by its
  * unique identifier (UID):
+ * </p>
  *
- * ~~~~ ruby
+ * <pre class="source">
  * # Move the sprite with the UID 25 away
  * UIDS[25].warp(-100, 0)
- * ~~~~
+ * </pre>
  *
- * The `UIDS` module maintains a cache for the sprite objects so that it
+ * <p>
+ * The <code>UIDS</code> module maintains a cache for the sprite objects so that it
  * doesn’t have to create MRuby objects for all the sprites right at the
  * beginning of a level, but rather when you first access them. This means
  * that while level loading is fast, referencing a bunch of not-yet-seen
@@ -43,6 +46,7 @@
  * careful when doing this. After a sprite has first been mapped to MRuby
  * land, referencing it will just cause a lookup in the internal cache
  * and therefore is quite fast.
+ * </p>
  */
 
 using namespace TSC;
@@ -90,36 +94,45 @@ static mrb_value _Index(mrb_state* p_state, mrb_value cache, mrb_value ruid)
  *   [range] → an_array
  *   [ary]   → an_array
  *
+ * <p>
  * Retrieve an MRuby object for the sprite with the unique identifier
  * `uid`. The first time you call this method with a given UID, it
  * will cycle through _all_ sprite objects in the level, so it will
  * take relatively long. The sprite object is then cached internally,
  * causing later lookups to be fast.
+ * </p>
  *
- * #### Parameters
- * uid
- * : The unique identifier of the sprite you want to retrieve. You can
- *   look this up in the TSC editor. May also be a range.
+ * <h4>Parameters</h4>
  *
- * range
- * : Instead of requesting a single sprite, request a list of sprites
- *   corresponding to the given range of UIDs.
+ * <dl>
+ * <dt>uid</dt>
+ * <dd>The unique identifier of the sprite you want to retrieve. You can
+ *   look this up in the TSC editor. May also be a range.</dd>
  *
- * ary
- * : Instead of requesting a single sprite, request a list of sprites
- *   corresponding to the given UIDs.
+ * <dt>range</dt>
+ * <dd>Instead of requesting a single sprite, request a list of sprites
+ *   corresponding to the given range of UIDs.</dd>
  *
- * #### Return value
- * Returns an instance of class `Sprite` or one of its subclasses, as
- * required. If the requested UID can’t be found, returns `nil`.
+ * <dt>ary</dt>
+ * <dd>Instead of requesting a single sprite, request a list of sprites
+ *   corresponding to the given UIDs.</dd>
+ * </dl>
  *
+ * <h4>Return value</h4>
+ * <p>
+ * Returns an instance of class <code>Sprite</code> or one of its subclasses, as
+ * required. If the requested UID can’t be found, returns <code>nil</code>.
+ * </p>
+ *
+ * <p>
  * If you passed a range or array, you’ll get an array containing the
- * requested `Sprite` subclass instances instead. The array may
- * contain `nil` values for sprites that could not be found.
+ * requested <code>Sprite</code> subclass instances instead. The array may
+ * contain <code>nil</code> values for sprites that could not be found.
+ * </p>
  *
- * #### Example
+ * <h4>Example</h4>
  *
- * ~~~~~~~~~~~~~~~~~ ruby
+ * <pre class="source">
  * # Request a single sprite
  * sprite = UIDS[14]
  *
@@ -128,7 +141,7 @@ static mrb_value _Index(mrb_state* p_state, mrb_value cache, mrb_value ruid)
  *
  * # Request the sprites 14, 16, 20, and 400
  * ary = UIDS[14, 16, 20, 400]
- * ~~~~~~~~~~~~~~~~~
+ * </pre>
  */
 static mrb_value Index(mrb_state* p_state, mrb_value self)
 {
@@ -190,8 +203,10 @@ static mrb_value Index(mrb_state* p_state, mrb_value self)
  *
  *   cache_size() → an_integer
  *
+ * <p>
  * The current size of the UID cache. This method is mainly
  * useful for debugging purposes.
+ * </p>
  */
 static mrb_value Cache_Size(mrb_state* p_state, mrb_value self)
 {
@@ -204,8 +219,10 @@ static mrb_value Cache_Size(mrb_state* p_state, mrb_value self)
  *
  *   cached_uids() → an_array
  *
+ * <p>
  * Returns an unsorted array of all UIDs currently cached.
  * This method is mainly useful for debugging purposes.
+ * </p>
  */
 static mrb_value Cached_UIDs(mrb_state* p_state, mrb_value self)
 {

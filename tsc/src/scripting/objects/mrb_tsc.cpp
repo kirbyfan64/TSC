@@ -22,7 +22,9 @@
 /**
  * Module: TSC
  *
+ * <p>
  * Module encapsulating stuff related to the game itself.
+ * </p>
  */
 
 using namespace TSC;
@@ -33,11 +35,11 @@ namespace fs = boost::filesystem;
  *
  *   platform() → a_string
  *
- * Information about the platform TSC was compiled for.
+ * <p>Information about the platform TSC was compiled for.</p>
  *
- * #### Return value
- * One of `:win32`, `:linux`, `:apple`, or `:other`. Please
- * notify me if you get `:other` from this method.
+ * <h4>Return value</h4>
+ * <p>One of :win32, :linux, :apple, or :other. Please
+ * notify us if you get :other from this method.</p>
  */
 static mrb_value Platform(mrb_state* p_state, mrb_value self)
 {
@@ -57,8 +59,8 @@ static mrb_value Platform(mrb_state* p_state, mrb_value self)
  *
  *   quit()
  *
- * Instructs TSC to terminate the main loop, exiting the
- * game as if regularily closed.
+ * <p>Instructs TSC to terminate the main loop, exiting the
+ * game as if regularily closed.</p>
  */
 static mrb_value Quit(mrb_state* p_state, mrb_value self)
 {
@@ -71,10 +73,10 @@ static mrb_value Quit(mrb_state* p_state, mrb_value self)
  *
  *   exit( exitcode )
  *
- * Immediately and forcibly terminates TSC without any
- * cleanup.
+ * <p>Immediately and forcibly terminates TSC without any
+ * cleanup.</p>
  *
- * `0 <= exitcode < 255` is the range for `exitcode`.
+ * <p><code>0 &lt;= exitcode &lt; 255</code> is the range for <code>exitcode</code>.</p>
  */
 static mrb_value Exit(mrb_state* p_state, mrb_value self)
 {
@@ -90,7 +92,7 @@ static mrb_value Exit(mrb_state* p_state, mrb_value self)
  *
  *   current_framerate() → integer
  *
- * The current frames per second (FPS).
+ * <p>The current frames per second (FPS).</p>
  */
 static mrb_value Current_Framerate(mrb_state* p_state, mrb_value self)
 {
@@ -102,7 +104,7 @@ static mrb_value Current_Framerate(mrb_state* p_state, mrb_value self)
  *
  *   average_framerate() → integer
  *
- * The average frames per second (FPS).
+ * <p>The average frames per second (FPS).</p>
  */
 static mrb_value Average_Framerate(mrb_state* p_state, mrb_value self)
 {
@@ -114,7 +116,7 @@ static mrb_value Average_Framerate(mrb_state* p_state, mrb_value self)
  *
  *   best_framerate() → integer
  *
- * The best frames per second (FPS).
+ * <p>The best frames per second (FPS).</p>
  */
 static mrb_value Best_Framerate(mrb_state* p_state, mrb_value self)
 {
@@ -126,7 +128,7 @@ static mrb_value Best_Framerate(mrb_state* p_state, mrb_value self)
  *
  *   worst_framerate() → integer
  *
- * The worst frames per second (FPS).
+ * <p>The worst frames per second (FPS).</p>
  */
 static mrb_value Worst_Framerate(mrb_state* p_state, mrb_value self)
 {
@@ -138,7 +140,7 @@ static mrb_value Worst_Framerate(mrb_state* p_state, mrb_value self)
  *
  *   version() → a_string
  *
- * TSC’s version number in the form `major.minor.patch`.
+ * <p>TSC’s version number in the form <code>major.minor.patch</code>.</p>
  */
 static mrb_value Version(mrb_state* p_state, mrb_value self)
 {
@@ -154,8 +156,8 @@ static mrb_value Version(mrb_state* p_state, mrb_value self)
  *
  *   debug_mode?() → true or false
  *
- * Checks if this TSC has been compiled in debug mode, and if so,
- * returns `true`, `false` otherwise.
+ * <p>Checks if this TSC has been compiled in debug mode, and if so,
+ * returns <code>true</code>, <code>false</code> otherwise.</p>
  */
 static mrb_value Is_Debug_Mode(mrb_state* p_state, mrb_value self)
 {

@@ -21,11 +21,10 @@
 /**
  * Class: BonusBox
  *
- * Parent [Box](box.html)
- * {: .superclass}
+ * <p class="superclass">Parent <a href="box.html">Box</a></p>
  *
- * _Bonus Boxes_ contain powerups (or just look like
- * that).
+ * <p><em>Bonus Boxes</em> contain powerups (or just look like
+ * that).</p>
  */
 
 using namespace TSC;
@@ -37,7 +36,7 @@ using namespace TSC::Scripting;
  *
  *   new() → a_bonus_box
  *
- * Creates a new BonusBox with the default values.
+ * <p>Creates a new BonusBox with the default values.</p>
  */
 static mrb_value Initialize(mrb_state* p_state, mrb_value self)
 {
@@ -59,46 +58,46 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  *   bonus_type=( type ) → type
  *
- * Specify the bonus box’ type.
+ * <p>Specify the bonus box’ type.</p>
  *
- * #### Parameters
- * [type]
- *   The bonus box’ new type. One of the following symbols:
- *   empty
- *   : See _undefined_.
+ * <h4>Parameters</h4>
+ * <dl><dt>type</dt>
+ *   <dd><p>The bonus box’ new type. One of the following symbols:</p>
+ *   <dl><dt>empty</dt>
+ *   <dd>See <em>undefined</em>.</dd>
  *
- *   fireplant
- *   : Box containing a fireplant if Alex is big,
- *     a red mushroom otherwise.
+ *   <dt>fireplant</dt>
+ *   <dd>Box containing a fireplant if Alex is big,
+ *     a red mushroom otherwise.</dd>
  *
- *   goldpiece
- *   : Box containing a goldpiece. Specify the color
- *     via #goldcolor=.
+ *   <dt>goldpiece</dt>
+ *   <dd>Box containing a goldpiece. Specify the color
+ *     via #goldcolor=.</dd>
  *
- *   mushroom_default:
- *   : Box containing the normal red mushroom.
+ *   <dt>mushroom_default:</dt>
+ *   <dd>Box containing the normal red mushroom.</dd>
  *
- *   mushroom_blue
- *   : Box containing the blue ice mushroom if Alex is big,
- *     a red mushroom otherwise.
+ *   <dt>mushroom_blue</dt>
+ *   <dd>Box containing the blue ice mushroom if Alex is big,
+ *     a red mushroom otherwise.</dd>
  *
- *   mushroom_ghost
- *   : Box containing a ghost mushroom.
+ *   <dt>mushroom_ghost</dt>
+ *   <dd>Box containing a ghost mushroom.</dd>
  *
- *   mushroom_live_1
- *   : Box containing a 1-up mushroom.
+ *   <dt>mushroom_live_1</dt>
+ *   <dd>Box containing a 1-up mushroom.</dd>
  *
- *   mushroom_poison
- *   : Box containing a poison mushroom
+ *   <dt>mushroom_poison</dt>
+ *   <dd>Box containing a poison mushroom</dd>
  *
- *   mushroom_red:
- *   : See *mushroom_default*.
+ *   <dt>mushroom_red:</dt>
+ *   <dd>: See <em>mushroom_default</em>.</dd>
  *
- *   lemon
- *   : Box containing a lemon.
+ *   <dt>lemon</dt>
+ *   <dd>Box containing a lemon.</dd>
  *
- *   undefined
- *   : Empty box.
+ *   <dt>undefined</dt>
+ *   <dd>Empty box.</dd></dl></dd></dl>
  */
 static mrb_value Set_Bonus_Type(mrb_state* p_state, mrb_value self)
 {
@@ -141,7 +140,7 @@ static mrb_value Set_Bonus_Type(mrb_state* p_state, mrb_value self)
  *
  *   bonus_type() → a_symbol
  *
- * Return the box’ current bonus type.
+ * <p>Return the box’ current bonus type.</p>
  */
 static mrb_value Get_Bonus_Type(mrb_state* p_state, mrb_value self)
 {
@@ -175,15 +174,15 @@ static mrb_value Get_Bonus_Type(mrb_state* p_state, mrb_value self)
  *
  *   force_best_item=( bool ) → bool
  *
- * With regard to #bonus_type=, force always the best possible
+ * <p>With regard to #bonus_type=, force always the best possible
  * item to come out of the box, regardless of Alex’s state.
  * That is, if you set #bonus_type= to :mushroom_blue, and
  * Alex is small, AND you set this option, the box will
- * spit out a blue mushroom nevertheless.
+ * spit out a blue mushroom nevertheless.</p>
  *
- * #### Parameters
- * bool
- * : Whether or not to force the best item.
+ * <h4>Parameters</h4>
+ * <dl><dt>bool</dt>
+ * <dd>Whether or not to force the best item.</dd></dl>
  */
 static mrb_value Set_Force_Best_Item(mrb_state* p_state, mrb_value self)
 {
@@ -201,8 +200,8 @@ static mrb_value Set_Force_Best_Item(mrb_state* p_state, mrb_value self)
  *
  *   force_best_item?() → true or false
  *
- * Returns `true` if this box always contains the best
- * possible item, `false` otherwise.
+ * <p>Returns <code>true</code> if this box always contains the best
+ * possible item, <code>false</code> otherwise.</p>
  */
 static mrb_value Does_Force_Best_Item(mrb_state* p_state, mrb_value self)
 {
@@ -215,12 +214,12 @@ static mrb_value Does_Force_Best_Item(mrb_state* p_state, mrb_value self)
  *
  *   goldcolor=( color ) → color
  *
- * Specify the color for goldpieces in the box. Only useful
- * if you set #bonus_type to :goldpiece.
+ * <p>Specify the color for goldpieces in the box. Only useful
+ * if you set #bonus_type to :goldpiece.</p>
  *
- * #### Parameters
- * [color]
- *   The goldpiece color. One of `:default`, `:yellow`, `:red`.
+ * <h4>Parameters</h4>
+ * <dl><dt>color</color>
+ * <dd>The goldpiece color. One of <code>:default</code>, <code>:yellow</code>, <code>:red</code>.</dd></dl>
  */
 static mrb_value Set_Goldcolor(mrb_state* p_state, mrb_value self)
 {
@@ -251,8 +250,8 @@ static mrb_value Set_Goldcolor(mrb_state* p_state, mrb_value self)
  *
  *   goldcolor() → a_symbol
  *
- * Returns the color for goldpieces in this box. See
- * #goldcolor= for possible return values.
+ * <p>Returns the color for goldpieces in this box. See
+ * #goldcolor= for possible return values.</p>
  */
 static mrb_value Get_Goldcolor(mrb_state* p_state, mrb_value self)
 {
