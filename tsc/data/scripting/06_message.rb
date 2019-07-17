@@ -11,8 +11,10 @@ module Std
   #
   # Usage example:
   #
-  #   m = Message.new("Lorem ipsum dolor sit amet...")
-  #   m.activate
+  # <pre class="source">
+  # m = Message.new("Lorem ipsum dolor sit amet...")
+  # m.activate
+  # </pre>
   #
   # You can reuse your message as often as you want. Also
   # note this is a subclass of the core TextBox class,
@@ -25,7 +27,7 @@ module Std
     #
     #   new ( text ) → a_message
     #
-    # Create a new Message with the given +text+, which
+    # Create a new Message with the given <code>text</code>, which
     # may be multiline.
     def initialize(text)
       super
