@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 module Std
 
+  ##
+  # Class: Std::Switch
+  #
   # A switch that can be activated by jumping onto it. This class can either
   # be used to create entirely new switches or attach switch functionality to
   # an already switch sprite.
@@ -24,7 +27,9 @@ module Std
     # The color of the pow switch.
     attr_reader :color
 
-    # call-seq:
+    ##
+    # Method: Std::Switch::new()
+    #
     #   new(){...}       → a_switch
     #   new(sprite){...} → a_switch
     #   new(opts){...}   → a_switch
@@ -86,11 +91,21 @@ module Std
       end
     end
 
+    ##
+    # Method: Std::Switch#on_activate
+    #
+    #   on_activate() { ... }
+    #
     # Specify the action to execute when the switch is activated.
     def on_activate(&block)
       @callback = block
     end
 
+    ##
+    # Method: Std::Switch#activated?
+    #
+    #   activated?() → bool
+    #
     # Has the switch already been activated?
     def activated?
       @activated

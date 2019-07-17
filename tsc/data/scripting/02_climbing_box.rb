@@ -2,6 +2,9 @@
 
 module Std
 
+  ##
+  # Class: Std::ClimbingBox
+  #
   # This class adds a climbing plant into a given box.
   # Use it like this:
   #
@@ -22,6 +25,11 @@ module Std
     # The underlying Box instance.
     attr_reader :box
 
+    ##
+    # Method: Std::ClimbingBox::new
+    #
+    #   new( box, opts ) → a_climbing_box
+    #
     # Create a new climbing plant box.
     #
     # == Parameters
@@ -71,6 +79,11 @@ module Std
       @sprites.each{|sprite| sprite.disable}
     end
 
+    ##
+    # Method: Std::ClimbingBox#attach
+    #
+    #   attach()
+    #
     # Attach the climbing plant to its box.
     def attach
       spritelist = @sprites.dup # We will empty this array on showing the plant
@@ -100,16 +113,32 @@ module Std
       end
     end
 
+    ##
+    # Method: Std::ClimbingBox#activated?
+    #
+    #   activated?() → bool
+    #
+    # TODO: Docs
     def activated?
       @activated
     end
 
+    ##
+    # Method: Std::ClimbingBox#show_plant
+    #
+    #   show_plant()
+    #
     # Immediately show the entire climbing plant.
     def show_plant
       @sprites.each{|sprite| sprite.enable}
       @activated = true
     end
 
+    ##
+    # Method: Std::ClimbingBox#hide_plant
+    #
+    #   hide_plant()
+    #
     # Immediately hide the entire climbing plant.
     def hide_plant
       @sprites.each{|sprite| sprite.disable}

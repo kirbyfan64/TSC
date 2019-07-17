@@ -2,6 +2,9 @@
 
 module Std
 
+  ##
+  # Class: Std::GiantJewelBox
+  #
   # This class fills a box with any amount of jewels. When the player
   # activates the box, the jewels are thrown out of the box all at once
   # and move over the field. Use it like this:
@@ -18,6 +21,11 @@ module Std
     # The number of jewels to create.
     attr_accessor :count
 
+    ##
+    # Method: Std::GiantJewelBox::new
+    #
+    #   new(box, count) → a_giant_jewel_box
+    #
     # Creates a new giant jewel box.
     #
     # == Parameters
@@ -32,6 +40,11 @@ module Std
       @activated = false
     end
 
+    ##
+    # Method: Std::GiantJewelBox#attach
+    #
+    #   attach()
+    #
     # Fill the box with jewels.
     def attach
       @box.on_activate do
@@ -63,6 +76,12 @@ module Std
       end
     end
 
+    ##
+    # Method: Std::GiantJewelBox#activated?
+    #
+    #   activated?() → bool
+    #
+    # Has the box been activated?
     def activated?
       @activated
     end

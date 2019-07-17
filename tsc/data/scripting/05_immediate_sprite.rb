@@ -2,12 +2,20 @@
 
 module Std
 
+  ##
+  # Class: Std::ImmediateSprite
+  #
   # More handy class than the core Sprite class. Instances of this class
   # do not need to have #show called on them to be displayed. As a downside,
   # you have to specify all position-relevant parameters directly on
   # instanciation with ::new.
   class ImmediateSprite < Sprite
 
+    ##
+    # Method: Std::ImmediateSprite::new
+    #
+    #   new(path, opts) → an_immediate_sprite
+    #
     # Quick’n’easy way to bring a static object into the game. Specifying
     # position and massivity, this method also immediately <tt>show</tt>s
     # the object in gameplay.
