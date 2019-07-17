@@ -2,11 +2,16 @@
 
 module Std
 
+  ##
+  # Class: Std::ClimbingBox
+  #
   # This class adds a climbing plant into a given box.
   # Use it like this:
   #
-  #   c = ClimbingBox.new(UIDS[14], count: 4)
-  #   c.attach
+  # <pre class="source">
+  # c = ClimbingBox.new(UIDS[14], count: 4)
+  # c.attach
+  # </pre>
   #
   # This will create a climbing plant with 4 middle sprites (and a top
   # sprite) and attaches it to the box with UID 14. When that one gets
@@ -22,19 +27,29 @@ module Std
     # The underlying Box instance.
     attr_reader :box
 
+    ##
+    # Method: Std::ClimbingBox::new
+    #
+    #   new( box, opts ) → a_climbing_box
+    #
     # Create a new climbing plant box.
     #
-    # == Parameters
-    # [box]
-    #   A Box instance to attach the climbing plant to.
-    # [opts]
-    #   Hash for keyword arguments.
-    #   [count]
-    #     The number of sprites the plant shall have.
-    #   [middle_graphic = "ground/green_1/ladder.png"]
-    #     Middle graphic of the plant.
-    #   [top_graphic = "ground/green_1/ladder_head.png"]
-    #     Top graphci of the plant.
+    # <h4>Parameters</h4>
+    #
+    # <dl>
+    # <dt>box</dt>
+    # <dd>A Box instance to attach the climbing plant to.</dd>
+    # <dt>opts</dt>
+    # <dd>Hash for keyword arguments.
+    #   <dl>
+    #   <dt>count</dt>
+    #   <dd>The number of sprites the plant shall have.</dd>
+    #   <dt>middle_graphic = "ground/green_1/ladder.png"</dt>
+    #   <dd>Middle graphic of the plant.</dd>
+    #   <dt>top_graphic = "ground/green_1/ladder_head.png"</dt>
+    #   <dd>Top graphci of the plant.</dd>
+    #   </dl>
+    # </dl>
     def initialize(box, opts)
       opts[:count]          || raise(ArgumentError, "Required keyword argument :count missing!")
       opts[:middle_graphic] ||= "ground/green_1/ladder.png"
@@ -71,6 +86,11 @@ module Std
       @sprites.each{|sprite| sprite.disable}
     end
 
+    ##
+    # Method: Std::ClimbingBox#attach
+    #
+    #   attach()
+    #
     # Attach the climbing plant to its box.
     def attach
       spritelist = @sprites.dup # We will empty this array on showing the plant
@@ -100,16 +120,32 @@ module Std
       end
     end
 
+    ##
+    # Method: Std::ClimbingBox#activated?
+    #
+    #   activated?() → bool
+    #
+    # TODO: Docs
     def activated?
       @activated
     end
 
+    ##
+    # Method: Std::ClimbingBox#show_plant
+    #
+    #   show_plant()
+    #
     # Immediately show the entire climbing plant.
     def show_plant
       @sprites.each{|sprite| sprite.enable}
       @activated = true
     end
 
+    ##
+    # Method: Std::ClimbingBox#hide_plant
+    #
+    #   hide_plant()
+    #
     # Immediately hide the entire climbing plant.
     def hide_plant
       @sprites.each{|sprite| sprite.disable}

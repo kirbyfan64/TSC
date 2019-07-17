@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 module Std
 
+  ##
+  # Module: Std::Enable
+  #
   # This module adds the methods Sprite#disable and Sprite#enable to
-  # the core sprite class. By fiddling with a sprite’s position these
+  # the core Sprite class. By fiddling with a sprite’s position these
   # methods can take a sprite effectively out of game so that it
   # doesn’t even block as if it were just invisible.
   #
@@ -11,6 +14,11 @@ module Std
   # the original position is restored on the sprite.
   module Enable
 
+    ##
+    # Method: Std::Enable#disable
+    #
+    #   disable()
+    #
     # Take the sprite off the game. Apart from position
     # all information remains set.
     def disable
@@ -18,6 +26,11 @@ module Std
       warp(-100, 100)
     end
 
+    ##
+    # Method: Std::Enable#enable
+    #
+    #   enable( [ mass ] )
+    #
     # Restore the sprite and optionally set its massivity to +mass+;
     # if that is unset, it remains at whatever massivity it was before.
     def enable(mass = nil)

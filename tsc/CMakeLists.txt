@@ -36,6 +36,8 @@ string(TIMESTAMP TSC_COMPILE_YEAR "%Y")
 string(TIMESTAMP TSC_COMPILE_MONTH "%m")
 string(TIMESTAMP TSC_COMPILE_DAY "%d")
 
+set (TSC_VERSION "${TSC_VERSION_MAJOR}.${TSC_VERSION_MINOR}.${TSC_VERSION_PATCH}${TSC_VERSION_POSTFIX}")
+
 # Set TSC_VERSION_GIT if possible
 execute_process(COMMAND git rev-parse --short HEAD
   WORKING_DIRECTORY ${TSC_SOURCE_DIR}
@@ -47,6 +49,7 @@ execute_process(COMMAND git rev-parse --short HEAD
 
 option(ENABLE_MRUBY "Enable the MRuby scripting engine" ON)
 option(ENABLE_NLS "Enable translations and localisations" ON)
+option(BUILD_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(ENABLE_EDITOR "Enable the in-game editor" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
 if(WIN32 AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -204,6 +207,16 @@ if (WIN32)
   list(APPEND tsc_sources icon.rc)
 endif()
 
+file(GLOB_RECURSE scrdg_sources
+  "scrdg/*.cpp"
+  "scrdg/*.hpp")
+
+file(GLOB_RECURSE scriptdoc_sources
+  "src/scripting/*.cpp"
+  "src/scripting/*.hpp"
+  "data/scripting/*.rb",
+  "docs/scripting/*")
+
 ########################################
 # Gettext internationalization
 
@@ -212,7 +225,7 @@ file(GLOB po_files "data/translations/*.po")
 gettext_process_po_files(languages ALL PO_FILES ${po_files})
 
 ########################################
-# Main target
+# Main targets
 
 add_executable(tsc ${tsc_sources} ${TSC_BINARY_DIR}/credits.cpp)
 
@@ -241,6 +254,20 @@ endif()
 
 if (ENABLE_MRUBY AND NOT USE_SYSTEM_MRUBY)
   add_dependencies(tsc mruby)
+endif()
+
+if (BUILD_SCRIPT_DOCS)
+  add_executable(scrdg ${scrdg_sources})
+  target_link_libraries(scrdg ${Boost_COMPONENTS})
+
+  add_custom_command(OUTPUT "${TSC_BINARY_DIR}/scriptdocs"
+    COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT}
+    DEPENDS ${scriptdoc_sources}
+    VERBATIM)
+  add_custom_target(scriptdocumentation
+    DEPENDS "${TSC_BINARY_DIR}/scriptdocs")
+
+  add_dependencies(tsc scriptdocumentation)
 endif()
 
 ########################################
@@ -298,6 +325,8 @@ install(DIRECTORY "${TSC_SOURCE_DIR}/data/sounds/"
 install(DIRECTORY "${TSC_SOURCE_DIR}/data/worlds/"
   DESTINATION ${CMAKE_INSTALL_DATADIR}/tsc/worlds
   COMPONENT worlds)
+install(DIRECTORY "${TSC_BINARY_DIR}/scriptdocs"
+  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/doc/tsc)
 
 if(NOT WIN32)
   install(FILES "${TSC_SOURCE_DIR}/docs/man/tsc.6"
@@ -409,7 +438,7 @@ include(CPack)
 # Print summary
 
 message(STATUS "--------------- Build info summary ----------------")
-message(STATUS "TSC version:    ${TSC_VERSION_MAJOR}.${TSC_VERSION_MINOR}.${TSC_VERSION_PATCH}${TSC_VERSION_POSTFIX}")
+message(STATUS "TSC version:    ${TSC_VERSION}")
 message(STATUS "Build type:     ${CMAKE_BUILD_TYPE}")
 if (CMAKE_CROSSCOMPILING)
   message(STATUS "Crosscompiling: ${HOST_TRIPLET}")

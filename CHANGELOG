@@ -56,6 +56,8 @@
 		Marvin Gülker)
 	* Dependencies: Upgraded mruby from 1.0.0 to 1.4.1
 	* Dependencies: New dependency on the `tinyclipboard' library
+	* Dependencies: Dropped dependency on Ruby for building TSC itself
+		(now only required for mruby)
 	* Misc: C++11 compilation support
 	* Misc: Renamed "1-UP berry" to "Life berry" (#365 by Chris Jacobsen)
 	* Misc: Added Travis CI config (PR #453 by Lauri Ojansivu)
@@ -64,6 +66,8 @@
 	* Misc: New compilation option ENABLE_EDITOR.
 	* Misc: New compilation option USE_SYSTEM_TINYCLIPBOARD.
 	* Misc: Removed package support (#656 by Marvin Gülker)
+	* Misc: Add TSC scripting generator programme (scrdg). Scripting
+		API docs are now generated during the normal build process.
 
 2015-08-17  Marvin Gülker  <quintus@quintilianus.eu>
 

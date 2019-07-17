@@ -1,21 +1,28 @@
 # -*- coding: utf-8 -*-
 module Std
 
+  ##
+  # Class: Std::Switch
+  #
   # A switch that can be activated by jumping onto it. This class can either
   # be used to create entirely new switches or attach switch functionality to
   # an already switch sprite.
   #
   # Usage example (where the sprite with UID 14 is a pow sprite):
   #
-  #   Std::Switch.new(UIDS[14]) do
-  #     puts "Switch activated!"
-  #   end
+  # <pre class="source">
+  # Std::Switch.new(UIDS[14]) do
+  #   puts "Switch activated!"
+  # end
+  # </pre>
   #
   # Creating a new switch:
   #
-  #   Std::Switch.new(x: 200, y: -200) do
-  #     puts "Switch activated!"
-  #   end
+  # <pre class="source">
+  # Std::Switch.new(x: 200, y: -200) do
+  #   puts "Switch activated!"
+  # end
+  # </pre>
   class Switch
 
     # The underlying Sprite instance.
@@ -24,7 +31,9 @@ module Std
     # The color of the pow switch.
     attr_reader :color
 
-    # call-seq:
+    ##
+    # Method: Std::Switch::new()
+    #
     #   new(){...}       → a_switch
     #   new(sprite){...} → a_switch
     #   new(opts){...}   → a_switch
@@ -32,27 +41,32 @@ module Std
     # Create a new switch. If no parameters are given,
     # a switch is created at position (0|0).
     #
-    # == Parameters
-    # [sprite]
-    #   Use this Sprite instance as the switch. The sprite should
-    #   have its image set to "ground/underground/pow.png".
-    # [opts]
-    #   An option hash with the following keys:
-    #   [sprite]
-    #     Same as the +sprite+ parameter above.
-    #   [x]
-    #     Move the switch to this X position.
-    #   [y]
-    #     Move the switch to this Y position.
-    #   [color]
-    #     Color of the switch. Defaults to <tt>:blue</tt>.
-    #   If not sprite is passed, setting +x+ and +y+ is recommended,
-    #   this will be used as the creation position for the new sprite.
+    # <h4>Parameters</h4>
+    # <dl>
+    # <dt>sprite</dt>
+    # <dd>Use this Sprite instance as the switch. The sprite should
+    #   have its image set to "ground/underground/pow.png".</dd>
+    # <dt>opts</dt>
+    # <dd><p>An option hash with the following keys:</p>
+    #   <dl>
+    #   <dt>sprite</dt>
+    #   <dd>Same as the <code>sprite</code> parameter above.</dd>
+    #   <dt>x</dt>
+    #   <dd>Move the switch to this X position.</dd>
+    #   <dt>y</dt>
+    #   <dd>Move the switch to this Y position.</dd>
+    #   <dt>color</dt>
+    #   <dd>Color of the switch. Defaults to <tt>:blue</tt>.</dd>
+    #   </dl>
+    #   <p>If not sprite is passed, setting <code>x</code> and <code>y</code> is recommended,
+    #   this will be used as the creation position for the new sprite.</p>
+    # </dd>
+    # </dl>
     #
     # If a block is given, use that block as the action to execute
     # when the switch gets activated.
     #
-    # == Return value
+    # <h4>Return value</h4>
     # The newly created instance.
     def initialize(opts = {}, &block)
       @activated = false
@@ -86,11 +100,21 @@ module Std
       end
     end
 
+    ##
+    # Method: Std::Switch#on_activate
+    #
+    #   on_activate() { ... }
+    #
     # Specify the action to execute when the switch is activated.
     def on_activate(&block)
       @callback = block
     end
 
+    ##
+    # Method: Std::Switch#activated?
+    #
+    #   activated?() → bool
+    #
     # Has the switch already been activated?
     def activated?
       @activated

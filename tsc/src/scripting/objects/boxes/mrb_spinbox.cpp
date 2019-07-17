@@ -21,12 +21,12 @@
 /**
  * Class: SpinBox
  *
- * Parent [Box](box.html)
+ * <p class="superclass">Parent <a href="box.html">Box</a></p>
  * {: .superclass}
  *
- * The _Spin Box_ is an empty box that gets passable
+ * <p>The <em>Spin Box</em> is an empty box that gets passable
  * for a short time if jumped against it from below
- * (or if a shell is thrown against it from the side).
+ * (or if a shell is thrown against it from the side).</p>
  */
 
 using namespace TSC;
@@ -38,7 +38,7 @@ using namespace TSC::Scripting;
  *
  *   new() → a_spin_box
  *
- * Creates a new SpinBox with the default values.
+ * <p>Creates a new SpinBox with the default values.</p>
  */
 static mrb_value Initialize(mrb_state* p_state, mrb_value self)
 {
@@ -60,7 +60,7 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  *   stop()
  *
- * Stop the spinning started by Box#activate.
+ * <p>Stop the spinning started by Box#activate.</p>
  */
 static mrb_value Stop(mrb_state* p_state, mrb_value self)
 {
@@ -74,8 +74,8 @@ static mrb_value Stop(mrb_state* p_state, mrb_value self)
  *
  *   spinning?() → true or false
  *
- * Checks whether the box is spinning currently, and if so,
- * returns `true`, otherwise returns `false`.
+ * <p>Checks whether the box is spinning currently, and if so,
+ * returns <code>true</code>, otherwise returns <code>false</code>.</p>
  */
 static mrb_value Is_Spinning(mrb_state* p_state, mrb_value self)
 {

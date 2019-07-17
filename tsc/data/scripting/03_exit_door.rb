@@ -1,5 +1,9 @@
+# coding: utf-8
 module Std
 
+  ##
+  # Class: Std::ExitDoor
+  #
   # A door sprite combined with a level exit.
   class ExitDoor
 
@@ -8,6 +12,11 @@ module Std
     # The LevelExit instance for the level exit.
     attr_reader :levelexit
 
+    ##
+    # Method: Std::ExitDoor::new
+    #
+    #   new(x, y) → an_exit_door
+    #
     # Creates, place and show a door at the given position. A LevelExit
     # object is placed centered on the door.
     def initialize(x, y)

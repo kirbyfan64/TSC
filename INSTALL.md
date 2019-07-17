@@ -65,7 +65,10 @@ dependencies for each supported system.
 The following dependencies are required regardless of the system you
 install to.
 
-* A Ruby 1.9 or 2.0 installation with `rake` in your PATH.
+* A Ruby installation.
+  * This is not required if you have a precompiled mruby available
+    that you want to use instead of TSC's included static mruby.
+    Ruby is only used to build mruby.
 * The `gperf` program.
 * The `pkg-config` program.
 * The `bison` program.
@@ -84,12 +87,6 @@ install to.
     due to CEGUI bug #1063 (https://bitbucket.org/cegui/cegui/issues/1063).
 * Boost >= 1.50.0 (to be exact: boost_system, boost_filesystem, boost_thread)
 * SFML >= 2.3.0
-* Optionally for generating the docs:
-  * `kramdown` RubyGem.
-  * The `coderay` RubyGem.
-  * The `dot` program.
-  * The `doxygen` program.
-  * Ruby’s `rdoc` program.
 
 #### Example for Fedora ####
 (Tested on Fedora 28)
@@ -113,13 +110,6 @@ sudo apt install ruby-full rake gperf pkg-config bison libglew-dev \
   freeglut3-dev gettext libpng-dev libpcre3-dev libxml++2.6-dev \
   libfreetype6-dev libdevil-dev libboost1.58-all-dev libsfml-dev \
   libcegui-mk2-dev cmake build-essential git git-core
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Install rubygems for documentation generation etc (optional; you need
-this only if you want the docs):
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sudo gem install kramdown coderay
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Example for Debian 10 ####
@@ -327,15 +317,6 @@ TSC.
 $ /opt/tsc/bin/tsc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want the documentation, execute this command:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$ rake docs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This generates TSC's entire C++ and MRuby scripting API documentation
-into the directory html tsc/htmldocs. It requires the additional
-dependencies mentioned above to successfully complete.
 
 
 
@@ -607,9 +588,6 @@ For 32-bit:
 
     $ pacman -S --needed mingw-w64-x86_64-{doxygen,graphviz,nsis}
 
-Generating documentation also requires a few rubygems:
-
-    $ gem install adsf bundler coderay kramdown rdoc
 
 ### 3.1 CMake GUI Qt requirement workaround ###
 
