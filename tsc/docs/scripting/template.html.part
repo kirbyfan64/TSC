@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>%s</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="../style.css" type="text/css" />
   </head>
   <body>
     <header>
@@ -18,7 +18,7 @@
       <p style="float: right">
         %s
       </p>
-      <p style="float: left"><img src="graphics/cookie.png" style="width: 32px" alt="TSC moon" title="A clear night, isn’t it?"/></p>
+      <p style="float: left"><img src="../graphics/cookie.png" style="width: 32px" alt="TSC moon" title="A clear night, isn’t it?"/></p>
       <div style="clear: both"></div>
     </footer>
   </body>

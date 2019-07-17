@@ -56,11 +56,16 @@ private:
     std::vector<std::string> m_file_extensions;
 protected:
     boost::filesystem::path m_source_dir;
+    size_t m_lino;
     std::vector<ClassDoc> m_classes;
     std::vector<ModuleDoc> m_modules;
     std::vector<MethodDoc> m_methods;
 
     virtual void parse_file(const boost::filesystem::path& file) = 0;
+    void parse_doctext(std::string text);
+    void parse_doctype_class(const std::string& classname, const std::string& text);
+    void parse_doctype_module(const std::string& modulename, const std::string& text);
+    void parse_doctype_method(const std::string& methodname, const std::string& text);
 };
 
 // This parser extracts API documentation from the scipting core C++
@@ -71,16 +76,25 @@ public:
     CppParser(boost::filesystem::path source_directory);
 private:
     virtual void parse_file(const boost::filesystem::path& file);
-    void parse_doctext(std::string text);
-    void parse_doctype_class(const std::string& classname, const std::string& text);
-    void parse_doctype_module(const std::string& modulename, const std::string& text);
-    void parse_doctype_method(const std::string& methodname, const std::string& text);
 
     bool m_docblock_open;
     int m_lino;
     std::string m_doctext;
 };
 
+// This parser extracts API documentation from the scripting
+// standard library (SSL) Ruby source code files under data/scripting.
+class RubyParser: public Parser
+{
+public:
+    RubyParser(boost::filesystem::path source_directory);
+private:
+    virtual void parse_file(const boost::filesystem::path& file);
+
+    size_t m_leading_spaces;
+    bool m_docblock_open;
+    int m_lino;
+    std::string m_doctext;
 };
 
 // This generator created HTML pages from the information harvested

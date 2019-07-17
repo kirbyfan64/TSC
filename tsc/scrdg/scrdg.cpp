@@ -28,7 +28,8 @@ namespace fs = boost::filesystem;
 Parser::Parser(std::string name, fs::path source_directory, std::initializer_list<std::string> extensions)
     : m_parser_name(name),
       m_file_extensions(extensions),
-      m_source_dir(source_directory)
+      m_source_dir(source_directory),
+      m_lino(0)
 {
 }
 
@@ -68,51 +69,7 @@ void Parser::PrintSummary()
     std::cout << "Methods: " << m_methods.size() << std::endl;
 }
 
-CppParser::CppParser(fs::path source_directory)
-    : Parser("Core", source_directory, {".cpp", ".hpp"}),
-      m_docblock_open(false),
-      m_lino(0)
-{
-}
-
-void CppParser::parse_file(const boost::filesystem::path& file_path)
-{
-    std::cout << "\rExamining " << file_path.native();
-    m_lino = 0;
-
-    std::ifstream file(file_path.native());
-    for (std::string line; std::getline(file, line); ) { // getline() drops the \n
-        m_lino += 1;
-
-        if (m_docblock_open) { // We are in a /** block here
-            size_t pos = std::string::npos;
-            if ((pos = line.rfind("*/")) != std::string::npos) { // "/**" block closed by "*/"
-                m_docblock_open = false;
-                m_doctext += line.substr(0, pos); // Append contents before "*/"
-                parse_doctext(m_doctext);
-                m_doctext.clear();
-            }
-            else { // Inside open /** block
-                std::string text = strip(line);
-                // Remove leading "*" or "* ", if any
-                if (text[0] == '*' && text[1] == ' ') {
-                    text = text.substr(2);
-                } else if (text[0] == '*') {
-                    text = text.substr(1);
-                }
-
-                m_doctext += text + "\n";
-            }
-        }
-        else { // We are not in a "/**" block here
-            if (line == "/**") { // "/**" block opened; opening block must be in line of its own.
-                m_docblock_open = true;
-            } // else ignore the line
-        }
-    }
-}
-
-void CppParser::parse_doctext(std::string text)
+void Parser::parse_doctext(std::string text)
 {
     std::string firstline = text.substr(0, text.find("\n"));
 
@@ -138,17 +95,17 @@ void CppParser::parse_doctext(std::string text)
     }
 }
 
-void CppParser::parse_doctype_class(const std::string& classname, const std::string& text)
+void Parser::parse_doctype_class(const std::string& classname, const std::string& text)
 {
     m_classes.push_back(ClassDoc{name: classname, documentation: text});
 }
 
-void CppParser::parse_doctype_module(const std::string& modulename, const std::string& text)
+void Parser::parse_doctype_module(const std::string& modulename, const std::string& text)
 {
     m_modules.push_back(ModuleDoc{name: modulename, documentation: text});
 }
 
-void CppParser::parse_doctype_method(const std::string& methodstr, const std::string& text)
+void Parser::parse_doctype_method(const std::string& methodstr, const std::string& text)
 {
     bool is_imethod = false;
     std::string classname;
@@ -195,6 +152,95 @@ void CppParser::parse_doctype_method(const std::string& methodstr, const std::st
     doctext += std::string(std::istreambuf_iterator<char>(stream), {});
 
     m_methods.push_back(MethodDoc{name: methodname, classname: classname, is_instance_method: is_imethod, call_seqs: calls, documentation: doctext});
+}
+
+CppParser::CppParser(fs::path source_directory)
+    : Parser("Core", source_directory, {".cpp", ".hpp"}),
+      m_docblock_open(false)
+{
+}
+
+void CppParser::parse_file(const boost::filesystem::path& file_path)
+{
+    std::cout << "\rExamining " << file_path.native();
+    m_lino = 0;
+
+    std::ifstream file(file_path.native());
+    for (std::string line; std::getline(file, line); ) { // getline() drops the \n
+        m_lino += 1;
+
+        if (m_docblock_open) { // We are in a /** block here
+            size_t pos = std::string::npos;
+            if ((pos = line.rfind("*/")) != std::string::npos) { // "/**" block closed by "*/"
+                m_docblock_open = false;
+                m_doctext += line.substr(0, pos); // Append contents before "*/"
+                parse_doctext(m_doctext);
+                m_doctext.clear();
+            }
+            else { // Inside open /** block
+                std::string text = strip(line);
+                // Remove leading "*" or "* ", if any
+                if (text[0] == '*' && text[1] == ' ') {
+                    text = text.substr(2);
+                } else if (text[0] == '*') {
+                    text = text.substr(1);
+                }
+
+                m_doctext += text + "\n";
+            }
+        }
+        else { // We are not in a "/**" block here
+            if (line == "/**") { // "/**" block opened; opening block must be in line of its own.
+                m_docblock_open = true;
+            } // else ignore the line
+        }
+    }
+}
+
+RubyParser::RubyParser(fs::path source_directory)
+    : Parser("SSL", source_directory, {".rb"}),
+      m_leading_spaces(0),
+      m_docblock_open(false)
+{
+}
+
+void RubyParser::parse_file(const fs::path& file_path)
+{
+    std::cout << "\rExamining " << file_path.native();
+    m_lino = 0;
+
+    std::ifstream file(file_path.native());
+    for (std::string line; std::getline(file, line); ) { // getline() drops the \n
+        m_lino += 1;
+        if (m_docblock_open) { // We are in a "##" block here
+            size_t pos = std::string::npos;
+            if ((pos = line.find("#")) == std::string::npos) { // Doc comment terminated
+                m_docblock_open = false;
+                parse_doctext(m_doctext);
+                m_doctext.clear();
+            }
+            else { // Inside open "##" block
+                // Remove leading spaces and "#" comment sign.
+                std::string text = line.substr(m_leading_spaces + 1);
+                // If there is a space after the "#", remove it as well.
+                if (text[0] == ' ')
+                    text = text.substr(1);
+
+                // Append to doctext with newline.
+                m_doctext += text + "\n";
+            }
+        }
+        else { // We are not in a "##" block here
+            if (strip(line) == "##") { // "##" block opened; opening line must only have "##"
+                // Find number of leading spaces
+                m_leading_spaces = 0;
+                while (line[m_leading_spaces] == ' ')
+                    m_leading_spaces++;
+
+                m_docblock_open = true;
+            } // else ignore the line
+        }
+    }
 }
 
 Generator::Generator(fs::path output_dir,
@@ -388,9 +434,22 @@ static void process_core_files(const fs::path& source_dir, const fs::path& targe
     gen.Generate();
 }
 
-static void process_ssl_files(const fs::path& source_dir, const fs::path& target_dir)
+static void process_ssl_files(const fs::path& source_dir, const fs::path& target_dir, const std::string& tsc_version, const std::string& tsc_gitrevision)
 {
-    std::cout << "Doing nothing with the SSL for now" << std::endl;
+    std::cout << "Generating scripting SSL documentation." << std::endl;
+
+    RubyParser parser(source_dir  / "data" / "scripting");
+    parser.Parse();
+    parser.PrintSummary();
+
+    Generator gen(target_dir,
+                  source_dir / "docs" / "scripting" / "template.html.part",
+                  tsc_version,
+                  tsc_gitrevision,
+                  parser.GetClasses(),
+                  parser.GetModules(),
+                  parser.GetMethods());
+    gen.Generate();
 }
 
 int main(int argc, char* argv[])
@@ -418,10 +477,12 @@ int main(int argc, char* argv[])
     if (fs::exists(output_dir))
         fs::remove_all(output_dir);
     fs::create_directories(output_dir);
+    fs::create_directories(output_dir / "core");
+    fs::create_directories(output_dir / "ssl");
 
     copy_static_contents(tsc_source_dir, output_dir);
-    process_core_files(tsc_source_dir, output_dir, tsc_version, tsc_gitrevision);
-    process_ssl_files(tsc_source_dir / "data" / "scripting", output_dir);
+    process_core_files(tsc_source_dir, output_dir / "core", tsc_version, tsc_gitrevision);
+    process_ssl_files(tsc_source_dir, output_dir / "ssl", tsc_version, tsc_gitrevision);
 
     std::cout << "TSC scripting documentation generator finished." << std::endl;
     return 0;
