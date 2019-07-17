@@ -2,7 +2,7 @@
 module Std
 
   ##
-  # Class: Std::Mesage
+  # Class: Std::Message
   #
   # Display a message to the user the same way a TextBox
   # does, i.e. a black box with white text inside appears
