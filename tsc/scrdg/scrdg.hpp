@@ -102,6 +102,7 @@ class Generator
 public:
     Generator(boost::filesystem::path output_dir,
               boost::filesystem::path template_file,
+              boost::filesystem::path index_file,
               const std::string& tsc_version,
               const std::string& tsc_gitrevision,
               const std::vector<ClassDoc>& classes,
@@ -122,6 +123,7 @@ private:
     const std::vector<ModuleDoc>& m_modules;
     const std::vector<MethodDoc>& m_methods;
     boost::filesystem::path m_output_dir;
+    boost::filesystem::path m_index_file;
     const std::string& m_tsc_version;
     const std::string& m_tsc_gitrevision;
     std::string m_template;

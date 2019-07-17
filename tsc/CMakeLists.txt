@@ -214,7 +214,8 @@ file(GLOB_RECURSE scrdg_sources
 file(GLOB_RECURSE scriptdoc_sources
   "src/scripting/*.cpp"
   "src/scripting/*.hpp"
-  "data/scripting/*.rb")
+  "data/scripting/*.rb",
+  "docs/scripting/*")
 
 ########################################
 # Gettext internationalization

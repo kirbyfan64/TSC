@@ -245,6 +245,7 @@ void RubyParser::parse_file(const fs::path& file_path)
 
 Generator::Generator(fs::path output_dir,
                      fs::path template_file,
+                     fs::path index_file,
                      const std::string& tsc_version,
                      const std::string& tsc_gitrevision,
                      const std::vector<ClassDoc>& classes,
@@ -254,6 +255,7 @@ Generator::Generator(fs::path output_dir,
       m_modules(modules),
       m_methods(methods),
       m_output_dir(output_dir),
+      m_index_file(index_file),
       m_tsc_version(tsc_version),
       m_tsc_gitrevision(tsc_gitrevision)
 {
@@ -338,6 +340,22 @@ void Generator::generate_module(const ModuleDoc& mod)
 
 void Generator::generate_indexfile()
 {
+    std::ifstream bodyfile(m_index_file.native());
+    std::string mainbody(std::istreambuf_iterator<char>(bodyfile), {});
+    bodyfile.close();
+
+    std::string title = "Documentation Index";
+    std::string version = tsc_version_str();
+
+    // Insert into template
+    char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + version.length() + 1];
+    sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str(), version.c_str());
+
+    std::ofstream file((m_output_dir / "index.html").native());
+    file.write(outbuf, strlen(outbuf));
+    file.close();
+
+    delete[] outbuf;
 }
 
 void Generator::filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods)
@@ -426,6 +444,7 @@ static void process_core_files(const fs::path& source_dir, const fs::path& targe
 
     Generator gen(target_dir,
                   source_dir / "docs" / "scripting" / "template.html.part",
+                  source_dir / "docs" / "scripting" / "index.core.html.part",
                   tsc_version,
                   tsc_gitrevision,
                   parser.GetClasses(),
@@ -444,6 +463,7 @@ static void process_ssl_files(const fs::path& source_dir, const fs::path& target
 
     Generator gen(target_dir,
                   source_dir / "docs" / "scripting" / "template.html.part",
+                  source_dir / "docs" / "scripting" / "index.ssl.html.part",
                   tsc_version,
                   tsc_gitrevision,
                   parser.GetClasses(),
