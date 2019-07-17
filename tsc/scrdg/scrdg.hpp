@@ -78,7 +78,6 @@ private:
     virtual void parse_file(const boost::filesystem::path& file);
 
     bool m_docblock_open;
-    int m_lino;
     std::string m_doctext;
 };
 
@@ -93,7 +92,6 @@ private:
 
     size_t m_leading_spaces;
     bool m_docblock_open;
-    int m_lino;
     std::string m_doctext;
 };
 
