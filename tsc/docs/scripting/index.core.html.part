@@ -8,14 +8,14 @@
 
 <p>
   TSC scripting is implemented with
-  <a href="https://github.com/mruby/mruby">MRuby/<a>, a minimal implementation of the
-      <a href="http://www.ruby-lang.org">Ruby programming
-        language</a>. Although it’s not a hard-to-grasp language and intends
-      to be as human-readable as possible, it tries to not sacrifice
-      principles of powerful object-oriented programming. So, while you may
-      understand and even write scripts without a thorough knowledge of the
-      Ruby language, the key to mastering TSC’s scripting mechanism is an at
-      least rudimental understand of Ruby.
+  <a href="https://github.com/mruby/mruby">MRuby/<a>, a minimal
+  implementation of the <a href="http://www.ruby-lang.org">Ruby programming language</a>.
+  Although it’s not a hard-to-grasp language and intends
+  to be as human-readable as possible, it tries to not sacrifice
+  principles of powerful object-oriented programming. So, while you may
+  understand and even write scripts without a thorough knowledge of the
+  Ruby language, the key to mastering TSC’s scripting mechanism is an at
+  least rudimental understand of Ruby.
 </p>
 
 <p>
@@ -96,10 +96,10 @@
 </p>
 
 <pre class="source">
-  # Note that (-100|100) is outside the visible area,
-  # therefore it looks as if the block "disappeared".
-  block = UIDS[38]
-  block.warp(-100, 100)
+# Note that (-100|100) is outside the visible area,
+# therefore it looks as if the block "disappeared".
+block = UIDS[38]
+block.warp(-100, 100)
 </pre>
 
 <h3>Creation of new objects</h3>
@@ -119,10 +119,10 @@
 </p>
 
 <pre class="source">
-  furball = Furball.new
-  furball.start_direction = :right
-  furball.start_at(300, -300)
-  furball.show
+furball = Furball.new
+furball.start_direction = :right
+furball.start_at(300, -300)
+furball.show
 </pre>
 
 <p>
@@ -182,9 +182,9 @@
 </p>
 
 <pre class="source">
-  UIDS[38].on_touch do |other|
-  other.kill! if other.player?
-  end
+UIDS[38].on_touch do |other|
+other.kill! if other.player?
+end
 </pre>
 
 <p>
@@ -239,7 +239,7 @@
 </p>
 
 <pre>
-  play_sound( filename [, volume [, loops [, resid ] ] ] ) → a_bool
+play_sound( filename [, volume [, loops [, resid ] ] ] ) → a_bool
 </pre>
 
 <p>
@@ -310,7 +310,7 @@ folder of your TSC data path.
 </p>
 
 <pre class="source">
-  TSC.require "std/all"
+TSC.require "std/all"
 </pre>
 
 <p>
@@ -320,7 +320,7 @@ folder of your TSC data path.
 </p>
 
 <pre class="source">
-  TSC.require "std/immediate_sprite"
+TSC.require "std/immediate_sprite"
 </pre>
 
 <p>
@@ -328,7 +328,7 @@ folder of your TSC data path.
 </p>
 
 <pre class="source">
-  Std::ImmediateSprite.new("blocks/extra/corded.png", x: 300, y: -300)
+Std::ImmediateSprite.new("blocks/extra/corded.png", x: 300, y: -300)
 </pre>
 
 <p>
@@ -352,13 +352,13 @@ folder of your TSC data path.
 </p>
 
 <pre class="source">
-  module Freaky
+module Freaky
 
-  class FreakyThing &lt; Furball
-    # Your code...
-  end
+class FreakyThing &lt; Furball
+  # Your code...
+end
 
-  end
+end
 </pre>
 
 <p>
