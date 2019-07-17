@@ -38,10 +38,10 @@ struct MethodDoc
     std::string documentation;
 };
 
-class Parser
+class CppParser
 {
 public:
-    Parser(boost::filesystem::path source_directory);
+    CppParser(boost::filesystem::path source_directory);
     void Parse();
     void PrintSummary();
 

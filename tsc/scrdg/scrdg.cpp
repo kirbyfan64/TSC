@@ -25,14 +25,14 @@ namespace fs = boost::filesystem;
  * Class implementations
  *************************************/
 
-Parser::Parser(fs::path source_directory)
+CppParser::CppParser(fs::path source_directory)
     : m_source_dir(source_directory),
       m_docblock_open(false),
       m_lino(0)
 {
 }
 
-void Parser::Parse()
+void CppParser::Parse()
 {
     for(auto iter = fs::recursive_directory_iterator(m_source_dir); iter != fs::recursive_directory_iterator(); iter++) {
         if (iter->path().extension() == fs::path(".cpp") ||
@@ -52,7 +52,7 @@ void Parser::Parse()
     std::sort(m_methods.begin(), m_methods.end(), namesorter);
 }
 
-void Parser::PrintSummary()
+void CppParser::PrintSummary()
 {
     std::cout << std::endl << "=== SUMMARY ===" << std::endl;
     std::cout << "Classes: " << m_classes.size() << std::endl;
@@ -60,7 +60,7 @@ void Parser::PrintSummary()
     std::cout << "Methods: " << m_methods.size() << std::endl;
 }
 
-void Parser::parse_file(const boost::filesystem::path& file_path)
+void CppParser::parse_file(const boost::filesystem::path& file_path)
 {
     std::cout << "\rExamining " << file_path.native();
     m_lino = 0;
@@ -97,7 +97,7 @@ void Parser::parse_file(const boost::filesystem::path& file_path)
     }
 }
 
-void Parser::parse_doctext(std::string text)
+void CppParser::parse_doctext(std::string text)
 {
     std::string firstline = text.substr(0, text.find("\n"));
 
@@ -123,17 +123,17 @@ void Parser::parse_doctext(std::string text)
     }
 }
 
-void Parser::parse_doctype_class(const std::string& classname, const std::string& text)
+void CppParser::parse_doctype_class(const std::string& classname, const std::string& text)
 {
     m_classes.push_back(ClassDoc{name: classname, documentation: text});
 }
 
-void Parser::parse_doctype_module(const std::string& modulename, const std::string& text)
+void CppParser::parse_doctype_module(const std::string& modulename, const std::string& text)
 {
     m_modules.push_back(ModuleDoc{name: modulename, documentation: text});
 }
 
-void Parser::parse_doctype_method(const std::string& methodstr, const std::string& text)
+void CppParser::parse_doctype_method(const std::string& methodstr, const std::string& text)
 {
     bool is_imethod = false;
     std::string classname;
@@ -359,7 +359,7 @@ static void process_core_files(const fs::path& source_dir, const fs::path& targe
 {
     std::cout << "Generating scripting core API documentation." << std::endl;
 
-    Parser parser(source_dir  / "src" / "scripting");
+    CppParser parser(source_dir  / "src" / "scripting");
     parser.Parse();
     parser.PrintSummary();
 
