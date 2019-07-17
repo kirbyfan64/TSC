@@ -54,7 +54,7 @@ void Parser::Parse()
 
 void Parser::PrintSummary()
 {
-    std::cout << "=== SUMMARY ===" << std::endl;
+    std::cout << std::endl << "=== SUMMARY ===" << std::endl;
     std::cout << "Classes: " << m_classes.size() << std::endl;
     std::cout << "Modules: " << m_modules.size() << std::endl;
     std::cout << "Methods: " << m_methods.size() << std::endl;
@@ -62,7 +62,7 @@ void Parser::PrintSummary()
 
 void Parser::parse_file(const boost::filesystem::path& file_path)
 {
-    std::cout << "Examining " << file_path << std::endl;
+    std::cout << "\rExamining " << file_path.native();
     m_lino = 0;
 
     std::ifstream file(file_path.native());
