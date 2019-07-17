@@ -317,12 +317,10 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
     char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + version.length() + 1];
     sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str(), version.c_str());
 
-    // Construct output file name, replacing all "::" with "_"
-    std::string filename = name + ".html";
-    size_t pos = std::string::npos;
-    while ((pos = filename.find("::")) != std::string::npos)
-        filename.replace(pos, 2, "_");
+    // Construct output file name
+    std::string filename = make_docfilename(name);
 
+    // Write it out
     std::ofstream file((m_output_dir / filename).native());
     file.write(outbuf, strlen(outbuf));
     file.close();
@@ -358,6 +356,8 @@ void Generator::generate_indexfile()
     delete[] outbuf;
 }
 
+// Return those methods in the arguments that belong to the class or module
+// with the given name.
 void Generator::filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods)
 {
     for (const MethodDoc& md: m_methods) {
@@ -401,6 +401,26 @@ std::string Generator::idclean(std::string str)
             result += '-';
     }
     return result;
+}
+
+// Makes a nice filename from the class or module name `name'.
+std::string Generator::make_docfilename(std::string name)
+{
+    std::string filename = name + ".html";
+
+    // Replace any "::" with "_"
+    size_t pos = std::string::npos;
+    while ((pos = filename.find("::")) != std::string::npos)
+        filename.replace(pos, 2, "_");
+
+    // Downcase
+    for(pos=0; pos < filename.length(); pos++) {
+        if (filename[pos] >= 'A' && filename[pos] <= 'Z') {
+            filename[pos] = filename[pos] + static_cast<char>(32);
+        }
+    }
+
+    return filename;
 }
 
 /**************************************

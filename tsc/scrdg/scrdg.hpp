@@ -117,6 +117,7 @@ private:
     void generate_indexfile();
     void filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods);
     std::string idclean(std::string str);
+    std::string make_docfilename(std::string str);
     std::string tsc_version_str();
 
     const std::vector<ClassDoc>&  m_classes;
