@@ -75,15 +75,6 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-deprecated-declarations -Wl,--as-needed")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG=1 -fno-inline")
 
-# Find out the host triplet if we are crosscompiling.
-# This is needed because the mruby build system uses it
-# as the output directory name.
-if (CMAKE_CROSSCOMPILING)
-  get_filename_component(HOST_TRIPLET ${CMAKE_C_COMPILER} NAME)
-  string(REGEX REPLACE "(.*)-.*$" "\\1" HOST_TRIPLET "${HOST_TRIPLET}")
-  message(STATUS "Detected cross-compilation targetting: ${HOST_TRIPLET}")
-endif()
-
 ########################################
 # Dependencies
 
@@ -214,7 +205,7 @@ file(GLOB_RECURSE scrdg_sources
 file(GLOB_RECURSE scriptdoc_sources
   "src/scripting/*.cpp"
   "src/scripting/*.hpp"
-  "data/scripting/*.rb",
+  "data/scripting/*.rb"
   "docs/scripting/*")
 
 ########################################
@@ -440,11 +431,6 @@ include(CPack)
 message(STATUS "--------------- Build info summary ----------------")
 message(STATUS "TSC version:    ${TSC_VERSION}")
 message(STATUS "Build type:     ${CMAKE_BUILD_TYPE}")
-if (CMAKE_CROSSCOMPILING)
-  message(STATUS "Crosscompiling: ${HOST_TRIPLET}")
-else()
-  message(STATUS "Crosscompiling: No")
-endif()
 
 message(STATUS "--------------- Configuration summary -------------")
 message(STATUS "Enable the in-game editor:         ${ENABLE_EDITOR}")

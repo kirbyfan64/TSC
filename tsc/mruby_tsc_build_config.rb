@@ -60,27 +60,3 @@ MRuby::Build.new do |conf|
 
   config.call(conf, root)
 end
-
-if ENV["CROSSCOMPILE_TARGET"] and !ENV["CROSSCOMPILE_TARGET"].empty?
-  prefix = ENV["CROSSCOMPILE_TARGET"]
-
-  MRuby::CrossBuild.new(prefix) do |conf|
-    toolchain :gcc
-    enable_debug
-
-    conf.cc do |cc|
-      cc.command = ENV["CC"] || "#{prefix}-gcc"
-      cc.flags += ["-DMRB_UTF8_STRING"]
-    end
-
-    conf.linker do |linker|
-      linker.command = ENV["LD"] || "#{prefix}-gcc"
-    end
-
-    conf.archiver do |archiver|
-      archiver.command = ENV["AR"] || "#{prefix}-ar"
-    end
-
-    config.call(conf, root)
-  end
-end
