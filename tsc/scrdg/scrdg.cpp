@@ -345,6 +345,20 @@ void Generator::generate_indexfile()
     std::string title = "Documentation Index";
     std::string version = tsc_version_str();
 
+    // Generate module index
+    mainbody += "<h3>Modules</h3>\n<ul>";
+    for (const ModuleDoc& md: m_modules) {
+        mainbody += "<li><a href=\"" + make_docfilename(md.name) + "\">" + md.name + "</a></li>";
+    }
+    mainbody += "</ul>\n";
+
+    // Generate class index
+    mainbody += "<h3>Classes</h3>\n<ul>";
+    for (const ClassDoc& cd: m_classes) {
+        mainbody += "<li><a href=\"" + make_docfilename(cd.name) + "\">" + cd.name + "</a></li>";
+    }
+    mainbody += "</ul>\n";
+
     // Insert into template
     char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + version.length() + 1];
     sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str(), version.c_str());
