@@ -198,6 +198,9 @@ e.g. `-DENABLE_EDITOR=OFF`. Default values are indicated in brackets.
 
 The following options are available:
 
+BUILD_SCRIPT_DOCS [ON]
+: Build the scripting API documentation.
+
 ENABLE_EDITOR [ON]
 : Enables or disables the in-game editor. Switching this off is not
   yet supported.
@@ -241,8 +244,9 @@ CMAKE_INSTALL_DATADIR [(prefix)/share]
 
 CMAKE_INSTALL_DATAROOTDIR [(prefix)/share]
 : Installation target of non-program-specific data, namely the
-  `.desktop` starter file, icons and the manpage by default.
-  Only change this if you have good reasons.
+  `.desktop` starter file, icons, the scripting API docs,
+  and the manpage by default. Only change this if you have
+  good reasons.
 
 CMAKE_INSTALL_MANDIR [(datarootdir)/man]
 : Where TSC will install its manpage under. Note that the
