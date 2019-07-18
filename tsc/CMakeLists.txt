@@ -309,7 +309,8 @@ install(DIRECTORY "${TSC_SOURCE_DIR}/data/worlds/"
   DESTINATION ${CMAKE_INSTALL_DATADIR}/tsc/worlds
   COMPONENT worlds)
 install(DIRECTORY "${TSC_BINARY_DIR}/scriptdocs"
-  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/doc/tsc)
+  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/doc/tsc
+  COMPONENT base)
 
 if(NOT WIN32)
   install(FILES "${TSC_SOURCE_DIR}/docs/man/tsc.6"
