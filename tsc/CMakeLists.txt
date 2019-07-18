@@ -437,6 +437,7 @@ message(STATUS "--------------- Configuration summary -------------")
 message(STATUS "Enable the in-game editor:         ${ENABLE_EDITOR}")
 message(STATUS "Enable the mruby scripting engine: ${ENABLE_MRUBY}")
 message(STATUS "Enable native language support:    ${ENABLE_NLS}")
+message(STATUS "Enable the scripting API docs:     ${ENABLE_SCRIPT_DOCS}")
 message(STATUS "Use system-provided tinyclipboard: ${USE_SYSTEM_TINYCLIPBOARD}")
 message(STATUS "Use system-provided mruby:         ${USE_SYSTEM_MRUBY}")
 
