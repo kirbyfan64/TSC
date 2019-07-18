@@ -1,5 +1,5 @@
-Version History and Changelog {#changelog}
-=============================
+Version History and Changelog for old SMC {#changelog}
+======================================================
 
 1.9 (2009-08-17)
 ----------------
