@@ -68,6 +68,7 @@
 	* Misc: Removed package support (#656 by Marvin Gülker)
 	* Misc: Add TSC scripting generator programme (scrdg). Scripting
 		API docs are now generated during the normal build process.
+	* Misc: New compilation option ENABLE_SCRIPT_DOCS.
 
 2015-08-17  Marvin Gülker  <quintus@quintilianus.eu>
 
