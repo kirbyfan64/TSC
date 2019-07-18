@@ -87,22 +87,8 @@ if (ENABLE_NLS)
 endif()
 
 # External libraries we depend on directly and programs we use in the
-# build process. On Windows, we link statically, hence we need to care
-# for ALL dependencies including dependencies of dependencies
-# (cf. http://stackoverflow.com/a/409470) The correct solution is to
-# detect all our deps-of-deps via separate CMake modules, but that
-# would mean writing lots of CMake modules for libraries that do not
-# yet have one shipped with CMake. On the longer way, this will be
-# required, but for the moment we cheat and instead rely on MXE's
-# carefully maintained pkg-config files for this task. This approach
-# *breaks* building on any system which does not use pkg-config (most
-# notably Win32 native build with MSVC, but also native MinGW where it
-# does not ship pkg-config files, which it doesn't do for quite a lot
-# of libraries). IOW, no native Win32 builds with this approach
-# currently. Once that is done, this if() statement can probably be
-# simplified a lot by merging the two branches behind common
-# find_package() calls.
-#
+# build process.
+
 # Boost needs special treatment.
 if (WIN32)
   # Boost thread library has a different name on Windows to indicate
