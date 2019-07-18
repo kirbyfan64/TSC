@@ -52,9 +52,6 @@ option(ENABLE_NLS "Enable translations and localisations" ON)
 option(BUILD_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(ENABLE_EDITOR "Enable the in-game editor" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
-if(WIN32 AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  set(CMAKE_INSTALL_PREFIX "$ENV{systemdrive}/Games/${CMAKE_PROJECT_NAME}" CACHE PATH "CMAKE PREFIX" FORCE)
-endif()
 option(USE_SYSTEM_MRUBY "Use the system's mruby (intended for internal use only!)" OFF)
 option(USE_LIBXMLPP3 "Use libxml++3.0 instead of libxml++2.6 (experimental)" OFF)
 
@@ -74,6 +71,10 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 # The _DEBUG macro is used in TSC's own codebase for debugging code.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-deprecated-declarations -Wl,--as-needed")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG=1 -fno-inline")
+
+if(WIN32 AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "$ENV{systemdrive}/Games/${CMAKE_PROJECT_NAME}" CACHE PATH "CMAKE PREFIX" FORCE)
+endif()
 
 ########################################
 # Dependencies
