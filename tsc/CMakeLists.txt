@@ -49,7 +49,7 @@ execute_process(COMMAND git rev-parse --short HEAD
 
 option(ENABLE_MRUBY "Enable the MRuby scripting engine" ON)
 option(ENABLE_NLS "Enable translations and localisations" ON)
-option(BUILD_SCRIPT_DOCS "Build the scripting documentation" ON)
+option(ENABLE_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(ENABLE_EDITOR "Enable the in-game editor" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
 option(USE_SYSTEM_MRUBY "Use the system's mruby (intended for internal use only!)" OFF)
@@ -248,7 +248,7 @@ if (ENABLE_MRUBY AND NOT USE_SYSTEM_MRUBY)
   add_dependencies(tsc mruby)
 endif()
 
-if (BUILD_SCRIPT_DOCS)
+if (ENABLE_SCRIPT_DOCS)
   add_executable(scrdg ${scrdg_sources})
   target_link_libraries(scrdg ${Boost_COMPONENTS})
 

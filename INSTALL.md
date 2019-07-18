@@ -198,7 +198,7 @@ e.g. `-DENABLE_EDITOR=OFF`. Default values are indicated in brackets.
 
 The following options are available:
 
-BUILD_SCRIPT_DOCS [ON]
+ENABLE_SCRIPT_DOCS [ON]
 : Build the scripting API documentation.
 
 ENABLE_EDITOR [ON]
