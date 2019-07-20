@@ -67,8 +67,11 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 # -Wall for better code quality, and -Wno-deprecated-delcarations to prevent
 # useless warnings from not-yet-c++11-ready dependencies (glibmm!).
 # The _DEBUG macro is used in TSC's own codebase for debugging code.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-deprecated-declarations -Wl,--as-needed")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG=1 -fno-inline")
+add_compile_options(-Wall -Wno-deprecated-declarations)
+if (CMAKE_BUILD_TYPE MATCHES "Debug")
+  add_compile_options(-fno-inline)
+  add_definitions(-D_DEBUG=1)
+endif()
 
 if(WIN32 AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set(CMAKE_INSTALL_PREFIX "$ENV{systemdrive}/Games/${CMAKE_PROJECT_NAME}" CACHE PATH "CMAKE PREFIX" FORCE)
@@ -219,6 +222,10 @@ target_link_libraries(tsc
   ${Tinyclipboard_LIBRARIES}
   ${LibXmlPP_LIBRARIES}
   ${PCRE_LIBRARIES})
+
+# Passing --as-needed to ld ensures that we get the Win32 ld's behaviour
+# even on Linux and discover linking problems before building for Win32.
+set_property(TARGET tsc APPEND PROPERTY LINK_FLAGS "-Wl,--as-needed")
 
 if (WIN32)
   target_link_libraries(tsc iconv intl ws2_32)
