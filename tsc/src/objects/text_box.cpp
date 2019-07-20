@@ -226,7 +226,6 @@ void cText_Box::Set_Text(const std::string& str_text)
     m_text = str_text;
 }
 
-#ifdef ENABLE_EDITOR
 void cText_Box::Editor_Activate(void)
 {
     // BaseBox Settings first
@@ -256,7 +255,6 @@ bool cText_Box::Editor_Text_Text_Changed(const CEGUI::EventArgs& event)
 
     return 1;
 }
-#endif
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

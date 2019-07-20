@@ -22,8 +22,6 @@
 #include "../core/errors.hpp"
 #include "world_editor.hpp"
 
-#ifdef ENABLE_EDITOR
-
 using namespace TSC;
 
 // extern
@@ -149,5 +147,3 @@ std::vector<cSprite*> cEditor_World::Parse_Items_File()
     return parser.get_tagged_sprites();
     return std::vector<cSprite*>(); // FIXME ↑ Segfaults
 }
-
-#endif

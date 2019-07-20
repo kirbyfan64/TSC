@@ -257,7 +257,6 @@ DefaultColor cBeetle::Get_Color()
     return m_color;
 }
 
-#ifdef ENABLE_EDITOR
 void cBeetle::Editor_Activate()
 {
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
@@ -302,7 +301,6 @@ bool cBeetle::Editor_Color_Select(const CEGUI::EventArgs& event)
 
     return true;
 }
-#endif
 
 bool cBeetle::Is_Doing_Beetle_Barrage_Generation()
 {

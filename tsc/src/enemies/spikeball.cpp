@@ -499,7 +499,6 @@ void cSpikeball::Handle_Collision_Box(ObjectDirection cdirection, GL_rect* r2)
     }
 }
 
-#ifdef ENABLE_EDITOR
 void cSpikeball::Editor_Activate(void)
 {
     // get window manager
@@ -528,7 +527,6 @@ bool cSpikeball::Editor_Direction_Select(const CEGUI::EventArgs& event)
 
     return 1;
 }
-#endif
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

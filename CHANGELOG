@@ -63,7 +63,6 @@
 	* Misc: Added Travis CI config (PR #453 by Lauri Ojansivu)
 	* Misc: "God Mode" renamed to "Omega Mode" (#481 by Marvin Gülker)
 	* Misc: New world graphics category "Mountain"
-	* Misc: New compilation option ENABLE_EDITOR.
 	* Misc: New compilation option USE_SYSTEM_TINYCLIPBOARD.
 	* Misc: Removed package support (#656 by Marvin Gülker)
 	* Misc: Add TSC scripting generator programme (scrdg). Scripting

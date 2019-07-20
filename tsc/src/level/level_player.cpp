@@ -3961,7 +3961,6 @@ void cLevel_Player::Handle_out_of_Level(ObjectDirection dir)
     }
 }
 
-#ifdef ENABLE_EDITOR
 void cLevel_Player::Editor_Activate(void)
 {
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
@@ -3989,7 +3988,6 @@ bool cLevel_Player::Editor_Direction_Select(const CEGUI::EventArgs& event)
 
     return 1;
 }
-#endif
 
 void cLevel_Player::Push_Return(const std::string& level, const std::string& entry)
 {

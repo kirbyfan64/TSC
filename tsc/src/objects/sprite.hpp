@@ -440,7 +440,6 @@ namespace TSC {
         */
         virtual void Destroy(void);
 
-#ifdef ENABLE_EDITOR
         // editor activation
         virtual void Editor_Activate(void);
         // editor deactivation
@@ -452,7 +451,6 @@ namespace TSC {
 
         // editor image text changed event
         bool Editor_Image_Text_Changed(const CEGUI::EventArgs& event);
-#endif
 
         /// current image used for drawing
         cGL_Surface* m_image;

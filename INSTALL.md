@@ -194,16 +194,12 @@ building. If you just want to build the game, you can skip it. If you
 want custom configuration or want to package it for e.g. a Linux
 distribution, read on. Each of the flags described in this section
 needs to be passed when invoking cmake by use of a `-D` option,
-e.g. `-DENABLE_EDITOR=OFF`. Default values are indicated in brackets.
+e.g. `-DENABLE_SCRIPT_DOCS=OFF`. Default values are indicated in brackets.
 
 The following options are available:
 
 ENABLE_SCRIPT_DOCS [ON]
 : Build the scripting API documentation.
-
-ENABLE_EDITOR [ON]
-: Enables or disables the in-game editor. Switching this off is not
-  yet supported.
 
 ENABLE_NLS [ON]
 : Enables or disables use of translations. If disabled, TSC will use

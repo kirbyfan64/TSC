@@ -32,9 +32,6 @@
 // will cause TSC to be always in English.
 #cmakedefine ENABLE_NLS 1
 
-// If unset, TSC will be built without the in-game editor.
-#cmakedefine ENABLE_EDITOR 1
-
 // If set, TSC will be built against libxml++3.0 instead of
 // libxml++2.6.
 #cmakedefine USE_LIBXMLPP3 1

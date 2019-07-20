@@ -25,8 +25,6 @@
 #define TABPANE_OUT_OF_SIGHT_X -0.19f
 #define CONFIGPANE_OUT_OF_SIGHT_X 0.99f
 
-#ifdef ENABLE_EDITOR
-
 using namespace TSC;
 
 cEditor::cEditor()
@@ -1538,5 +1536,3 @@ bool cEditor::on_selector_radio_changed(const CEGUI::EventArgs& args)
 
     return true;
 }
-
-#endif

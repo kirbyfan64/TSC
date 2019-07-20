@@ -184,7 +184,6 @@ void cSecret_Area::Activate(void)
     evt.Fire(pActive_Level->m_mruby, this);
 }
 
-#ifdef ENABLE_EDITOR
 void cSecret_Area::Editor_Activate(void)
 {
 }
@@ -197,7 +196,6 @@ void cSecret_Area::Editor_Deactivate(void)
 void cSecret_Area::Editor_State_Update(void)
 {
 }
-#endif
 
 xmlpp::Element* cSecret_Area::Save_To_XML_Node(xmlpp::Element* p_element)
 {

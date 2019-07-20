@@ -91,7 +91,6 @@ namespace TSC {
         // Returns the Destination’s full filename (world or level file).
         boost::filesystem::path Get_Destination_Path();
 
-#ifdef ENABLE_EDITOR
         // editor activation
         virtual void Editor_Activate(void);
         // editor type option selected event
@@ -118,7 +117,6 @@ namespace TSC {
         bool Editor_Waypoint_Exit_Line_Start_UID_Changed(const CEGUI::EventArgs& event);
         // default lock state was changed
         bool Editor_Waypoint_Exit_Locked_Select(const CEGUI::EventArgs& event);
-#endif
 
         // forward direction (DEPRECATED)
         ObjectDirection m_direction_forward;

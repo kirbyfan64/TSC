@@ -476,7 +476,6 @@ boost::filesystem::path cWaypoint::Get_Destination_Path()
     }
 }
 
-#ifdef ENABLE_EDITOR
 void cWaypoint::Editor_Activate(void)
 {
     // get window manager
@@ -802,8 +801,6 @@ waypoint_exit* cWaypoint::get_edited_waypoint_exit()
         return NULL;
     }
 }
-
-#endif // ENABLE_EDITOR
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

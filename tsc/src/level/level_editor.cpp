@@ -25,8 +25,6 @@
 #include "level_settings.hpp"
 #include "level_editor.hpp"
 
-#ifdef ENABLE_EDITOR
-
 using namespace TSC;
 
 // extern
@@ -303,5 +301,3 @@ bool cEditor_Level::cycle_object_massive_type(cSprite* obj) const
 
     return 1;
 }
-
-#endif

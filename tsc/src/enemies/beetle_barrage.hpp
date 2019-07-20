@@ -47,9 +47,7 @@ namespace TSC {
         virtual void Draw(cSurface_Request* p_request = NULL);
         virtual void Update();
 
-#ifdef ENABLE_EDITOR
         virtual void Editor_Activate();
-#endif
 
         // Create the MRuby object for this
         virtual mrb_value Create_MRuby_Object(mrb_state* p_state)
@@ -80,12 +78,10 @@ namespace TSC {
 
         void Generate_Beetles();
 
-#ifdef ENABLE_EDITOR
         // Editor event handlers
         bool Editor_Fly_Distance_Text_Changed(const CEGUI::EventArgs& event);
         bool Editor_Range_Text_Changed(const CEGUI::EventArgs& event);
         bool Editor_Spit_Count_Text_Changed(const CEGUI::EventArgs& event);
-#endif
 
         // The area we react on Alex.
         float m_active_range;

@@ -18,7 +18,6 @@
 #include "../core/global_game.hpp"
 #include "../core/xml_attributes.hpp"
 
-#ifdef ENABLE_EDITOR
 namespace TSC {
 
     /**
@@ -75,5 +74,4 @@ namespace TSC {
 
 }
 
-#endif
 #endif

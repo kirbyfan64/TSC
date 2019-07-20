@@ -671,7 +671,6 @@ void cBaseBox::Handle_Collision_Enemy(cObjectCollision* collision)
     }
 }
 
-#ifdef ENABLE_EDITOR
 void cBaseBox::Editor_Activate(void)
 {
     CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
@@ -745,7 +744,6 @@ bool cBaseBox::Editor_Invisible_Select(const CEGUI::EventArgs& event)
 
     return 1;
 }
-#endif
 
 std::string cBaseBox::Create_Name(void) const
 {

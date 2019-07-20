@@ -241,13 +241,11 @@ void cLevel_Manager::Update(void)
     // update performance timer
     pFramerate->m_perf_timer[PERF_UPDATE_LEVEL]->Update();
 
-#ifdef ENABLE_EDITOR
     // editor
     pLevel_Editor->Update();
 
     // update performance timer
     pFramerate->m_perf_timer[PERF_UPDATE_LEVEL_EDITOR]->Update();
-#endif
 
     // player
     pLevel_Player->Update();
@@ -308,10 +306,8 @@ void cLevel_Manager::Draw(void)
     // update performance timer
     pFramerate->m_perf_timer[PERF_DRAW_LEVEL_LAYER2]->Update();
 
-#ifdef ENABLE_EDITOR
     // level editor
     pLevel_Editor->Draw();
-#endif
 
     // update performance timer
     pFramerate->m_perf_timer[PERF_DRAW_LEVEL_EDITOR]->Update();

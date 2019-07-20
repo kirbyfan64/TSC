@@ -17,8 +17,6 @@
 #include "editor_items_loader.hpp"
 #include "../../objects/sprite.hpp"
 
-#ifdef ENABLE_EDITOR
-
 using namespace std;
 
 using namespace TSC;
@@ -131,5 +129,3 @@ vector<cSprite*> cEditorItemsLoader::get_tagged_sprites()
 {
     return m_tagged_sprites;
 }
-
-#endif // ENABLE_EDITOR

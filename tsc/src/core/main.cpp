@@ -308,13 +308,11 @@ void Init_Game(void)
 
     gp_game_console = new cGame_Console();
 
-#ifdef ENABLE_EDITOR
     pLevel_Editor = new cEditor_Level();
     pLevel_Editor->Init();
 
     pWorld_Editor = new cEditor_World();
     pWorld_Editor->Init();
-#endif
 
     pMouseCursor = new cMouseCursor(pActive_Level->m_sprite_manager);
     pKeyboard = new cKeyboard();
@@ -368,7 +366,6 @@ void Exit_Game(void)
         pSound_Manager = NULL;
     }
 
-#ifdef ENABLE_EDITOR
     if (pLevel_Editor) {
         delete pLevel_Editor;
         pLevel_Editor = NULL;
@@ -378,7 +375,6 @@ void Exit_Game(void)
         delete pWorld_Editor;
         pWorld_Editor = NULL;
     }
-#endif
 
     if (gp_game_console) {
         delete gp_game_console;
@@ -621,9 +617,7 @@ void Update_Game(void)
         pMenuCore->Update();
     }
     else if (Game_Mode == MODE_LEVEL_SETTINGS) {
-#ifdef ENABLE_EDITOR
         pLevel_Editor->m_settings_screen.Update();
-#endif
     }
     else if (Game_Mode == MODE_SCENE) {
         pActive_Scene->Update();
@@ -653,9 +647,7 @@ void Draw_Game(void)
         pMenuCore->Draw();
     }
     else if (Game_Mode == MODE_LEVEL_SETTINGS) {
-#ifdef ENABLE_EDITOR
         pLevel_Editor->m_settings_screen.Draw();
-#endif
     }
     else if (Game_Mode == MODE_SCENE) {
         pActive_Scene->Draw();

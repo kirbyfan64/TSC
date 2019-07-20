@@ -49,7 +49,6 @@ execute_process(COMMAND git rev-parse --short HEAD
 
 option(ENABLE_NLS "Enable translations and localisations" ON)
 option(ENABLE_SCRIPT_DOCS "Build the scripting documentation" ON)
-option(ENABLE_EDITOR "Enable the in-game editor" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
 option(USE_SYSTEM_MRUBY "Use the system's mruby (intended for internal use only!)" OFF)
 option(USE_LIBXMLPP3 "Use libxml++3.0 instead of libxml++2.6 (experimental)" OFF)
@@ -424,7 +423,6 @@ message(STATUS "TSC version:    ${TSC_VERSION}")
 message(STATUS "Build type:     ${CMAKE_BUILD_TYPE}")
 
 message(STATUS "--------------- Configuration summary -------------")
-message(STATUS "Enable the in-game editor:         ${ENABLE_EDITOR}")
 message(STATUS "Enable native language support:    ${ENABLE_NLS}")
 message(STATUS "Enable the scripting API docs:     ${ENABLE_SCRIPT_DOCS}")
 message(STATUS "Use system-provided tinyclipboard: ${USE_SYSTEM_TINYCLIPBOARD}")

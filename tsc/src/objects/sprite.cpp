@@ -262,9 +262,7 @@ void cCollidingSprite::Handle_Collision(cObjectCollision* collision)
      * Also needed as the MRuby interpreter is not initialized before
      * Level construction. */
     if (pActive_Level) {
-#ifdef ENABLE_EDITOR
         if (!pLevel_Editor->m_enabled) {
-#endif
             /* For whatever reason, CollidingSprite is the superclass
              * of Sprite (I’d expect it the other way round), so we have
              * first to check whether we got a correct sprite object prior
@@ -280,9 +278,7 @@ void cCollidingSprite::Handle_Collision(cObjectCollision* collision)
                 evt1.Fire(pActive_Level->m_mruby, p_sprite);
                 evt2.Fire(pActive_Level->m_mruby, collision->m_obj);
             }
-#ifdef ENABLE_EDITOR
         }
-#endif
     }
 
     // player
@@ -1420,7 +1416,6 @@ void cSprite::Destroy(void)
     Set_Image(NULL, 1);
 }
 
-#ifdef ENABLE_EDITOR
 /**
  * Configure the object configuration panel (the editor panel on the right
  * side) for this object. This method must be overridden in subclasses
@@ -1513,7 +1508,6 @@ bool cSprite::Editor_Image_Text_Changed(const CEGUI::EventArgs& event)
 
     return 1;
 }
-#endif // ENABLE_EDITOR
 
 /**
  * This method should append all necessary components

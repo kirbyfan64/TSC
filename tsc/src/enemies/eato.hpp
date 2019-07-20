@@ -72,14 +72,12 @@ namespace TSC {
         virtual void Handle_Collision_Player(cObjectCollision* collision);
         virtual void Handle_Collision_Massive(cObjectCollision* collision);
 
-#ifdef ENABLE_EDITOR
         // editor activation
         virtual void Editor_Activate(void);
         // editor direction option selected event
         bool Editor_Direction_Select(const CEGUI::EventArgs& event);
         // editor image dir text changed event
         bool Editor_Image_Dir_Text_Changed(const CEGUI::EventArgs& event);
-#endif
 
         // image directory
         boost::filesystem::path m_img_dir;

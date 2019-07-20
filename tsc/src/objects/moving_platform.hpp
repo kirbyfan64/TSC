@@ -139,7 +139,6 @@ namespace TSC {
         // collision from an enemy
         virtual void Handle_Collision_Enemy(cObjectCollision* collision);
 
-#ifdef ENABLE_EDITOR
         // editor activation
         virtual void Editor_Activate(void);
         // editor deactivation
@@ -163,7 +162,6 @@ namespace TSC {
         CEGUI::Editbox* mp_path_box;
         CEGUI::Editbox* mp_distance_box;
         CEGUI::Combobox* mp_direction_box;
-#endif
 
         // platform moving type
         Moving_Platform_Type m_move_type;

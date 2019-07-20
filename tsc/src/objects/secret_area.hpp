@@ -50,11 +50,9 @@ namespace TSC {
         void Activate(void);
         void Set_Rect(GL_rect rect, bool new_start_pos = false);
 
-#ifdef ENABLE_EDITOR
         virtual void Editor_Activate(void);
         virtual void Editor_Deactivate(void);
         virtual void Editor_State_Update(void);
-#endif
 
         virtual xmlpp::Element* Save_To_XML_Node(xmlpp::Element* p_element);
         virtual bool Save_To_Savegame_XML_Node(xmlpp::Element* p_element) const;

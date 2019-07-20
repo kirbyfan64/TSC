@@ -102,7 +102,6 @@ namespace TSC {
         // gee does not die in abyss
         virtual void Handle_out_of_Level(ObjectDirection dir);
 
-#ifdef ENABLE_EDITOR
         // editor activation
         virtual void Editor_Activate(void);
         // editor direction option selected event
@@ -115,7 +114,6 @@ namespace TSC {
         bool Editor_Wait_Time_Text_Changed(const CEGUI::EventArgs& event);
         // editor fly distance text changed event
         bool Editor_Fly_Distance_Text_Changed(const CEGUI::EventArgs& event);
-#endif
 
         // color
         DefaultColor m_color_type;

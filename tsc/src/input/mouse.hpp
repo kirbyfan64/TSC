@@ -108,13 +108,11 @@ namespace TSC {
          */
         void Set_Drag_Mode(DragMode mode);
 
-#ifdef ENABLE_EDITOR
         /* Get the first object colliding with the mouse which is valid for the editor
          * returns the collision if an object was found else NULL
          * The collision data should be deleted if not used anymore
         */
         cObjectCollision* Get_First_Editor_Collsion(float px = 0.0f, float py = 0.0f);
-#endif
         /* Get the first object colliding with the mouse
          * returns the collision if an object was found else NULL
          * The collision data should be deleted if not used anymore
@@ -241,10 +239,8 @@ namespace TSC {
         void Toggle_Mover_Mode(void);
         // Updates the Mover Mode
         void Mover_Update(int move_x, int move_y);
-#ifdef ENABLE_EDITOR
         // Updates the editor Mouse
         void Editor_Update(void);
-#endif
 
         // current internal mouse position
         int m_x;

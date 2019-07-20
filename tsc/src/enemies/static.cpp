@@ -305,7 +305,6 @@ void cStaticEnemy::Handle_Collision_Enemy(cObjectCollision* collision)
     enemy->DownGrade(1);
 }
 
-#ifdef ENABLE_EDITOR
 void cStaticEnemy::Editor_Activate(void)
 {
     // get window manager
@@ -440,7 +439,6 @@ bool cStaticEnemy::Editor_Ice_Resistance_Text_Changed(const CEGUI::EventArgs& ev
 
     return 1;
 }
-#endif // ENABLE_EDITOR
 
 std::string cStaticEnemy::Create_Name(void) const
 {

@@ -465,7 +465,6 @@ bool cLevel_Exit::Is_Draw_Valid(void)
     return 1;
 }
 
-#ifdef ENABLE_EDITOR
 void cLevel_Exit::Editor_Activate(void)
 {
     // get window manager
@@ -685,7 +684,6 @@ bool cLevel_Exit::Editor_Path_Identifier_Text_Changed(const CEGUI::EventArgs& ev
 
     return 1;
 }
-#endif
 
 void cLevel_Exit::Set_Massive_Type(MassiveType type)
 {

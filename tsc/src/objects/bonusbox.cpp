@@ -432,7 +432,6 @@ bool cBonusBox::Is_Update_Valid()
     return cBaseBox::Is_Update_Valid();
 }
 
-#ifdef ENABLE_EDITOR
 void cBonusBox::Editor_Activate(void)
 {
     // BaseBox Settings first
@@ -635,7 +634,6 @@ bool cBonusBox::Editor_Gold_Color_Select(const CEGUI::EventArgs& event)
 
     return 1;
 }
-#endif
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

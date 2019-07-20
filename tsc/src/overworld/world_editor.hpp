@@ -1,6 +1,5 @@
 #ifndef TSC_WORLD_EDITOR_HPP
 #define TSC_WORLD_EDITOR_HPP
-#ifdef ENABLE_EDITOR
 #include "../core/editor/editor.hpp"
 
 namespace TSC {
@@ -31,5 +30,4 @@ namespace TSC {
 
     extern cEditor_World* pWorld_Editor;
 }
-#endif
 #endif

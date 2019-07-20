@@ -734,7 +734,6 @@ void cFurball::Handle_Collision_Box(ObjectDirection cdirection, GL_rect* r2)
     DownGrade(true);
 }
 
-#ifdef ENABLE_EDITOR
 void cFurball::Editor_Activate(void)
 {
     // get window manager
@@ -811,7 +810,6 @@ bool cFurball::Editor_Max_Downgrade_Count_Text_Changed(const CEGUI::EventArgs& e
 
     return 1;
 }
-#endif
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 
