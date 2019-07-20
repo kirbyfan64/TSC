@@ -124,7 +124,7 @@ include("ProvideMRuby")
 ########################################
 # Configuration header
 
-configure_file(${TSC_SOURCE_DIR}/config.hpp.in
+configure_file(${TSC_SOURCE_DIR}/src/core/config.hpp.in
   ${TSC_BINARY_DIR}/config.hpp)
 include_directories(${TSC_BINARY_DIR})
 
@@ -184,7 +184,8 @@ file(GLOB_RECURSE tsc_sources
 if (WIN32)
   enable_language(RC)
 
-  list(APPEND tsc_sources icon.rc)
+  configure_file("${TSC_SOURCE_DIR}/src/gui/icon.rc.in" "${TSC_BINARY_DIR}/icon.rc")
+  list(APPEND tsc_sources "${TSC_BINARY_DIR}/icon.rc")
 endif()
 
 file(GLOB_RECURSE scrdg_sources
