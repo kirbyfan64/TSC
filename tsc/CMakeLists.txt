@@ -50,7 +50,7 @@ execute_process(COMMAND git rev-parse --short HEAD
 option(ENABLE_NLS "Enable translations and localisations" ON)
 option(ENABLE_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
-option(USE_SYSTEM_MRUBY "Use the system's mruby (intended for internal use only!)" OFF)
+option(USE_SYSTEM_MRUBY "Use the system's mruby library" OFF)
 option(USE_LIBXMLPP3 "Use libxml++3.0 instead of libxml++2.6 (experimental)" OFF)
 
 ########################################
