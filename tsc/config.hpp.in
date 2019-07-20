@@ -28,10 +28,6 @@
 #define TSC_COMPILE_MONTH @TSC_COMPILE_MONTH@
 #define TSC_COMPILE_DAY   @TSC_COMPILE_DAY@
 
-// Enables the mruby scripting engine (-DENABLE_MRUBY)
-// FIXME: This option currently does nothing.
-#cmakedefine ENABLE_MRUBY
-
 // Enables translations and localisations. Undefining it
 // will cause TSC to be always in English.
 #cmakedefine ENABLE_NLS 1

@@ -69,6 +69,8 @@
 	* Misc: Add TSC scripting generator programme (scrdg). Scripting
 		API docs are now generated during the normal build process.
 	* Misc: New compilation option ENABLE_SCRIPT_DOCS.
+	* Misc: Removed compilation option ENABLE_MRUBY. Scripting is an
+		integral part of TSC that can't be disabled anymore.
 
 2015-08-17  Marvin Gülker  <quintus@quintilianus.eu>
 

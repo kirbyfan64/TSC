@@ -205,10 +205,6 @@ ENABLE_EDITOR [ON]
 : Enables or disables the in-game editor. Switching this off is not
   yet supported.
 
-ENABLE_MRUBY [ON]
-: Enables or disables the scripting engine. Switching this off is not
-  yet supported.
-
 ENABLE_NLS [ON]
 : Enables or disables use of translations. If disabled, TSC will use
   English only.

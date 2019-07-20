@@ -102,10 +102,8 @@ cLevel::cLevel(void)
 
     m_delayed_unload = 0;
 
-#ifdef ENABLE_MRUBY
     m_mruby = NULL; // Initialized in Init()
     m_mruby_has_been_initialized = false;
-#endif
 
     m_sprite_manager = new cSprite_Manager();
     m_background_manager = new cBackground_Manager();
@@ -278,7 +276,6 @@ void cLevel::Unload(bool delayed /* = 0 */)
 
     Reset_Settings();
 
-#ifdef ENABLE_MRUBY
     gp_game_console->Hide();
     /* Shutdown the mruby interpreter. The menu level (the one shown on the
      * startup screen) has not been Init()ialized and hence has no mruby
@@ -286,7 +283,6 @@ void cLevel::Unload(bool delayed /* = 0 */)
      * of the mruby interpreter here. */
     if (m_mruby)
         delete m_mruby;
-#endif
 
     /* delete sprites
      * do this at last
@@ -481,7 +477,6 @@ void cLevel::Init(void)
         }
     }
 
-#ifdef ENABLE_MRUBY
     /* For unknown reasons, Init() is public. And for even more
      * unknown reasons, it is called from the outside at some totally
      * unfitting places such as when returning from a sublevel or
@@ -493,7 +488,6 @@ void cLevel::Init(void)
         Reinitialize_MRuby_Interpreter();
         m_mruby_has_been_initialized = true;
     }
-#endif
 }
 
 std::string cLevel::Get_Level_Name()
@@ -638,11 +632,9 @@ void cLevel::Update(void)
         // animations
         m_animation_manager->Update();
 
-#ifdef ENABLE_MRUBY
         // Scripted timers (if an MRuby interpreter is there)
         if (m_mruby)
             m_mruby->Evaluate_Timer_Callbacks();
-#endif
     }
     // if level-editor enabled
     else {
@@ -1179,7 +1171,6 @@ void cLevel::Count_Secrets(int& area_count, int& exit_count)
     }
 }
 
-#ifdef ENABLE_MRUBY
 /**
  * This method wipes out the entire current mruby state (just
  * as if the level is finished), and sets up an entirely new
@@ -1237,8 +1228,6 @@ void cLevel::Continue_All_Timers()
 {
     Pause_All_Timers(false);
 }
-
-#endif
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 

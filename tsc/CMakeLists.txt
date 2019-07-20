@@ -47,7 +47,6 @@ execute_process(COMMAND git rev-parse --short HEAD
 ###############################################
 # Flags & Options
 
-option(ENABLE_MRUBY "Enable the MRuby scripting engine" ON)
 option(ENABLE_NLS "Enable translations and localisations" ON)
 option(ENABLE_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(ENABLE_EDITOR "Enable the in-game editor" ON)
@@ -118,9 +117,7 @@ set(Boost_COMPONENTS Boost::filesystem Boost::chrono Boost::thread)
 
 # Libraries we can build ourselves under certain cirumstances if missing
 include("ProvideTinyclipboard")
-if (ENABLE_MRUBY)
-  include("ProvideMRuby")
-endif()
+include("ProvideMRuby")
 
 ########################################
 # Configuration header
@@ -235,7 +232,7 @@ else()
   endif()
 endif()
 
-if (ENABLE_MRUBY AND NOT USE_SYSTEM_MRUBY)
+if (NOT USE_SYSTEM_MRUBY)
   add_dependencies(tsc mruby)
 endif()
 
@@ -428,7 +425,6 @@ message(STATUS "Build type:     ${CMAKE_BUILD_TYPE}")
 
 message(STATUS "--------------- Configuration summary -------------")
 message(STATUS "Enable the in-game editor:         ${ENABLE_EDITOR}")
-message(STATUS "Enable the mruby scripting engine: ${ENABLE_MRUBY}")
 message(STATUS "Enable native language support:    ${ENABLE_NLS}")
 message(STATUS "Enable the scripting API docs:     ${ENABLE_SCRIPT_DOCS}")
 message(STATUS "Use system-provided tinyclipboard: ${USE_SYSTEM_TINYCLIPBOARD}")

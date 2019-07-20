@@ -311,7 +311,6 @@ void cLevel_Settings::Leave(void)
     m_level->m_background_manager->Get_Pointer(0)->Set_Color_1(m_bg_color_1);
     m_level->m_background_manager->Get_Pointer(0)->Set_Color_2(m_bg_color_2);
 
-#ifdef ENABLE_MRUBY
     // # Script tab
     std::string new_code = static_cast<CEGUI::MultiLineEditbox*>(m_tabcontrol->getChild("level_settings_tab_script/multieditbox_script"))->getText().c_str();
 
@@ -325,7 +324,6 @@ void cLevel_Settings::Leave(void)
          * including event handlers to be registered twice). */
         m_level->Reinitialize_MRuby_Interpreter();
     }
-#endif
 
     Unload();
 }
