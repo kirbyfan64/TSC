@@ -26,9 +26,6 @@ TSC_VERSION_PATCH = str.match(/^set\(TSC_VERSION_PATCH (\d+)\)/)[1]
 
 TSC_SOURCE_FILES = FileList["src/**/*.cpp"] + FileList["src/**/*.hpp"]
 
-desc "Generate the documentation in the directory htmldocs/."
-task :docs => ["docs:doxygen", "docs:scripting_core_docs", "docs:scripting_ssl_docs"]
-
 desc "Update all copyright notices to the current year."
 task :update_copyright do
   FileList["src/**/*.{cpp,hpp}", "docs/**/*.css", "cmake/**/*.cmake",
