@@ -21,7 +21,7 @@ For translating, you will need the following things:
 
 1. Git
 2. A Git checkout of the game’s repository.
-3. Ruby 1.9 or later with Rake installed
+3. Make
 4. A text editor
 
 ### Git ###
@@ -52,11 +52,11 @@ $ git checkout branchname
 where you replace `branchname` with the name of the branch you want to
 work on, e.g. `release-2.0.0`.
 
-### Ruby with rake ###
+### Make ###
 
-Install the `ruby` and `rake` packages from your Linux distribution’s
-repositories. Debian has a package named `ruby-full` that is
-preferred as it pulls in Rake automatically.
+Pretty much all Linux distrbutions provide GNU Make. The package is
+usually named simply "make". It's quite likely that you have Make
+installed already as it's a very common utility.
 
 ### Text editor ###
 
@@ -116,12 +116,12 @@ If for example you want to update the Spanish locale, you want to work
 on the `es.po` file. The first thing to do is to bring it up to date
 with the master `.pot` template file, which you can do either by
 calling the `msgmerge` program directly or (recommended) by relying on
-the Rake tasks the developers defined for you. Open a commandline
+the Make tasks the developers defined for you. Open a commandline
 window, change to the directory containing the `.po` files (in the TSC
 source tree, this is `tsc/data/translations/`) and execute this:
 
 ~~~~~~~~~~~~~~~~~~~~
-$ rake es.po
+$ make es.po
 .............................................. done.
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -191,7 +191,7 @@ introduce PO formatting errors by either running it manually through
 `msgfmt` or (recommended) by executing this:
 
 ~~~~~~~~~~~~~~~~~~~~
-$ rake checkpo
+$ make checkpo
 [much output]
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -270,7 +270,7 @@ Use this to have `xgettext` scan through TSC’s sources and update the
 `.pot` file:
 
 ~~~~~~~~~~~~~~~~~~~~
-$ rake potfile
+$ make potfile
 ~~~~~~~~~~~~~~~~~~~~
 
 ### Appendix B: Guidelines for developers ###
@@ -287,7 +287,7 @@ would look like:
 std::cout << _("Hello, world") << std::endl;
 ~~~~~~~~~~~~~~~~~~
 
-This way, `xgettext` as called by `rake potfile` will find the string
+This way, `xgettext` as called by `make potfile` will find the string
 and add it to the `.pot` file so that translators can find it. The
 `UTF8_()` macro is specific to translation of CEGUI strings (see
 below).
@@ -323,7 +323,7 @@ display(buf, num_people);
 
 Be sure to leave `TRANS` comments in the code where the meaning of a
 word is not clear enough or where you think adding information may
-prove useful for the translators. `rake potfile` intructs `xgettext`
+prove useful for the translators. `make potfile` intructs `xgettext`
 to add these comments right before the next `msgid` it encounters:
 
 ~~~~~~~~~~~~~~~~~~{.cpp}
