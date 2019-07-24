@@ -1,4 +1,4 @@
-# -*- coding: utf-8; mode: ruby -*-
+# -*- coding: utf-8; indent-tabs-mode: t -*-
 #############################################################################
 # Makefile for translations
 #
