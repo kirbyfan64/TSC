@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-TSC_SOURCE_FILES = $(wildcard ../../src/**/*.cpp) $(wildcard ../../src/**/*.hpp)
+TSC_SOURCE_FILES = $(shell find ../../src -iregex '.*\.[ch]pp$$' -print0 | xargs -0)
 PO_FILES = $(wildcard *.po)
 
 checkpo:
