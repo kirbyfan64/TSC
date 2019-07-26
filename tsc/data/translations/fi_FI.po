@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secretchronicles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-14 13:47+0300\n"
+"POT-Creation-Date: 2019-07-27 00:06+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Lauri Ojansivu <x@xet7.org>\n"
 "Language-Team: TSC Finnish translation team\n"
@@ -20,86 +20,1092 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../../src/audio/random_sound.cpp:452 ../../src/video/animation.cpp:1402
+#: ../../src/user/savegame/savegame.cpp:271
+msgid "Savegame "
+msgstr "Pelitallennus "
+
+#: ../../src/user/savegame/savegame.cpp:271
+msgid " loaded"
+msgstr " ladattu"
+
+#: ../../src/user/savegame/savegame.cpp:446
+msgid "Couldn't save savegame "
+msgstr "Pelin tallennus epäonnistui "
+
+#: ../../src/user/savegame/savegame.cpp:449
+msgid "Saved to Slot "
+msgstr "Tallennettu tallennuspaikkaan "
+
+#. TRANS: %u is replaced by the number of the save slot, starting with 1.
+#: ../../src/user/savegame/savegame.cpp:515
+#, c-format
+msgid "%u. Free Save"
+msgstr "%u. Vapaa tallennuspaikka"
+
+#: ../../src/user/savegame/savegame.cpp:537
+msgid " -  Level "
+msgstr " - Taso "
+
+#: ../../src/user/savegame/savegame.cpp:544
+msgid " -  Unknown"
+msgstr " - Tuntematon"
+
+#: ../../src/user/savegame/savegame.cpp:548
+msgid " - Date "
+msgstr " - Pvm "
+
+#: ../../src/user/savegame/savegame_loader.cpp:75
+msgid "No description"
+msgstr "Ei kuvausta"
+
+#: ../../src/scene/01_prologue.cpp:34
+msgid ""
+"The sinking sun sent out its last colourful beams over the Eastern Desert "
+"when a single individual was making his way through the ups and downs of the "
+"sandy dunes."
+msgstr ""
+"Laskeva aurinko lähetti viimeiset värikkäät säteensä Itä-aavikon ylle, kun "
+"yksi henkilö kulki hiekkadyynien ylä- ja alamäkiä."
+
+#: ../../src/scene/01_prologue.cpp:35
+msgid ""
+"When he reached the top of the highest dune, he gazed around, but to only "
+"see sand followed by more sand, by even more "
+"[colour='FFFFF000']sand[colour='FFFFFFFF']."
+msgstr ""
+"Kun hän saavutti korkeimman dyynin huipun, hän katseli ympärilleen, mutta "
+"näki vain hiekkaa, jota seurasi enemmän hiekkaa, ja vielä enemmän "
+"[colour='FFFFF000']hiekkaa[colour='FFFFFFFF']."
+
+#: ../../src/scene/01_prologue.cpp:36
+msgid ""
+"He took out a map, but with the stars not yet visible on the darkening sky "
+"there was no means of orientation in this infinite sea of equally hostile "
+"sand dunes."
+msgstr ""
+"Hän otti kartan, mutta tähdet eivät vielä näkyneet pimenevällä taivaalla, "
+"joten ei ollut mitään keinoa suunnistaa samalla tavalla vihamielisten "
+"hiekkadyynien äärettömässä meressä."
+
+#: ../../src/overworld/world_layer.cpp:50
+msgid "Line Start Point"
+msgstr "Viivan alkupiste"
+
+#: ../../src/overworld/world_layer.cpp:54
+msgid "Line End Point"
+msgstr "Viivan loppupiste"
+
+#: ../../src/overworld/world_layer.cpp:289
+msgid "Waypoint origin"
+msgstr "Reittipisteen lähtöpaikka"
+
+#: ../../src/overworld/world_waypoint.cpp:126
+msgid "Waypoint"
+msgstr "Reittipiste"
+
+#: ../../src/overworld/world_waypoint.cpp:487
+#: ../../src/overworld/world_waypoint.cpp:491
+#: ../../src/overworld/world_waypoint.cpp:617
+msgid "Level"
+msgstr "Taso"
+
+#: ../../src/overworld/world_waypoint.cpp:488
+#: ../../src/overworld/world_waypoint.cpp:494
+msgid "World"
+msgstr "Maailma"
+
+#: ../../src/overworld/world_waypoint.cpp:498
+msgid "Type"
+msgstr "Tyyppi"
+
+#: ../../src/overworld/world_waypoint.cpp:498
+msgid "Destination type"
+msgstr "Määränpää tyyppi"
+
+#: ../../src/overworld/world_waypoint.cpp:502
+msgid "Destination"
+msgstr "Määränpää"
+
+#: ../../src/overworld/world_waypoint.cpp:502
+msgid "Destination level or world"
+msgstr "Määränpää taso tai maailma"
+
+#: ../../src/overworld/world_waypoint.cpp:519
+msgid "Backward Direction"
+msgstr "Taaksepäin suunta"
+
+#: ../../src/overworld/world_waypoint.cpp:534
+msgid "Forward Direction"
+msgstr "Eteenpäin suunta"
+
+#: ../../src/overworld/world_waypoint.cpp:540
+#: ../../src/overworld/world_waypoint.cpp:544
+#: ../../src/overworld/world_waypoint.cpp:662
+#: ../../src/enemies/bosses/turtle_boss.cpp:1035
+#: ../../src/enemies/bosses/turtle_boss.cpp:1039
+#: ../../src/enemies/bosses/turtle_boss.cpp:1096 ../../src/enemies/gee.cpp:585
+#: ../../src/enemies/gee.cpp:590 ../../src/enemies/gee.cpp:643
+#: ../../src/enemies/furball.cpp:762 ../../src/enemies/furball.cpp:767
+#: ../../src/enemies/furball.cpp:784 ../../src/enemies/static.cpp:346
+#: ../../src/enemies/static.cpp:350 ../../src/enemies/static.cpp:419
+#: ../../src/objects/bonusbox.cpp:506 ../../src/objects/bonusbox.cpp:510
+#: ../../src/objects/bonusbox.cpp:618
+msgid "Enabled"
+msgstr "Käytössä"
+
+#: ../../src/overworld/world_waypoint.cpp:541
+#: ../../src/overworld/world_waypoint.cpp:547
+#: ../../src/enemies/bosses/turtle_boss.cpp:1036
+#: ../../src/enemies/bosses/turtle_boss.cpp:1042 ../../src/enemies/gee.cpp:586
+#: ../../src/enemies/gee.cpp:593 ../../src/enemies/furball.cpp:763
+#: ../../src/enemies/furball.cpp:770 ../../src/enemies/static.cpp:347
+#: ../../src/enemies/static.cpp:353 ../../src/objects/bonusbox.cpp:507
+#: ../../src/objects/bonusbox.cpp:513 ../../src/objects/box.cpp:690
+#: ../../src/objects/box.cpp:705
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+#: ../../src/overworld/world_waypoint.cpp:551
+msgid "Default Access"
+msgstr "Oletus pääsy"
+
+#: ../../src/overworld/world_waypoint.cpp:551
+msgid "Enable if the Waypoint should be always accessible."
+msgstr "Ota käyttöön jos reittipiste pitäisi olla aina saatavilla."
+
+#: ../../src/overworld/world_waypoint.cpp:558
+msgid "Waypoint Exit"
+msgstr "Reittipisteen poistumiskohta"
+
+#: ../../src/overworld/world_waypoint.cpp:558
+msgid "Select the waypoint exit to edit."
+msgstr "Valitse reittipisteen muokattava poistumiskohta."
+
+#: ../../src/overworld/world_waypoint.cpp:562
+#: ../../src/overworld/world_waypoint.cpp:564
+msgid "New Exit"
+msgstr "Uusi poistumiskohta"
+
+#: ../../src/overworld/world_waypoint.cpp:564
+msgid "Create a new exit by clicking."
+msgstr "Luo uusi poistumiskohta klikkaamalla."
+
+#: ../../src/overworld/world_waypoint.cpp:568
+#: ../../src/overworld/world_waypoint.cpp:570
+msgid "Delete Exit"
+msgstr "Poista poistumiskohta"
+
+#: ../../src/overworld/world_waypoint.cpp:570
+msgid "Delete the currently selected exit by clicking."
+msgstr "Poista valittu poistumiskohta klikkaamalla."
+
+#: ../../src/overworld/world_waypoint.cpp:584
+msgid "Leave direction"
+msgstr "Poistumissuunta"
+
+#: ../../src/overworld/world_waypoint.cpp:584
+msgid "Direction key to press for leaving the waypoint for this exit"
+msgstr ""
+"Suunta näppäin painettavaksi jätettäessä reittipiste tälle poistumiskohdalle"
+
+#: ../../src/overworld/world_waypoint.cpp:589
+msgid "Level Exit"
+msgstr "Tasolta poistuminen"
+
+#: ../../src/overworld/world_waypoint.cpp:589
+msgid "Name of the level exit in the level that activates this waypoint exit."
+msgstr ""
+"Nimi tasonn poistumiskohdalle tasolla joka aktivoi tämän reittipiste "
+"poistumiskohdan."
+
+#: ../../src/overworld/world_waypoint.cpp:594
+msgid "Line start UID"
+msgstr "Viivan alku UID"
+
+#: ../../src/overworld/world_waypoint.cpp:594
+msgid "UID of the line start point to set Alex onto when taking this exit."
+msgstr ""
+"UID rivin aloituspisteelle johon Alex asetetaan kun käytetään tätä "
+"poistumiskohtaa."
+
+#: ../../src/overworld/world_waypoint.cpp:599
+#: ../../src/overworld/world_waypoint.cpp:601
+#: ../../src/overworld/world_waypoint.cpp:769
+#: ../../src/overworld/world_waypoint.cpp:783
+msgid "Locked"
+msgstr "Lukittu"
+
+#: ../../src/overworld/world_waypoint.cpp:600
+#: ../../src/overworld/world_waypoint.cpp:771
+msgid "Unlocked"
+msgstr "Lukitsematon"
+
+#: ../../src/overworld/world_waypoint.cpp:604
+msgid "Lock state"
+msgstr "Lukon tila"
+
+#: ../../src/overworld/world_waypoint.cpp:604
+msgid ""
+"Is this exit locked by default? PLEASE also set access to enabled on the "
+"target waypoint if you unlock by default!"
+msgstr ""
+"Onko poistumiskohta lukittu oletuksena? Muista myös asettaa pääsy otettu "
+"käyttöön kohteena olevalle reittipisteelle jos lukitsematon oletuksena!"
+
+#: ../../src/overworld/world_waypoint.cpp:755
+#: ../../src/overworld/world_waypoint.cpp:758
+#: ../../src/level/level_settings.cpp:192
+#: ../../src/level/level_settings.cpp:445
+#: ../../src/level/level_settings.cpp:601
+msgid "(None)"
+msgstr "(Ei mitään)"
+
+#: ../../src/overworld/overworld.cpp:49
+msgid "Unnamed"
+msgstr "Nimeämätön"
+
+#: ../../src/overworld/overworld.cpp:53 ../../src/objects/bonusbox.cpp:458
+#: ../../src/objects/bonusbox.cpp:497
+msgid "Empty"
+msgstr "Tyhjä"
+
+#: ../../src/overworld/overworld.cpp:70
+msgid "Couldn't save world description "
+msgstr "Ei voitu tallentaa maailman kuvausta "
+
+#: ../../src/overworld/overworld.cpp:243
+msgid "Couldn't save world "
+msgstr "Ei voitu tallentaa maailmaa "
+
+#: ../../src/overworld/overworld.cpp:248
+#: ../../src/overworld/world_editor.cpp:86
+msgid "World "
+msgstr "Maailma "
+
+#: ../../src/overworld/overworld.cpp:248 ../../src/video/video.cpp:1430
+#: ../../src/level/level.cpp:416
+msgid " saved"
+msgstr " tallennettu"
+
+#: ../../src/overworld/world_editor.cpp:67
+msgid "Create a new World"
+msgstr "Luo uusi maailma"
+
+#: ../../src/overworld/world_editor.cpp:67
+#: ../../src/overworld/world_editor.cpp:94
+#: ../../src/overworld/world_editor.cpp:98
+msgctxt "world"
+msgid "Name"
+msgstr "Nimi"
+
+#: ../../src/overworld/world_editor.cpp:82 ../../src/level/level_editor.cpp:158
+msgid "Created "
+msgstr "Luotu "
+
+#: ../../src/overworld/world_editor.cpp:86 ../../src/level/level_editor.cpp:146
+msgid " already exists"
+msgstr " on jo olemassa"
+
+#: ../../src/overworld/world_editor.cpp:98
+msgid "Load an Overworld"
+msgstr "Lataa ylimaailma"
+
+#: ../../src/overworld/world_editor.cpp:114
+#: ../../src/level/level_editor.cpp:187
+msgid "Loaded "
+msgstr "Ladattu "
+
+#: ../../src/overworld/world_editor.cpp:127
+#: ../../src/level/level_settings.cpp:275 ../../src/level/level_editor.cpp:206
+msgid "Save "
+msgstr "Tallenna "
+
+#. TRANS: The text is copied from the end of the GPLv3. If there is an
+#. TRANS: accepted translation of the GPLv3 available in your language,
+#. TRANS: then you should use its wording rather than trying to translate
+#. TRANS: it yourself.
+#: ../../src/gui/game_console.cpp:172
+#, c-format
+msgid ""
+"TSC Scripting Console\n"
+"Copyright © 2012-%d The TSC Contributors\n"
+"\n"
+"This program comes with ABSOLUTELY NO WARRANTY; for details\n"
+"see the file COPYING. This is free software, and you are\n"
+"welcome to redistribute it under certain conditions; see the\n"
+"aforementioned file for details.\n"
+msgstr ""
+"TSC Skriptaus Konsoli\n"
+"Copyright © 2012-%d The TSC Contributors\n"
+"\n"
+"Tälle Ohjelmalle ei anneta takuuta lain sallimissa rajoissa. Ellei "
+"kirjallisesti\n"
+"muuta osoiteta, tekijänoikeudenhaltija tai muut osapuolet tarjoavat\n"
+"Ohjelman \"sellaisena kuin se on\" ilman minkäänlaista takuuta, ilmaistua\n"
+"tai hiljaista, sisältäen, muttei tyhjentävästi, hiljaisen takuun "
+"kaupallisesti\n"
+"hyväksyttävästä laadusta ja soveltuvuudesta tiettyyn tarkoitukseen.\n"
+"Lisenssinsaajalla on kaikki riski Ohjelman laadusta ja suorituskyvystä.\n"
+"Jos ohjelma osoittautuu virheelliseksi, kaikki huolto- ja\n"
+"korjauskustannukset ovat lisenssinsaajan vastuulla.\n"
+
+#. TRANS: %s is the version postfix, e.g. "dev" or "beta3".
+#: ../../src/gui/game_console.cpp:183
+#, c-format
+msgid "You are running TSC version %d.%d.%d-%s.\n"
+msgstr "Käytät TSC versiota %d.%d.%d-%s.\n"
+
+#: ../../src/gui/game_console.cpp:189
+#, c-format
+msgid "You are running TSC version %d.%d.%d.\n"
+msgstr "Käytät TSC versiota %d.%d.%d.\n"
+
+#: ../../src/gui/game_console.cpp:241
+msgid "(#inspect did not return a string)\n"
+msgstr "(#inspect ei palauttanut string:iä)\n"
+
+#: ../../src/gui/menu_data.cpp:330
+msgid "Credits"
+msgstr "Tekijät"
+
+#: ../../src/gui/menu_data.cpp:362
+msgid "Version "
+msgstr "Versio "
+
+#: ../../src/gui/menu_data.cpp:630
+msgid "New"
+msgstr "Uusi"
+
+#: ../../src/gui/menu_data.cpp:631
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: ../../src/gui/menu_data.cpp:632 ../../src/objects/path.cpp:770
+msgid "Delete"
+msgstr "Poista"
+
+#: ../../src/gui/menu_data.cpp:633
+msgid "Enter"
+msgstr "Mene"
+
+#: ../../src/gui/menu_data.cpp:634 ../../src/gui/menu_data.cpp:1422
+#: ../../src/gui/menu_data.cpp:3108
+msgid "Back"
+msgstr "Takaisin"
+
+#: ../../src/gui/menu_data.cpp:638
+msgid "Select Level"
+msgstr "Valitse taso"
+
+#: ../../src/gui/menu_data.cpp:640
+msgid "Select Campaign"
+msgstr "Valitse kampanja"
+
+#: ../../src/gui/menu_data.cpp:642
+msgid "Select Overworld"
+msgstr "Valitse ylimaailma"
+
+#: ../../src/gui/menu_data.cpp:644 ../../src/gui/menu_data.cpp:646
+msgid "Description"
+msgstr "Kuvaus"
+
+#. TRANS: The colour names refer to the colours the level names can
+#. TRANS: be in. "Game" means the level is shipped by the game,
+#. TRANS: "user" means the level has been created by the user.
+#. TRANS: If the user edited a system level, it gets copied to his
+#. TRANS: personal level directory and is coloured mixedly to indicate
+#. TRANS: that. "Deprecated" are levels from very old versions
+#. TRANS: of the game.
+#: ../../src/gui/menu_data.cpp:656
+msgid ""
+"- Level Colors -\n"
+"\n"
+"Orange: Game\n"
+"Green: User\n"
+"Grey: Deprecated\n"
+"Mixed: See the colors"
+msgstr ""
+"- Taso värit -\n"
+"\n"
+"Oranssi: Peli\n"
+"Vihreä: Käyttäjä\n"
+"Harmaa: Vanhentunut\n"
+"Miksattu: Katso värit"
+
+#: ../../src/gui/menu_data.cpp:809 ../../src/gui/menu_data.cpp:851
+#: ../../src/gui/menu_data.cpp:877
+msgid ""
+"This will reset your current progress.\n"
+"Continue ?"
+msgstr ""
+"Tämä nollaa nykyisen edistymisesi.\n"
+"Jatka ?"
+
+#: ../../src/gui/menu_data.cpp:817 ../../src/gui/menu_data.cpp:835
+msgid "Couldn't load campaign "
+msgstr "Ei saatu ladattua kampanjaa "
+
+#: ../../src/gui/menu_data.cpp:859
+msgid "Couldn't load overworld "
+msgstr "Ei saatu ladattua ylimaailmaa "
+
+#: ../../src/gui/menu_data.cpp:885
+msgid "Couldn't load level "
+msgstr "Ei saatu ladattua tasoa "
+
+#: ../../src/gui/menu_data.cpp:1350
+#, c-format
+msgid "Delete %s?"
+msgstr "Poista %s?"
+
+#: ../../src/gui/menu_data.cpp:1460
+msgid "Always Run"
+msgstr "Juokse aina"
+
+#: ../../src/gui/menu_data.cpp:1464 ../../src/gui/menu_data.cpp:1472
+#: ../../src/gui/menu_data.cpp:1631 ../../src/gui/menu_data.cpp:1639
+#: ../../src/gui/menu_data.cpp:1653 ../../src/gui/menu_data.cpp:1661
+#: ../../src/gui/menu_data.cpp:1744 ../../src/gui/menu_data.cpp:1752
+#: ../../src/gui/menu_data.cpp:1775 ../../src/gui/menu_data.cpp:1783
+#: ../../src/gui/menu_data.cpp:1945 ../../src/gui/menu_data.cpp:1953
+#: ../../src/gui/menu_data.cpp:1976 ../../src/gui/menu_data.cpp:1984
+#: ../../src/gui/menu_data.cpp:2039 ../../src/gui/menu_data.cpp:2131
+#: ../../src/gui/menu_data.cpp:2142 ../../src/gui/menu_data.cpp:2180
+#: ../../src/gui/menu_data.cpp:2191 ../../src/gui/menu_data.cpp:2216
+#: ../../src/gui/menu_data.cpp:2231 ../../src/gui/menu_data.cpp:2426
+#: ../../src/gui/menu_data.cpp:2559 ../../src/gui/menu_data.cpp:2575
+#: ../../src/gui/menu_data.cpp:2629 ../../src/gui/menu_data.cpp:2637
+#: ../../src/gui/menu_data.cpp:2738 ../../src/gui/menu_data.cpp:2768
+#: ../../src/gui/menu_data.cpp:2988 ../../src/gui/menu_data.cpp:3014
+msgid "On"
+msgstr "Kyllä"
+
+#: ../../src/gui/menu_data.cpp:1467 ../../src/gui/menu_data.cpp:1475
+#: ../../src/gui/menu_data.cpp:1634 ../../src/gui/menu_data.cpp:1642
+#: ../../src/gui/menu_data.cpp:1656 ../../src/gui/menu_data.cpp:1664
+#: ../../src/gui/menu_data.cpp:1747 ../../src/gui/menu_data.cpp:1755
+#: ../../src/gui/menu_data.cpp:1778 ../../src/gui/menu_data.cpp:1786
+#: ../../src/gui/menu_data.cpp:1948 ../../src/gui/menu_data.cpp:1956
+#: ../../src/gui/menu_data.cpp:1979 ../../src/gui/menu_data.cpp:1987
+#: ../../src/gui/menu_data.cpp:2042 ../../src/gui/menu_data.cpp:2134
+#: ../../src/gui/menu_data.cpp:2145 ../../src/gui/menu_data.cpp:2183
+#: ../../src/gui/menu_data.cpp:2194 ../../src/gui/menu_data.cpp:2219
+#: ../../src/gui/menu_data.cpp:2234 ../../src/gui/menu_data.cpp:2632
+#: ../../src/gui/menu_data.cpp:2640
+msgid "Off"
+msgstr "Ei"
+
+#: ../../src/gui/menu_data.cpp:1482
+msgid "Camera Hor Speed"
+msgstr "Kamera pystynopeus"
+
+#: ../../src/gui/menu_data.cpp:1491
+msgid "Camera Ver Speed"
+msgstr "Kamera vaakanopeus"
+
+#: ../../src/gui/menu_data.cpp:1500
+msgid "Language"
+msgstr "Kieli"
+
+#: ../../src/gui/menu_data.cpp:1504 ../../src/gui/menu_data.cpp:1523
+#: ../../src/gui/menu_data.cpp:2463 ../../src/core/property_helper.cpp:852
+msgid "default"
+msgstr "oletus"
+
+#: ../../src/gui/menu_data.cpp:1533
+msgid "Menu Level"
+msgstr "Valikko taso"
+
+#: ../../src/gui/menu_data.cpp:1549 ../../src/gui/menu_data.cpp:1697
+#: ../../src/gui/menu_data.cpp:1801 ../../src/gui/menu_data.cpp:1831
+#: ../../src/gui/menu_data.cpp:1932 ../../src/gui/menu_data.cpp:1995
+msgid "Reset"
+msgstr "Resetoi"
+
+#: ../../src/gui/menu_data.cpp:1558
+msgid "Resolution"
+msgstr "Resoluutio"
+
+#: ../../src/gui/menu_data.cpp:1610
+msgid "Bpp"
+msgstr "Värisyvyys"
+
+#: ../../src/gui/menu_data.cpp:1627
+msgid "Fullscreen"
+msgstr "Kokoruutu"
+
+#: ../../src/gui/menu_data.cpp:1649
+msgid "VSync"
+msgstr "VSync"
+
+#: ../../src/gui/menu_data.cpp:1671
+msgid "FPS Limit"
+msgstr "Kuvia sekunnissa raja"
+
+#: ../../src/gui/menu_data.cpp:1680
+msgid "Geometry Quality"
+msgstr "Geometrian laatu"
+
+#: ../../src/gui/menu_data.cpp:1688
+msgid "Texture Quality"
+msgstr "Tekstuurin laatu"
+
+#: ../../src/gui/menu_data.cpp:1702
+msgid "Apply"
+msgstr "Ota käyttöön"
+
+#: ../../src/gui/menu_data.cpp:1707
+msgid "Recreate Cache"
+msgstr "Uudelleentee välimuisti"
+
+#: ../../src/gui/menu_data.cpp:1716
+msgid "Hertz (Hz)"
+msgstr "Hertsiä (Hz)"
+
+#: ../../src/gui/menu_data.cpp:1717
+msgid "You should only change the value if the audio is scratchy."
+msgstr "Sinun tulisi vaihtaa arvoa vain jos ääni on naarmuinen."
+
+#: ../../src/gui/menu_data.cpp:1739
+msgid "Music"
+msgstr "Musiikki"
+
+#: ../../src/gui/menu_data.cpp:1740
+msgid "Enable to play music. You need to have the Music Addon installed."
+msgstr ""
+"Ota käyttöön musiikki. Sinulla tulee olla musiikki lisäosa asennettuna."
+
+#: ../../src/gui/menu_data.cpp:1762
+msgid "Set the Music Volume."
+msgstr "Aseta musiikin äänenvoimakkuus."
+
+#: ../../src/gui/menu_data.cpp:1770
+msgid "Sound"
+msgstr "Ääni"
+
+#: ../../src/gui/menu_data.cpp:1771
+msgid "Enable to play Sounds."
+msgstr "Ota käyttöön peliäänet."
+
+#: ../../src/gui/menu_data.cpp:1793
+msgid "Set the Sound Volume."
+msgstr "Aseta äänenvoimakkuus."
+
+#: ../../src/gui/menu_data.cpp:1810 ../../src/gui/menu_data.cpp:1919
+msgid "Shortcuts"
+msgstr "Pikanäppäimet"
+
+#: ../../src/gui/menu_data.cpp:1814 ../../src/gui/menu_data.cpp:1923
+msgid "Name"
+msgstr "Nimi"
+
+#: ../../src/gui/menu_data.cpp:1815
+msgid "Key"
+msgstr "Näppäin"
+
+#: ../../src/gui/menu_data.cpp:1822
+msgid "Scroll Speed"
+msgstr "Vieritysnopeus"
+
+#: ../../src/gui/menu_data.cpp:1840
+msgid "Sensitivity"
+msgstr "Herkkyys"
+
+#: ../../src/gui/menu_data.cpp:1844
+msgid "Joystick"
+msgstr "Joystick"
+
+#: ../../src/gui/menu_data.cpp:1851 ../../src/gui/menu_data.cpp:2898
+#: ../../src/level/level_settings.cpp:193
+msgid "None"
+msgstr "Ei mikään"
+
+#: ../../src/gui/menu_data.cpp:1887
+msgid "Axis Hor"
+msgstr "Akseli vaaka"
+
+#: ../../src/gui/menu_data.cpp:1895
+msgid "Ver"
+msgstr "Pysty"
+
+#: ../../src/gui/menu_data.cpp:1903
+msgid "Axis Hor2"
+msgstr "Akseli vaaka2"
+
+#: ../../src/gui/menu_data.cpp:1911
+msgid "Ver2"
+msgstr "Versio2"
+
+#: ../../src/gui/menu_data.cpp:1924
+msgid "Button"
+msgstr "Painike"
+
+#: ../../src/gui/menu_data.cpp:1941
+msgid "Show images"
+msgstr "Näytä kuvat"
+
+#: ../../src/gui/menu_data.cpp:1963
+msgid "Item image size"
+msgstr "Esine kuvakoko"
+
+#: ../../src/gui/menu_data.cpp:1972
+msgid "Auto-Hide Mouse"
+msgstr "Piilota hiiri automaattisesti"
+
+#: ../../src/gui/menu_data.cpp:2267
+msgid "Up"
+msgstr "Ylös"
+
+#: ../../src/gui/menu_data.cpp:2268
+msgid "Down"
+msgstr "Alas"
+
+#: ../../src/gui/menu_data.cpp:2269
+msgid "Left"
+msgstr "Vasen"
+
+#: ../../src/gui/menu_data.cpp:2270
+msgid "Right"
+msgstr "Oikea"
+
+#: ../../src/gui/menu_data.cpp:2271 ../../src/gui/menu_data.cpp:2287
+msgid "Jump"
+msgstr "Hyppää"
+
+#: ../../src/gui/menu_data.cpp:2272 ../../src/gui/menu_data.cpp:2288
+msgid "Shoot"
+msgstr "Ammu"
+
+#: ../../src/gui/menu_data.cpp:2273 ../../src/gui/menu_data.cpp:2290
+#: ../../src/objects/bonusbox.cpp:501
+msgid "Item"
+msgstr "Esine"
+
+#: ../../src/gui/menu_data.cpp:2274 ../../src/gui/menu_data.cpp:2289
+msgid "Action"
+msgstr "Toiminta"
+
+#: ../../src/gui/menu_data.cpp:2275
+msgid "Screenshot"
+msgstr "Kuvakaappaus"
+
+#: ../../src/gui/menu_data.cpp:2276
+msgid "Editor fast copy up"
+msgstr "Muokkain nopea kopio ylös"
+
+#: ../../src/gui/menu_data.cpp:2277
+msgid "Editor fast copy down"
+msgstr "Muokkain nopea kopio alas"
+
+#: ../../src/gui/menu_data.cpp:2278
+msgid "Editor fast copy left"
+msgstr "Muokkain nopea kopio vas"
+
+#: ../../src/gui/menu_data.cpp:2279
+msgid "Editor fast copy right"
+msgstr "Muokkain nopea kopio oik"
+
+#: ../../src/gui/menu_data.cpp:2280
+msgid "Editor pixel move up"
+msgstr "Muokkain pikseli siirrä ylös"
+
+#: ../../src/gui/menu_data.cpp:2281
+msgid "Editor pixel move down"
+msgstr "Muokkain pikseli siirrä alas"
+
+#: ../../src/gui/menu_data.cpp:2282
+msgid "Editor pixel move left"
+msgstr "Muokkain pikseli siirrä vas"
+
+#: ../../src/gui/menu_data.cpp:2283
+msgid "Editor pixel move right"
+msgstr "Muokkain pikseli siirrä oik"
+
+#: ../../src/gui/menu_data.cpp:2291
+msgid "Exit"
+msgstr "Poistu"
+
+#: ../../src/gui/menu_data.cpp:2350
+msgid "Press a key"
+msgstr "Paina näppäintä"
+
+#: ../../src/gui/menu_data.cpp:2353
+msgid "Press a button"
+msgstr "Paina painiketta"
+
+#: ../../src/gui/menu_data.cpp:2356
+msgid " for "
+msgstr " tehdäksesi "
+
+#: ../../src/gui/menu_data.cpp:2356
+msgid ". Press ESC to cancel."
+msgstr ". Paina ESC peruuttaaksesi."
+
+#: ../../src/gui/menu_data.cpp:2661
+msgid "Reinitialization"
+msgstr "Uudelleenkäyttöönotto"
+
+#: ../../src/gui/menu_data.cpp:2720
+msgid "Reloading"
+msgstr "Uudelleenladataan"
+
+#: ../../src/gui/menu_data.cpp:2879
+msgid "Enabled : "
+msgstr "Käytössä : "
+
+#: ../../src/gui/menu_data.cpp:3094 ../../src/gui/menu_data.cpp:3096
+msgid "Save"
+msgstr "Tallenna"
+
+#: ../../src/gui/menu_data.cpp:3095
+msgid "Save the game"
+msgstr "Tallenna peli"
+
+#: ../../src/gui/menu_data.cpp:3101 ../../src/gui/menu_data.cpp:3103
+msgid "Load"
+msgstr "Lataa"
+
+#: ../../src/gui/menu_data.cpp:3102
+msgid "Load a saved game"
+msgstr "Lataa tallennettu peli"
+
+#: ../../src/gui/menu_data.cpp:3260
+msgid ""
+"3000 Points needed for saving in a level.\n"
+"Saving on the Overworld is free."
+msgstr ""
+"3000 Pistettä tarvitaan tason tallentamiseen.\n"
+"Tallentaminen Ylimaailmassa on ilmaista."
+
+#: ../../src/gui/menu_data.cpp:3281 ../../src/gui/menu_data.cpp:3285
+#: ../../src/gui/menu_data.cpp:3290
+msgid "No Description"
+msgstr "Ei kuvausta"
+
+#: ../../src/gui/menu_data.cpp:3294
+msgid "Enter Description"
+msgstr "Kirjoita kuvaus"
+
+#: ../../src/gui/menu_data.cpp:3312 ../../src/gui/menu_data.cpp:3317
+#: ../../src/gui/menu_data.cpp:3322
+msgid "Savegame loading failed"
+msgstr "Tallennetun pelin lataus epäonnistui"
+
+#: ../../src/gui/hud.cpp:168
+#, c-format
+msgid "Time %02d:%02d"
+msgstr "Aika %02d:%02d"
+
+#. TRANS: Do not translate the part in brackets
+#: ../../src/gui/hud.cpp:198
+#, c-format
+msgid "[colour='FFFFFF00']FPS: Best: %.02f Worst: %.02f Current: %0.2f"
+msgstr "[colour='FFFFFF00']FPS: Paras: %.02f Huonoin: %.02f Nykyinen: %0.2f"
+
+#: ../../src/gui/hud.cpp:212
+#, c-format
+msgid "Points %08ld"
+msgstr "Pisteet %08ld"
+
+#: ../../src/input/keyboard.cpp:255
+msgid "Debug mode disabled"
+msgstr "Debug tila ei käytössä"
+
+#: ../../src/input/keyboard.cpp:261
+msgid "Debug mode enabled"
+msgstr "Debug tila otettu käyttöön"
+
+#: ../../src/input/mouse.cpp:1165
+msgid "Snap to object mode enabled"
+msgstr "Kiinnitä esineeseen tila käytössä"
+
+#: ../../src/input/mouse.cpp:1168
+msgid "Snap to object mode disabled"
+msgstr "Kiinnitä esineeseen tila ei käytössä"
+
+#: ../../src/input/mouse.cpp:1605 ../../src/input/mouse.cpp:1624
+msgid "Halfmassive - "
+msgstr "Puolimassiivinen - "
+
+#: ../../src/input/mouse.cpp:1608
+msgid "Massive - "
+msgstr "Massiivinen - "
+
+#: ../../src/input/mouse.cpp:1616
+msgid "Front Passive - "
+msgstr "Etupassiivinen - "
+
+#: ../../src/input/mouse.cpp:1619
+msgid "Passive - "
+msgstr "Passiivinen - "
+
+#: ../../src/input/mouse.cpp:1627
+msgid "Climbable - "
+msgstr "Kiivettävä - "
+
+#: ../../src/input/mouse.cpp:1646
+msgid "  Editor Z : "
+msgstr "  Muokkain Z : "
+
+#. TRANS: Displayed when hovering over the level finish object in the editor.
+#: ../../src/input/mouse.cpp:1663
+msgid "FINISH"
+msgstr "TASON LOPPU"
+
+#. TRANS: Prompt issued in the game console
+#: ../../src/scripting/scripting.cpp:104
+msgid "(console)"
+msgstr "(konsoli)"
+
+#: ../../src/video/img_manager.cpp:121
+msgid "Saving Textures"
+msgstr "Tallennetaan tekstuureja"
+
+#: ../../src/video/img_manager.cpp:167
+msgid "Restoring Textures"
+msgstr "Palautetaan tekstuureja"
+
+#: ../../src/video/animation.cpp:1385
+msgid "Position z"
+msgstr "Paikka z"
+
+#: ../../src/video/animation.cpp:1385
+msgid "Initial depth position. Use values from 0.00011 to 0.12."
+msgstr "Syvyys paikka aluksi. Käytä arvoja 0.00011 - 0.12."
+
+#: ../../src/video/animation.cpp:1393 ../../src/video/animation.cpp:1471
+#: ../../src/video/animation.cpp:1487 ../../src/video/animation.cpp:1567
+#: ../../src/video/animation.cpp:1583 ../../src/video/animation.cpp:1599
+#: ../../src/video/animation.cpp:1615 ../../src/video/animation.cpp:1631
+#: ../../src/objects/bonusbox.cpp:459 ../../src/objects/bonusbox.cpp:494
+#: ../../src/objects/bonusbox.cpp:601
+msgid "Random"
+msgstr "Satunnainen"
+
+#: ../../src/video/animation.cpp:1393 ../../src/video/animation.cpp:1471
+#: ../../src/video/animation.cpp:1487 ../../src/video/animation.cpp:1567
+#: ../../src/video/animation.cpp:1583 ../../src/video/animation.cpp:1599
+#: ../../src/video/animation.cpp:1615 ../../src/video/animation.cpp:1631
+msgid "Additional random value"
+msgstr "Lisä satunnaisluku"
+
+#: ../../src/video/animation.cpp:1401 ../../src/audio/random_sound.cpp:451
 msgid "Filename"
 msgstr "Tiedostonimi"
 
-#: ../../src/audio/random_sound.cpp:452
-msgid "Sound filename"
-msgstr "Äänitiedostonimi"
+#: ../../src/video/animation.cpp:1401 ../../src/enemies/static.cpp:315
+#: ../../src/objects/sprite.cpp:1454
+msgid "Image filename"
+msgstr "Kuvan tiedostonimi"
 
-#: ../../src/audio/random_sound.cpp:459
-msgid "Continuous"
-msgstr "Jatkuva"
+#: ../../src/video/animation.cpp:1408
+msgid "Based on camera pos."
+msgstr "Perustuu kameran paikkaan."
 
-#: ../../src/audio/random_sound.cpp:459
-msgid "Check if the sound should be played continuously instead of randomly"
-msgstr "Tarkista pitäisikö ääntä soittaa jarkuvasti, eikä satunnaisesti"
+#: ../../src/video/animation.cpp:1408
+msgid "The emitter position is based on the camera position"
+msgstr "Päästölähteen paikka perustuu kameran paikkaan"
 
-#: ../../src/audio/random_sound.cpp:466
-msgid "Delay Minimum"
-msgstr "Viive minimi"
+#: ../../src/video/animation.cpp:1415
+msgid "Particles Based on Emitter pos."
+msgstr "Hiukkaset perustuen päästölähteen paikkaan."
 
-#: ../../src/audio/random_sound.cpp:466
-msgid "Minimal delay until played again"
-msgstr "Minimi viive kunnes soitetaan uudelleen"
+#: ../../src/video/animation.cpp:1415
+msgid "The particle position is based on the emitter position"
+msgstr "Hiukkasen paikka perustuu päästölähteen paikkaan"
 
-#: ../../src/audio/random_sound.cpp:474 ../../src/audio/random_sound.cpp:490
-msgid "Maximum"
-msgstr "Maksimi"
+#: ../../src/video/animation.cpp:1423
+msgid "Emitter width"
+msgstr "Päästölähde leveys"
 
-#: ../../src/audio/random_sound.cpp:474
-msgid "Maximal delay until played again"
-msgstr "Maksimi viive kunnes soitetaan uudelleen"
+#: ../../src/video/animation.cpp:1423
+msgid "Emitter width in which the particles spawn"
+msgstr "Leveys päästölähteelle josta hiukkaset syntyy"
 
-#: ../../src/audio/random_sound.cpp:482
-msgid "Volume Minimum"
-msgstr "Äänenvoimakkuus minimi"
+#: ../../src/video/animation.cpp:1431 ../../src/video/animation.cpp:1663
+msgid "Height"
+msgstr "Korkeus"
 
-#: ../../src/audio/random_sound.cpp:482
-msgid "Minimal random volume for each play"
-msgstr "Minimi satunnais äänenvoimakkuus jokaiselle soitolle"
+#: ../../src/video/animation.cpp:1431
+msgid "Emitter height in which the particles spawn"
+msgstr "Korkeus päästölähteelle josta hiukkaset syntyy"
 
-#: ../../src/audio/random_sound.cpp:490
-msgid "Maximal random volume for each play"
-msgstr "Maksimi satunnais äänenvoimakkuus jokaiselle soitolle"
+#: ../../src/video/animation.cpp:1439
+msgid "Emitter TTL"
+msgstr "Päästölähde elinaika"
 
-#: ../../src/audio/random_sound.cpp:498
-msgid "Volume Reduction Begin"
-msgstr "Äänenvoimakkuuden vähennys alku"
+#: ../../src/video/animation.cpp:1439
+msgid "Emitter time to live. Set -1 for infinite."
+msgstr "Päästölähde elinaika(TTL). Aseta -1 jos rajaton."
 
-#: ../../src/audio/random_sound.cpp:498
-msgid "Volume reduction begins gradually at this distance"
-msgstr "Äänenvoimakkuuden vähennys alkaa asteittain tällä etäisyydellä"
+#: ../../src/video/animation.cpp:1447
+msgid "Emitter interval"
+msgstr "Päästölähde aikaväli"
 
-#: ../../src/audio/random_sound.cpp:506
-msgid "End"
-msgstr "Loppu"
+#: ../../src/video/animation.cpp:1447
+msgid "Time between spawning particles. Amount is the quota."
+msgstr "Aika hiukkasten syntymisen välillä. Määrä on kiintiö."
 
-#: ../../src/audio/random_sound.cpp:506
-msgid ""
-"Volume reduction ends at this distance. Sound is not played beyond this."
+#: ../../src/video/animation.cpp:1455
+msgid "Quota"
+msgstr "Kiintiö"
+
+#: ../../src/video/animation.cpp:1455
+msgid "The amount of particles to spawn for an interval"
+msgstr "Ajanjaksoa varten syntyvien hiukkasten määrä"
+
+#: ../../src/video/animation.cpp:1463
+msgid "TTL"
+msgstr "Elinaika"
+
+#: ../../src/video/animation.cpp:1463
+msgid "Particle time to live(TTL)"
+msgstr "Hiukkasen elinaika(TTL)"
+
+#: ../../src/video/animation.cpp:1479
+msgid "Velocity"
+msgstr "Nopeus"
+
+#: ../../src/video/animation.cpp:1479
+msgid "Initial particle velocity or speed"
+msgstr "Hiukkasen nopeus aluksi"
+
+#: ../../src/video/animation.cpp:1512
+msgid "Rotation z"
+msgstr "Kierto z"
+
+#: ../../src/video/animation.cpp:1512
+msgid "Initial rotation z"
+msgstr "Kierto z aluksi"
+
+#: ../../src/video/animation.cpp:1520
+msgid "Add direction"
+msgstr "Lisää suunta"
+
+#: ../../src/video/animation.cpp:1520
+msgid "Start direction is added to the z rotation"
+msgstr "Alkusuunta lisätään z kiertoon"
+
+#: ../../src/video/animation.cpp:1559
+msgid "Const. rotation z"
+msgstr "Vakio kierto z"
+
+#: ../../src/video/animation.cpp:1559
+msgid "Initial constant rotation z"
+msgstr "Vakio kierto z aluksi"
+
+#: ../../src/video/animation.cpp:1575 ../../src/enemies/flyon.cpp:567
+#: ../../src/enemies/thromp.cpp:686
+#: ../../src/enemies/bosses/turtle_boss.cpp:1006
+#: ../../src/enemies/krush.cpp:385 ../../src/enemies/gee.cpp:572
+#: ../../src/enemies/larry.cpp:418 ../../src/enemies/spikeball.cpp:515
+#: ../../src/enemies/eato.cpp:284 ../../src/enemies/pip.cpp:369
+#: ../../src/enemies/furball.cpp:746 ../../src/enemies/rokko.cpp:581
+#: ../../src/enemies/beetle.cpp:270 ../../src/enemies/army.cpp:927
+#: ../../src/level/level_player.cpp:3976
+#: ../../src/objects/moving_platform.cpp:958
+#: ../../src/objects/level_exit.cpp:485 ../../src/objects/level_entry.cpp:369
+msgid "Direction"
+msgstr "Suunta"
+
+#: ../../src/video/animation.cpp:1575
+msgid "Initial direction/angle"
+msgstr "Suunta/kulma aluksi"
+
+#: ../../src/video/animation.cpp:1591
+msgid "Scale"
+msgstr "Kokoluokka"
+
+#: ../../src/video/animation.cpp:1591
+msgid "Initial size scale"
+msgstr "Kokoluokka aluksi"
+
+#: ../../src/video/animation.cpp:1607
+msgid "Hor gravity"
+msgstr "Vaakas. painovoima"
+
+#: ../../src/video/animation.cpp:1607
+msgid "Initial horizontal gravity"
+msgstr "Vaakasuora painovoima aluksi"
+
+#: ../../src/video/animation.cpp:1623
+msgid "Ver gravity"
+msgstr "Pystys. painovoima"
+
+#: ../../src/video/animation.cpp:1623
+msgid "Initial vertical gravity"
+msgstr "Pystysuora painovoima aluksi"
+
+#: ../../src/video/animation.cpp:1639
+msgid "Clip rect x"
+msgstr "Leikkaa suorakulmio x"
+
+#: ../../src/video/animation.cpp:1639
+msgid "Clipping rectangle position x"
+msgstr "Leikattavan suorakulmion kohta x"
+
+#: ../../src/video/animation.cpp:1647
+msgid "Width"
+msgstr "Leveys"
+
+#: ../../src/video/animation.cpp:1647
+msgid "Clipping rectangle width"
+msgstr "Leikattavan suorakulmion leveys"
+
+#: ../../src/video/animation.cpp:1655
+msgid "Clip rect y"
+msgstr "Leikkaa suorakulmio y"
+
+#: ../../src/video/animation.cpp:1655
+msgid "Clipping rectangle position y"
+msgstr "Leikattavan suorakulmion kohta y"
+
+#: ../../src/video/animation.cpp:1663
+msgid "Clipping rectangle height"
+msgstr "Leikattavan suorakulmion korkeus"
+
+#: ../../src/video/animation.cpp:1675
+msgid "Clip mode"
+msgstr "Leikkaustila"
+
+#: ../../src/video/animation.cpp:1675
+msgid "Clipping mode if particle is out the rectangle"
+msgstr "Rajaustila, jos hiukkanen on suorakulmion yllä"
+
+#: ../../src/video/video.cpp:464
+msgid "Caching Images failed : Could not remove old images"
 msgstr ""
-"Äänenvoimakkuuden vähennys loppuu tällä etäisyydellä. Ääntä ei soiteta tästä "
-"eteenpäin."
+"Kuvien tallennus välimuistiin epäonnistui : Vanhojen kuvien poisto ei "
+"onnistunut"
+
+#: ../../src/video/video.cpp:487
+msgid "Caching Images"
+msgstr "Tallennetaan kuvia välimuistiin"
+
+#. TRANS: Be careful with the length of this line, if
+#. TRANS: it is much longer than the English version,
+#. TRANS: it will be cut off.
+#: ../../src/video/loading_screen.cpp:65
+msgid "This program is distributed under the terms of the GPLv3"
+msgstr "Tätä ohjelmaa levitetään GPLv3 ehtojen mukaisesti"
 
 #. TRANS: displayed to the user when opening the editor
-#: ../../src/core/editor/editor.cpp:141 ../../src/video/loading_screen.cpp:68
+#: ../../src/video/loading_screen.cpp:68 ../../src/core/editor/editor.cpp:139
 msgid "Loading"
 msgstr "Ladataan"
 
-#: ../../src/core/editor/editor.cpp:144
+#: ../../src/core/editor/editor.cpp:142
 msgid "Editor enabled"
 msgstr "Muokkain käytössä"
 
 #. TRANS: Title of the editor help window
-#: ../../src/core/editor/editor.cpp:418
+#: ../../src/core/editor/editor.cpp:416
 msgid "Editor Help"
 msgstr "Muokkain ohje"
 
 #. TRANS: This is the help window in the editor. Do not translate
 #. TRANS: the color codes in the string.
-#: ../../src/core/editor/editor.cpp:432
+#: ../../src/core/editor/editor.cpp:430
 msgid ""
 " \n"
 "----- [colour='FFFFCF5F']General[colour='FFFFFFFF'] -----\n"
@@ -203,7 +1209,7 @@ msgstr ""
 " liikkuaksesi nopeammin\n"
 " \n"
 
-#: ../../src/core/editor/editor.cpp:1479
+#: ../../src/core/editor/editor.cpp:1477
 #, c-format
 msgid "Change selected sprite's image"
 msgid_plural "Change selected %d sprites' images"
@@ -214,11 +1220,11 @@ msgstr[1] "Vaihda valittujen %d spriten kuvat"
 msgid "Loading Level failed : "
 msgstr "Tason lataaminen epäonnistui : "
 
-#: ../../src/core/game_core.cpp:373
+#: ../../src/core/game_core.cpp:361
 msgid "Loading Images"
 msgstr "Ladataan kuvia"
 
-#: ../../src/core/game_core.cpp:510
+#: ../../src/core/game_core.cpp:498
 msgid "Loading Sounds"
 msgstr "Ladataan ääniä"
 
@@ -356,11 +1362,6 @@ msgstr "taivas"
 msgid "plastic"
 msgstr "muovinen"
 
-#: ../../src/core/property_helper.cpp:852 ../../src/gui/menu_data.cpp:1511
-#: ../../src/gui/menu_data.cpp:1530 ../../src/gui/menu_data.cpp:2470
-msgid "default"
-msgstr "oletus"
-
 #: ../../src/core/property_helper.cpp:854
 msgid "white"
 msgstr "valkea"
@@ -397,849 +1398,501 @@ msgstr "harmaa"
 msgid "violet"
 msgstr "violetti"
 
-#: ../../src/enemies/army.cpp:928 ../../src/enemies/beetle.cpp:271
-#: ../../src/enemies/bosses/turtle_boss.cpp:1007 ../../src/enemies/eato.cpp:285
-#: ../../src/enemies/flyon.cpp:568 ../../src/enemies/furball.cpp:747
-#: ../../src/enemies/gee.cpp:573 ../../src/enemies/krush.cpp:386
-#: ../../src/enemies/larry.cpp:419 ../../src/enemies/pip.cpp:370
-#: ../../src/enemies/rokko.cpp:582 ../../src/enemies/spikeball.cpp:516
-#: ../../src/enemies/thromp.cpp:687 ../../src/level/level_player.cpp:3977
-#: ../../src/objects/level_entry.cpp:370 ../../src/objects/level_exit.cpp:486
-#: ../../src/objects/moving_platform.cpp:959 ../../src/video/animation.cpp:1576
-msgid "Direction"
-msgstr "Suunta"
-
-#: ../../src/enemies/army.cpp:928 ../../src/enemies/beetle.cpp:271
-#: ../../src/enemies/bosses/turtle_boss.cpp:1007
-#: ../../src/enemies/furball.cpp:747 ../../src/enemies/gee.cpp:573
-#: ../../src/enemies/krush.cpp:386 ../../src/enemies/larry.cpp:419
-#: ../../src/enemies/spikeball.cpp:516
-#: ../../src/objects/moving_platform.cpp:959
-msgid "Starting direction."
-msgstr "Aloitus suunta."
-
-#: ../../src/enemies/beetle.cpp:282
-msgid "Color"
-msgstr "Väri"
-
-#: ../../src/enemies/beetle.cpp:282
-msgid "Color."
-msgstr "Väri."
-
-#: ../../src/enemies/beetle_barrage.cpp:357 ../../src/enemies/gee.cpp:609
-msgid "Fly distance"
-msgstr "Lentoetäisyys"
-
-#: ../../src/enemies/beetle_barrage.cpp:357
-msgid "Initial beetle flying distance"
-msgstr "Koppakuoriaisen lentoetäisyys aluksi"
-
-#: ../../src/enemies/beetle_barrage.cpp:364
-msgid "Action range"
-msgstr "Toiminta-alue"
-
-#: ../../src/enemies/beetle_barrage.cpp:364
-msgid "Radius in which it reacts on Alex"
-msgstr "Kantama jolla se reagoi Alexiin"
-
-#: ../../src/enemies/beetle_barrage.cpp:370
-msgid "Count"
-msgstr "Määrä"
-
-#: ../../src/enemies/beetle_barrage.cpp:370
-msgid "Number of beetles spit out at a time"
-msgstr "Kerrallaan ulos sylkäistävien koppakuoriaisten määrä"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1011
-msgid "Hits"
-msgstr "Osumia"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1011
-msgid "Hits until a downgrade"
-msgstr "Osumia kunnes alentaa"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1019
-#: ../../src/enemies/furball.cpp:755
-msgid "Downgrades"
-msgstr "Alenenee"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1019
-#: ../../src/enemies/furball.cpp:755
-msgid "Downgrades until death"
-msgstr "Alenee kunnes kuollut"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1027
-msgid "Shell Time"
-msgstr "Kilpiaika"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1027
-msgid "Time running as shell to rise again"
-msgstr "Juoksuaika kun kilpi nousee jälleen"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1036
-#: ../../src/enemies/bosses/turtle_boss.cpp:1040
-#: ../../src/enemies/bosses/turtle_boss.cpp:1097
-#: ../../src/enemies/furball.cpp:763 ../../src/enemies/furball.cpp:768
-#: ../../src/enemies/furball.cpp:785 ../../src/enemies/gee.cpp:586
-#: ../../src/enemies/gee.cpp:591 ../../src/enemies/gee.cpp:644
-#: ../../src/enemies/static.cpp:347 ../../src/enemies/static.cpp:351
-#: ../../src/enemies/static.cpp:420 ../../src/objects/bonusbox.cpp:507
-#: ../../src/objects/bonusbox.cpp:511 ../../src/objects/bonusbox.cpp:619
-#: ../../src/overworld/world_waypoint.cpp:541
-#: ../../src/overworld/world_waypoint.cpp:545
-#: ../../src/overworld/world_waypoint.cpp:663
-msgid "Enabled"
-msgstr "Käytössä"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1037
-#: ../../src/enemies/bosses/turtle_boss.cpp:1043
-#: ../../src/enemies/furball.cpp:764 ../../src/enemies/furball.cpp:771
-#: ../../src/enemies/gee.cpp:587 ../../src/enemies/gee.cpp:594
-#: ../../src/enemies/static.cpp:348 ../../src/enemies/static.cpp:354
-#: ../../src/objects/bonusbox.cpp:508 ../../src/objects/bonusbox.cpp:514
-#: ../../src/objects/box.cpp:691 ../../src/objects/box.cpp:706
-#: ../../src/overworld/world_waypoint.cpp:542
-#: ../../src/overworld/world_waypoint.cpp:548
-msgid "Disabled"
-msgstr "Ei käytössä"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1046
-#: ../../src/enemies/furball.cpp:765
-msgid "End Level"
-msgstr "Lopeta taso"
-
-#: ../../src/enemies/bosses/turtle_boss.cpp:1046
-#: ../../src/enemies/furball.cpp:765
-msgid "End the level if it is killed."
-msgstr "Lopeta taso jos se kuolee."
-
-#: ../../src/enemies/eato.cpp:289 ../../src/enemies/flyon.cpp:572
-#: ../../src/enemies/thromp.cpp:691
-msgid "Image directory"
-msgstr "Kuvahakemisto"
-
-#: ../../src/enemies/eato.cpp:289 ../../src/enemies/flyon.cpp:572
-#: ../../src/enemies/thromp.cpp:691
-msgid "Directory containing the images"
-msgstr "Hakemisto joka sisältää kuvat"
-
-#: ../../src/enemies/flyon.cpp:568 ../../src/enemies/rokko.cpp:582
-#: ../../src/enemies/thromp.cpp:687
+#: ../../src/enemies/flyon.cpp:567 ../../src/enemies/thromp.cpp:686
+#: ../../src/enemies/rokko.cpp:581
 msgid "Direction it moves into."
 msgstr "Suunta johon se liikkuu."
 
-#: ../../src/enemies/flyon.cpp:579 ../../src/enemies/gee.cpp:577
-#: ../../src/enemies/thromp.cpp:698 ../../src/objects/moving_platform.cpp:963
+#: ../../src/enemies/flyon.cpp:571 ../../src/enemies/thromp.cpp:690
+#: ../../src/enemies/eato.cpp:288
+msgid "Image directory"
+msgstr "Kuvahakemisto"
+
+#: ../../src/enemies/flyon.cpp:571 ../../src/enemies/thromp.cpp:690
+#: ../../src/enemies/eato.cpp:288
+msgid "Directory containing the images"
+msgstr "Hakemisto joka sisältää kuvat"
+
+#: ../../src/enemies/flyon.cpp:578 ../../src/enemies/thromp.cpp:697
+#: ../../src/enemies/gee.cpp:576 ../../src/objects/moving_platform.cpp:962
 msgid "Distance"
 msgstr "Etäisyys"
 
-#: ../../src/enemies/flyon.cpp:579
+#: ../../src/enemies/flyon.cpp:578
 msgid "Movable Distance into its direction"
 msgstr "Liikkumisetäisyys suuntaansa"
 
-#: ../../src/enemies/flyon.cpp:587 ../../src/enemies/rokko.cpp:586
-#: ../../src/enemies/static.cpp:338 ../../src/enemies/thromp.cpp:706
-#: ../../src/objects/moving_platform.cpp:971
+#: ../../src/enemies/flyon.cpp:586 ../../src/enemies/thromp.cpp:705
+#: ../../src/enemies/rokko.cpp:585 ../../src/enemies/static.cpp:337
+#: ../../src/objects/moving_platform.cpp:970
 msgid "Speed"
 msgstr "Nopeus"
 
-#: ../../src/enemies/flyon.cpp:587
+#: ../../src/enemies/flyon.cpp:586
 msgid "Initial speed when jumping out"
 msgstr "Nopeus aluksi kun hypätään ulos"
 
-#: ../../src/enemies/gee.cpp:577
-msgid "Movable distance"
-msgstr "Liikkumisetäisyys"
+#: ../../src/enemies/beetle_barrage.cpp:356 ../../src/enemies/gee.cpp:608
+msgid "Fly distance"
+msgstr "Lentoetäisyys"
 
-#: ../../src/enemies/gee.cpp:588
-msgid "Always fly"
-msgstr "Aina lennä"
+#: ../../src/enemies/beetle_barrage.cpp:356
+msgid "Initial beetle flying distance"
+msgstr "Koppakuoriaisen lentoetäisyys aluksi"
 
-#: ../../src/enemies/gee.cpp:588
-msgid "Move without stopping at the fly distance"
-msgstr "Liiku pysähtymättä lentoetäisyys"
+#: ../../src/enemies/beetle_barrage.cpp:363
+msgid "Action range"
+msgstr "Toiminta-alue"
 
-#: ../../src/enemies/gee.cpp:601
-msgid "Wait time"
-msgstr "Odotusaika"
+#: ../../src/enemies/beetle_barrage.cpp:363
+msgid "Radius in which it reacts on Alex"
+msgstr "Kantama jolla se reagoi Alexiin"
 
-#: ../../src/enemies/gee.cpp:601
-msgid "Time to wait until moving again after a stop"
-msgstr "Aika odottaa kunnes liikkua jälleen pysähdyksen jälkeen"
+#: ../../src/enemies/beetle_barrage.cpp:369
+msgid "Count"
+msgstr "Määrä"
 
-#: ../../src/enemies/gee.cpp:609
-msgid "The distance to move each time"
-msgstr "Etäisyys joka liikkua joka kerta"
+#: ../../src/enemies/beetle_barrage.cpp:369
+msgid "Number of beetles spit out at a time"
+msgstr "Kerrallaan ulos sylkäistävien koppakuoriaisten määrä"
 
-#: ../../src/enemies/pip.cpp:370
-msgid "Starting direction"
-msgstr "Aloitussuunta"
-
-#: ../../src/enemies/rokko.cpp:586 ../../src/enemies/thromp.cpp:706
-msgid "Speed when activated"
-msgstr "Nopeus kun aktivoitu"
-
-#: ../../src/enemies/static.cpp:316 ../../src/objects/sprite.cpp:1459
-msgid "Image"
-msgstr "Kuva"
-
-#: ../../src/enemies/static.cpp:316 ../../src/objects/sprite.cpp:1459
-#: ../../src/video/animation.cpp:1402
-msgid "Image filename"
-msgstr "Kuvan tiedostonimi"
-
-#: ../../src/enemies/static.cpp:323
-msgid "Rotation Speed"
-msgstr "Pyörimisnopeus"
-
-#: ../../src/enemies/static.cpp:331 ../../src/objects/level_exit.cpp:550
-#: ../../src/objects/moving_platform.cpp:944
-msgid "Path Identifier"
-msgstr "Polku tunniste"
-
-#: ../../src/enemies/static.cpp:331 ../../src/objects/moving_platform.cpp:944
-msgid "Name of the Path to move along."
-msgstr "Nimi polulle jota myöten liikutaan."
-
-#: ../../src/enemies/static.cpp:338 ../../src/objects/moving_platform.cpp:971
-msgid "Maximum speed"
-msgstr "Suurin nopeus"
-
-#: ../../src/enemies/static.cpp:358
-msgid "Fire Resistant"
-msgstr "Tulen vastustuskyky"
-
-#: ../../src/enemies/static.cpp:358
-msgid "If it is resistant against fire"
-msgstr "Jos se on vastustuskykyinen tulelle"
-
-#: ../../src/enemies/static.cpp:362
-msgid "Ice Resistance"
-msgstr "Jää vastustuskyky"
-
-#: ../../src/enemies/static.cpp:362
-msgid "Resistance against Ice (0.0-1.0)"
-msgstr "Vastustuskyky jäälle (0.0-1.0)"
-
-#: ../../src/enemies/thromp.cpp:698
+#: ../../src/enemies/thromp.cpp:697
 msgid "Detection distance into its direction"
 msgstr "Tunnistusetäisyys sen suuntaan"
 
-#. TRANS: The text is copied from the end of the GPLv3. If there is an
-#. TRANS: accepted translation of the GPLv3 available in your language,
-#. TRANS: then you should use its wording rather than trying to translate
-#. TRANS: it yourself.
-#: ../../src/gui/game_console.cpp:172
-#, c-format
-msgid ""
-"TSC Scripting Console\n"
-"Copyright © 2012-%d The TSC Contributors\n"
-"\n"
-"This program comes with ABSOLUTELY NO WARRANTY; for details\n"
-"see the file COPYING. This is free software, and you are\n"
-"welcome to redistribute it under certain conditions; see the\n"
-"aforementioned file for details.\n"
-msgstr ""
-"TSC Skriptaus Konsoli\n"
-"Copyright © 2012-%d The TSC Contributors\n"
-"\n"
-"Tälle Ohjelmalle ei anneta takuuta lain sallimissa rajoissa. Ellei "
-"kirjallisesti\n"
-"muuta osoiteta, tekijänoikeudenhaltija tai muut osapuolet tarjoavat\n"
-"Ohjelman \"sellaisena kuin se on\" ilman minkäänlaista takuuta, ilmaistua\n"
-"tai hiljaista, sisältäen, muttei tyhjentävästi, hiljaisen takuun "
-"kaupallisesti\n"
-"hyväksyttävästä laadusta ja soveltuvuudesta tiettyyn tarkoitukseen.\n"
-"Lisenssinsaajalla on kaikki riski Ohjelman laadusta ja suorituskyvystä.\n"
-"Jos ohjelma osoittautuu virheelliseksi, kaikki huolto- ja\n"
-"korjauskustannukset ovat lisenssinsaajan vastuulla.\n"
+#: ../../src/enemies/thromp.cpp:705 ../../src/enemies/rokko.cpp:585
+msgid "Speed when activated"
+msgstr "Nopeus kun aktivoitu"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1006
+#: ../../src/enemies/krush.cpp:385 ../../src/enemies/gee.cpp:572
+#: ../../src/enemies/larry.cpp:418 ../../src/enemies/spikeball.cpp:515
+#: ../../src/enemies/furball.cpp:746 ../../src/enemies/beetle.cpp:270
+#: ../../src/enemies/army.cpp:927 ../../src/objects/moving_platform.cpp:958
+msgid "Starting direction."
+msgstr "Aloitus suunta."
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1010
+msgid "Hits"
+msgstr "Osumia"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1010
+msgid "Hits until a downgrade"
+msgstr "Osumia kunnes alentaa"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1018
+#: ../../src/enemies/furball.cpp:754
+msgid "Downgrades"
+msgstr "Alenenee"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1018
+#: ../../src/enemies/furball.cpp:754
+msgid "Downgrades until death"
+msgstr "Alenee kunnes kuollut"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1026
+msgid "Shell Time"
+msgstr "Kilpiaika"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1026
+msgid "Time running as shell to rise again"
+msgstr "Juoksuaika kun kilpi nousee jälleen"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1045
+#: ../../src/enemies/furball.cpp:764
+msgid "End Level"
+msgstr "Lopeta taso"
+
+#: ../../src/enemies/bosses/turtle_boss.cpp:1045
+#: ../../src/enemies/furball.cpp:764
+msgid "End the level if it is killed."
+msgstr "Lopeta taso jos se kuolee."
+
+#: ../../src/enemies/gee.cpp:576
+msgid "Movable distance"
+msgstr "Liikkumisetäisyys"
+
+#: ../../src/enemies/gee.cpp:587
+msgid "Always fly"
+msgstr "Aina lennä"
+
+#: ../../src/enemies/gee.cpp:587
+msgid "Move without stopping at the fly distance"
+msgstr "Liiku pysähtymättä lentoetäisyys"
+
+#: ../../src/enemies/gee.cpp:600
+msgid "Wait time"
+msgstr "Odotusaika"
+
+#: ../../src/enemies/gee.cpp:600
+msgid "Time to wait until moving again after a stop"
+msgstr "Aika odottaa kunnes liikkua jälleen pysähdyksen jälkeen"
+
+#: ../../src/enemies/gee.cpp:608
+msgid "The distance to move each time"
+msgstr "Etäisyys joka liikkua joka kerta"
+
+#: ../../src/enemies/pip.cpp:369
+msgid "Starting direction"
+msgstr "Aloitussuunta"
+
+#: ../../src/enemies/beetle.cpp:281
+msgid "Color"
+msgstr "Väri"
+
+#: ../../src/enemies/beetle.cpp:281
+msgid "Color."
+msgstr "Väri."
+
+#: ../../src/enemies/static.cpp:315 ../../src/objects/sprite.cpp:1454
+msgid "Image"
+msgstr "Kuva"
+
+#: ../../src/enemies/static.cpp:322
+msgid "Rotation Speed"
+msgstr "Pyörimisnopeus"
+
+#: ../../src/enemies/static.cpp:330 ../../src/objects/moving_platform.cpp:943
+#: ../../src/objects/level_exit.cpp:549
+msgid "Path Identifier"
+msgstr "Polku tunniste"
+
+#: ../../src/enemies/static.cpp:330 ../../src/objects/moving_platform.cpp:943
+msgid "Name of the Path to move along."
+msgstr "Nimi polulle jota myöten liikutaan."
+
+#: ../../src/enemies/static.cpp:337 ../../src/objects/moving_platform.cpp:970
+msgid "Maximum speed"
+msgstr "Suurin nopeus"
 
-#. TRANS: %s is the version postfix, e.g. "dev" or "beta3".
-#: ../../src/gui/game_console.cpp:183
-#, c-format
-msgid "You are running TSC version %d.%d.%d-%s.\n"
-msgstr "Käytät TSC versiota %d.%d.%d-%s.\n"
+#: ../../src/enemies/static.cpp:357
+msgid "Fire Resistant"
+msgstr "Tulen vastustuskyky"
 
-#: ../../src/gui/game_console.cpp:189
-#, c-format
-msgid "You are running TSC version %d.%d.%d.\n"
-msgstr "Käytät TSC versiota %d.%d.%d.\n"
+#: ../../src/enemies/static.cpp:357
+msgid "If it is resistant against fire"
+msgstr "Jos se on vastustuskykyinen tulelle"
 
-#: ../../src/gui/game_console.cpp:241
-msgid "(#inspect did not return a string)\n"
-msgstr "(#inspect ei palauttanut string:iä)\n"
+#: ../../src/enemies/static.cpp:361
+msgid "Ice Resistance"
+msgstr "Jää vastustuskyky"
 
-#: ../../src/gui/hud.cpp:168
-#, c-format
-msgid "Time %02d:%02d"
-msgstr "Aika %02d:%02d"
+#: ../../src/enemies/static.cpp:361
+msgid "Resistance against Ice (0.0-1.0)"
+msgstr "Vastustuskyky jäälle (0.0-1.0)"
 
-#. TRANS: Do not translate the part in brackets
-#: ../../src/gui/hud.cpp:198
-#, c-format
-msgid "[colour='FFFFFF00']FPS: Best: %.02f Worst: %.02f Current: %0.2f"
-msgstr "[colour='FFFFFF00']FPS: Paras: %.02f Huonoin: %.02f Nykyinen: %0.2f"
+#: ../../src/level/level_player.cpp:3976
+msgid "Initial direction"
+msgstr "Suunta aluksi"
 
-#: ../../src/gui/hud.cpp:212
-#, c-format
-msgid "Points %08ld"
-msgstr "Pisteet %08ld"
-
-#: ../../src/gui/menu_data.cpp:330
-msgid "Credits"
-msgstr "Tekijät"
-
-#: ../../src/gui/menu_data.cpp:362
-msgid "Version "
-msgstr "Versio "
-
-#: ../../src/gui/menu_data.cpp:630
-msgid "New"
-msgstr "Uusi"
-
-#: ../../src/gui/menu_data.cpp:631
-msgid "Edit"
-msgstr "Muokkaa"
-
-#: ../../src/gui/menu_data.cpp:632 ../../src/objects/path.cpp:771
-msgid "Delete"
-msgstr "Poista"
-
-#: ../../src/gui/menu_data.cpp:633
-msgid "Enter"
-msgstr "Mene"
-
-#: ../../src/gui/menu_data.cpp:634 ../../src/gui/menu_data.cpp:1429
-#: ../../src/gui/menu_data.cpp:3115
-msgid "Back"
-msgstr "Takaisin"
-
-#: ../../src/gui/menu_data.cpp:638
-msgid "Select Level"
-msgstr "Valitse taso"
-
-#: ../../src/gui/menu_data.cpp:640
-msgid "Select Campaign"
-msgstr "Valitse kampanja"
-
-#: ../../src/gui/menu_data.cpp:642
-msgid "Select Overworld"
-msgstr "Valitse ylimaailma"
-
-#: ../../src/gui/menu_data.cpp:644 ../../src/gui/menu_data.cpp:646
-msgid "Description"
-msgstr "Kuvaus"
-
-#. TRANS: The colour names refer to the colours the level names can
-#. TRANS: be in. "Game" means the level is shipped by the game,
-#. TRANS: "user" means the level has been created by the user.
-#. TRANS: If the user edited a system level, it gets copied to his
-#. TRANS: personal level directory and is coloured mixedly to indicate
-#. TRANS: that. "Deprecated" are levels from very old versions
-#. TRANS: of the game.
-#: ../../src/gui/menu_data.cpp:656
-msgid ""
-"- Level Colors -\n"
-"\n"
-"Orange: Game\n"
-"Green: User\n"
-"Grey: Deprecated\n"
-"Mixed: See the colors"
-msgstr ""
-"- Taso värit -\n"
-"\n"
-"Oranssi: Peli\n"
-"Vihreä: Käyttäjä\n"
-"Harmaa: Vanhentunut\n"
-"Miksattu: Katso värit"
-
-#: ../../src/gui/menu_data.cpp:809 ../../src/gui/menu_data.cpp:851
-#: ../../src/gui/menu_data.cpp:877
-msgid ""
-"This will reset your current progress.\n"
-"Continue ?"
-msgstr ""
-"Tämä nollaa nykyisen edistymisesi.\n"
-"Jatka ?"
-
-#: ../../src/gui/menu_data.cpp:817 ../../src/gui/menu_data.cpp:835
-msgid "Couldn't load campaign "
-msgstr "Ei saatu ladattua kampanjaa "
-
-#: ../../src/gui/menu_data.cpp:859
-msgid "Couldn't load overworld "
-msgstr "Ei saatu ladattua ylimaailmaa "
-
-#: ../../src/gui/menu_data.cpp:885
-msgid "Couldn't load level "
-msgstr "Ei saatu ladattua tasoa "
-
-#: ../../src/gui/menu_data.cpp:1357
-#, c-format
-msgid "Delete %s?"
-msgstr "Poista %s?"
-
-#: ../../src/gui/menu_data.cpp:1467
-msgid "Always Run"
-msgstr "Juokse aina"
-
-#: ../../src/gui/menu_data.cpp:1471 ../../src/gui/menu_data.cpp:1479
-#: ../../src/gui/menu_data.cpp:1638 ../../src/gui/menu_data.cpp:1646
-#: ../../src/gui/menu_data.cpp:1660 ../../src/gui/menu_data.cpp:1668
-#: ../../src/gui/menu_data.cpp:1751 ../../src/gui/menu_data.cpp:1759
-#: ../../src/gui/menu_data.cpp:1782 ../../src/gui/menu_data.cpp:1790
-#: ../../src/gui/menu_data.cpp:1952 ../../src/gui/menu_data.cpp:1960
-#: ../../src/gui/menu_data.cpp:1983 ../../src/gui/menu_data.cpp:1991
-#: ../../src/gui/menu_data.cpp:2046 ../../src/gui/menu_data.cpp:2138
-#: ../../src/gui/menu_data.cpp:2149 ../../src/gui/menu_data.cpp:2187
-#: ../../src/gui/menu_data.cpp:2198 ../../src/gui/menu_data.cpp:2223
-#: ../../src/gui/menu_data.cpp:2238 ../../src/gui/menu_data.cpp:2433
-#: ../../src/gui/menu_data.cpp:2566 ../../src/gui/menu_data.cpp:2582
-#: ../../src/gui/menu_data.cpp:2636 ../../src/gui/menu_data.cpp:2644
-#: ../../src/gui/menu_data.cpp:2745 ../../src/gui/menu_data.cpp:2775
-#: ../../src/gui/menu_data.cpp:2995 ../../src/gui/menu_data.cpp:3021
-msgid "On"
-msgstr "Kyllä"
-
-#: ../../src/gui/menu_data.cpp:1474 ../../src/gui/menu_data.cpp:1482
-#: ../../src/gui/menu_data.cpp:1641 ../../src/gui/menu_data.cpp:1649
-#: ../../src/gui/menu_data.cpp:1663 ../../src/gui/menu_data.cpp:1671
-#: ../../src/gui/menu_data.cpp:1754 ../../src/gui/menu_data.cpp:1762
-#: ../../src/gui/menu_data.cpp:1785 ../../src/gui/menu_data.cpp:1793
-#: ../../src/gui/menu_data.cpp:1955 ../../src/gui/menu_data.cpp:1963
-#: ../../src/gui/menu_data.cpp:1986 ../../src/gui/menu_data.cpp:1994
-#: ../../src/gui/menu_data.cpp:2049 ../../src/gui/menu_data.cpp:2141
-#: ../../src/gui/menu_data.cpp:2152 ../../src/gui/menu_data.cpp:2190
-#: ../../src/gui/menu_data.cpp:2201 ../../src/gui/menu_data.cpp:2226
-#: ../../src/gui/menu_data.cpp:2241 ../../src/gui/menu_data.cpp:2639
-#: ../../src/gui/menu_data.cpp:2647
-msgid "Off"
-msgstr "Ei"
-
-#: ../../src/gui/menu_data.cpp:1489
-msgid "Camera Hor Speed"
-msgstr "Kamera pystynopeus"
-
-#: ../../src/gui/menu_data.cpp:1498
-msgid "Camera Ver Speed"
-msgstr "Kamera vaakanopeus"
-
-#: ../../src/gui/menu_data.cpp:1507
-msgid "Language"
-msgstr "Kieli"
-
-#: ../../src/gui/menu_data.cpp:1540
-msgid "Menu Level"
-msgstr "Valikko taso"
-
-#: ../../src/gui/menu_data.cpp:1556 ../../src/gui/menu_data.cpp:1704
-#: ../../src/gui/menu_data.cpp:1808 ../../src/gui/menu_data.cpp:1838
-#: ../../src/gui/menu_data.cpp:1939 ../../src/gui/menu_data.cpp:2002
-msgid "Reset"
-msgstr "Resetoi"
-
-#: ../../src/gui/menu_data.cpp:1565
-msgid "Resolution"
-msgstr "Resoluutio"
-
-#: ../../src/gui/menu_data.cpp:1617
-msgid "Bpp"
-msgstr "Värisyvyys"
-
-#: ../../src/gui/menu_data.cpp:1634
-msgid "Fullscreen"
-msgstr "Kokoruutu"
-
-#: ../../src/gui/menu_data.cpp:1656
-msgid "VSync"
-msgstr "VSync"
-
-#: ../../src/gui/menu_data.cpp:1678
-msgid "FPS Limit"
-msgstr "Kuvia sekunnissa raja"
-
-#: ../../src/gui/menu_data.cpp:1687
-msgid "Geometry Quality"
-msgstr "Geometrian laatu"
-
-#: ../../src/gui/menu_data.cpp:1695
-msgid "Texture Quality"
-msgstr "Tekstuurin laatu"
-
-#: ../../src/gui/menu_data.cpp:1709
-msgid "Apply"
-msgstr "Ota käyttöön"
-
-#: ../../src/gui/menu_data.cpp:1714
-msgid "Recreate Cache"
-msgstr "Uudelleentee välimuisti"
-
-#: ../../src/gui/menu_data.cpp:1723
-msgid "Hertz (Hz)"
-msgstr "Hertsiä (Hz)"
-
-#: ../../src/gui/menu_data.cpp:1724
-msgid "You should only change the value if the audio is scratchy."
-msgstr "Sinun tulisi vaihtaa arvoa vain jos ääni on naarmuinen."
-
-#: ../../src/gui/menu_data.cpp:1746
-msgid "Music"
-msgstr "Musiikki"
-
-#: ../../src/gui/menu_data.cpp:1747
-msgid "Enable to play music. You need to have the Music Addon installed."
-msgstr ""
-"Ota käyttöön musiikki. Sinulla tulee olla musiikki lisäosa asennettuna."
-
-#: ../../src/gui/menu_data.cpp:1769
-msgid "Set the Music Volume."
-msgstr "Aseta musiikin äänenvoimakkuus."
-
-#: ../../src/gui/menu_data.cpp:1777
-msgid "Sound"
-msgstr "Ääni"
-
-#: ../../src/gui/menu_data.cpp:1778
-msgid "Enable to play Sounds."
-msgstr "Ota käyttöön peliäänet."
-
-#: ../../src/gui/menu_data.cpp:1800
-msgid "Set the Sound Volume."
-msgstr "Aseta äänenvoimakkuus."
-
-#: ../../src/gui/menu_data.cpp:1817 ../../src/gui/menu_data.cpp:1926
-msgid "Shortcuts"
-msgstr "Pikanäppäimet"
-
-#: ../../src/gui/menu_data.cpp:1821 ../../src/gui/menu_data.cpp:1930
-msgid "Name"
-msgstr "Nimi"
-
-#: ../../src/gui/menu_data.cpp:1822
-msgid "Key"
-msgstr "Näppäin"
-
-#: ../../src/gui/menu_data.cpp:1829
-msgid "Scroll Speed"
-msgstr "Vieritysnopeus"
-
-#: ../../src/gui/menu_data.cpp:1847
-msgid "Sensitivity"
-msgstr "Herkkyys"
-
-#: ../../src/gui/menu_data.cpp:1851
-msgid "Joystick"
-msgstr "Joystick"
-
-#: ../../src/gui/menu_data.cpp:1858 ../../src/gui/menu_data.cpp:2905
-#: ../../src/level/level_settings.cpp:193
-msgid "None"
-msgstr "Ei mikään"
-
-#: ../../src/gui/menu_data.cpp:1894
-msgid "Axis Hor"
-msgstr "Akseli vaaka"
-
-#: ../../src/gui/menu_data.cpp:1902
-msgid "Ver"
-msgstr "Pysty"
-
-#: ../../src/gui/menu_data.cpp:1910
-msgid "Axis Hor2"
-msgstr "Akseli vaaka2"
-
-#: ../../src/gui/menu_data.cpp:1918
-msgid "Ver2"
-msgstr "Versio2"
-
-#: ../../src/gui/menu_data.cpp:1931
-msgid "Button"
-msgstr "Painike"
-
-#: ../../src/gui/menu_data.cpp:1948
-msgid "Show images"
-msgstr "Näytä kuvat"
-
-#: ../../src/gui/menu_data.cpp:1970
-msgid "Item image size"
-msgstr "Esine kuvakoko"
-
-#: ../../src/gui/menu_data.cpp:1979
-msgid "Auto-Hide Mouse"
-msgstr "Piilota hiiri automaattisesti"
-
-#: ../../src/gui/menu_data.cpp:2274
-msgid "Up"
-msgstr "Ylös"
-
-#: ../../src/gui/menu_data.cpp:2275
-msgid "Down"
-msgstr "Alas"
-
-#: ../../src/gui/menu_data.cpp:2276
-msgid "Left"
-msgstr "Vasen"
-
-#: ../../src/gui/menu_data.cpp:2277
-msgid "Right"
-msgstr "Oikea"
-
-#: ../../src/gui/menu_data.cpp:2278 ../../src/gui/menu_data.cpp:2294
-msgid "Jump"
-msgstr "Hyppää"
-
-#: ../../src/gui/menu_data.cpp:2279 ../../src/gui/menu_data.cpp:2295
-msgid "Shoot"
-msgstr "Ammu"
-
-#: ../../src/gui/menu_data.cpp:2280 ../../src/gui/menu_data.cpp:2297
-#: ../../src/objects/bonusbox.cpp:502
-msgid "Item"
-msgstr "Esine"
-
-#: ../../src/gui/menu_data.cpp:2281 ../../src/gui/menu_data.cpp:2296
-msgid "Action"
-msgstr "Toiminta"
-
-#: ../../src/gui/menu_data.cpp:2282
-msgid "Screenshot"
-msgstr "Kuvakaappaus"
-
-#: ../../src/gui/menu_data.cpp:2283
-msgid "Editor fast copy up"
-msgstr "Muokkain nopea kopio ylös"
-
-#: ../../src/gui/menu_data.cpp:2284
-msgid "Editor fast copy down"
-msgstr "Muokkain nopea kopio alas"
-
-#: ../../src/gui/menu_data.cpp:2285
-msgid "Editor fast copy left"
-msgstr "Muokkain nopea kopio vas"
-
-#: ../../src/gui/menu_data.cpp:2286
-msgid "Editor fast copy right"
-msgstr "Muokkain nopea kopio oik"
-
-#: ../../src/gui/menu_data.cpp:2287
-msgid "Editor pixel move up"
-msgstr "Muokkain pikseli siirrä ylös"
-
-#: ../../src/gui/menu_data.cpp:2288
-msgid "Editor pixel move down"
-msgstr "Muokkain pikseli siirrä alas"
-
-#: ../../src/gui/menu_data.cpp:2289
-msgid "Editor pixel move left"
-msgstr "Muokkain pikseli siirrä vas"
-
-#: ../../src/gui/menu_data.cpp:2290
-msgid "Editor pixel move right"
-msgstr "Muokkain pikseli siirrä oik"
-
-#: ../../src/gui/menu_data.cpp:2298
-msgid "Exit"
-msgstr "Poistu"
-
-#: ../../src/gui/menu_data.cpp:2357
-msgid "Press a key"
-msgstr "Paina näppäintä"
-
-#: ../../src/gui/menu_data.cpp:2360
-msgid "Press a button"
-msgstr "Paina painiketta"
-
-#: ../../src/gui/menu_data.cpp:2363
-msgid " for "
-msgstr " tehdäksesi "
-
-#: ../../src/gui/menu_data.cpp:2363
-msgid ". Press ESC to cancel."
-msgstr ". Paina ESC peruuttaaksesi."
-
-#: ../../src/gui/menu_data.cpp:2668
-msgid "Reinitialization"
-msgstr "Uudelleenkäyttöönotto"
-
-#: ../../src/gui/menu_data.cpp:2727
-msgid "Reloading"
-msgstr "Uudelleenladataan"
-
-#: ../../src/gui/menu_data.cpp:2886
-msgid "Enabled : "
-msgstr "Käytössä : "
-
-#: ../../src/gui/menu_data.cpp:3101 ../../src/gui/menu_data.cpp:3103
-msgid "Save"
-msgstr "Tallenna"
-
-#: ../../src/gui/menu_data.cpp:3102
-msgid "Save the game"
-msgstr "Tallenna peli"
-
-#: ../../src/gui/menu_data.cpp:3108 ../../src/gui/menu_data.cpp:3110
-msgid "Load"
-msgstr "Lataa"
-
-#: ../../src/gui/menu_data.cpp:3109
-msgid "Load a saved game"
-msgstr "Lataa tallennettu peli"
-
-#: ../../src/gui/menu_data.cpp:3267
-msgid ""
-"3000 Points needed for saving in a level.\n"
-"Saving on the Overworld is free."
-msgstr ""
-"3000 Pistettä tarvitaan tason tallentamiseen.\n"
-"Tallentaminen Ylimaailmassa on ilmaista."
-
-#: ../../src/gui/menu_data.cpp:3288 ../../src/gui/menu_data.cpp:3292
-#: ../../src/gui/menu_data.cpp:3297
-msgid "No Description"
-msgstr "Ei kuvausta"
-
-#: ../../src/gui/menu_data.cpp:3301
-msgid "Enter Description"
-msgstr "Kirjoita kuvaus"
-
-#: ../../src/gui/menu_data.cpp:3319 ../../src/gui/menu_data.cpp:3324
-#: ../../src/gui/menu_data.cpp:3329
-msgid "Savegame loading failed"
-msgstr "Tallennetun pelin lataus epäonnistui"
-
-#: ../../src/input/keyboard.cpp:265
-msgid "Debug mode disabled"
-msgstr "Debug tila ei käytössä"
-
-#: ../../src/input/keyboard.cpp:271
-msgid "Debug mode enabled"
-msgstr "Debug tila otettu käyttöön"
-
-#: ../../src/input/mouse.cpp:1187
-msgid "Snap to object mode enabled"
-msgstr "Kiinnitä esineeseen tila käytössä"
-
-#: ../../src/input/mouse.cpp:1190
-msgid "Snap to object mode disabled"
-msgstr "Kiinnitä esineeseen tila ei käytössä"
-
-#: ../../src/input/mouse.cpp:1632 ../../src/input/mouse.cpp:1651
-msgid "Halfmassive - "
-msgstr "Puolimassiivinen - "
-
-#: ../../src/input/mouse.cpp:1635
-msgid "Massive - "
-msgstr "Massiivinen - "
-
-#: ../../src/input/mouse.cpp:1643
-msgid "Front Passive - "
-msgstr "Etupassiivinen - "
-
-#: ../../src/input/mouse.cpp:1646
-msgid "Passive - "
-msgstr "Passiivinen - "
-
-#: ../../src/input/mouse.cpp:1654
-msgid "Climbable - "
-msgstr "Kiivettävä - "
-
-#: ../../src/input/mouse.cpp:1673
-msgid "  Editor Z : "
-msgstr "  Muokkain Z : "
-
-#. TRANS: Displayed when hovering over the level finish object in the editor.
-#: ../../src/input/mouse.cpp:1690
-msgid "FINISH"
-msgstr "TASON LOPPU"
-
-#: ../../src/level/level.cpp:220
+#: ../../src/level/level.cpp:218
 msgid "Unsupported Level format : "
 msgstr "Ei tuettu tasomuoto : "
 
-#: ../../src/level/level.cpp:404
+#: ../../src/level/level.cpp:400
 msgid "Couldn't save level "
 msgstr "Ei pystytty tallentamaan tasoa "
 
-#: ../../src/level/level.cpp:420 ../../src/level/level_editor.cpp:148
+#: ../../src/level/level.cpp:416 ../../src/level/level_editor.cpp:146
 msgid "Level "
 msgstr "Taso "
 
-#: ../../src/level/level.cpp:420 ../../src/overworld/overworld.cpp:248
-#: ../../src/video/video.cpp:1430
-msgid " saved"
-msgstr " tallennettu"
-
-#: ../../src/level/level.cpp:828
+#: ../../src/level/level.cpp:806
 msgid "Omega Mode disabled"
 msgstr "Omega tila ei käytössä"
 
-#: ../../src/level/level.cpp:831
+#: ../../src/level/level.cpp:809
 msgid "Omega Mode enabled"
 msgstr "Omega tila otettu käyttöön"
 
-#: ../../src/level/level_editor.cpp:139
+#: ../../src/level/level_manager.cpp:472
+msgid "Invalid target level."
+msgstr "Virheellinen tavoitetaso."
+
+#: ../../src/level/level_editor.cpp:137
 msgid "Create a new Level"
 msgstr "Luo uusi taso"
 
-#: ../../src/level/level_editor.cpp:139 ../../src/level/level_editor.cpp:166
-#: ../../src/level/level_editor.cpp:170 ../../src/objects/level_entry.cpp:375
+#: ../../src/level/level_editor.cpp:137 ../../src/level/level_editor.cpp:164
+#: ../../src/level/level_editor.cpp:168 ../../src/objects/level_entry.cpp:374
 msgctxt "level"
 msgid "Name"
 msgstr "Nimi"
 
-#: ../../src/level/level_editor.cpp:148 ../../src/overworld/world_editor.cpp:88
-msgid " already exists"
-msgstr " on jo olemassa"
-
-#: ../../src/level/level_editor.cpp:160 ../../src/overworld/world_editor.cpp:84
-msgid "Created "
-msgstr "Luotu "
-
-#: ../../src/level/level_editor.cpp:170
+#: ../../src/level/level_editor.cpp:168
 msgid "Load a Level"
 msgstr "Lataa taso"
 
-#: ../../src/level/level_editor.cpp:189
-#: ../../src/overworld/world_editor.cpp:116
-msgid "Loaded "
-msgstr "Ladattu "
-
-#: ../../src/level/level_editor.cpp:208 ../../src/level/level_settings.cpp:275
-#: ../../src/overworld/world_editor.cpp:129
-msgid "Save "
-msgstr "Tallenna "
-
-#: ../../src/level/level_editor.cpp:217
+#: ../../src/level/level_editor.cpp:215
 msgid "Save Level as"
 msgstr "Tallenna taso nimellä"
 
-#: ../../src/level/level_editor.cpp:217
+#: ../../src/level/level_editor.cpp:215
 msgid "New name"
 msgstr "Uusi nimi"
 
-#: ../../src/level/level_editor.cpp:232
+#: ../../src/level/level_editor.cpp:230
 msgid "Level was not yet saved"
 msgstr "Tasoa ei vielä tallennettu"
 
-#: ../../src/level/level_editor.cpp:237
+#: ../../src/level/level_editor.cpp:235
 msgid "Delete and Unload "
 msgstr "Poista ja pura "
 
-#: ../../src/level/level_manager.cpp:476
-msgid "Invalid target level."
-msgstr "Virheellinen tavoitetaso."
+#: ../../src/objects/path.cpp:482
+msgid "Path"
+msgstr "Polku"
 
-#: ../../src/level/level_player.cpp:3977
-msgid "Initial direction"
-msgstr "Suunta aluksi"
+#: ../../src/objects/path.cpp:712
+msgid "Identifier"
+msgstr "Tunniste"
 
-#: ../../src/level/level_settings.cpp:192
-#: ../../src/level/level_settings.cpp:447
-#: ../../src/level/level_settings.cpp:603
-#: ../../src/overworld/world_waypoint.cpp:756
-#: ../../src/overworld/world_waypoint.cpp:759
-msgid "(None)"
-msgstr "(Ei mitään)"
+#: ../../src/objects/path.cpp:712
+msgid ""
+"Identifier name of the Path. This is needed for objects that can link to "
+"this."
+msgstr ""
+"Polun tunnisteen nimi. Tämä tarvitaan esineille jotka linkittävät tähän."
+
+#: ../../src/objects/path.cpp:729
+msgid "Show Line"
+msgstr "Näytä viiva"
+
+#: ../../src/objects/path.cpp:729
+msgid "Wether or not to show the path's moving line ingame."
+msgstr "Näytetäänkö polulla liikkumisviiva pelissä."
+
+#: ../../src/objects/path.cpp:745 ../../src/objects/moving_platform.cpp:939
+msgid "Move Type"
+msgstr "Liike tyyppi"
+
+#: ../../src/objects/path.cpp:745
+msgid ""
+"Movement type. Mirror moves forth and back and rewind starts from the "
+"beginning again."
+msgstr ""
+"Liikkeen tyyppi. Peili liikuttaa eteenpäin ja taaksepäin ja kelaa aloittaa "
+"jälleen alusta."
+
+#: ../../src/objects/path.cpp:757
+msgid "Segment"
+msgstr "Osa"
+
+#: ../../src/objects/path.cpp:757
+msgid "Select the Segment to edit."
+msgstr "Valitse muokattava osa."
+
+#: ../../src/objects/path.cpp:761
+msgid "Add a Segment after the selected one."
+msgstr "Lisää osa valitun jälkeen."
+
+#: ../../src/objects/path.cpp:763
+msgid "Add"
+msgstr "Lisää"
+
+#: ../../src/objects/path.cpp:768
+msgid "Delete the selected Segment."
+msgstr "Poista valittu osa."
+
+#: ../../src/objects/path.cpp:775
+msgid "Pos X1"
+msgstr "Sij X1"
+
+#: ../../src/objects/path.cpp:775
+msgid "Line position X1"
+msgstr "Viiva sijainti X1"
+
+#: ../../src/objects/path.cpp:783
+msgid "Y1"
+msgstr "Y1"
+
+#: ../../src/objects/path.cpp:783
+msgid "Line position Y1"
+msgstr "Viiva sijainti Y1"
+
+#: ../../src/objects/path.cpp:791
+msgid "Pos X2"
+msgstr "Sij X2"
+
+#: ../../src/objects/path.cpp:791
+msgid "Line position X2"
+msgstr "Viiva sijainti X2"
+
+#: ../../src/objects/path.cpp:799
+msgid "Y2"
+msgstr "Y2"
+
+#: ../../src/objects/path.cpp:799
+msgid "Line position Y2"
+msgstr "Viiva sijainti Y2"
+
+#: ../../src/objects/goldpiece.cpp:106
+msgid "Red Falling Jewel"
+msgstr "Punainen Putoava Jalokivi"
+
+#: ../../src/objects/goldpiece.cpp:112
+msgid "Falling Jewel"
+msgstr "Putoava Jalokivi"
+
+#: ../../src/objects/goldpiece.cpp:119
+msgid "Red Jewel"
+msgstr "Punainen Jalokivi"
+
+#: ../../src/objects/goldpiece.cpp:125 ../../src/objects/bonusbox.cpp:466
+#: ../../src/objects/bonusbox.cpp:488 ../../src/objects/bonusbox.cpp:595
+msgid "Jewel"
+msgstr "Jalokivi"
+
+#: ../../src/objects/moving_platform.cpp:939
+msgid "Movement type."
+msgstr "Liikkeen tyyppi."
+
+#: ../../src/objects/moving_platform.cpp:962
+msgid ""
+"Movable distance into its direction if type is line or radius if circle."
+msgstr ""
+"Liikkumis etäisyys sen suuntaan jos tyyppi on viiva tai säde jos ympyrä."
+
+#: ../../src/objects/moving_platform.cpp:978
+msgid "Touch time"
+msgstr "Kosketusaika"
+
+#: ../../src/objects/moving_platform.cpp:978
+msgid "Time when touched until shaking starts"
+msgstr "Aika kun kosketetaan kunnes ravistaminen alkaa"
+
+#: ../../src/objects/moving_platform.cpp:986
+msgid "Shake time"
+msgstr "Ravistamisaika"
+
+#: ../../src/objects/moving_platform.cpp:986
+msgid "Time it's shaking until falling"
+msgstr "Aika joka ravistetaan ennenkuin putoaa"
+
+#: ../../src/objects/moving_platform.cpp:994
+msgid "Touch move time"
+msgstr "Kosketus liikkumisaika"
+
+#: ../../src/objects/moving_platform.cpp:994
+msgid "If set does not move until this time has elapsed after touched"
+msgstr "Jos asetettu ei liiku kunnes tämä aika on kulunut kosketuksen jälkeen"
+
+#: ../../src/objects/moving_platform.cpp:1002
+msgid "Hor image count"
+msgstr "Vaaka kuvamäärä"
+
+#: ../../src/objects/moving_platform.cpp:1002
+msgid "Horizontal middle image count"
+msgstr "Vaakasuora keski kuvamäärä"
+
+#: ../../src/objects/moving_platform.cpp:1012
+msgid "Image top left"
+msgstr "Kuva ylävasemmalla"
+
+#: ../../src/objects/moving_platform.cpp:1019
+msgid "Image top middle"
+msgstr "Kuva yläkeskellä"
+
+#: ../../src/objects/moving_platform.cpp:1026
+msgid "Image top right"
+msgstr "Kuva yläoikealla"
+
+#: ../../src/objects/moving_platform.cpp:1229
+msgid "Falling "
+msgstr "Putoaa "
+
+#: ../../src/objects/moving_platform.cpp:1232
+msgid "Delayed "
+msgstr "Viivästynyt "
+
+#: ../../src/objects/moving_platform.cpp:1235
+msgid "Moving "
+msgstr "Liikkuu "
+
+#: ../../src/objects/moving_platform.cpp:1238
+msgid "Platform - "
+msgstr "Alusta - "
+
+#: ../../src/objects/enemystopper.cpp:61
+msgid "Enemystopper"
+msgstr "Vihollisenpysäytin"
+
+#: ../../src/objects/level_exit.cpp:208 ../../src/objects/level_entry.cpp:133
+msgid " Beam"
+msgstr " Säde"
+
+#: ../../src/objects/level_exit.cpp:211 ../../src/objects/level_entry.cpp:136
+msgid " Warp"
+msgstr " Kiertymä"
+
+#: ../../src/objects/level_exit.cpp:485
+msgid "Direction to move in"
+msgstr "Suunta johon liikutaan"
+
+#: ../../src/objects/level_exit.cpp:510
+msgid "Motion"
+msgstr "Liike"
+
+#: ../../src/objects/level_exit.cpp:510
+msgid "Camera Motion"
+msgstr "Kameran liike"
+
+#: ../../src/objects/level_exit.cpp:514
+msgid "Destination Level"
+msgstr "Määränpää taso"
+
+#: ../../src/objects/level_exit.cpp:514
+msgid ""
+"Name of the level that should be entered. If empty uses the current level."
+msgstr "Nimi tasolle jolle tullaan sisään. Jos tyhjä, käyttää nykyistä tasoa."
+
+#: ../../src/objects/level_exit.cpp:521
+msgid "Destination Entry"
+msgstr "Määränpää sisääntulo"
+
+#: ../../src/objects/level_exit.cpp:521
+msgid ""
+"Name of the Entry in the destination level. If empty the entry point is the "
+"player start position."
+msgstr ""
+"Nimi sisääntulolle kohdetasolla. Jos tyhjä, sisääntulokohta on pelaajan "
+"aloituskohta."
+
+#: ../../src/objects/level_exit.cpp:528
+msgid "Return Level"
+msgstr "Paluutaso"
+
+#: ../../src/objects/level_exit.cpp:528
+msgid "Name of the level that should be pushed onto return stack."
+msgstr "Nimi tasolle joka pitäisi työntää paluupinoon."
+
+#: ../../src/objects/level_exit.cpp:535
+msgid "Return Entry"
+msgstr "Määränpää sisääntulo"
+
+#: ../../src/objects/level_exit.cpp:535
+msgid "Name of the Entry in the return level."
+msgstr "Nimi sisääntulolle paluutasolla."
+
+#: ../../src/objects/level_exit.cpp:542
+msgid "Exit Name"
+msgstr "Poistumiskohdan nimi"
+
+#: ../../src/objects/level_exit.cpp:542
+msgid ""
+"Name of the Exit (use this in the overworld editor to set the path selected "
+"by this exit)."
+msgstr ""
+"Poistumiskohdan nimi (käytä tätä ylimaailma muokkaimessa valitaksesi "
+"poistumiskohdan polku)."
+
+#: ../../src/objects/level_exit.cpp:549
+msgid "Name of the Path to use for the camera movement."
+msgstr "Nimi polulle käytettäväksi kameran liikkeeseen."
+
+#: ../../src/objects/crate.cpp:58
+msgid "Crate"
+msgstr "Laatikko"
 
 #: ../../src/objects/bonusbox.cpp:79 ../../src/objects/bonusbox.cpp:152
 msgid "Bonusbox Empty"
@@ -1281,87 +1934,68 @@ msgstr "Bonuslaatikko Jalokivi"
 msgid "Bonusbox Red Jewel"
 msgstr "Bonuslaatikko Punainen Jalokivi"
 
-#: ../../src/objects/bonusbox.cpp:454
+#: ../../src/objects/bonusbox.cpp:453
 msgid "Animation"
 msgstr "Animaatio"
 
-#: ../../src/objects/bonusbox.cpp:454
+#: ../../src/objects/bonusbox.cpp:453
 msgid ""
 "Use the Power animation if the box has a good or needed item for this level"
 msgstr ""
 "Käytä Voima animaatio jos laatikossa on hyvä tai tarvittu esine tälle tasolle"
 
-#: ../../src/objects/bonusbox.cpp:459 ../../src/objects/bonusbox.cpp:498
-#: ../../src/overworld/overworld.cpp:53
-msgid "Empty"
-msgstr "Tyhjä"
-
-#: ../../src/objects/bonusbox.cpp:460 ../../src/objects/bonusbox.cpp:495
-#: ../../src/objects/bonusbox.cpp:602 ../../src/video/animation.cpp:1394
-#: ../../src/video/animation.cpp:1472 ../../src/video/animation.cpp:1488
-#: ../../src/video/animation.cpp:1568 ../../src/video/animation.cpp:1584
-#: ../../src/video/animation.cpp:1600 ../../src/video/animation.cpp:1616
-#: ../../src/video/animation.cpp:1632
-msgid "Random"
-msgstr "Satunnainen"
-
-#: ../../src/objects/bonusbox.cpp:461 ../../src/objects/bonusbox.cpp:471
-#: ../../src/objects/bonusbox.cpp:578 ../../src/objects/powerup.cpp:224
+#: ../../src/objects/bonusbox.cpp:460 ../../src/objects/bonusbox.cpp:470
+#: ../../src/objects/bonusbox.cpp:577 ../../src/objects/powerup.cpp:224
 msgid "Berry"
 msgstr "Marja"
 
-#: ../../src/objects/bonusbox.cpp:462 ../../src/objects/bonusbox.cpp:474
-#: ../../src/objects/bonusbox.cpp:581
+#: ../../src/objects/bonusbox.cpp:461 ../../src/objects/bonusbox.cpp:473
+#: ../../src/objects/bonusbox.cpp:580
 msgid "Fire berry"
 msgstr "Tulimarja"
 
-#: ../../src/objects/bonusbox.cpp:463 ../../src/objects/bonusbox.cpp:477
-#: ../../src/objects/bonusbox.cpp:584 ../../src/objects/powerup.cpp:236
+#: ../../src/objects/bonusbox.cpp:462 ../../src/objects/bonusbox.cpp:476
+#: ../../src/objects/bonusbox.cpp:583 ../../src/objects/powerup.cpp:236
 msgid "Ice berry"
 msgstr "Jäämarja"
 
-#: ../../src/objects/bonusbox.cpp:464 ../../src/objects/bonusbox.cpp:480
-#: ../../src/objects/bonusbox.cpp:587 ../../src/objects/powerup.cpp:240
+#: ../../src/objects/bonusbox.cpp:463 ../../src/objects/bonusbox.cpp:479
+#: ../../src/objects/bonusbox.cpp:586 ../../src/objects/powerup.cpp:240
 msgid "Ghost berry"
 msgstr "Aavemarja"
 
-#: ../../src/objects/bonusbox.cpp:465 ../../src/objects/bonusbox.cpp:483
-#: ../../src/objects/bonusbox.cpp:590
+#: ../../src/objects/bonusbox.cpp:464 ../../src/objects/bonusbox.cpp:482
+#: ../../src/objects/bonusbox.cpp:589
 msgid "1-UP berry"
 msgstr "1-YLÖS marja"
 
-#: ../../src/objects/bonusbox.cpp:466 ../../src/objects/bonusbox.cpp:486
-#: ../../src/objects/bonusbox.cpp:593 ../../src/objects/star.cpp:64
+#: ../../src/objects/bonusbox.cpp:465 ../../src/objects/bonusbox.cpp:485
+#: ../../src/objects/bonusbox.cpp:592 ../../src/objects/star.cpp:64
 msgid "Lemon"
 msgstr "Sitruuna"
 
-#: ../../src/objects/bonusbox.cpp:467 ../../src/objects/bonusbox.cpp:489
-#: ../../src/objects/bonusbox.cpp:596 ../../src/objects/goldpiece.cpp:125
-msgid "Jewel"
-msgstr "Jalokivi"
-
-#: ../../src/objects/bonusbox.cpp:468 ../../src/objects/bonusbox.cpp:492
-#: ../../src/objects/bonusbox.cpp:599 ../../src/objects/powerup.cpp:232
+#: ../../src/objects/bonusbox.cpp:467 ../../src/objects/bonusbox.cpp:491
+#: ../../src/objects/bonusbox.cpp:598 ../../src/objects/powerup.cpp:232
 msgid "Poisonous berry"
 msgstr "Myrkyllinen marja"
 
-#: ../../src/objects/bonusbox.cpp:502
+#: ../../src/objects/bonusbox.cpp:501
 msgid "The item that gets spawned"
 msgstr "Esine joka syntyy"
 
-#: ../../src/objects/bonusbox.cpp:518
+#: ../../src/objects/bonusbox.cpp:517
 msgid "Force item"
 msgstr "Pakota esine"
 
-#: ../../src/objects/bonusbox.cpp:518
+#: ../../src/objects/bonusbox.cpp:517
 msgid "Force best available item when activated"
 msgstr "Pakota paras saatavilla oleva esine kun aktivoitu"
 
-#: ../../src/objects/bonusbox.cpp:528
+#: ../../src/objects/bonusbox.cpp:527
 msgid "Jewel color"
 msgstr "Jalokiven väri"
 
-#: ../../src/objects/bonusbox.cpp:528
+#: ../../src/objects/bonusbox.cpp:527
 msgid "Jewel color if the item is a jewel"
 msgstr "Jalokiven väri jos esine on jalokivi"
 
@@ -1369,30 +2003,30 @@ msgstr "Jalokiven väri jos esine on jalokivi"
 msgid "Box"
 msgstr "Laatikko"
 
-#: ../../src/objects/box.cpp:682
+#: ../../src/objects/box.cpp:681
 msgid "Useable Count"
 msgstr "Käytettävä määrä"
 
-#: ../../src/objects/box.cpp:692 ../../src/objects/box.cpp:697
-#: ../../src/objects/box.cpp:733
+#: ../../src/objects/box.cpp:691 ../../src/objects/box.cpp:696
+#: ../../src/objects/box.cpp:732
 msgid "Massive"
 msgstr "Massiivinen"
 
-#: ../../src/objects/box.cpp:693 ../../src/objects/box.cpp:700
-#: ../../src/objects/box.cpp:736
+#: ../../src/objects/box.cpp:692 ../../src/objects/box.cpp:699
+#: ../../src/objects/box.cpp:735
 msgid "Ghost"
 msgstr "Aave"
 
-#: ../../src/objects/box.cpp:694 ../../src/objects/box.cpp:703
-#: ../../src/objects/box.cpp:739
+#: ../../src/objects/box.cpp:693 ../../src/objects/box.cpp:702
+#: ../../src/objects/box.cpp:738
 msgid "Semi Massive"
 msgstr "Puolimassiivinen"
 
-#: ../../src/objects/box.cpp:710
+#: ../../src/objects/box.cpp:709
 msgid "Invisible"
 msgstr "Näkymätön"
 
-#: ../../src/objects/box.cpp:710
+#: ../../src/objects/box.cpp:709
 msgid ""
 "Massive is invisible until activated.\n"
 "Ghost is only visible and activateable if in ghost mode.\n"
@@ -1403,279 +2037,41 @@ msgstr ""
 "Puolimassiivinen on kuten Massiivinen mutta vain kosketettavissa "
 "aktivointisuunnassa."
 
-#: ../../src/objects/box.cpp:755
+#: ../../src/objects/box.cpp:753
 msgid "(Invisible)"
 msgstr "(Näkymätön)"
 
-#: ../../src/objects/box.cpp:758
+#: ../../src/objects/box.cpp:756
 msgid "(Ghost block)"
 msgstr "(Aavelohko)"
 
-#: ../../src/objects/box.cpp:761
+#: ../../src/objects/box.cpp:759
 msgid "(Invisible Semi Massive)"
 msgstr "(Näkymätön Puolimassiivinen)"
 
-#: ../../src/objects/crate.cpp:58
-msgid "Crate"
-msgstr "Laatikko"
+#: ../../src/objects/text_box.cpp:64
+msgid "Text Box"
+msgstr "Tekstilaatikko"
 
-#: ../../src/objects/enemystopper.cpp:61
-msgid "Enemystopper"
-msgstr "Vihollisenpysäytin"
+#: ../../src/objects/text_box.cpp:239
+msgid "Text"
+msgstr "Teksti"
 
-#: ../../src/objects/goldpiece.cpp:106
-msgid "Red Falling Jewel"
-msgstr "Punainen Putoava Jalokivi"
+#: ../../src/objects/text_box.cpp:239
+msgid "Text to display when activated"
+msgstr "Aktivoitaessa näytettävä teksti"
 
-#: ../../src/objects/goldpiece.cpp:112
-msgid "Falling Jewel"
-msgstr "Putoava Jalokivi"
+#: ../../src/objects/level_entry.cpp:369
+msgid "The direction to come out"
+msgstr "Suunta josta tullaan ulos"
 
-#: ../../src/objects/goldpiece.cpp:119
-msgid "Red Jewel"
-msgstr "Punainen Jalokivi"
+#: ../../src/objects/level_entry.cpp:374
+msgid "Name for identification"
+msgstr "Nimi tunnisteelle"
 
 #: ../../src/objects/lava.cpp:55
 msgid "Lava"
 msgstr "Laava"
-
-#: ../../src/objects/level_entry.cpp:133 ../../src/objects/level_exit.cpp:208
-msgid " Beam"
-msgstr " Säde"
-
-#: ../../src/objects/level_entry.cpp:136 ../../src/objects/level_exit.cpp:211
-msgid " Warp"
-msgstr " Kiertymä"
-
-#: ../../src/objects/level_entry.cpp:370
-msgid "The direction to come out"
-msgstr "Suunta josta tullaan ulos"
-
-#: ../../src/objects/level_entry.cpp:375
-msgid "Name for identification"
-msgstr "Nimi tunnisteelle"
-
-#: ../../src/objects/level_exit.cpp:486
-msgid "Direction to move in"
-msgstr "Suunta johon liikutaan"
-
-#: ../../src/objects/level_exit.cpp:511
-msgid "Motion"
-msgstr "Liike"
-
-#: ../../src/objects/level_exit.cpp:511
-msgid "Camera Motion"
-msgstr "Kameran liike"
-
-#: ../../src/objects/level_exit.cpp:515
-msgid "Destination Level"
-msgstr "Määränpää taso"
-
-#: ../../src/objects/level_exit.cpp:515
-msgid ""
-"Name of the level that should be entered. If empty uses the current level."
-msgstr "Nimi tasolle jolle tullaan sisään. Jos tyhjä, käyttää nykyistä tasoa."
-
-#: ../../src/objects/level_exit.cpp:522
-msgid "Destination Entry"
-msgstr "Määränpää sisääntulo"
-
-#: ../../src/objects/level_exit.cpp:522
-msgid ""
-"Name of the Entry in the destination level. If empty the entry point is the "
-"player start position."
-msgstr ""
-"Nimi sisääntulolle kohdetasolla. Jos tyhjä, sisääntulokohta on pelaajan "
-"aloituskohta."
-
-#: ../../src/objects/level_exit.cpp:529
-msgid "Return Level"
-msgstr "Paluutaso"
-
-#: ../../src/objects/level_exit.cpp:529
-msgid "Name of the level that should be pushed onto return stack."
-msgstr "Nimi tasolle joka pitäisi työntää paluupinoon."
-
-#: ../../src/objects/level_exit.cpp:536
-msgid "Return Entry"
-msgstr "Määränpää sisääntulo"
-
-#: ../../src/objects/level_exit.cpp:536
-msgid "Name of the Entry in the return level."
-msgstr "Nimi sisääntulolle paluutasolla."
-
-#: ../../src/objects/level_exit.cpp:543
-msgid "Exit Name"
-msgstr "Poistumiskohdan nimi"
-
-#: ../../src/objects/level_exit.cpp:543
-msgid ""
-"Name of the Exit (use this in the overworld editor to set the path selected "
-"by this exit)."
-msgstr ""
-"Poistumiskohdan nimi (käytä tätä ylimaailma muokkaimessa valitaksesi "
-"poistumiskohdan polku)."
-
-#: ../../src/objects/level_exit.cpp:550
-msgid "Name of the Path to use for the camera movement."
-msgstr "Nimi polulle käytettäväksi kameran liikkeeseen."
-
-#: ../../src/objects/moving_platform.cpp:940 ../../src/objects/path.cpp:746
-msgid "Move Type"
-msgstr "Liike tyyppi"
-
-#: ../../src/objects/moving_platform.cpp:940
-msgid "Movement type."
-msgstr "Liikkeen tyyppi."
-
-#: ../../src/objects/moving_platform.cpp:963
-msgid ""
-"Movable distance into its direction if type is line or radius if circle."
-msgstr ""
-"Liikkumis etäisyys sen suuntaan jos tyyppi on viiva tai säde jos ympyrä."
-
-#: ../../src/objects/moving_platform.cpp:979
-msgid "Touch time"
-msgstr "Kosketusaika"
-
-#: ../../src/objects/moving_platform.cpp:979
-msgid "Time when touched until shaking starts"
-msgstr "Aika kun kosketetaan kunnes ravistaminen alkaa"
-
-#: ../../src/objects/moving_platform.cpp:987
-msgid "Shake time"
-msgstr "Ravistamisaika"
-
-#: ../../src/objects/moving_platform.cpp:987
-msgid "Time it's shaking until falling"
-msgstr "Aika joka ravistetaan ennenkuin putoaa"
-
-#: ../../src/objects/moving_platform.cpp:995
-msgid "Touch move time"
-msgstr "Kosketus liikkumisaika"
-
-#: ../../src/objects/moving_platform.cpp:995
-msgid "If set does not move until this time has elapsed after touched"
-msgstr "Jos asetettu ei liiku kunnes tämä aika on kulunut kosketuksen jälkeen"
-
-#: ../../src/objects/moving_platform.cpp:1003
-msgid "Hor image count"
-msgstr "Vaaka kuvamäärä"
-
-#: ../../src/objects/moving_platform.cpp:1003
-msgid "Horizontal middle image count"
-msgstr "Vaakasuora keski kuvamäärä"
-
-#: ../../src/objects/moving_platform.cpp:1013
-msgid "Image top left"
-msgstr "Kuva ylävasemmalla"
-
-#: ../../src/objects/moving_platform.cpp:1020
-msgid "Image top middle"
-msgstr "Kuva yläkeskellä"
-
-#: ../../src/objects/moving_platform.cpp:1027
-msgid "Image top right"
-msgstr "Kuva yläoikealla"
-
-#: ../../src/objects/moving_platform.cpp:1231
-msgid "Falling "
-msgstr "Putoaa "
-
-#: ../../src/objects/moving_platform.cpp:1234
-msgid "Delayed "
-msgstr "Viivästynyt "
-
-#: ../../src/objects/moving_platform.cpp:1237
-msgid "Moving "
-msgstr "Liikkuu "
-
-#: ../../src/objects/moving_platform.cpp:1240
-msgid "Platform - "
-msgstr "Alusta - "
-
-#: ../../src/objects/path.cpp:482
-msgid "Path"
-msgstr "Polku"
-
-#: ../../src/objects/path.cpp:713
-msgid "Identifier"
-msgstr "Tunniste"
-
-#: ../../src/objects/path.cpp:713
-msgid ""
-"Identifier name of the Path. This is needed for objects that can link to "
-"this."
-msgstr ""
-"Polun tunnisteen nimi. Tämä tarvitaan esineille jotka linkittävät tähän."
-
-#: ../../src/objects/path.cpp:730
-msgid "Show Line"
-msgstr "Näytä viiva"
-
-#: ../../src/objects/path.cpp:730
-msgid "Wether or not to show the path's moving line ingame."
-msgstr "Näytetäänkö polulla liikkumisviiva pelissä."
-
-#: ../../src/objects/path.cpp:746
-msgid ""
-"Movement type. Mirror moves forth and back and rewind starts from the "
-"beginning again."
-msgstr ""
-"Liikkeen tyyppi. Peili liikuttaa eteenpäin ja taaksepäin ja kelaa aloittaa "
-"jälleen alusta."
-
-#: ../../src/objects/path.cpp:758
-msgid "Segment"
-msgstr "Osa"
-
-#: ../../src/objects/path.cpp:758
-msgid "Select the Segment to edit."
-msgstr "Valitse muokattava osa."
-
-#: ../../src/objects/path.cpp:762
-msgid "Add a Segment after the selected one."
-msgstr "Lisää osa valitun jälkeen."
-
-#: ../../src/objects/path.cpp:764
-msgid "Add"
-msgstr "Lisää"
-
-#: ../../src/objects/path.cpp:769
-msgid "Delete the selected Segment."
-msgstr "Poista valittu osa."
-
-#: ../../src/objects/path.cpp:776
-msgid "Pos X1"
-msgstr "Sij X1"
-
-#: ../../src/objects/path.cpp:776
-msgid "Line position X1"
-msgstr "Viiva sijainti X1"
-
-#: ../../src/objects/path.cpp:784
-msgid "Y1"
-msgstr "Y1"
-
-#: ../../src/objects/path.cpp:784
-msgid "Line position Y1"
-msgstr "Viiva sijainti Y1"
-
-#: ../../src/objects/path.cpp:792
-msgid "Pos X2"
-msgstr "Sij X2"
-
-#: ../../src/objects/path.cpp:792
-msgid "Line position X2"
-msgstr "Viiva sijainti X2"
-
-#: ../../src/objects/path.cpp:800
-msgid "Y2"
-msgstr "Y2"
-
-#: ../../src/objects/path.cpp:800
-msgid "Line position Y2"
-msgstr "Viiva sijainti Y2"
 
 #: ../../src/objects/powerup.cpp:228
 msgid "Life berry"
@@ -1701,459 +2097,64 @@ msgstr "Löysit salaisen alueen!"
 msgid "Spinbox"
 msgstr "Pyörivälaatikko"
 
-#: ../../src/objects/text_box.cpp:64
-msgid "Text Box"
-msgstr "Tekstilaatikko"
+#: ../../src/audio/random_sound.cpp:451
+msgid "Sound filename"
+msgstr "Äänitiedostonimi"
 
-#: ../../src/objects/text_box.cpp:240
-msgid "Text"
-msgstr "Teksti"
+#: ../../src/audio/random_sound.cpp:458
+msgid "Continuous"
+msgstr "Jatkuva"
 
-#: ../../src/objects/text_box.cpp:240
-msgid "Text to display when activated"
-msgstr "Aktivoitaessa näytettävä teksti"
+#: ../../src/audio/random_sound.cpp:458
+msgid "Check if the sound should be played continuously instead of randomly"
+msgstr "Tarkista pitäisikö ääntä soittaa jarkuvasti, eikä satunnaisesti"
 
-#: ../../src/overworld/overworld.cpp:49
-msgid "Unnamed"
-msgstr "Nimeämätön"
+#: ../../src/audio/random_sound.cpp:465
+msgid "Delay Minimum"
+msgstr "Viive minimi"
 
-#: ../../src/overworld/overworld.cpp:70
-msgid "Couldn't save world description "
-msgstr "Ei voitu tallentaa maailman kuvausta "
+#: ../../src/audio/random_sound.cpp:465
+msgid "Minimal delay until played again"
+msgstr "Minimi viive kunnes soitetaan uudelleen"
 
-#: ../../src/overworld/overworld.cpp:243
-msgid "Couldn't save world "
-msgstr "Ei voitu tallentaa maailmaa "
+#: ../../src/audio/random_sound.cpp:473 ../../src/audio/random_sound.cpp:489
+msgid "Maximum"
+msgstr "Maksimi"
 
-#: ../../src/overworld/overworld.cpp:248
-#: ../../src/overworld/world_editor.cpp:88
-msgid "World "
-msgstr "Maailma "
+#: ../../src/audio/random_sound.cpp:473
+msgid "Maximal delay until played again"
+msgstr "Maksimi viive kunnes soitetaan uudelleen"
 
-#: ../../src/overworld/world_editor.cpp:69
-msgid "Create a new World"
-msgstr "Luo uusi maailma"
+#: ../../src/audio/random_sound.cpp:481
+msgid "Volume Minimum"
+msgstr "Äänenvoimakkuus minimi"
 
-#: ../../src/overworld/world_editor.cpp:69
-#: ../../src/overworld/world_editor.cpp:96
-#: ../../src/overworld/world_editor.cpp:100
-msgctxt "world"
-msgid "Name"
-msgstr "Nimi"
+#: ../../src/audio/random_sound.cpp:481
+msgid "Minimal random volume for each play"
+msgstr "Minimi satunnais äänenvoimakkuus jokaiselle soitolle"
 
-#: ../../src/overworld/world_editor.cpp:100
-msgid "Load an Overworld"
-msgstr "Lataa ylimaailma"
+#: ../../src/audio/random_sound.cpp:489
+msgid "Maximal random volume for each play"
+msgstr "Maksimi satunnais äänenvoimakkuus jokaiselle soitolle"
 
-#: ../../src/overworld/world_layer.cpp:50
-msgid "Line Start Point"
-msgstr "Viivan alkupiste"
+#: ../../src/audio/random_sound.cpp:497
+msgid "Volume Reduction Begin"
+msgstr "Äänenvoimakkuuden vähennys alku"
 
-#: ../../src/overworld/world_layer.cpp:54
-msgid "Line End Point"
-msgstr "Viivan loppupiste"
+#: ../../src/audio/random_sound.cpp:497
+msgid "Volume reduction begins gradually at this distance"
+msgstr "Äänenvoimakkuuden vähennys alkaa asteittain tällä etäisyydellä"
 
-#: ../../src/overworld/world_layer.cpp:292
-msgid "Waypoint origin"
-msgstr "Reittipisteen lähtöpaikka"
+#: ../../src/audio/random_sound.cpp:505
+msgid "End"
+msgstr "Loppu"
 
-#: ../../src/overworld/world_waypoint.cpp:126
-msgid "Waypoint"
-msgstr "Reittipiste"
-
-#: ../../src/overworld/world_waypoint.cpp:488
-#: ../../src/overworld/world_waypoint.cpp:492
-#: ../../src/overworld/world_waypoint.cpp:618
-msgid "Level"
-msgstr "Taso"
-
-#: ../../src/overworld/world_waypoint.cpp:489
-#: ../../src/overworld/world_waypoint.cpp:495
-msgid "World"
-msgstr "Maailma"
-
-#: ../../src/overworld/world_waypoint.cpp:499
-msgid "Type"
-msgstr "Tyyppi"
-
-#: ../../src/overworld/world_waypoint.cpp:499
-msgid "Destination type"
-msgstr "Määränpää tyyppi"
-
-#: ../../src/overworld/world_waypoint.cpp:503
-msgid "Destination"
-msgstr "Määränpää"
-
-#: ../../src/overworld/world_waypoint.cpp:503
-msgid "Destination level or world"
-msgstr "Määränpää taso tai maailma"
-
-#: ../../src/overworld/world_waypoint.cpp:520
-msgid "Backward Direction"
-msgstr "Taaksepäin suunta"
-
-#: ../../src/overworld/world_waypoint.cpp:535
-msgid "Forward Direction"
-msgstr "Eteenpäin suunta"
-
-#: ../../src/overworld/world_waypoint.cpp:552
-msgid "Default Access"
-msgstr "Oletus pääsy"
-
-#: ../../src/overworld/world_waypoint.cpp:552
-msgid "Enable if the Waypoint should be always accessible."
-msgstr "Ota käyttöön jos reittipiste pitäisi olla aina saatavilla."
-
-#: ../../src/overworld/world_waypoint.cpp:559
-msgid "Waypoint Exit"
-msgstr "Reittipisteen poistumiskohta"
-
-#: ../../src/overworld/world_waypoint.cpp:559
-msgid "Select the waypoint exit to edit."
-msgstr "Valitse reittipisteen muokattava poistumiskohta."
-
-#: ../../src/overworld/world_waypoint.cpp:563
-#: ../../src/overworld/world_waypoint.cpp:565
-msgid "New Exit"
-msgstr "Uusi poistumiskohta"
-
-#: ../../src/overworld/world_waypoint.cpp:565
-msgid "Create a new exit by clicking."
-msgstr "Luo uusi poistumiskohta klikkaamalla."
-
-#: ../../src/overworld/world_waypoint.cpp:569
-#: ../../src/overworld/world_waypoint.cpp:571
-msgid "Delete Exit"
-msgstr "Poista poistumiskohta"
-
-#: ../../src/overworld/world_waypoint.cpp:571
-msgid "Delete the currently selected exit by clicking."
-msgstr "Poista valittu poistumiskohta klikkaamalla."
-
-#: ../../src/overworld/world_waypoint.cpp:585
-msgid "Leave direction"
-msgstr "Poistumissuunta"
-
-#: ../../src/overworld/world_waypoint.cpp:585
-msgid "Direction key to press for leaving the waypoint for this exit"
-msgstr ""
-"Suunta näppäin painettavaksi jätettäessä reittipiste tälle poistumiskohdalle"
-
-#: ../../src/overworld/world_waypoint.cpp:590
-msgid "Level Exit"
-msgstr "Tasolta poistuminen"
-
-#: ../../src/overworld/world_waypoint.cpp:590
-msgid "Name of the level exit in the level that activates this waypoint exit."
-msgstr ""
-"Nimi tasonn poistumiskohdalle tasolla joka aktivoi tämän reittipiste "
-"poistumiskohdan."
-
-#: ../../src/overworld/world_waypoint.cpp:595
-msgid "Line start UID"
-msgstr "Viivan alku UID"
-
-#: ../../src/overworld/world_waypoint.cpp:595
-msgid "UID of the line start point to set Alex onto when taking this exit."
-msgstr ""
-"UID rivin aloituspisteelle johon Alex asetetaan kun käytetään tätä "
-"poistumiskohtaa."
-
-#: ../../src/overworld/world_waypoint.cpp:600
-#: ../../src/overworld/world_waypoint.cpp:602
-#: ../../src/overworld/world_waypoint.cpp:770
-#: ../../src/overworld/world_waypoint.cpp:784
-msgid "Locked"
-msgstr "Lukittu"
-
-#: ../../src/overworld/world_waypoint.cpp:601
-#: ../../src/overworld/world_waypoint.cpp:772
-msgid "Unlocked"
-msgstr "Lukitsematon"
-
-#: ../../src/overworld/world_waypoint.cpp:605
-msgid "Lock state"
-msgstr "Lukon tila"
-
-#: ../../src/overworld/world_waypoint.cpp:605
+#: ../../src/audio/random_sound.cpp:505
 msgid ""
-"Is this exit locked by default? PLEASE also set access to enabled on the "
-"target waypoint if you unlock by default!"
+"Volume reduction ends at this distance. Sound is not played beyond this."
 msgstr ""
-"Onko poistumiskohta lukittu oletuksena? Muista myös asettaa pääsy otettu "
-"käyttöön kohteena olevalle reittipisteelle jos lukitsematon oletuksena!"
-
-#: ../../src/scene/01_prologue.cpp:34
-msgid ""
-"The sinking sun sent out its last colourful beams over the Eastern Desert "
-"when a single individual was making his way through the ups and downs of the "
-"sandy dunes."
-msgstr ""
-"Laskeva aurinko lähetti viimeiset värikkäät säteensä Itä-aavikon ylle, kun "
-"yksi henkilö kulki hiekkadyynien ylä- ja alamäkiä."
-
-#: ../../src/scene/01_prologue.cpp:35
-msgid ""
-"When he reached the top of the highest dune, he gazed around, but to only "
-"see sand followed by more sand, by even more "
-"[colour='FFFFF000']sand[colour='FFFFFFFF']."
-msgstr ""
-"Kun hän saavutti korkeimman dyynin huipun, hän katseli ympärilleen, mutta "
-"näki vain hiekkaa, jota seurasi enemmän hiekkaa, ja vielä enemmän "
-"[colour='FFFFF000']hiekkaa[colour='FFFFFFFF']."
-
-#: ../../src/scene/01_prologue.cpp:36
-msgid ""
-"He took out a map, but with the stars not yet visible on the darkening sky "
-"there was no means of orientation in this infinite sea of equally hostile "
-"sand dunes."
-msgstr ""
-"Hän otti kartan, mutta tähdet eivät vielä näkyneet pimenevällä taivaalla, "
-"joten ei ollut mitään keinoa suunnistaa samalla tavalla vihamielisten "
-"hiekkadyynien äärettömässä meressä."
-
-#. TRANS: Prompt issued in the game console
-#: ../../src/scripting/scripting.cpp:104
-msgid "(console)"
-msgstr "(konsoli)"
-
-#: ../../src/user/savegame/savegame.cpp:271
-msgid "Savegame "
-msgstr "Pelitallennus "
-
-#: ../../src/user/savegame/savegame.cpp:271
-msgid " loaded"
-msgstr " ladattu"
-
-#: ../../src/user/savegame/savegame.cpp:446
-msgid "Couldn't save savegame "
-msgstr "Pelin tallennus epäonnistui "
-
-#: ../../src/user/savegame/savegame.cpp:449
-msgid "Saved to Slot "
-msgstr "Tallennettu tallennuspaikkaan "
-
-#. TRANS: %u is replaced by the number of the save slot, starting with 1.
-#: ../../src/user/savegame/savegame.cpp:515
-#, c-format
-msgid "%u. Free Save"
-msgstr "%u. Vapaa tallennuspaikka"
-
-#: ../../src/user/savegame/savegame.cpp:537
-msgid " -  Level "
-msgstr " - Taso "
-
-#: ../../src/user/savegame/savegame.cpp:544
-msgid " -  Unknown"
-msgstr " - Tuntematon"
-
-#: ../../src/user/savegame/savegame.cpp:548
-msgid " - Date "
-msgstr " - Pvm "
-
-#: ../../src/user/savegame/savegame_loader.cpp:75
-msgid "No description"
-msgstr "Ei kuvausta"
-
-#: ../../src/video/animation.cpp:1386
-msgid "Position z"
-msgstr "Paikka z"
-
-#: ../../src/video/animation.cpp:1386
-msgid "Initial depth position. Use values from 0.00011 to 0.12."
-msgstr "Syvyys paikka aluksi. Käytä arvoja 0.00011 - 0.12."
-
-#: ../../src/video/animation.cpp:1394 ../../src/video/animation.cpp:1472
-#: ../../src/video/animation.cpp:1488 ../../src/video/animation.cpp:1568
-#: ../../src/video/animation.cpp:1584 ../../src/video/animation.cpp:1600
-#: ../../src/video/animation.cpp:1616 ../../src/video/animation.cpp:1632
-msgid "Additional random value"
-msgstr "Lisä satunnaisluku"
-
-#: ../../src/video/animation.cpp:1409
-msgid "Based on camera pos."
-msgstr "Perustuu kameran paikkaan."
-
-#: ../../src/video/animation.cpp:1409
-msgid "The emitter position is based on the camera position"
-msgstr "Päästölähteen paikka perustuu kameran paikkaan"
-
-#: ../../src/video/animation.cpp:1416
-msgid "Particles Based on Emitter pos."
-msgstr "Hiukkaset perustuen päästölähteen paikkaan."
-
-#: ../../src/video/animation.cpp:1416
-msgid "The particle position is based on the emitter position"
-msgstr "Hiukkasen paikka perustuu päästölähteen paikkaan"
-
-#: ../../src/video/animation.cpp:1424
-msgid "Emitter width"
-msgstr "Päästölähde leveys"
-
-#: ../../src/video/animation.cpp:1424
-msgid "Emitter width in which the particles spawn"
-msgstr "Leveys päästölähteelle josta hiukkaset syntyy"
-
-#: ../../src/video/animation.cpp:1432 ../../src/video/animation.cpp:1664
-msgid "Height"
-msgstr "Korkeus"
-
-#: ../../src/video/animation.cpp:1432
-msgid "Emitter height in which the particles spawn"
-msgstr "Korkeus päästölähteelle josta hiukkaset syntyy"
-
-#: ../../src/video/animation.cpp:1440
-msgid "Emitter TTL"
-msgstr "Päästölähde elinaika"
-
-#: ../../src/video/animation.cpp:1440
-msgid "Emitter time to live. Set -1 for infinite."
-msgstr "Päästölähde elinaika(TTL). Aseta -1 jos rajaton."
-
-#: ../../src/video/animation.cpp:1448
-msgid "Emitter interval"
-msgstr "Päästölähde aikaväli"
-
-#: ../../src/video/animation.cpp:1448
-msgid "Time between spawning particles. Amount is the quota."
-msgstr "Aika hiukkasten syntymisen välillä. Määrä on kiintiö."
-
-#: ../../src/video/animation.cpp:1456
-msgid "Quota"
-msgstr "Kiintiö"
-
-#: ../../src/video/animation.cpp:1456
-msgid "The amount of particles to spawn for an interval"
-msgstr "Ajanjaksoa varten syntyvien hiukkasten määrä"
-
-#: ../../src/video/animation.cpp:1464
-msgid "TTL"
-msgstr "Elinaika"
-
-#: ../../src/video/animation.cpp:1464
-msgid "Particle time to live(TTL)"
-msgstr "Hiukkasen elinaika(TTL)"
-
-#: ../../src/video/animation.cpp:1480
-msgid "Velocity"
-msgstr "Nopeus"
-
-#: ../../src/video/animation.cpp:1480
-msgid "Initial particle velocity or speed"
-msgstr "Hiukkasen nopeus aluksi"
-
-#: ../../src/video/animation.cpp:1513
-msgid "Rotation z"
-msgstr "Kierto z"
-
-#: ../../src/video/animation.cpp:1513
-msgid "Initial rotation z"
-msgstr "Kierto z aluksi"
-
-#: ../../src/video/animation.cpp:1521
-msgid "Add direction"
-msgstr "Lisää suunta"
-
-#: ../../src/video/animation.cpp:1521
-msgid "Start direction is added to the z rotation"
-msgstr "Alkusuunta lisätään z kiertoon"
-
-#: ../../src/video/animation.cpp:1560
-msgid "Const. rotation z"
-msgstr "Vakio kierto z"
-
-#: ../../src/video/animation.cpp:1560
-msgid "Initial constant rotation z"
-msgstr "Vakio kierto z aluksi"
-
-#: ../../src/video/animation.cpp:1576
-msgid "Initial direction/angle"
-msgstr "Suunta/kulma aluksi"
-
-#: ../../src/video/animation.cpp:1592
-msgid "Scale"
-msgstr "Kokoluokka"
-
-#: ../../src/video/animation.cpp:1592
-msgid "Initial size scale"
-msgstr "Kokoluokka aluksi"
-
-#: ../../src/video/animation.cpp:1608
-msgid "Hor gravity"
-msgstr "Vaakas. painovoima"
-
-#: ../../src/video/animation.cpp:1608
-msgid "Initial horizontal gravity"
-msgstr "Vaakasuora painovoima aluksi"
-
-#: ../../src/video/animation.cpp:1624
-msgid "Ver gravity"
-msgstr "Pystys. painovoima"
-
-#: ../../src/video/animation.cpp:1624
-msgid "Initial vertical gravity"
-msgstr "Pystysuora painovoima aluksi"
-
-#: ../../src/video/animation.cpp:1640
-msgid "Clip rect x"
-msgstr "Leikkaa suorakulmio x"
-
-#: ../../src/video/animation.cpp:1640
-msgid "Clipping rectangle position x"
-msgstr "Leikattavan suorakulmion kohta x"
-
-#: ../../src/video/animation.cpp:1648
-msgid "Width"
-msgstr "Leveys"
-
-#: ../../src/video/animation.cpp:1648
-msgid "Clipping rectangle width"
-msgstr "Leikattavan suorakulmion leveys"
-
-#: ../../src/video/animation.cpp:1656
-msgid "Clip rect y"
-msgstr "Leikkaa suorakulmio y"
-
-#: ../../src/video/animation.cpp:1656
-msgid "Clipping rectangle position y"
-msgstr "Leikattavan suorakulmion kohta y"
-
-#: ../../src/video/animation.cpp:1664
-msgid "Clipping rectangle height"
-msgstr "Leikattavan suorakulmion korkeus"
-
-#: ../../src/video/animation.cpp:1676
-msgid "Clip mode"
-msgstr "Leikkaustila"
-
-#: ../../src/video/animation.cpp:1676
-msgid "Clipping mode if particle is out the rectangle"
-msgstr "Rajaustila, jos hiukkanen on suorakulmion yllä"
-
-#: ../../src/video/img_manager.cpp:121
-msgid "Saving Textures"
-msgstr "Tallennetaan tekstuureja"
-
-#: ../../src/video/img_manager.cpp:167
-msgid "Restoring Textures"
-msgstr "Palautetaan tekstuureja"
-
-#. TRANS: Be careful with the length of this line, if
-#. TRANS: it is much longer than the English version,
-#. TRANS: it will be cut off.
-#: ../../src/video/loading_screen.cpp:65
-msgid "This program is distributed under the terms of the GPLv3"
-msgstr "Tätä ohjelmaa levitetään GPLv3 ehtojen mukaisesti"
-
-#: ../../src/video/video.cpp:464
-msgid "Caching Images failed : Could not remove old images"
-msgstr ""
-"Kuvien tallennus välimuistiin epäonnistui : Vanhojen kuvien poisto ei "
-"onnistunut"
-
-#: ../../src/video/video.cpp:487
-msgid "Caching Images"
-msgstr "Tallennetaan kuvia välimuistiin"
+"Äänenvoimakkuuden vähennys loppuu tällä etäisyydellä. Ääntä ei soiteta tästä "
+"eteenpäin."
 
 #~ msgid ""
 #~ "This will take affect after restarting.\n"
