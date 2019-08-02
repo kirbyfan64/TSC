@@ -21,10 +21,9 @@ Links
 -----
 
 * The TSC website: https://secretchronicles.org
-* The user mailinglist: https://lists.secretchronicles.org/hyperkitty/list/tsc-users@lists.secretchronicles.org/
-* The developer mailinglist: https://lists.secretchronicles.org/hyperkitty/list/tsc-devel@lists.secretchronicles.org/
+* The mailing list: https://lists.secretchronicles.org/postorius/lists/tsc-devel.lists.secretchronicles.org/
+* The forum: https://lists.secretchronicles.org/hyperkitty/list/tsc-devel@lists.secretchronicles.org/
 * The bugtracker: https://github.com/Secretchronicles/TSC/issues
-* The documentation: https://secretchronicles.org/en/documentation
 
 Contributing
 ------------
@@ -38,9 +37,9 @@ please consider the following:
   two chapters of [this great online Git
   book](http://git-scm.com/book). Also reading chapter 3 is highly
   recommended as we use branches all the time.
-* If you want to contribute code, please read [the coding
-  conventions document](https://secretchronicles.org/docs/2.0.0/cpp/md_docs_pages_conventions.html)
-* If you want to contribute artistic work, please read [the styleguide](https://wiki.secretchronicles.org/StyleGuide.html)
+* If you want to contribute code, please read the coding
+  conventions document in tsc/docs/pages/conventions.md.
+* If you want to contribute artistic work, please read [the styleguide](https://wiki.secretchronicles.org/StyleGuide)
 * If you specifically target issues from the issue tracker, please
   use “fixes #43” for bug tickets you fix and “closes #43” for other
   tickets you resolve as part of the message in your commits. This
