@@ -23,6 +23,7 @@ Links
 * The TSC website: https://secretchronicles.org
 * The mailing list: https://lists.secretchronicles.org/postorius/lists/tsc-devel.lists.secretchronicles.org/
 * The forum: https://lists.secretchronicles.org/hyperkitty/list/tsc-devel@lists.secretchronicles.org/
+* The wiki: https://wiki.secretchronicles.org
 * The bugtracker: https://github.com/Secretchronicles/TSC/issues
 
 Contributing
