@@ -608,6 +608,10 @@ The CMake GUI in msys2 is dynamically linked against Qt5 libraries. To use it, y
 
     $ pacman -S mingw-w64-x86_64-qt5
 
+For 32-bit:
+
+    $ pacman -S mingw-w64-i686-qt5
+
 But it's huge, it's going to take very long time to install and is really an overkill to install just to use CMake GUI. Instead, just use the command line CMake (as shown in the example below), or, if you still want to use the GUI, here's a little cheat:
 
 Check which version of CMake is currently installed (`pacman -Qs cmake`), go to [Cmake website][1] and download the same version for the appropriate architecture, and extract **ONLY** the executables (in the "bin" folder) to C:\msys64\mingw64\bin (or wherever you have installed msys2) and run the following command:
