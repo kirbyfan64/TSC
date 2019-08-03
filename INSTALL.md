@@ -584,11 +584,11 @@ Now run update again:
 
 Once it's finished, install the dependencies:
 
-    $ pacman -S --needed git bison ruby mingw-w64-x86_64-{toolchain,extra-cmake-modules,ruby,cegui,sfml,libxml++2.6,gperf}
+    $ pacman -S --needed git base-devel bison ruby mingw-w64-x86_64-{toolchain,extra-cmake-modules,ruby,cegui,sfml,libxml++2.6,gperf}
 
 Or, for 32-bit:
 
-    $ pacman -S --needed git bison ruby mingw-w64-i686-{toolchain,extra-cmake-modules,ruby,cegui,sfml,libxml++2.6,gperf}
+    $ pacman -S --needed git base-devel bison ruby mingw-w64-i686-{toolchain,extra-cmake-modules,ruby,cegui,sfml,libxml++2.6,gperf}
 
 #### 3. Optional dependencies ###
 
