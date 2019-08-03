@@ -162,10 +162,10 @@ CppParser::CppParser(fs::path source_directory)
 
 void CppParser::parse_file(const boost::filesystem::path& file_path)
 {
-    std::cout << "\rExamining " << file_path.native();
+    std::cout << "\rExamining " << file_path.string();
     m_lino = 0;
 
-    std::ifstream file(file_path.native());
+    std::ifstream file(file_path.string());
     for (std::string line; std::getline(file, line); ) { // getline() drops the \n
         m_lino += 1;
 
@@ -206,10 +206,10 @@ RubyParser::RubyParser(fs::path source_directory)
 
 void RubyParser::parse_file(const fs::path& file_path)
 {
-    std::cout << "\rExamining " << file_path.native();
+    std::cout << "\rExamining " << file_path.string();
     m_lino = 0;
 
-    std::ifstream file(file_path.native());
+    std::ifstream file(file_path.string());
     for (std::string line; std::getline(file, line); ) { // getline() drops the \n
         m_lino += 1;
         if (m_docblock_open) { // We are in a "##" block here
@@ -259,7 +259,7 @@ Generator::Generator(fs::path output_dir,
       m_tsc_version(tsc_version),
       m_tsc_gitrevision(tsc_gitrevision)
 {
-    std::ifstream file(template_file.native());
+    std::ifstream file(template_file.string());
     m_template = std::string(std::istreambuf_iterator<char>(file), {});
 }
 
@@ -321,7 +321,7 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
     std::string filename = make_docfilename(name);
 
     // Write it out
-    std::ofstream file((m_output_dir / filename).native());
+    std::ofstream file((m_output_dir / filename).string());
     file.write(outbuf, strlen(outbuf));
     file.close();
 
@@ -338,7 +338,7 @@ void Generator::generate_module(const ModuleDoc& mod)
 
 void Generator::generate_indexfile()
 {
-    std::ifstream bodyfile(m_index_file.native());
+    std::ifstream bodyfile(m_index_file.string());
     std::string mainbody(std::istreambuf_iterator<char>(bodyfile), {});
     bodyfile.close();
 
@@ -363,7 +363,7 @@ void Generator::generate_indexfile()
     char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + version.length() + 1];
     sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str(), version.c_str());
 
-    std::ofstream file((m_output_dir / "index.html").native());
+    std::ofstream file((m_output_dir / "index.html").string());
     file.write(outbuf, strlen(outbuf));
     file.close();
 
