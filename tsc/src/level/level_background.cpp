@@ -205,7 +205,7 @@ void cBackground::Set_Image(const fs::path& img_file_1)
 
     // Make the path relative to pixmaps/ if it isn’t yet
     if (m_image_1_filename.is_absolute())
-        m_image_1_filename = fs::relative(pResource_Manager->Get_Game_Pixmaps_Directory(), m_image_1_filename);
+        m_image_1_filename = fs::relative(m_image_1_filename, pResource_Manager->Get_Game_Pixmaps_Directory());
 
     Clear_Images();
     Add_Image_Set("main", m_image_1_filename);

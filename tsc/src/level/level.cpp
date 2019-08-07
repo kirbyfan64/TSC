@@ -959,7 +959,7 @@ bool cLevel::Joy_Button_Up(unsigned int button)
 
 fs::path cLevel::Get_Music_Filename() const
 {
-    return fs::relative(pResource_Manager->Get_Game_Music_Directory(), m_musicfile);
+    return fs::relative(m_musicfile, pResource_Manager->Get_Game_Music_Directory());
 }
 
 void cLevel::Set_Music(fs::path filename)

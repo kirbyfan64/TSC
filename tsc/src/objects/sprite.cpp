@@ -516,7 +516,7 @@ xmlpp::Element* cSprite::Save_To_XML_Node(xmlpp::Element* p_element)
     // Only save the relative part of the filename -- otherwise the
     // generated levels wouldn’t be portable.
     if (img_filename.is_absolute())
-        img_filename = fs::relative(pResource_Manager->Get_Game_Pixmaps_Directory(), img_filename);
+        img_filename = fs::relative(img_filename, pResource_Manager->Get_Game_Pixmaps_Directory());
 
     Add_Property(p_node, "image", img_filename.generic_string());
 
@@ -1453,7 +1453,7 @@ void cSprite::Editor_Activate(void)
 
     p_editor->Add_Config_Widget(UTF8_("Image"), UTF8_("Image filename"), editbox);
 
-    fs::path rel = fs::relative(pResource_Manager->Get_Game_Pixmaps_Directory(), m_start_image->Get_Path());
+    fs::path rel = fs::relative(m_start_image->Get_Path(), pResource_Manager->Get_Game_Pixmaps_Directory());
     editbox->setText(path_to_utf8(rel));
     editbox->subscribeEvent(CEGUI::Editbox::EventTextChanged, CEGUI::Event::Subscriber(&cSprite::Editor_Image_Text_Changed, this));
 
