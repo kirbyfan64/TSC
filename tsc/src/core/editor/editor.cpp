@@ -144,6 +144,7 @@ void cEditor::Enable(cSprite_Manager* p_edited_sprite_manager)
 
     pActive_Animation_Manager->Delete_All(); // Stop all animations
 
+    gp_hud->Hide();
     mp_editor_root->show();
     m_enabled = true;
     editor_enabled = true;
@@ -170,6 +171,7 @@ void cEditor::Disable(void)
     pMouseCursor->Set_Active(false);
 
     Hide_Config_Panel();
+    gp_hud->Show();
     mp_editor_root->hide();
     m_enabled = false;
     editor_enabled = false;
