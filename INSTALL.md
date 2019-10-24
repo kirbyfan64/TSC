@@ -598,7 +598,7 @@ The following packages are optional, you don't have to install these if you don'
 
 For 32-bit:
 
-    $ pacman -S --needed mingw-w64-i686-{doxygen,graphviz,nsis}
+    $ pacman -S --needed mingw-w64-i686-{doxygen,graphviz,nsis,minizip-git}
 
 
 ### 3.1 CMake GUI Qt requirement workaround ###
