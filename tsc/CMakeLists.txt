@@ -90,6 +90,9 @@ endif()
 # External libraries we depend on directly and programs we use in the
 # build process.
 
+# Indicate we need legacy OpenGL, not GLVND
+set(OpenGL_GL_PREFERENCE LEGACY)
+
 # Boost needs special treatment.
 if (WIN32)
   # Boost thread library has a different name on Windows to indicate

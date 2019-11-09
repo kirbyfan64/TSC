@@ -93,8 +93,13 @@
 // None, True, and False that screw CEGUI declarations.
 #include <CEGUI/CEGUI.h>
 #include <CEGUI/RendererModules/OpenGL/GLRenderer.h>
-#include <CEGUI/XMLParserModules/Libxml2/XMLParser.h>
 #include <CEGUI/ImageCodecModules/DevIL/ImageCodec.h>
+
+#ifdef CEGUI_USE_EXPAT
+#include <CEGUI/XMLParserModules/Expat/XMLParserModule.h>
+#else
+#include <CEGUI/XMLParserModules/Libxml2/XMLParserModule.h>
+#endif
 
 // SFML
 // Must also be included before X11, which has a #define Status int that messes
