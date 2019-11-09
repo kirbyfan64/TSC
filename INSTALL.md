@@ -115,8 +115,14 @@ sudo apt install ruby-full rake gperf pkg-config bison libglew-dev \
 Note that Debian 10 does not have CEGUI in the repositories anymore,
 thus "libcegui-mk2-dev" needs to be left off from the the above list
 and instead it is required to compile CEGUI manually before compiling
-TSC. Alternatively, you can use a precompiled CEGUI. Example
-instructions for using a precompiled CEGUI are provided in the file
+TSC. Further note that CEGUI 0.8.7 does not compile against Debian
+10's libxml2. TSC offers the special compilation option
+CEGUI_USE_EXPAT to use expat instead of libxml2 to overcome the
+problem. Pass -DCEGUI_USE_EXPAT=ON to cmake when configuring TSC
+to use it.
+
+Alternatively, you can use a precompiled CEGUI. Example instructions
+for using a precompiled CEGUI are provided in the file
 tsc/docs/pages/compile_on_debian_10.md.
 
 ### 2. Optional Windows dependencies ###
