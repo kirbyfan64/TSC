@@ -24,7 +24,7 @@
 /**
  * Class: LevelClass
  *
- * `LevelClass` exposes it’s sole instance through the `Level` singleton,
+ * C<LevelClass> exposes it’s sole instance through the C<Level> singleton,
  * which always points to the currently active level. It is a mostly
  * informational object allowing you to access a level’s global settings,
  * but does not permit you to change them, because this either wouldn’t
@@ -33,112 +33,123 @@
  * (such as changing the filename).
  *
  * This class allows you to register handlers for two very special
- * events: The **save** and the **load** event. These events are not
+ * events: The B<save> and the B<load> event. These events are not
  * fired during regular gameplay, but instead when the player creates a
- * new savegame (**save**) or restores an existing one (**load**). By
- * returning an MRuby hash from the **save** event handler, you can
+ * new savegame (B<save>) or restores an existing one (B<load>). By
+ * returning an MRuby hash from the B<save> event handler, you can
  * advertise TSC to store it in the savegame; later, when the user loads
  * this savegame again, the hash is deserialised from the savegame and
- * passed back as an argument to the even thandler of the **load**
+ * passed back as an argument to the even thandler of the B<load>
  * event. This way you can store information on your level from within
  * the scripting API that will persist between saves and loads of a
  * level.
  *
  * Consider this example:
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * # Say, you have a number of switches in your
- * # level. Their state is stored inside this
- * # global table.
- * switches = {
- *   :blue  => false,
- *   :red   => false,
- *   :green => false
- * }
+ *     # Say, you have a number of switches in your
+ *     # level. Their state is stored inside this
+ *     # global table.
+ *     switches = {
+ *       :blue  => false,
+ *       :red   => false,
+ *       :green => false
+ *     }
  *
- * # The player may activate your switches,
- * # causing the respective entry in the
- * # global `switches' table to change.
- * UIDS[114].on_touch do |collidor|
- *   switches[:red] = true if collidor.player?
- * end
+ *     # The player may activate your switches,
+ *     # causing the respective entry in the
+ *     # global `switches' table to change.
+ *     UIDS[114].on_touch do |collidor|
+ *       switches[:red] = true if collidor.player?
+ *     end
  *
- * # Now, if the player jumps on your switch and
- * # then saves and reloads, the switch’s state
- * # gets lost. To prevent this, we define handlers
- * # for the `save' and `load' events that persist
- * # the state of the global `switches' table.
- * # See below to see why we don’t dump the symbols
- * # into the savegame.
- * Level.on_save do |store|
- *   store["blue"]  = switches[:blue]
- *   store["red"]   = switches[:red]
- *   store["green"] = switches[:green]
- * end
+ *     # Now, if the player jumps on your switch and
+ *     # then saves and reloads, the switch’s state
+ *     # gets lost. To prevent this, we define handlers
+ *     # for the `save' and `load' events that persist
+ *     # the state of the global `switches' table.
+ *     # See below to see why we don’t dump the symbols
+ *     # into the savegame.
+ *     Level.on_save do |store|
+ *       store["blue"]  = switches[:blue]
+ *       store["red"]   = switches[:red]
+ *       store["green"] = switches[:green]
+ *     end
  *
- * Level.on_load do |store|
- *   switches[:blue]  = store["blue"]
- *   switches[:red]   = store["red"]
- *   switches[:green] = store["green"]
- * end
+ *     Level.on_load do |store|
+ *       switches[:blue]  = store["blue"]
+ *       switches[:red]   = store["red"]
+ *       switches[:green] = store["green"]
+ *     end
  *
- * # This way the switches will remain in their
- * # respective state even after saving/reloading
- * # a game. If you change graphics for pressed
- * # switches, you still have to do this manually
- * # in your event handlers, though.
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     # This way the switches will remain in their
+ *     # respective state even after saving/reloading
+ *     # a game. If you change graphics for pressed
+ *     # switches, you still have to do this manually
+ *     # in your event handlers, though.
  *
- * Please note that the hash yielded to the block of the `save` event
+ * Please note that the hash yielded to the block of the C<save> event
  * gets converted to JSON for persistency. This comes with a major
  * limitation: You can’t store arbitrary MRuby objects in this hash,
  * and if you do, they will be autoconverted to strings, which is
  * most likely not what you want. So please stick with the primitive
  * types JSON supports, especially with regard to symbols (as keys
  * and values), which are converted to strings and therefore will
- * show up as strings in the parameter of the `load` event’s callback.
+ * show up as strings in the parameter of the C<load> event’s callback.
  *
  * You are advised to not register more than one event handler for
- * the `save` and `load` events, respectively. While this is possible,
+ * the C<save> and C<load> events, respectively. While this is possible,
  * it has several drawbacks:
  *
- * * For the `save` event, the lastly called event handler decides
- *   which data to store. The other’s data gets skipped.
- * * For the `load` event, the JSON data gets parsed once per callback,
- *   putting unnecessary strain on the game and delaying level loading.
+ * =over
  *
- * Internal note
- * -------------
+ * =item For the C<save> event, the lastly called event handler decides
+ * which data to store. The other’s data gets skipped.
  *
- * You will most likely neither notice nor need it, but the Lua `Level`
+ * =item For the C<load> event, the JSON data gets parsed once per callback,
+ * putting unnecessary strain on the game and delaying level loading.
+ *
+ * =back
+ *
+ * =head2 Internal note
+ *
+ * You will most likely neither notice nor need it, but the Lua C<Level>
  * singleton actually doesn’t wrap TSC’s notion of the currently running
- * level, `pActive_Level`, but rather the pointer to the savegame
- * mechanism, `pSavegame`. This facilitates the handling of the event
- * table for levels. Also, it is more intuitively to have the `Save`
- * and `Load` events defined on the Level rather than on a separate
+ * level, C<pActive_Level>, but rather the pointer to the savegame
+ * mechanism, C<pSavegame>. This facilitates the handling of the event
+ * table for levels. Also, it is more intuitively to have the C<Save>
+ * and C<Load> events defined on the Level rather than on a separate
  * Savegame object.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Load
- * : Called when the user loads a savegame containing this level. The
- *   event handler gets passed a hash containing any values
- *   requested in the **save** event’s handler, but note it was
- *   deserialised from a JSON representation and hence subject to its
- *   limits. Do not assume your level is active when this is called,
- *   the player may be in a sublevel (however, usually
- *   this has no impact on what you want to restore, but don’t try to
- *   warp the player or things like that, it will result in undefined
- *   behaviour probably leading TSC to crash).
+ * =over
  *
- * Save
- * : Called when the users saves a game. The event handler should store
- *   all values you want to preserve between level loading in saving
- *   in the hash it receives as a parameter, but please see the explanations
- *   further above regarding the limitations of this hash. Do not assume your
- *   level is active when this is called, because the player may be in a
- *   sublevel (however, usually this has no impact on what you want to save).
+ * =item [Load]
+ *
+ * Called when the user loads a savegame containing this level. The
+ * event handler gets passed a hash containing any values
+ * requested in the B<save> event’s handler, but note it was
+ * deserialised from a JSON representation and hence subject to its
+ * limits. Do not assume your level is active when this is called,
+ * the player may be in a sublevel (however, usually
+ * this has no impact on what you want to restore, but don’t try to
+ * warp the player or things like that, it will result in undefined
+ * behaviour probably leading TSC to crash).
+ *
+ * =item [Save]
+ *
+ * Called when the users saves a game. The event handler should store
+ * all values you want to preserve between level loading in saving
+ * in the hash it receives as a parameter, but please see the explanations
+ * further above regarding the limitations of this hash. Do not assume your
+ * level is active when this is called, because the player may be in a
+ * sublevel (however, usually this has no impact on what you want to save).
+ *
+ * =back
+ *
+ * =head2 See Also
+ *
+ * L<LevelPlayer>
  */
 
 using namespace TSC;
@@ -161,7 +172,7 @@ MRUBY_IMPLEMENT_EVENT(save);
  *
  *   author() → a_string
  *
- * Returns the content of the level’s *Author* info field.
+ * Returns the content of the level’s I<Author> info field.
  */
 static mrb_value Get_Author(mrb_state* p_state,  mrb_value self)
 {
@@ -173,7 +184,7 @@ static mrb_value Get_Author(mrb_state* p_state,  mrb_value self)
  *
  *   description() → a_string
  *
- * Returns the content of the level’s *Description* info field.
+ * Returns the content of the level’s I<Description> info field.
  */
 static mrb_value Get_Description(mrb_state* p_state, mrb_value self)
 {
@@ -185,7 +196,7 @@ static mrb_value Get_Description(mrb_state* p_state, mrb_value self)
  *
  *   difficulty() → an_integer
  *
- * Returns the content of the level’s *Difficulty* info field.
+ * Returns the content of the level’s I<Difficulty> info field.
  * This reaches from 0 (undefined) over 1 (very easy) to 100
  * ((mostly) uncompletable),
  */
@@ -224,7 +235,7 @@ static mrb_value Get_Filename(mrb_state* p_state, mrb_value self)
  *   music_filename( [ format [, with_ext ] ] ) → a_string
  *
  * Returns the default level music’s filename, relative to
- * the `music/` directory.
+ * the C<music/> directory.
  */
 static mrb_value Get_Music_Filename(mrb_state* p_state, mrb_value self)
 {
@@ -267,14 +278,20 @@ static mrb_value Get_Next_Level_Filename(mrb_state* p_state, mrb_value self)
  * loaded using the level menu directly (and hence there is no
  * overworld), returns to the level menu.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * win_music (false)
- * : If set, plays the level win music.
+ * =over
  *
- * exit_name ("")
- * : Name of the level exit taken (used in the overworld
- *   to determine which path to take).
+ * =item [win_music (false)]
+ *
+ * If set, plays the level win music.
+ *
+ * =item [exit_name ("")]
+ *
+ * Name of the level exit taken (used in the overworld
+ * to determine which path to take).
+ *
+ * =back
  */
 static mrb_value Finish(mrb_state* p_state,  mrb_value self)
 {
@@ -297,14 +314,14 @@ static mrb_value Finish(mrb_state* p_state,  mrb_value self)
  *
  *   display_info_message( message )
  *
- * Shows a **short**, informative message on the screen. This is achieved
+ * Shows a B<short>, informative message on the screen. This is achieved
  * by displaying a prominent sprite covering the full width of the
  * game window containing your message for a few seconds, before the
  * entire construction (i.e. sprite plus message) is then slowly faded
  * out to invisibility.
  *
  * This method is not meant to display larger passages of text to the
- * user; use the `Message` class from the SSL for that. No line breaking
+ * user; use the C<Message> class from the SSL for that. No line breaking
  * is done (and only a single line of text is supported).
  *
  * This method is intended for displaying merely optional pieces of
@@ -316,23 +333,27 @@ static mrb_value Finish(mrb_state* p_state,  mrb_value self)
  * don’t use it for too many different kinds of information, that would
  * confuse the player probably.
  *
- * #### Parameters
- * message
- * : The message to display. A short oneliner.
+ * =head4 Parameters
  *
- * #### Example
+ * =over
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * # Say the object with UID 14 is a warp point that
- * # warps you to the tower’s 3rd floor when touched.
- * # To make the player aware, write your code like this:
- * UIDS[14].on_touch do |collidor|
- *   next unless collidor.player? # Only react on the player
+ * =item [message]
  *
- *   Level.display_info_message("3rd floor")
- *   collidor.warp(400, -620)
- * end
- * ~~~~~~~~~~~~~~~~~~~~~~~
+ * The message to display. A short oneliner.
+ *
+ * =back
+ *
+ * =head4 Example
+ *
+ *     # Say the object with UID 14 is a warp point that
+ *     # warps you to the tower’s 3rd floor when touched.
+ *     # To make the player aware, write your code like this:
+ *     UIDS[14].on_touch do |collidor|
+ *       next unless collidor.player? # Only react on the player
+ *
+ *       Level.display_info_message("3rd floor")
+ *       collidor.warp(400, -620)
+ *     end
  */
 static mrb_value Display_Info_Message(mrb_state* p_state, mrb_value self)
 {
@@ -348,7 +369,7 @@ static mrb_value Display_Info_Message(mrb_state* p_state, mrb_value self)
  *
  *   push_return( stackentry )
  *
- * Push a `Level::StackEntry` onto the return level stack.
+ * Push a C<Level::StackEntry> onto the return level stack.
  *
  * See [LevelExit](levelexit.html) for explanations on the return stack.
  */
@@ -371,9 +392,9 @@ static mrb_value Push_Return(mrb_state* p_state, mrb_value self)
  *
  *   pop_entry() → a_stackentry or nil
  *
- * Pops the next available `Level::StackEntry` object from the
+ * Pops the next available C<Level::StackEntry> object from the
  * level return stack and returns it. If there is none, returns
- * `nil`.
+ * C<nil>.
  *
  * See [LevelExit](levelexit.html) for explanations on the return stack.
  */
@@ -443,8 +464,8 @@ static mrb_value Get_Return_Stack(mrb_state* p_state, mrb_value self)
  *
  *   boundaries() → a_rect
  *
- * Returns the level's boundaries as a Rect instance (struct with `x`,
- * `y`, `width`, `height` members). X and Y will always be zero; note
+ * Returns the level's boundaries as a Rect instance (struct with C<x>,
+ * C<y>, C<width>, C<height> members). X and Y will always be zero; note
  * that towards the upper edge the coordinates are lower, which is why
  * you usually have a negative height in a level.
  */
@@ -468,7 +489,7 @@ static mrb_value Get_Boundaries(mrb_state* p_state, mrb_value self)
  *
  * Returns the position Alex starts when the level is entered either
  * from the world map or from the level menu (not via a sublevel entry).
- * Return value is a Point instance (struct with members `x` and `y`).
+ * Return value is a Point instance (struct with members C<x> and C<y>).
  */
 static mrb_value Get_Start_Position(mrb_state* p_state, mrb_value self)
 {
@@ -516,14 +537,21 @@ static mrb_value Get_Fixed_Hor_Vel(mrb_state* p_state, mrb_value self)
  * Creates a new stack entry that refers to the given
  * level/entry combination.
  *
- * ==== Parameters
- * level ("")
- * : Name of the level to return to. An empty string means
- *   to return to the current level.
+ * =head4 Parameters
  *
- * entry ("")
- * : Name of the level entry to return to. An empty string
- *   means to return the default starting position.
+ * =over
+ *
+ * =item [level ("")]
+ *
+ * Name of the level to return to. An empty string means
+ * to return to the current level.
+ *
+ * =item [entry ("")]
+ *
+ * Name of the level entry to return to. An empty string
+ * means to return the default starting position.
+ *
+ * =back
  */
 static mrb_value SE_Initialize(mrb_state* p_state, mrb_value self)
 {

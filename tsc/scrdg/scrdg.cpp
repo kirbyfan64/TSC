@@ -18,6 +18,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
+#include <pod.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -173,7 +174,7 @@ void CppParser::parse_file(const boost::filesystem::path& file_path)
             size_t pos = std::string::npos;
             if ((pos = line.rfind("*/")) != std::string::npos) { // "/**" block closed by "*/"
                 m_docblock_open = false;
-                m_doctext += line.substr(0, pos); // Append contents before "*/"
+                m_doctext += strip(line.substr(0, pos)); // Append contents before "*/"
                 parse_doctext(m_doctext);
                 m_doctext.clear();
             }
@@ -285,12 +286,17 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
     std::string version = tsc_version_str();
     std::string mainbody = "<h1>" + title + "</h1>\n";
 
-    mainbody += documentation + "\n";
+    Pod::PodParser docparser(documentation, MakeDocFilename, MakeMethodId);
+    docparser.Parse();
+    Pod::PodHTMLFormatter docformatter(docparser.GetTokens());
+    std::string html_documentation(docformatter.FormatHTML());
+
+    mainbody += html_documentation + "\n";
 
     if (!cmethods.empty()) {
         mainbody += "<h2 id=\"classmod-methods\">" + type + " Methods</h2>\n";
         for (const MethodDoc& md: cmethods) {
-            mainbody += "<h3 id=\"" + idclean(md.name) + "\">" + md.name + "</h3>\n";
+            mainbody += "<h3 id=\"" + MakeMethodId(true, md.name) + "\">" + md.name + "</h3>\n";
             mainbody += "<pre class=\"callseqs\">";
             for (const std::string& call: md.call_seqs) {
                 mainbody += "<code>" + call + "</code>\n";
@@ -303,7 +309,7 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
     if (!imethods.empty()) {
         mainbody += "<h2 id=\"instance-methods\">Instance Methods</h2>\n";
         for (const MethodDoc& md: imethods) {
-            mainbody += "<h3 id=\"" + idclean(md.name) + "\">" + md.name + "</h3>\n";
+            mainbody += "<h3 id=\"" + MakeMethodId(false, md.name) + "\">" + md.name + "</h3>\n";
             mainbody += "<pre class=\"callseqs\">";
             for (const std::string& call: md.call_seqs) {
                 mainbody += "<code>" + call + "</code>\n";
@@ -313,12 +319,15 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
         }
     }
 
+    // TODO: Call Pod::PodParser::GetIndexEntries() and build up a list
+    // of index entries for this file.
+
     // Insert into template
     char* outbuf = new char[m_template.length() + title.length() + mainbody.length() + version.length() + 1];
     sprintf(outbuf, m_template.c_str(), title.c_str(), mainbody.c_str(), version.c_str());
 
     // Construct output file name
-    std::string filename = make_docfilename(name);
+    std::string filename = MakeDocFilename(name);
 
     // Write it out
     std::ofstream file((m_output_dir / filename).string());
@@ -348,14 +357,14 @@ void Generator::generate_indexfile()
     // Generate module index
     mainbody += "<h3>Modules</h3>\n<ul>";
     for (const ModuleDoc& md: m_modules) {
-        mainbody += "<li><a href=\"" + make_docfilename(md.name) + "\">" + md.name + "</a></li>";
+        mainbody += "<li><a href=\"" + MakeDocFilename(md.name) + "\">" + md.name + "</a></li>";
     }
     mainbody += "</ul>\n";
 
     // Generate class index
     mainbody += "<h3>Classes</h3>\n<ul>";
     for (const ClassDoc& cd: m_classes) {
-        mainbody += "<li><a href=\"" + make_docfilename(cd.name) + "\">" + cd.name + "</a></li>";
+        mainbody += "<li><a href=\"" + MakeDocFilename(cd.name) + "\">" + cd.name + "</a></li>";
     }
     mainbody += "</ul>\n";
 
@@ -400,10 +409,16 @@ std::string Generator::tsc_version_str()
     return version;
 }
 
-// Cleans `str' from any characters that might not fit an HTML `ID' tag.
-std::string Generator::idclean(std::string str)
+/**
+ * Transforms the method name `str' into an ID usable for an
+ * HTML A tag's NAME attribute. If `cmethod' is true, prefixes
+ * with "cm-", otherwise prefixes with "im-" (for differenciating
+ * class and instance methods of the same name).
+ */
+std::string Generator::MakeMethodId(bool cmethod, std::string str)
 {
-    std::string result;
+    std::string result = cmethod ? "cm-" : "im-";
+
     for (size_t i=0; i < str.length(); i++) {
         if (str[i] >= '0' && str[i] <= '9')
             result += str[i];
@@ -417,8 +432,10 @@ std::string Generator::idclean(std::string str)
     return result;
 }
 
-// Makes a nice filename from the class or module name `name'.
-std::string Generator::make_docfilename(std::string name)
+/**
+ * Makes a nice filename from the class or module name `name'.
+ */
+std::string Generator::MakeDocFilename(std::string name)
 {
     std::string filename = name + ".html";
 
@@ -444,8 +461,11 @@ std::string Generator::make_docfilename(std::string name)
 // Remove leading and trailing spaces from str, returning the changed string.
 std::string strip(std::string str)
 {
-    while (str[0] == ' ')
+    while (!str.empty() && str[0] == ' ')
         str = str.substr(1);
+
+    if (str.empty())
+        return str;
 
     while (str[str.length()-1] == ' ')
         str = str.substr(0, str.length() - 1);

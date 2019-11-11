@@ -110,14 +110,15 @@ public:
               const std::vector<MethodDoc>& methods);
 
     void Generate();
+
+    static std::string MakeDocFilename(std::string str);
+    static std::string MakeMethodId(bool cmethod, std::string str);
 private:
     void generate_classmod(const std::string& type, const std::string& name, const std::string& documentation);
     void generate_class(const ClassDoc& klass);
     void generate_module(const ModuleDoc& mod);
     void generate_indexfile();
     void filter_methods(const std::string& classmodname, std::vector<MethodDoc>& cmethods, std::vector<MethodDoc>& imethods);
-    std::string idclean(std::string str);
-    std::string make_docfilename(std::string str);
     std::string tsc_version_str();
 
     const std::vector<ClassDoc>&  m_classes;
