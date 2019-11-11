@@ -19,35 +19,33 @@
 /**
  * Class: AudioClass
  *
- * The `Audio` singleton, which is the sole instance of `AudioClass`,
+ * The C<Audio> singleton, which is the sole instance of C<AudioClass>,
  * allows you to interact with TSC’s sound system. You can play any sound
  * from TSC’s sound collection and any music that could also be used as a
  * background music in a level. Namely, paths to sound files are relative
- * to the TSC `sounds/` directory and music paths relative to the TSC
- * `music/` directory. The following table lists some examples (of
+ * to the TSC C<sounds/> directory and music paths relative to the TSC
+ * C<music/> directory. The following table lists some examples (of
  * course you have to adapt the paths to your local setup):
  *
- * |-----------------------+---------------------------------------+--------------------------------------|
- * | TSC installation path | Sound path                            | Music path                           |
- * |-----------------------+---------------------------------------+--------------------------------------|
- * |/usr/local             | /usr/local/share/tsc/sounds           | /usr/local/share/tsc/music           |
- * |-----------------------+---------------------------------------+--------------------------------------|
- * |C:\Program files\TSC   | C:\Program files\TSC\share\tsc\sounds | C:\Program files\TSC\share\tsc\music |
- * |-----------------------+---------------------------------------+--------------------------------------|
+ *     |-----------------------+---------------------------------------+--------------------------------------|
+ *     | TSC installation path | Sound path                            | Music path                           |
+ *     |-----------------------+---------------------------------------+--------------------------------------|
+ *     |/usr/local             | /usr/local/share/tsc/sounds           | /usr/local/share/tsc/music           |
+ *     |-----------------------+---------------------------------------+--------------------------------------|
+ *     |C:\Program files\TSC   | C:\Program files\TSC\share\tsc\sounds | C:\Program files\TSC\share\tsc\music |
+ *     |-----------------------+---------------------------------------+--------------------------------------|
  *
  * TODO: Check the Windows path.
  *
  * So, if you want to play the star music, you first have to find where
  * the music file is located. So, assuming your TSC is installed at
- * `/usr/local`, you’d find the star music at
- * `/usr/local/share/tsc/music/game/star.ogg`. To play it, you’d take
- * the path relative to `/usr/local/share/tsc/music/`,
- * i.e. `game/star.ogg`. This is what you pass on to a method such as
- * [play_music](#playmusic):
+ * F</usr/local>, you’d find the star music at
+ * F</usr/local/share/tsc/music/game/star.ogg>. To play it, you’d take
+ * the path relative to F</usr/local/share/tsc/music/>,
+ * i.e. F<game/star.ogg>. This is what you pass on to a method such as
+ * L<#play_music>:
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * Audio.play_music("game/star.ogg")
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     Audio.play_music("game/star.ogg")
  *
  * Note that path elements are always separated with a forward slash /,
  * even if the native path separation on some platforms is another (such
@@ -56,7 +54,6 @@
 
 using namespace TSC;
 using namespace TSC::Scripting;
-
 
 static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
 {
@@ -71,43 +68,62 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  * Plays a sound.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * filename
- * : Path to the sound file to play, relative to the `sounds/`
- *   directory.
+ * =over
  *
- * volume (-1)
- * : Volume the sound shall have. Between 0 and 100.
+ * =item [filename]
  *
- * loops (0)
- * : Number of times to repeat the sound _after_ it has been played once,
- *   i.e. the number of sounds played equals `1 + loops`.
+ * Path to the sound file to play, relative to the F<sounds/>
+ * directory.
  *
- * resid (-1)
- * : Special identifier to prevent a sound from being
- *   played while another instance of this sound is already being
- *   played. TSC ensures that no two sounds with the same resource
- *   ID are played at the same time, i.e. the running sound will
- *   be stopped and discarded before your sound is played. You can
- *   define your own IDs, but there is a number of IDs predefined
- *   by TSC:
+ * =item [volume (-1)]
  *
- *   1. Alex jump sound.
- *   2. Alex wall hit sound
- *   3. Alex powerdown sound
- *   4. Alex ball sound
- *   5. Alex death sound
- *   6. Fireplant, blue mushroom, ghost mushroom and feather
- *      sound
- *   7. 1-Up mushroom and moon sound
- *   8. Alex Au! (not used currently)
- *   9. Alex stop sound
+ * Volume the sound shall have. Between 0 and 100.
  *
- *   Specifying -1 for this parameter allows the given sound to be played
- *   multiple times.
+ * =item [loops (0)]
  *
- * #### Return value
+ * Number of times to repeat the sound I<after> it has been played once,
+ * i.e. the number of sounds played equals C<1 + loops>.
+ *
+ * =item [resid (-1)]
+ *
+ * Special identifier to prevent a sound from being
+ * played while another instance of this sound is already being
+ * played. TSC ensures that no two sounds with the same resource
+ * ID are played at the same time, i.e. the running sound will
+ * be stopped and discarded before your sound is played. You can
+ * define your own IDs, but there is a number of IDs predefined
+ * by TSC:
+ *
+ * =over
+ *
+ * =item 1. Alex jump sound.
+ *
+ * =item 2. Alex wall hit sound
+ *
+ * =item 3. Alex powerdown sound
+ *
+ * =item 4. Alex ball sound
+ *
+ * =item 5. Alex death sound
+ *
+ * =item 6. Fireplant, blue mushroom, ghost mushroom and feather sound
+ *
+ * =item 7. 1-Up mushroom and moon sound
+ *
+ * =item 8. Alex Au! (not used currently)
+ *
+ * =item 9. Alex stop sound
+ *
+ * =back
+ *
+ * Specifying -1 for this parameter allows the given sound to be played
+ * multiple times.
+ *
+ * =back
+ *
+ * =head4 Return value
  *
  * True on success, false otherwise. Possible failure reasons include
  * incorrect filenames or the sound may simply have been muted by
@@ -135,26 +151,34 @@ static mrb_value Play_Sound(mrb_state* p_state,  mrb_value self)
  *
  * Plays a music (optionally replacing the currently played one, if any).
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * filename
- * : Name of the music file to play, relative to the `music/`
- *   directory.
+ * =over
  *
- * loops (0)
- * : Number of times to repeat the music _after_ it has been played once,
- *   i.e. the number of musics played equals `1 + loops`.
+ * =item [filename]
  *
- * force (true)
- * : Enforces the new music to run even if another music
- *   is already running (the running music is stopped and discarded).
- *   Note this behaviour is enabled by default, you have to explicitely
- *   set this to `false`.
+ * Name of the music file to play, relative to the F<music/>
+ * directory.
  *
- * fadein_ms (0)
- * : Number of milliseconds to fade the music in.
+ * =item [loops (0)]
  *
- * #### Return value
+ * Number of times to repeat the music I<after> it has been played once,
+ * i.e. the number of musics played equals C<1 + loops>.
+ *
+ * =item [force (true)]
+ *
+ * Enforces the new music to run even if another music
+ * is already running (the running music is stopped and discarded).
+ * Note this behaviour is enabled by default, you have to explicitely
+ * set this to C<false>.
+ *
+ * =item [fadein_ms (0)]
+ *
+ * Number of milliseconds to fade the music in.
+ *
+ * =back
+ *
+ * =head4 Return value
  *
  * True on success, false otherwise. Possible failure reasons include
  * incorrect filenames or the music may simply have been muted by
@@ -175,8 +199,6 @@ static mrb_value Play_Music(mrb_state* p_state,  mrb_value self)
     else
         return mrb_false_value();
 }
-
-
 
 void TSC::Scripting::Init_Audio(mrb_state* p_state)
 {
