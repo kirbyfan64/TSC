@@ -76,6 +76,7 @@
 	* Misc: New compilation option ENABLE_SCRIPT_DOCS.
 	* Misc: Removed compilation option ENABLE_MRUBY. Scripting is an
 		integral part of TSC that can't be disabled anymore.
+	* Misc: New compilation option USE_SYSTEM_PODPARSER.
 
 2015-08-17  Marvin Gülker  <quintus@quintilianus.eu>
 
