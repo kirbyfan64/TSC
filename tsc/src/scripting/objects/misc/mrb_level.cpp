@@ -365,13 +365,13 @@ static mrb_value Display_Info_Message(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method Level#push_return
+ * Method: LevelClass#push_return
  *
  *   push_return( stackentry )
  *
  * Push a C<Level::StackEntry> onto the return level stack.
  *
- * See [LevelExit](levelexit.html) for explanations on the return stack.
+ * See L<LevelExit> for explanations on the return stack.
  */
 static mrb_value Push_Return(mrb_state* p_state, mrb_value self)
 {
@@ -388,7 +388,7 @@ static mrb_value Push_Return(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method: Level#pop_entry
+ * Method: LevelClass#pop_entry
  *
  *   pop_entry() → a_stackentry or nil
  *
@@ -396,7 +396,7 @@ static mrb_value Push_Return(mrb_state* p_state, mrb_value self)
  * level return stack and returns it. If there is none, returns
  * C<nil>.
  *
- * See [LevelExit](levelexit.html) for explanations on the return stack.
+ * See L<LevelExit> for explanations on the return stack.
  */
 static mrb_value Pop_Return(mrb_state* p_state, mrb_value self)
 {
@@ -416,13 +416,13 @@ static mrb_value Pop_Return(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method: Level#clear_return
+ * Method: LevelClass#clear_return
  *
  *   clear_return()
  *
  * Empties the level return stack.
  *
- * See [LevelExit](levelexit.html) for explanations on the return stack.
+ * See L<LevelExit> for explanations on the return stack.
  */
 static mrb_value Clear_Return(mrb_state* p_state, mrb_value self)
 {
@@ -431,14 +431,14 @@ static mrb_value Clear_Return(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method: Level#return_stack
+ * Method: LevelClass#return_stack
  *
  *   return_stack() → an_array
  *
  * Returns the current return stack as an array of Level::StackEntry
  * instances.
  *
- * See [LevelExit](levelexit.html) for explanations on the return stack.
+ * See L<LevelExit> for explanations on the return stack.
  */
 static mrb_value Get_Return_Stack(mrb_state* p_state, mrb_value self)
 {
@@ -460,7 +460,7 @@ static mrb_value Get_Return_Stack(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method: Level#boundaries
+ * Method: LevelClass#boundaries
  *
  *   boundaries() → a_rect
  *
@@ -483,7 +483,7 @@ static mrb_value Get_Boundaries(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method: Level#start_position
+ * Method: LevelClass#start_position
  *
  *   start_position() → a_point
  *
@@ -503,7 +503,7 @@ static mrb_value Get_Start_Position(mrb_state* p_state, mrb_value self)
 }
 
 /**
- * Method: Level#fixed_horizontal_velocity
+ * Method: LevelClass#fixed_horizontal_velocity
  *
  *   fixed_horizontal_velocity() → a_number
  *
@@ -526,7 +526,7 @@ static mrb_value Get_Fixed_Hor_Vel(mrb_state* p_state, mrb_value self)
  * purpose, they have no real methods that actually do
  * something. They are used to represent the entries
  * in the level return stack, as explained in
- * [LevelExit](levelexit.html).
+ * L<LevelExit>.
  */
 
 /**
