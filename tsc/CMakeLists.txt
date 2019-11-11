@@ -173,7 +173,8 @@ include_directories(
   ${PCRE_INCLUDE_DIRS}
   ${MRuby_INCLUDE_DIR}
   ${X11_INCLUDE_DIR}
-  ${PNG_INCLUDE_DIRS})
+  ${PNG_INCLUDE_DIRS}
+  "${TSC_SOURCE_DIR}/../pod-parser")
 
 ########################################
 # Source files
@@ -193,7 +194,9 @@ endif()
 
 file(GLOB_RECURSE scrdg_sources
   "scrdg/*.cpp"
-  "scrdg/*.hpp")
+  "scrdg/*.hpp"
+  "../pod-parser/pod.cpp"
+  "../pod-parser/pod.hpp")
 
 file(GLOB_RECURSE scriptdoc_sources
   "src/scripting/*.cpp"
