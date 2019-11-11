@@ -50,6 +50,7 @@ execute_process(COMMAND git rev-parse --short HEAD
 option(ENABLE_NLS "Enable translations and localisations" ON)
 option(ENABLE_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
+option(USE_SYSTEM_PODPARSER "Use the system's pod-cpp library" OFF)
 option(USE_SYSTEM_MRUBY "Use the system's mruby library" OFF)
 option(USE_LIBXMLPP3 "Use libxml++3.0 instead of libxml++2.6 (experimental)" OFF)
 
@@ -122,6 +123,7 @@ set(Boost_COMPONENTS Boost::filesystem Boost::chrono Boost::thread)
 
 # Libraries we can build ourselves under certain cirumstances if missing
 include("ProvideTinyclipboard")
+include("ProvidePodParser")
 include("ProvideMRuby")
 
 ########################################
@@ -168,13 +170,13 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
   ${LibXmlPP_INCLUDE_DIRS}
   ${Tinyclipboard_INCLUDE_DIRS}
+  ${PodParser_INCLUDE_DIRS}
   ${CEGUI_INCLUDE_DIR}
   ${OPENGL_INCLUDE_DIR}
   ${PCRE_INCLUDE_DIRS}
   ${MRuby_INCLUDE_DIR}
   ${X11_INCLUDE_DIR}
-  ${PNG_INCLUDE_DIRS}
-  "${TSC_SOURCE_DIR}/../pod-parser")
+  ${PNG_INCLUDE_DIRS})
 
 ########################################
 # Source files
@@ -194,9 +196,7 @@ endif()
 
 file(GLOB_RECURSE scrdg_sources
   "scrdg/*.cpp"
-  "scrdg/*.hpp"
-  "../pod-parser/pod.cpp"
-  "../pod-parser/pod.hpp")
+  "scrdg/*.hpp")
 
 file(GLOB_RECURSE scriptdoc_sources
   "src/scripting/*.cpp"
@@ -251,7 +251,7 @@ endif()
 
 if (ENABLE_SCRIPT_DOCS)
   add_executable(scrdg ${scrdg_sources})
-  target_link_libraries(scrdg ${Boost_COMPONENTS})
+  target_link_libraries(scrdg ${Boost_COMPONENTS} ${PodParser_LIBRARIES})
 
   add_custom_command(OUTPUT "${TSC_BINARY_DIR}/scriptdocs"
     COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT}
@@ -440,6 +440,7 @@ message(STATUS "--------------- Configuration summary -------------")
 message(STATUS "Enable native language support:    ${ENABLE_NLS}")
 message(STATUS "Enable the scripting API docs:     ${ENABLE_SCRIPT_DOCS}")
 message(STATUS "Use system-provided tinyclipboard: ${USE_SYSTEM_TINYCLIPBOARD}")
+message(STATUS "Use system-provided pod-cpp:       ${USE_SYSTEM_PODPARSER}")
 message(STATUS "Use system-provided mruby:         ${USE_SYSTEM_MRUBY}")
 
 message(STATUS "--------------- Path configuration -----------------")

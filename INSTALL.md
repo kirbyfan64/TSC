@@ -186,6 +186,16 @@ USE_SYSTEM_TINYCLIPBOARD [OFF]
   system will dynamically link to the tinyclipboard library of
   the system and not build its own variant.
 
+USE_SYSTEM_PODPARSER [OFF]
+: This option only has an effect if ENABLE_SCRIPT_DOCS is set to ON.
+  If ON, it configures cmake to link the scripting API generator (scrdg)
+  against the system-provided libpod-cpp. As scrdg is not installed
+  in a normal setup (the programme is really only used for generating
+  the scripting API HTML documents during the build process) there
+  should rarely ever be a need to enable this option. If OFF,
+  libpod-cpp is compiled from the Git submodule and linked into
+  scrdg statically.
+
 USE_LIBXMLPP3 [OFF]
 : Enabling this upgrades TSC's dependency from libxml++2.6 to
   libxml++3.0. This is EXPERIMENTAL. If it breaks something,
