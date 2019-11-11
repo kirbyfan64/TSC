@@ -288,8 +288,7 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
 
     Pod::PodParser docparser(documentation, MakeDocFilename, MakeMethodId);
     docparser.Parse();
-    Pod::PodHTMLFormatter docformatter(docparser.GetTokens());
-    std::string html_documentation(docformatter.FormatHTML());
+    std::string html_documentation(Pod::FormatHTML(docparser.GetTokens()));
 
     mainbody += html_documentation + "\n";
 
@@ -302,7 +301,10 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
                 mainbody += "<code>" + call + "</code>\n";
             }
             mainbody += "</pre>\n";
-            mainbody += md.documentation + "\n";
+
+            docparser = Pod::PodParser(md.documentation, MakeDocFilename, MakeMethodId);
+            docparser.Parse();
+            mainbody += Pod::FormatHTML(docparser.GetTokens()) + "\n";
         }
     }
 
@@ -315,7 +317,10 @@ void Generator::generate_classmod(const std::string& type, const std::string& na
                 mainbody += "<code>" + call + "</code>\n";
             }
             mainbody += "</pre>\n";
-            mainbody += md.documentation + "\n";
+
+            docparser = Pod::PodParser(md.documentation, MakeDocFilename, MakeMethodId);
+            docparser.Parse();
+            mainbody += Pod::FormatHTML(docparser.GetTokens()) + "\n";
         }
     }
 
