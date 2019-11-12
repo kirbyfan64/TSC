@@ -30,7 +30,7 @@
  *
  * This class may not be instanciated directly.
  *
- * =head4 Acceleration and velocity
+ * =head2 Acceleration and velocity
  *
  * I hope you didn’t sleep in your physics lessons, because you will
  * need your knowledge now. Remember: Velocity is I<not> the same as
@@ -76,7 +76,7 @@
  * calculate such a formula, please add it in place of this text to the
  * documentation.
  *
- * =head4 Directions
+ * =head2 Directions
  *
  * A moving sprite always has one or more directions it is "looking" into.
  * While which directions are valid depends on the exact sprite being

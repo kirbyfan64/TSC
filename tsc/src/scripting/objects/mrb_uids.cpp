@@ -24,7 +24,7 @@
 /**
  * Module: UIDS
  *
- * The C<UIDSe> module (yes, really, it’s a module) is a simple way to
+ * The C<UIDS> module (yes, really, it’s a module) is a simple way to
  * refer to existing instances of class C<Sprite> and its subclasses.
  * It basically just offers the module method C<[]> that allows you
  * to retrieve any sprite you wish from the level, identified by its
