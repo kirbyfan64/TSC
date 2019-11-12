@@ -21,10 +21,9 @@
 /**
  * Class: Ball
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * This class represents the fire and ice _balls_ Alex is able
+ * This class represents the fire and ice I<balls> Alex is able
  * to throw. With this class, you can generate these yourself
  * on whatever conditions you want. Overriding the touch event
  * you could even override the default behaviour.
@@ -41,9 +40,13 @@ using namespace std;
  *
  * Creates a new ball.
  *
- * ==== Parameters
- * type
- * : The type of the ball. Either `:fire` or `:ice`.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [type] The type of the ball. Either C<:fire> or C<:ice>.
+ *
+ * =back
  */
 static mrb_value Initialize(mrb_state* p_state, mrb_value self)
 {
@@ -82,7 +85,7 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  *   ball_type() → a_symbol
  *
- * Returns the ball’s type. See ::new for a list of possible return
+ * Returns the ball’s type. See L<::new> for a list of possible return
  * values.
  */
 static mrb_value Get_Ball_Type(mrb_state* p_state, mrb_value self)

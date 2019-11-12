@@ -4,7 +4,7 @@ module Std
   ##
   # Module: Std::Enable
   #
-  # This module adds the methods Sprite#disable and Sprite#enable to
+  # This module adds the methods L<Sprite#disable> and L<Sprite#enable> to
   # the core Sprite class. By fiddling with a sprite’s position these
   # methods can take a sprite effectively out of game so that it
   # doesn’t even block as if it were just invisible.
@@ -31,7 +31,7 @@ module Std
     #
     #   enable( [ mass ] )
     #
-    # Restore the sprite and optionally set its massivity to +mass+;
+    # Restore the sprite and optionally set its massivity to C<mass>;
     # if that is unset, it remains at whatever massivity it was before.
     def enable(mass = nil)
       start_at(*@old_pos) if @old_pos

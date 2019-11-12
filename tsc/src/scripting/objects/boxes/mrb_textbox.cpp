@@ -21,15 +21,15 @@
 /**
  * Class: TextBox
  *
- * <p class="superclass">Parent <a href="box.html">Box</a></p>
+ * Parent: L<Box>
  *
- * <p>The classic way to display messages to the user
- * involves the creation of a <em>Text Box</em>. When the
+ * The classic way to display messages to the user
+ * involves the creation of a I<Text Box>. When the
  * user jumps against this kind of box, a small dialog
  * window opens containing the previously set, possibly
  * multiline text. Note that with scripting you can
  * easily change the box’ text in the running level depending
- * on whatever condition you may find suitable.</p>
+ * on whatever condition you may find suitable.
  */
 
 using namespace TSC;
@@ -41,7 +41,7 @@ using namespace TSC::Scripting;
  *
  *   new() → a_text_box
  *
- * <p>Creates a new TextBox with the default values.</p>
+ * Creates a new TextBox with the default values.
  */
 static mrb_value Initialize(mrb_state* p_state, mrb_value self)
 {
@@ -63,11 +63,15 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  *   text=( str ) → str
  *
- * <p>Specify the textbox’ text.</p>
+ * Specify the textbox’ text.
  *
- * <h4>Parameters</h4>
- * <dl><dt>str</dt>
- * <dd>The textbox’ new text. A possibly multiline string.</dd></dl>
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [str] The textbox’ new text. A possibly multiline string.
+ *
+ * =back
  */
 static mrb_value Set_Text(mrb_state* p_state, mrb_value self)
 {
@@ -85,7 +89,7 @@ static mrb_value Set_Text(mrb_state* p_state, mrb_value self)
  *
  *   text() → a_string
  *
- * <p>Returns the textbox’ text.</p>
+ * Returns the textbox’ text.
  */
 static mrb_value Get_Text(mrb_state* p_state, mrb_value self)
 {

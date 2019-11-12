@@ -10,19 +10,15 @@ module Std
   #
   # Usage example (where the sprite with UID 14 is a pow sprite):
   #
-  # <pre class="source">
-  # Std::Switch.new(UIDS[14]) do
-  #   puts "Switch activated!"
-  # end
-  # </pre>
+  #     Std::Switch.new(UIDS[14]) do
+  #       puts "Switch activated!"
+  #     end
   #
   # Creating a new switch:
   #
-  # <pre class="source">
-  # Std::Switch.new(x: 200, y: -200) do
-  #   puts "Switch activated!"
-  # end
-  # </pre>
+  #     Std::Switch.new(x: 200, y: -200) do
+  #       puts "Switch activated!"
+  #     end
   class Switch
 
     # The underlying Sprite instance.
@@ -41,32 +37,41 @@ module Std
     # Create a new switch. If no parameters are given,
     # a switch is created at position (0|0).
     #
-    # <h4>Parameters</h4>
-    # <dl>
-    # <dt>sprite</dt>
-    # <dd>Use this Sprite instance as the switch. The sprite should
-    #   have its image set to "ground/underground/pow.png".</dd>
-    # <dt>opts</dt>
-    # <dd><p>An option hash with the following keys:</p>
-    #   <dl>
-    #   <dt>sprite</dt>
-    #   <dd>Same as the <code>sprite</code> parameter above.</dd>
-    #   <dt>x</dt>
-    #   <dd>Move the switch to this X position.</dd>
-    #   <dt>y</dt>
-    #   <dd>Move the switch to this Y position.</dd>
-    #   <dt>color</dt>
-    #   <dd>Color of the switch. Defaults to <tt>:blue</tt>.</dd>
-    #   </dl>
-    #   <p>If not sprite is passed, setting <code>x</code> and <code>y</code> is recommended,
-    #   this will be used as the creation position for the new sprite.</p>
-    # </dd>
-    # </dl>
+    # =head4 Parameters
+    #
+    # =over
+    #
+    # =item [sprite]
+    #
+    # Use this Sprite instance as the switch. The sprite should
+    # have its image set to F<ground/underground/pow.png>.
+    #
+    # =item [opts]
+    #
+    # An option hash with the following keys:
+    #
+    # =over
+    #
+    # =item [sprite] Same as the C<sprite> parameter above.
+    #
+    # =item [x] Move the switch to this X position.
+    #
+    # =item [y] Move the switch to this Y position.
+    #
+    # =item [color] Color of the switch. Defaults to C<:blue>.
+    #
+    # =back
+    #
+    # If not sprite is passed, setting C<x> and C<y> is recommended,
+    # this will be used as the creation position for the new sprite.
+    #
+    # =back
     #
     # If a block is given, use that block as the action to execute
     # when the switch gets activated.
     #
-    # <h4>Return value</h4>
+    # =head4 Return value
+    #
     # The newly created instance.
     def initialize(opts = {}, &block)
       @activated = false

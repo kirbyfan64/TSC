@@ -22,11 +22,10 @@
 /**
  * Class: Beetle
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * _Beetles_ are small bugs that are usually spit out from
- * a [Beetle Barrage](beetlebarrage.html). Using this class,
+ * I<Beetles> are small bugs that are usually spit out from
+ * a L<Beetle Barrage|BeetleBarrage>. Using this class,
  * you can do with them whatever you want.
  */
 
@@ -41,7 +40,7 @@ using namespace TSC::Scripting;
  *
  * Creates a new instance of this class.
  *
- * #### Return value
+ * =head4 Return value
  *
  * A new instance.
  */
@@ -98,11 +97,16 @@ static mrb_value Get_Rest_Living_Time(mrb_state* p_state, mrb_value self)
  *
  * Sets the color for the beetle.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * color
- * : The beetle’s new color. One of the following symbols:
- *   `:blue`, `:green`, `:red`, `:violet`, `:yellow`.
+ * =over
+ *
+ * =item [color]
+ *
+ * The beetle’s new color. One of the following symbols:
+ * C<:blue>, C<:green>, C<:red>, C<:violet>, C<:yellow>.
+ *
+ * =back
  */
 static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
 {
@@ -137,7 +141,7 @@ static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
  *
  *   color() → a_symbol
  *
- * Returns the beetle’s current color as a symbol. See `#color=` for
+ * Returns the beetle’s current color as a symbol. See L<#color=> for
  * a list of possible return values.
  */
 static mrb_value Get_Color(mrb_state* p_state, mrb_value self)

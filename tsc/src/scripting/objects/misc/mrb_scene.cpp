@@ -41,10 +41,10 @@ static void Play_Scene(std::string scene)
  *
  *   play( scene )
  *
- * Calling this method plays the scene with the name `scene`, which
- * has to be a string, e.g. "01_prologue" (to play the prologue scene).
+ * Calling this method plays the scene with the name C<scene>, which
+ * has to be a string, e.g. C<"01_prologue"> (to play the prologue scene).
  * The canonical scene name mapping can be found in the source code
- * of the cScene::Load_Scene() function.
+ * of the C<cScene::Load_Scene()> function.
  *
  * This method returns, but on the next frame update after return
  * the game mode switches to scene mode. Once the scene has completed,
@@ -53,7 +53,7 @@ static void Play_Scene(std::string scene)
  *
  * An exception is raised if the requested scene does not exist.
  *
- * *Remark*: This means that this method does not block until the
+ * B<Remark>: This means that this method does not block until the
  * scene has finished!
  */
 static mrb_value Play(mrb_state* p_state, mrb_value self)

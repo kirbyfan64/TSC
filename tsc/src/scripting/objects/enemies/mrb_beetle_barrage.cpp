@@ -23,22 +23,25 @@
 /**
  * Class: BeetleBarrage
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * The _Beetle Barrage_ is a giant plant that spits out a number
+ * The I<Beetle Barrage> is a giant plant that spits out a number
  * of small bugs at a time to defend itself when Alex comes in
  * range. They generally don’t move (unless you script them
- * to), but the bugs are very vivid (see [Beetle](beetle.html) if
+ * to), but the bugs are very vivid (see L<Beetle> if
  * you want to generate some of them standalone).
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Spit
- * : Whenever this enemy spits out beetles, this event is triggered.
- *   Note there is only one event for one beetle bulk, the event
- *   is not triggered for each single beetle.
+ * =over
+ *
+ * =item [Spit]
+ *
+ * Whenever this enemy spits out beetles, this event is triggered.
+ * Note there is only one event for one beetle bulk, the event
+ * is not triggered for each single beetle.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -54,7 +57,7 @@ MRUBY_IMPLEMENT_EVENT(spit);
  *
  * Creates a new instance of this class.
  *
- * #### Return value
+ * =head4 Return value
  *
  * A new instance.
  */
@@ -81,11 +84,13 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  * Sets the radius in which the plant reacts on Alex, i.e. in which
  * it will spit out beetles.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * range
- * : Range radius.
+ * =over
  *
+ * =item [range] Range radius.
+ *
+ * =back
  */
 static mrb_value Set_Active_Range(mrb_state* p_state, mrb_value self)
 {
@@ -118,10 +123,13 @@ static mrb_value Get_Active_Range(mrb_state* p_state, mrb_value self)
  *
  * Sets the number of bugs spit out at a time.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * count
- * : Number of beetles to spit out.
+ * =over
+ *
+ * =item [count] Number of beetles to spit out.
+ *
+ * =back
  *
  */
 static mrb_value Set_Spit_Count(mrb_state* p_state, mrb_value self)
@@ -156,10 +164,15 @@ static mrb_value Get_Spit_Count(mrb_state* p_state, mrb_value self)
  * Set the distance which the bugs fly upward before flying randomly
  * into all directions.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * distance
- * : The number of pixels to fly up before starting randomness.
+ * =over
+ *
+ * =item [distance]
+ *
+ * The number of pixels to fly up before starting randomness.
+ *
+ * =back
  */
 static mrb_value Set_Fly_Distance(mrb_state* p_state, mrb_value self)
 {

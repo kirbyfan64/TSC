@@ -21,9 +21,9 @@
 
 /**
  * Class: Path
- * Parent: [Sprite](sprite.html)
+ * Parent: L<Sprite>
  *
- * A _path_ is a usually invisible line objects in the level
+ * A I<path> is a usually invisible line objects in the level
  * (e.g. platforms) follow. While the movement could usually
  * be achieved with pure scripting using timers, paths are
  * implemented purely in C++ and as such perform better. On
@@ -73,9 +73,13 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  * Specify this path’s identifier.
  *
- * #### Parameters
- * str
- * : The path’s new identifier.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [str] The path’s new identifier.
+ *
+ * =back
  */
 static mrb_value Set_Identifier(mrb_state* p_state, mrb_value self)
 {
@@ -94,7 +98,7 @@ static mrb_value Set_Identifier(mrb_state* p_state, mrb_value self)
  *   identifier() → a_string or nil
  *
  * Returns the path’s current identifier as a string. If no
- * identifier has been set, returns `nil`.
+ * identifier has been set, returns C<nil>.
  */
 static mrb_value Get_Identifier(mrb_state* p_state, mrb_value self)
 {
@@ -115,9 +119,13 @@ static mrb_value Get_Identifier(mrb_state* p_state, mrb_value self)
  * drawn (not to draw is the default). This feature is EXPERIMENTAL
  * and usually does not work as expected.
  *
- * #### Parameters
- * bool
- * : Whether or not to draw the line.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [bool] Whether or not to draw the line.
+ *
+ * =back
  */
 static mrb_value Set_Show_Line(mrb_state* p_state, mrb_value self)
 {
@@ -135,7 +143,7 @@ static mrb_value Set_Show_Line(mrb_state* p_state, mrb_value self)
  *
  *   show_line?() → true or false
  *
- * Returns `true` or `false` depending on whether the path’s
+ * Returns C<true> or C<false> depending on whether the path’s
  * movement line should be drawn.
  */
 static mrb_value Does_Show_Line(mrb_state* p_state, mrb_value self)
@@ -153,9 +161,13 @@ static mrb_value Does_Show_Line(mrb_state* p_state, mrb_value self)
  * the path reached the paths end. The default is not to rewind,
  * i.e. to mirror and move the path backwards.
  *
- * #### Parameters
- * bool
- * : Whether or not to rewind.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [bool] Whether or not to rewind.
+ *
+ * =back
  */
 static mrb_value Set_Rewind(mrb_state* p_state, mrb_value self)
 {
@@ -173,8 +185,8 @@ static mrb_value Set_Rewind(mrb_state* p_state, mrb_value self)
  *
  *   rewind?() → true or false
  *
- * Returns `true` or `false` depending on whether this path
- * mirrors (`false`) or rewinds (`true`).
+ * Returns C<true> or C<false> depending on whether this path
+ * mirrors (C<false>) or rewinds (C<true>).
  */
 static mrb_value Does_Rewind(mrb_state* p_state, mrb_value self)
 {
@@ -189,9 +201,15 @@ static mrb_value Does_Rewind(mrb_state* p_state, mrb_value self)
  *
  * Adds the given segment to the end of the path.
  *
- * #### Parameters
- * segment
- * : The [Path::Segment](path_segment.html) instance to add to the path.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [segment]
+ *
+ * The L<Path::Segment> instance to add to the path.
+ *
+ * =back
  */
 static mrb_value Add_Segment(mrb_state* p_state, mrb_value self)
 {
@@ -219,10 +237,16 @@ static mrb_value Add_Segment(mrb_state* p_state, mrb_value self)
  * Iterates over all segments in the path and yields them
  * into the given block one-by-one.
  *
- * #### Parameters
- * segment (**bock**)
- * : The currently iterated path segment. A [Path::Segment](path_segment.html)
- *   instance.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [segment (**block**)]
+ *
+ * The currently iterated path segment. A L<Path::Segment>
+ * instance.
+ *
+ * =back
  */
 static mrb_value Each_Segment(mrb_state* p_state, mrb_value self)
 {
@@ -256,8 +280,9 @@ static mrb_value Each_Segment(mrb_state* p_state, mrb_value self)
  *
  * Returns all segments of this path as an array.
  *
- * #### Return value
- * An array of [Path::Segment](path_segment.html) instances.
+ * =head4 Return value
+ *
+ * An array of L<Path::Segment> instances.
  */
 static mrb_value Segments(mrb_state* p_state, mrb_value self)
 {
@@ -303,20 +328,21 @@ static mrb_value Segments(mrb_state* p_state, mrb_value self)
  * Creates a new path segment describing the given positions and
  * their connection.
  *
- * #### Parameters
+ * =head4 Parameters
+ *
  * All parameters are float values.
  *
- * startx
- * : The start X coordinate.
+ * =over
  *
- * starty
- * : The start Y coordinate.
+ * =item [startx] The start X coordinate.
  *
- * targetx
- * : The target X coordinate.
+ * =item [starty] The start Y coordinate.
  *
- * targety
- * : The target Y coordinate.
+ * =item [targetx] The target X coordinate.
+ *
+ * =item [targety] The target Y coordinate.
+ *
+ * =back
  */
 static mrb_value PS_Initialize(mrb_state* p_state, mrb_value self)
 {

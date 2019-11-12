@@ -22,10 +22,9 @@
 /**
  * Class: Pip
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * _Pip_ is a large worm that slowly moves over the ground and should be
+ * I<Pip> is a large worm that slowly moves over the ground and should be
  * quite easy to avoid. Jumping with enough weight onto it will split
  * it up into two small worms, that are moving much faster and will
  * fling you away upwards when killed.

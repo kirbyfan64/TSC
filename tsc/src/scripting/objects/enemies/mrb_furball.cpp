@@ -23,35 +23,36 @@
 /**
  * Class: Furball
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * Being the most dangerous enemy of the game, the _furball_ is practically
+ * Being the most dangerous enemy of the game, the I<furball> is practically
  * everywhere. Although it seems it isn’t dangerous, this is not necessarily
  * true...
  *
  * Note that the furball boss is not represented by a separate class. To
  * instanciate one, you’d use this class like so:
  *
- * ~~~~~~ ruby
- * f = Furball.new
- * f.color = :black # This makes it a boss
- * f.x = 530
- * f.y = -120
- * f.show
- * ~~~~~~
+ *     f = Furball.new
+ *     f.color = :black # This makes it a boss
+ *     f.x = 530
+ *     f.y = -120
+ *     f.show
  *
- * The `boss?` method can be used to check whether any given furball is
+ * The L<#boss?> method can be used to check whether any given furball is
  * a furball boss.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Downgrade
- * : This event is triggered each time the furball gets hit.
- *   It receives two arguments: the number of hits the furball
- *   already took and the maximum number it takes before dying.
- *   This event is only issued for the furball boss.
+ * =over
+ *
+ * =list [Downgrade]
+ *
+ * This event is triggered each time the furball gets hit.
+ * It receives two arguments: the number of hits the furball
+ * already took and the maximum number it takes before dying.
+ * This event is only issued for the furball boss.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -88,10 +89,16 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  * Specify the furball’s color.
  *
- * #### Parameters
- * color
- * : The furball’s new color. One of `:brown`, `:blue`, or `:black`;
- *   Note that `:black` makes the furball a furball boss.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [color]
+ *
+ * The furball’s new color. One of C<:brown>, C<:blue>, or C<:black>;
+ * Note that C<:black> makes the furball a furball boss.
+ *
+ * =back
  */
 static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
 {
@@ -138,7 +145,7 @@ static mrb_value Is_Boss(mrb_state* p_state, mrb_value self)
  *   color() → a_symbol
  *
  * Returns the furballs current color as a symbol. For possible
- * values, see color=.
+ * values, see L<color=>.
  */
 static mrb_value Get_Color(mrb_state* p_state, mrb_value self)
 {
@@ -164,13 +171,23 @@ static mrb_value Get_Color(mrb_state* p_state, mrb_value self)
  * Sets the number of downgrades this boss furball needs to have
  * before it dies.
  *
- * #### Parameters
- * val
- * : Maximum number of downgrades before it dies. Cannot be negative.
+ * =head4 Parameters
  *
- * #### Raises
- * TypeError
- * : This is not the big, black boss furball.
+ * =over
+ *
+ * =item [val]
+ *
+ * Maximum number of downgrades before it dies. Cannot be negative.
+ *
+ * =back
+ *
+ * =head4 Raises
+ *
+ * =over
+ *
+ * =item [TypeError] This is not the big, black boss furball.
+ *
+ * =back
  */
 static mrb_value Set_Max_Downgrade_Count(mrb_state* p_state, mrb_value self)
 {
@@ -210,16 +227,24 @@ static mrb_value Get_Max_Downgrade_Count(mrb_state* p_state, mrb_value self)
  *
  *   level_ends_if_killed=( val ) → val
  *
- * Set to `true` if you want the level to automatically end when this
+ * Set to C<true> if you want the level to automatically end when this
  * furball boss dies.
  *
- * #### Parameters
- * val
- * : Wheter or not to end the level.
+ * =head4 Parameters
  *
- * #### Raises
- * TypeError
- * : This is not the big, black furball boss.
+ * =over
+ *
+ * =item [val] Wheter or not to end the level.
+ *
+ * =back
+ *
+ * =head4 Raises
+ *
+ * =over
+ *
+ * =item [TypeError] This is not the big, black furball boss.
+ *
+ * =back
  */
 static mrb_value Set_Level_Ends_If_Killed(mrb_state* p_state, mrb_value self)
 {

@@ -22,24 +22,22 @@
 /**
  * Class: LevelExit
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * A level exit is usually a location where Alex can regularily
+ * A I<level exit> is usually a location where Alex can regularily
  * win the level, without any scripting intervention. Level exits
  * however can also be used to warp Alex to other points in the
  * same level or even into a sublevel of the current one.
  *
- * Return level stack
- * ------------------
+ * =head2 Return level stack
  *
  * Level exits can make use of a return level stack that allows
  * to return to a specific level when a sublevel’s finish is
  * reached. To activate this feature, you first have to specify
  * a sublevel a level exit will warp Alex into as usual (see
- * `#level=`). Utilizing the methods `#return_level=` and
- * `#return_entry=` you can now dynamically specify where Alex
- * should return when **the sublevel’s** default finish is reached
+ * L<#level=>). Utilizing the methods L<#return_level=> and
+ * L<#return_entry=> you can now dynamically specify where Alex
+ * should return when B<the sublevel’s> default finish is reached
  * (without setting one of these, the sublevel’s finish will be
  * taken for the overall finish and end all current levels, advancing
  * Alex to the next waypoint on the overworld).
@@ -48,14 +46,18 @@
  * for other complex level setups. Note it works fine recursively, i.e.
  * you can employ the same technique in the destination sublevel again.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Exit
- * : Called when this level exit is activated. If this is a warping
- *   level exit, the event handler is executed after Alex’s movements
- *   are completed (but before the camera move and before the target
- *   level entry is read from this object).
+ * =over
+ *
+ * =item [Exit]
+ *
+ * Called when this level exit is activated. If this is a warping
+ * level exit, the event handler is executed after Alex’s movements
+ * are completed (but before the camera move and before the target
+ * level entry is read from this object).
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -93,12 +95,18 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  * Specifies the level exit’s new type.
  *
- * #### Parameters
- * val
- * : A symbol denoting the new type. `:beam` directly beams the
- *   player to the target without any animation, whereas `:warp`
- *   makes the player slowly move into the destined direction
- *   of this level exit (typically used for pipes).
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val]
+ *
+ * A symbol denoting the new type. C<:beam> directly beams the
+ * player to the target without any animation, whereas C<:warp>
+ * makes the player slowly move into the destined direction
+ * of this level exit (typically used for pipes).
+ *
+ * =back
  */
 static mrb_value Set_Type(mrb_state* p_state, mrb_value self)
 {
@@ -127,7 +135,7 @@ static mrb_value Set_Type(mrb_state* p_state, mrb_value self)
  *
  *   type() → a_symbol
  *
- * The level exit’s type. See #type= for a list of possible
+ * The level exit’s type. See L<#type=> for a list of possible
  * return values.
  */
 static mrb_value Get_Type(mrb_state* p_state, mrb_value self)
@@ -151,25 +159,41 @@ static mrb_value Get_Type(mrb_state* p_state, mrb_value self)
  * Specify what happens to the camera when the level exit
  * is activated.
  *
- * #### Parameters
- * motion
- * : One of the following symbols:
- *   none
- *   : Directly set the camera to the new position. This is the default.
+ * =head4 Parameters
  *
- *   fly
- *   : Slowly move the camera over to the new position.
+ * =over
  *
- *   blink
- *   : Fade out at the current position and fade back in at the new position.
+ * =item [motion]
  *
- *   path_forward
- *   : Make the camera follow a path. You need to use #path= to specify
- *     the target path for this.
+ * One of the following symbols:
  *
- *   path_backward
- *   : Make the camera follow a path backwards. You need to use #path= to
- *     specify the target path for this.
+ * =over
+ *
+ * =item [none]
+ *
+ * Directly set the camera to the new position. This is the default.
+ *
+ * =item [fly]
+ *
+ * Slowly move the camera over to the new position.
+ *
+ * =item [blink]
+ *
+ * Fade out at the current position and fade back in at the new position.
+ *
+ * =item [path_forward]
+ *
+ * Make the camera follow a path. You need to use L<#path=> to specify
+ * the target path for this.
+ *
+ * =item [path_backward]
+ *
+ * Make the camera follow a path backwards. You need to use L<#path=> to
+ * specify the target path for this.
+ *
+ * =back
+ *
+ * =back
  */
 static mrb_value Set_Camera_Motion(mrb_state* p_state, mrb_value self)
 {
@@ -204,7 +228,7 @@ static mrb_value Set_Camera_Motion(mrb_state* p_state, mrb_value self)
  *
  *   camera_motion() → a_symbol
  *
- * Return the level exit’s camera motion. See #camera_motion= for
+ * Return the level exit’s camera motion. See L<#camera_motion=> for
  * a list of possible return values.
  */
 static mrb_value Get_Camera_Motion(mrb_state* p_state, mrb_value self)
@@ -231,12 +255,18 @@ static mrb_value Get_Camera_Motion(mrb_state* p_state, mrb_value self)
  *
  *   level=( name ) → name
  * Set the destination level for this exit. If you want to
- * warp inside the same level, use #entry= to denote a
+ * warp inside the same level, use L<#entry=> to denote a
  * target level entry instead.
  *
- * #### Parameters
- * name
- * : The name of the new level (without path and without .tsclvl extension).
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [name]
+ *
+ * The name of the new level (without path and without C<.tsclvl> extension).
+ *
+ * =back
  */
 static mrb_value Set_Level(mrb_state* p_state, mrb_value self)
 {
@@ -255,7 +285,7 @@ static mrb_value Set_Level(mrb_state* p_state, mrb_value self)
  *   level() → a_string
  *
  * Returns the destination level for this level exit as a string
- * without path and without .tsclvl extension.
+ * without path and without C<.tsclvl> extension.
  */
 static mrb_value Get_Level(mrb_state* p_state, mrb_value self)
 {
@@ -268,13 +298,17 @@ static mrb_value Get_Level(mrb_state* p_state, mrb_value self)
  *
  *   entry=( name ) → name
  *
- * The target level entry for this level exit. If called _without_
- * a prior call to #level=, allows you to warp inside the current
+ * The target level entry for this level exit. If called I<without>
+ * a prior call to L<#level=>, allows you to warp inside the current
  * level.
  *
- * #### Parameters
- * name
- * : The name of the target level entry.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [name] The name of the target level entry.
+ *
+ * =back
  */
 static mrb_value Set_Entry(mrb_state* p_state, mrb_value self)
 {
@@ -309,7 +343,7 @@ static mrb_value Get_Entry(mrb_state* p_state, mrb_value self)
  * Alex enters this level exit. An empty string means to push the
  * current level onto the stack.
  *
- * Note you have to set a destination sublevel via `#level=` in
+ * Note you have to set a destination sublevel via L<#level=> in
  * order for this setting to have any effect.
  */
 static mrb_value Set_Return_Level(mrb_state* p_state, mrb_value self)
@@ -333,7 +367,7 @@ static mrb_value Set_Return_Level(mrb_state* p_state, mrb_value self)
  * current level will be pushed onto the stack.
  *
  * Note that this setting only takes effect if a destination
- * sublevel has been specified (see `#level=`).
+ * sublevel has been specified (see L<#level=>).
  */
 static mrb_value Get_Return_Level(mrb_state* p_state, mrb_value self)
 {
@@ -345,7 +379,7 @@ static mrb_value Get_Return_Level(mrb_state* p_state, mrb_value self)
  * Method: LevelExit#return_entry
  *
  * Returns the name of the level entry that is associated with the
- * level pushed onto the return stack (see `#return_level`). If
+ * level pushed onto the return stack (see L<#return_level>). If
  * this returns an empty string, the default level starting position
  * will be used. If you specify no return level, the entry will be
  * assumed to be from the current level.
@@ -362,7 +396,7 @@ static mrb_value Get_Return_Entry(mrb_state* p_state, mrb_value self)
  *   entry=( str ) → str
  *
  * Specifies the name of the level entry that is associated with
- * the level pushed onto the return stack (see `#return_level`). Set
+ * the level pushed onto the return stack (see L<#return_level>). Set
  * this to an empty string for requesting the default starting position
  * of the return level. If no return level has been specified,
  * the entry will be assumed to belong to the current level.
@@ -417,11 +451,15 @@ static mrb_value Set_Exit_Name(mrb_state* p_state, mrb_value self)
  *   path=( ident ) → ident
  *
  * Specify the identifier for the camera movement path if
- * you set #camera_motion= to one of the path options.
+ * you set L<#camera_motion=> to one of the C<path> options.
  *
- * #### Parameters
- * ident
- * : The name of path you want to move the camera along.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [ident] The name of path you want to move the camera along.
+ *
+ * =back
  */
 static mrb_value Set_Path(mrb_state* p_state, mrb_value self)
 {

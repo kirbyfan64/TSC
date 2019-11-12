@@ -20,18 +20,22 @@
 /**
  * Class: Box
  *
- * <p class="superclass">Parent <a href="movingsprite.html">MovingSprite</a></p>
+ * Parent L<MovingSprite>
  *
- * <p><em>Box</em> is the superclass for all boxes accessible
+ * I<Box> is the superclass for all boxes accessible
  * from the scripting interface. Boxes are the little
  * blocks that contain coins, powerups, or just spin
- * around if jump against them.</p>
+ * around if jump against them.
  *
- * <h2>Events</h2>
+ * =head2 Events
  *
- * <dl><dt>Activate</dt>
- * <dd>The box was activated by Alex jumping against it or otherwise.</dd>
- * </dl>
+ * =over
+ *
+ * =item [Activate]
+ *
+ * The box was activated by Alex jumping against it or otherwise.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -51,22 +55,29 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  *   animation_type=( ani ) → ani
  *
- * <p>Specify the box’ appeareance.</p>
+ * Specify the box’ appeareance.
  *
- * <h4>Parameters</h4>
- * <dl><dt>ani</dt>
- * <dd><p>The box’ new animation type. One of the following symbols:</p>
- *   <dl><dt>bonus</dt>
- *   <dd>The "?" box. Usually used for powerups.</dd>
+ * =head4 Parameters
  *
- *   <dt>default</dt>
- *   <dd>The blank box. Usually used for coins.</dd>
+ * =over
  *
- *   <dt>power</dt>
- *   <dd>The "!" box. Usually used for 1-ups.</dd>
+ * =item [ani]
  *
- *   <dt>spin</dt>
- *   <dd>The spinbox. This box just spins if jumped against it.</dd></dl></dd></dl>
+ * The box’ new animation type. One of the following symbols:
+ *
+ * =over
+ *
+ * =item [bonus] The "?" box. Usually used for powerups.
+ *
+ * =item [default] The blank box. Usually used for coins.
+ *
+ * =item [power] The "!" box. Usually used for 1-ups.
+ *
+ * =item [spin] The spinbox. This box just spins if jumped against it.
+ *
+ * =back
+ *
+ * =back
  */
 static mrb_value Set_Animation_Type(mrb_state* p_state, mrb_value self)
 {
@@ -99,8 +110,8 @@ static mrb_value Set_Animation_Type(mrb_state* p_state, mrb_value self)
  *
  *   animation_type() → a_symbol
  *
- * <p>Returns the box’ current animation type. See #animation_type=
- * for a list of possible return values.</p>
+ * Returns the box’ current animation type. See L<#animation_type=>
+ * for a list of possible return values.
  */
 static mrb_value Get_Animation_Type(mrb_state* p_state, mrb_value self)
 {
@@ -113,13 +124,19 @@ static mrb_value Get_Animation_Type(mrb_state* p_state, mrb_value self)
  *
  *   max_uses=( count ) → count
  *
- * <p>Specify how many times this max be used at maximum before
- * it stops to work.</p>
+ * Specify how many times this max be used at maximum before
+ * it stops to work.
  *
- * <h4>Parameters</h4>
- * <dl><dt>count</dt>
- * <dd>The maximum number of times this box may be used. Specify
- *   a value of -1 to indicate it may be used infinitely.</dd></dl>
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [count]
+ *
+ * The maximum number of times this box may be used. Specify
+ * a value of -1 to indicate it may be used infinitely.
+ *
+ * =back
  */
 static mrb_value Set_Usable_Count(mrb_state* p_state, mrb_value self)
 {
@@ -137,8 +154,8 @@ static mrb_value Set_Usable_Count(mrb_state* p_state, mrb_value self)
  *
  *   max_uses() → an_integer
  *
- * <p>Returns the maximum number of times this box can
- * be used.</p>
+ * Returns the maximum number of times this box can
+ * be used.
  */
 static mrb_value Get_Usable_Count(mrb_state* p_state, mrb_value self)
 {
@@ -151,9 +168,9 @@ static mrb_value Get_Usable_Count(mrb_state* p_state, mrb_value self)
  *
  *   remaining_uses() → an_integer
  *
- * <p>Returns the remaining number of times this box
+ * Returns the remaining number of times this box
  * may be used. Returns -1 for boxes that may be
- * used infinitely.</p>
+ * used infinitely.
  */
 static mrb_value Get_Remaining_Usable_Count(mrb_state* p_state, mrb_value self)
 {
@@ -166,27 +183,42 @@ static mrb_value Get_Remaining_Usable_Count(mrb_state* p_state, mrb_value self)
  *
  *   invisible=( invis ) → invis
  *
- * <p>Specify the box’ invisibility type.</p>
+ * Specify the box’ invisibility type.
  *
- * <h4>Parameters</h4>
- * <dl><dt>invis</dt>
- * <dd><p>The box’ new invisibility type. One of the following symbols:</p>
- *   <dl><dt>visible</dt>
- *   <dd>The box isn’t invisible.</dd>
+ * =head4 Parameters
  *
- *   <dt>massive</dt>
- *   <dd>The box gets visible if jumped against it. It however
- *     acts as an invisible massive block even if not activated
- *     (i.e. you can stand on it).</dd>
+ * =over
  *
- *  <dt>ghost</dt>
- *  <dd>The box is only visible for Ghost Alex. Only Ghost Alex
- *    can stand on it.</dd>
+ * =item [invis]
  *
- *  <dt>semi_massive</dt>
- *  <dd>The box is visible after jumping against it from
- *    its activation direction (usually from below). While
- *    not activated, Alex can’t stand on it.</dd></dl></dd></dl>
+ * The box’ new invisibility type. One of the following symbols:
+ *
+ * =over
+ *
+ * =item [visible]
+ *
+ * The box isn’t invisible.
+ *
+ * =item [massive]
+ *
+ * The box gets visible if jumped against it. It however
+ * acts as an invisible massive block even if not activated
+ * (i.e. you can stand on it).</dd>
+ *
+ * =item [ghost]
+ *
+ * The box is only visible for Ghost Alex. Only Ghost Alex
+ * can stand on it.
+ *
+ * =item [semi_massive]
+ *
+ * The box is visible after jumping against it from
+ * its activation direction (usually from below). While
+ * not activated, Alex can’t stand on it.
+ *
+ * =back
+ *
+ * =back
  */
 static mrb_value Set_Invisible(mrb_state* p_state, mrb_value self)
 {
@@ -219,8 +251,8 @@ static mrb_value Set_Invisible(mrb_state* p_state, mrb_value self)
  *
  *   invisible() → a_symbol
  *
- * <p>Returns the box’ invisibility state. See #invisible= for
- * possible return values.</p>
+ * Returns the box’ invisibility state. See L<#invisible=> for
+ * possible return values.
  */
 static mrb_value Get_Invisible(mrb_state* p_state, mrb_value self)
 {
@@ -244,8 +276,8 @@ static mrb_value Get_Invisible(mrb_state* p_state, mrb_value self)
  *
  *   activate()
  *
- * <p>Activate the box, revealing what it’s inside and
- * decrementing the usage count by one.</p>
+ * Activate the box, revealing what it’s inside and
+ * decrementing the usage count by one.
  */
 static mrb_value Activate(mrb_state* p_state, mrb_value self)
 {

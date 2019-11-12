@@ -22,23 +22,25 @@
 /**
  * Class: LevelEntry
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * A _level entry_ can be used as a warp target for Alex even
+ * A I<level entry> can be used as a warp target for Alex even
  * without scripting. It has a name under which it can be
- * referenced from a [LevelExit](levelexit.html) to make Alex
- * change places.
+ * referenced from a L<LevelExit> to make Alex change places.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Enter
- * : This event gets triggered when the level entry is activated,
- *   but after Alex has moved out of the warp area. That is,
- *   when this is an up-direction level entry, the event will
- *   not be triggered before Alex has completed his upwards
- *   move (but before eventual gravity is applied).
+ * =over
+ *
+ * =item [Enter]
+ *
+ * This event gets triggered when the level entry is activated,
+ * but after Alex has moved out of the warp area. That is,
+ * when this is an up-direction level entry, the event will
+ * not be triggered before Alex has completed his upwards
+ * move (but before eventual gravity is applied).
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -90,10 +92,13 @@ static mrb_value Get_Name(mrb_state* p_state, mrb_value self)
  *
  * Set the name of the level entry.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * str
- * : The new name of the level entry.
+ * =over
+ *
+ * =item [str] The new name of the level entry.
+ *
+ * =back
  */
 static mrb_value Set_Name(mrb_state* p_state, mrb_value self)
 {
@@ -111,7 +116,7 @@ static mrb_value Set_Name(mrb_state* p_state, mrb_value self)
  *
  *   type() → a_symbol
  *
- * Retrieve the entry’s type. See #type= for a list of possible types.
+ * Retrieve the entry’s type. See L<#type=> for a list of possible types.
  */
 static mrb_value Get_Type(mrb_state* p_state, mrb_value self)
 {
@@ -134,15 +139,28 @@ static mrb_value Get_Type(mrb_state* p_state, mrb_value self)
  *
  * Change the level entry’s type.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * sym
- * : The new type of the entry. One of the following symbols:
- *   `:beam`
- *   : Make Alex immediately stand at the entry’s position.
- *   `:warp`
- *   : Make Alex slowly move into the direction specified
- *     by MovingSprite#direction. This is useful for pipes.
+ * =over
+ *
+ * =item [sym]
+ *
+ * The new type of the entry. One of the following symbols:
+ *
+ * =over
+ *
+ * =item [C<:beam>]
+ *
+ * Make Alex immediately stand at the entry’s position.
+ *
+ * =item [C<:warp>]
+ *
+ * Make Alex slowly move into the direction specified
+ * by L<MovingSprite#direction>. This is useful for pipes.
+ *
+ * =back
+ *
+ * =back
  */
 static mrb_value Set_Type(mrb_state* p_state, mrb_value self)
 {

@@ -22,14 +22,13 @@
 /**
  * Class: Spikeball
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * Be careful when using _Spikeballs_. They are invincible in normal
+ * Be careful when using I<Spikeballs>. They are invincible in normal
  * gameplay and typically used in levels not intended for beginners to
  * make reaching specific platforms difficult or prevent the player from
- * staying at a place for too long. Although it _is_ possible to defy them
- * using the star powerup, this should really be the exception. They gain
+ * staying at a place for too long. Although it I<is> possible to defy them
+ * using the lemon powerup, this should really be the exception. They gain
  * their character by their invicibility, and combining them with stars too
  * often makes them lose their point. Instead, if you want to block a passage
  * in a way Alex can’t get through without a star, use eatos (and probably remove

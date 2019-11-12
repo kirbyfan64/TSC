@@ -22,14 +22,13 @@
 /**
  * Class: Spika
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * _Spikas_ are big, rolling balls armed with spikes. They follow
+ * I<Spikas> are big, rolling balls armed with spikes. They follow
  * Alex and try to overroll him. Big spikas tend to block paths,
  * so you somehow need to make them move away. The default spika
  * is not resistant to fire or ice, so you may want to change
- * that using the apropriate methods from the `Enemy` class.
+ * that using the apropriate methods from the L<Enemy> class.
  */
 
 using namespace TSC;
@@ -65,10 +64,16 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  * Specifies the color/type of this spika.
  *
- * #### Parameters
- * color
- * : The spika’s new color. One of the following symbols:
- *   `:orange`, `:green`, `:grey`, `:red`.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [color]
+ *
+ * The spika’s new color. One of the following symbols:
+ * C<:orange>, C<:green>, C<:grey>, C<:red>.
+ *
+ * =back
  */
 static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
 {
@@ -101,7 +106,7 @@ static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
  *
  *   color() → a_symbol
  *
- * Returns the spika’s current color. See #color= for
+ * Returns the spika’s current color. See L<#color=> for
  * possible return values.
  */
 static mrb_value Get_Color(mrb_state* p_state, mrb_value self)

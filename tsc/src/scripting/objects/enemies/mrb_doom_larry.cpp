@@ -19,13 +19,12 @@
 #include "mrb_enemy.hpp"
 
 /**
- * Class: Doom_Larry
+ * Class: DoomLarry
  *
- * Parent: [Larry](larry.html)
- * {: .superclass}
+ * Parent: L<Larry>
  *
- * While you may not be too worried about Larry, you do need to take care with _Doom_Larry_.  When he
- * explodes, he will instantly kill both Alex and all enemies nearby.
+ * While you may not be too worried about Larry, you do need to take care with I<Doom_Larry>.  When it
+ * explodes, it will instantly kill both Alex and all enemies nearby.
  */
 
 using namespace TSC;
@@ -33,7 +32,7 @@ using namespace TSC::Scripting;
 
 
 /**
- * Method: Doom_Larry::new
+ * Method: DoomLarry::new
  *
  *   new() → a_doom_larry
  *

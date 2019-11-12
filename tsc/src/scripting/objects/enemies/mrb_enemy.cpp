@@ -21,22 +21,25 @@
 /**
  * Class: Enemy
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * _Enemies_ are the little guys that hang around all over the world of
+ * I<Enemies> are the little guys that hang around all over the world of
  * TSC and try to hinder you in many different ways. This is the base
  * class for all enemies and defines the methods that are available for
  * every enemy, regardless of its type.
  *
  * Currently, this class is not instanciatable.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Die
- * : This event gets triggered when the enemy dies. The event handler
- *   doesn’t get passed any argument.
+ * =over
+ *
+ * =item [Die]
+ *
+ * This event gets triggered when the enemy dies. The event handler
+ * doesn’t get passed any argument.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -60,9 +63,9 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  * the player (i.e. it is as if the enemy fell into an abyss
  * or something like that).
  *
- * Causes a subsequent _Die_ event.
+ * Causes a subsequent I<Die> event.
  *
- * See also: [#kill_with_points!](#killwithpoints).
+ * See also: L<#kill_with_points!>.
  */
 static mrb_value Kill(mrb_state* p_state,  mrb_value self)
 {
@@ -80,9 +83,9 @@ static mrb_value Kill(mrb_state* p_state,  mrb_value self)
  * Immediately kills this enemy. Points are given to the
  * player. Also plays the dying sound for this enemy.
  *
- * Causes a subsequent _Die_ event.
+ * Causes a subsequent I<Die> event.
  *
- * See also: [#kill!](#kill)
+ * See also: L<#kill!>
  */
 static mrb_value Kill_With_Points(mrb_state* p_state,  mrb_value self)
 {
@@ -122,9 +125,13 @@ static mrb_value Get_Kill_Points(mrb_state* p_state,  mrb_value self)
  * something else than player interaction, e.g. by falling into an
  * abyss.
  *
- * #### Parameters
- * points
- * : Number of points to add.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [points] Number of points to add.
+ *
+ * =back
 */
 static mrb_value Set_Kill_Points(mrb_state* p_state,  mrb_value self)
 {
@@ -142,7 +149,7 @@ static mrb_value Set_Kill_Points(mrb_state* p_state,  mrb_value self)
  *   kill_sound() → a_string
  *
  * Returns the filename of the sound to play when the enemy gets killed,
- * relative to the `sounds/` directory.
+ * relative to the L<sounds/> directory.
  */
 static mrb_value Get_Kill_Sound(mrb_state* p_state,  mrb_value self)
 {
@@ -158,10 +165,14 @@ static mrb_value Get_Kill_Sound(mrb_state* p_state,  mrb_value self)
  *
  * Sets the sound to play when the enemy gets killed.
  *
- * #### Parameters
- * path
- * : The path of the sound file to play. Relative to the `sounds/`
- *   directory.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [path]
+ *
+ * The path of the sound file to play. Relative to the L<sounds/>
+ * directory.
 */
 static mrb_value Set_Kill_Sound(mrb_state* p_state,  mrb_value self)
 {
@@ -180,9 +191,15 @@ static mrb_value Set_Kill_Sound(mrb_state* p_state,  mrb_value self)
  *
  * Enables/Disables fire resistance for this enemy.
  *
- * #### Parameters
- * val
- * : `true` to enable the fire resistance, `false` to disable it.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val]
+ *
+ * C<true> to enable the fire resistance, C<false> to disable it.
+ *
+ * =back
 */
 static mrb_value Set_Fire_Resistant(mrb_state* p_state,  mrb_value self)
 {

@@ -86,8 +86,7 @@ static void calculate_rand_values(mrb_state* p_state, mrb_value obj, mrb_float& 
 /**
  * Class: Animation
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
  * TODO: Docs.
  */
@@ -129,33 +128,32 @@ static mrb_value Set_Time_to_Live(mrb_state* p_state,  mrb_value self)
 /**
  * Class: ParticleEmitter
  *
- * Parent: [Animation](animation.html)
- * {: .superclass}
+ * Parent: L<Animation>
  *
- * The _ParticleEmitter_ is one of the most complex classes in the
+ * The I<ParticleEmitter> is one of the most complex classes in the
  * API. If you’re not familiar with using regular particle emitters from
  * the normal TSC editor, you probably want to go there first and
  * experiment with them, because everything you need to adjust there
  * needs to be adjusted for dynamically created particle emitters as
  * well--with the difference that in the editor you have a nice UI
  * assisting you, whereelse for the dynamically created particle emitters
- * you have to _know_ what to set and what not to set. Particle emitters
+ * you have to I<know> what to set and what not to set. Particle emitters
  * can be quite hairy beasts, so I recommend you to often load your level
  * and test what your particle emitter will look like, e.g. by
- * registering for Alex’s _Jump_ event.
+ * registering for Alex’s I<Jump> event.
  *
  * Particle emitters can be used in two ways: The usual way, which means
  * periodically issueing a defined number of particles at a time. Such a
- * particle emitter can be created by setting the [emitter’s time to
- * live](#emittertimetolive-1) on that particle emitter. If you want more
+ * particle emitter can be created by setting the
+ * L<emitter’s time to live|#emittertimetolive-1> on that particle emitter. If you want more
  * finergrained control about what is going on, you can ignore that
- * setting and call the [#emit](#emit) method directly. Each call to that
+ * setting and call the L<#emit> method directly. Each call to that
  * method will cause the particle emitter to exactly once emit particles
  * according to its configuration.
  *
  * A good number of setter methods accept a Range instead of a singular
  * fixed parameter, which allows you to specify a range of valid values
- * for a given option. For instance, the [#time_to_live=](animation.html#timetolive-1)
+ * for a given option. For instance, the L<#time_to_live=|Animation#time_to_live=>
  * methods allows you to define the ilfespan of particles emitted at a
  * time. Instead of setting this to a single, definite value (which you
  * can do if you want to), you can configure it to a Range like 1..2,
@@ -164,34 +162,32 @@ static mrb_value Set_Time_to_Live(mrb_state* p_state,  mrb_value self)
  * different.
  *
  * Note that, in contrast to all other objects in TSC, it is possible to
- * set a particle emitter’s [Z coordinate](#z), making it possible to
+ * set a particle emitter’s L<Z coordinate|#z>, making it possible to
  * appear in front of Alex or other sprites.
  *
- * Also note that `ParticleEmitter` is not a subclass of `Sprite` (the
+ * Also note that C<ParticleEmitter> is not a subclass of L<Sprite> (the
  * particle emitter doesn’t show up on the screen itself, just its
  * emitted particles) and the methods defined there don’t apply here
  * therefore.
  *
- * == Example
+ * =head2 Example
  *
  * The following example shows how to create a particle emitter from
  * the scripting API. The object with UID 14 is assumed to be a box
  * you can jump against.
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * UIDS[14].on_activate do
- *   part = ParticleEmitter.new(100, -100, 100, 100)
- *   part.quota = 4
- *   part.image_filename = "animation/particles/snowflake_1.png"
- *   part.emitter_time_to_live = -1
- *   part.show
- * end
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     UIDS[14].on_activate do
+ *       part = ParticleEmitter.new(100, -100, 100, 100)
+ *       part.quota = 4
+ *       part.image_filename = "animation/particles/snowflake_1.png"
+ *       part.emitter_time_to_live = -1
+ *       part.show
+ *     end
  *
  * When the player jumps against the box, the game will create a particle
  * emitter at position (100|-100) with a size of 100x100 (all pixel values).
  * The emitter will emit snowflakes as per the image file in
- * `animation/particles/snowflake_1.png` below the `pixmaps/` directory, four
+ * F<animation/particles/snowflake_1.png> below the F<pixmaps/> directory, four
  * flakes at a time. It will do so infinitely (-1).
 */
 
@@ -202,9 +198,9 @@ static mrb_value Set_Time_to_Live(mrb_state* p_state,  mrb_value self)
  *
  * Creates a new particle emitter. It won’t emit particles by default,
  * you first have to adjust the emitter with the various setter methods,
- * and when you’ve done this you can either call [#emit](#emit) which will
+ * and when you’ve done this you can either call L<#emit> which will
  * gives you absolute control over each emitted particle, or use
- * [#emitter_time_to_live=](#emittertimetolive-1) to make the emitter
+ * L<#emitter_time_to_live=> to make the emitter
  * emit particles automatically.
  */
 static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
@@ -263,7 +259,7 @@ static mrb_value Set_Z(mrb_state* p_state,  mrb_value self)
  *   image_filename() → a_string
  *
  * The filename of the image of the particles emitted by this emitter,
- * relative to the `pixmaps/` directory.
+ * relative to the F<pixmaps/> directory.
  */
 static mrb_value Get_Image_Filename(mrb_state* p_state,  mrb_value self)
 {
@@ -277,7 +273,7 @@ static mrb_value Get_Image_Filename(mrb_state* p_state,  mrb_value self)
  *   image_filename=( path )
  *
  * Sets the filename of the image to use for particles generated by the
- * particle emitter, relative to the `pixmaps/` directory.
+ * particle emitter, relative to the F<pixmaps/> directory.
  */
 static mrb_value Set_Image_Filename(mrb_state* p_state,  mrb_value self)
 {
@@ -483,7 +479,7 @@ static mrb_value Set_Speed(mrb_state* p_state,  mrb_value self)
  * Sets the emitter’s time to live (TTL). After the specified number of
  * seconds has passed, the emitter will stop emitting particles. This
  * value is independant from the TTL of the respective particles, which
- * can be set with the `Animation#time_to_live=` method.
+ * can be set with the L<Animation#time_to_live=> method.
  */
 static mrb_value Set_Emitter_Time_To_Live(mrb_state* p_state,  mrb_value self)
 {
@@ -624,9 +620,9 @@ static mrb_value Set_Const_Rotation_Z(mrb_state* p_state,  mrb_value self)
  *
  *   emit()
  *
- * Emit a single particle (or multiple ones if the [#quota](#quota) is
+ * Emit a single particle (or multiple ones if the L<#quota> is
  * set accordingly). Usually you want to use
- * [#emitter_time_to_live=](#emittertimetolive1) to make the
+ * L<#emitter_time_to_live=> to make the
  * emitter act automatically, but this method allows to retain full
  * control about the particle emitter.
 */

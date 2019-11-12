@@ -22,10 +22,9 @@
 /**
  * Class: StaticEnemy
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * _Static enemies_ are usually not-moving enemies that keep their
+ * I<Static enemies> are usually not-moving enemies that keep their
  * place. The prime example for a static enemy is a saw, which does
  * nothing but rotate around itself.
  *
@@ -67,9 +66,13 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  * Specify the velocity the sprite uses to rotate around its centre.
  * By default, static enemies do not rotate (i.e. the speed is 0).
  *
- * #### Parameters
- * speed
- * : The new rotation speed. A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [speed] The new rotation speed. A float.
+ *
+ * =back
  */
 static mrb_value Set_Rotation_Speed(mrb_state* p_state, mrb_value self)
 {
@@ -107,11 +110,15 @@ static mrb_value Get_Rotation_Speed(mrb_state* p_state, mrb_value self)
  *
  * Specify the speed the static enemy uses to move along the TSC
  * path assigned to it. This requires you to assign an TSC path
- * by means of the #path= method.
+ * by means of the L<#path=> method.
  *
- * #### Parameters
- * val
- * : The new moving speed of the static enemy.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val] The new moving speed of the static enemy.
+ *
+ * =back
  */
 static mrb_value Set_Speed(mrb_state* p_state, mrb_value self)
 {
@@ -152,10 +159,16 @@ static mrb_value Get_Speed(mrb_state* p_state, mrb_value self)
  * static enemy move along the given path with the specified
  * velocity.
  *
- * #### Parameters
- * path
- * : The identifier of the TSC path you want to assign to
- *   this static enemy, as a string.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [path]
+ *
+ * The identifier of the TSC path you want to assign to
+ * this static enemy, as a string.
+ *
+ * =back
  */
 static mrb_value Set_Path(mrb_state* p_state, mrb_value self)
 {
@@ -175,9 +188,10 @@ static mrb_value Set_Path(mrb_state* p_state, mrb_value self)
  *
  * Get the path identifier assigned to this static enemy.
  *
- * #### Return value
+ * =head4 Return value
+ *
  * The path identifier as a string. If no path identifier has
- * been assigned to this static enemy, returns `nil`.
+ * been assigned to this static enemy, returns C<nil>.
  */
 static mrb_value Get_Path(mrb_state* p_state, mrb_value self)
 {

@@ -20,10 +20,9 @@
 /**
  * Class: Lava
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * _Lava_ makes any enemy and Alex immediately and instantly die.
+ * I<Lava> makes any enemy and Alex immediately and instantly die.
  */
 
 using namespace TSC;
@@ -37,7 +36,8 @@ using namespace TSC::Scripting;
  *
  * Creates a new piece of lava.
  *
- * ##### Return value
+ * =head4 Return value
+ *
  * The newly created instance.
  */
 static mrb_value Initialize(mrb_state* p_state, mrb_value self)
