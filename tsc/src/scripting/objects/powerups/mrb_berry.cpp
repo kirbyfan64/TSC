@@ -21,10 +21,9 @@
 /**
  * Class: Berry
  *
- * Parent: [Powerup](powerup.html)
- * {: .superclass}
+ * Parent: L<Powerup>
  *
- * The _Berry_.
+ * The I<Berry>.
  */
 
 using namespace TSC;
@@ -60,24 +59,29 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  * Specify the berry’s type.
  *
- * #### Parameters
- * type
- * : The berry’s new type. One of the following symbols:
+ * =head4 Parameters
  *
- *   red
- *   : The normal red berry
+ * =over
  *
- *   life
- *   : The green +1 life berry
+ * =item [type]
  *
- *   poison
- *   : The green -1 life berry
+ * The berry’s new type. One of the following symbols:
  *
- *   blue
- *   : The blue ice-alex berry
+ * =over
  *
- *   ghost
- *   : The transparent ghost-alex berry
+ * =item [red] The normal red berry
+ *
+ * =item [life] The green +1 life berry
+ *
+ * =item [poison] The green -1 life berry
+ *
+ * =item [blue] The blue ice-alex berry
+ *
+ * =item [ghost] The transparent ghost-alex berry
+ *
+ * =back
+ *
+ * =back
  */
 static mrb_value Set_Type(mrb_state* p_state, mrb_value self)
 {
@@ -112,7 +116,7 @@ static mrb_value Set_Type(mrb_state* p_state, mrb_value self)
  *
  *   type() → a_symbol
  *
- * Returns the berry’s current type as a symbol See `type=`
+ * Returns the berry’s current type as a symbol See L<type=>
  * for a list of possible symbols returned by this method.
  */
 static mrb_value Get_Type(mrb_state* p_state, mrb_value self)
@@ -142,9 +146,13 @@ static mrb_value Get_Type(mrb_state* p_state, mrb_value self)
  * Make this berry look mysterious by making it glimming.
  * Note glimming is the default for newly created berrys.
  *
- * #### Parameters
- * bool
- * : Whether or not to glim.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [bool] Whether or not to glim.
+ *
+ * =back
  */
 static mrb_value Set_Glim_Mode(mrb_state* p_state, mrb_value self)
 {
@@ -177,7 +185,7 @@ static mrb_value Get_Glim_Mode(mrb_state* p_state, mrb_value self)
  *
  * Apply the item to Alex. Doing so will destroy the berry in
  * any case, but note that applying it does not necessarily cause
- * it to have an effect on Alex (use `LevelPlayer#type=` for
+ * it to have an effect on Alex (use L<LevelPlayer#type=> for
  * that). Instead, it may be stored in the item box, or even
  * just have no effect if that is already full.
  */

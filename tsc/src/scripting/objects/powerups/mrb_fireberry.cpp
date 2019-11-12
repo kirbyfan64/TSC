@@ -21,10 +21,9 @@
 /**
  * Class: Fireberry
  *
- * Parent: [Powerup](powerup.html)
- * {: .superclass}
+ * Parent: L<Powerup>
  *
- * _Fireberries_ are powerups that grant Alex the skill to throw
+ * I<Fireberries> are powerups that grant Alex the skill to throw
  * fireballs agains enemies. Fireberries don’t move by default.
  */
 
@@ -62,7 +61,7 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  * Apply the item to Alex. Doing so will destroy the fireberry in
  * any case, but note that applying it does not necessarily cause
- * it to have an effect on Alex (use `LevelPlayer#type=` for
+ * it to have an effect on Alex (use L<LevelPlayer#type=> for
  * that). Instead, it may be stored in the item box, or even
  * just have no effect if that is already full.
  */

@@ -21,10 +21,9 @@
 /**
  * Class: Lemon
  *
- * Parent: [Powerup](powerup.html)
- * {: .superclass}
+ * Parent: L<Powerup>
  *
- * _Lemons_ are the most powerful powerups in the game. Alex gains the
+ * I<Lemons> are the most powerful powerups in the game. Alex gains the
  * ability to jump higher, gets resistant against all kinds of enemies,
  * etc. Lemons wildly jump around and are hard to catch. Even if catched,
  * its effect only lasts a fixed period of time (which is hardcoded into
