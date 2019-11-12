@@ -6,9 +6,9 @@ module Std
   # Class: Std::ImmediateSprite
   #
   # More handy class than the core Sprite class. Instances of this class
-  # do not need to have #show called on them to be displayed. As a downside,
+  # do not need to have L<#show> called on them to be displayed. As a downside,
   # you have to specify all position-relevant parameters directly on
-  # instanciation with ::new.
+  # instanciation with L<::new>.
   class ImmediateSprite < Sprite
 
     ##
@@ -17,24 +17,36 @@ module Std
     #   new(path, opts) → an_immediate_sprite
     #
     # Quick’n’easy way to bring a static object into the game. Specifying
-    # position and massivity, this method also immediately <tt>show</tt>s
+    # position and massivity, this method also immediately L<#show>s
     # the object in gameplay.
     #
-    # <h4>Parameters</h4>
-    # <dl>
-    # <dt>path</dt>
-    # <dd>The path to the image file, relative to the +pixmaps+ directory.</dd>
-    # <dt>[opts]</dt>
-    # <dd>A hash with the following arguments:
-    #   <dl>
-    #   <dt>x</dt><dd>The X start position. Can contain fractions.</dd>
-    #   <dt>y</dt><dd>The Y start position. Can contain fractions.</dd>
-    #   <dt>massive (:massive)</dt>
-    #   <dd>The sprite’s massivity type. One of :massive, :passive, :halfmassive, :frontpassive, or :climbable.
-    #     Defaults to :massive if ommited.</dd>
-    #   </dl>
-    # </dd>
-    # </dl>
+    # =head4 Parameters
+    #
+    # =over
+    #
+    # =item [path]
+    #
+    # The path to the image file, relative to the F<pixmaps/> directory.
+    #
+    # =item [opts]
+    #
+    # A hash with the following arguments:
+    #
+    # =over
+    #
+    # =item [x] The X start position. Can contain fractions.
+    #
+    # =item [y] The Y start position. Can contain fractions.
+    #
+    # =item [massive (:massive)]
+    #
+    # The sprite’s massivity type. One of :massive, :passive,
+    # :halfmassive, :frontpassive, or :climbable. Defaults to :massive
+    # if ommited.
+    #
+    # =back
+    #
+    # =back
     def initialize(path, opts)
       x       = opts[:x]       || raise(ArgumentError, ":x not given")
       y       = opts[:y]       || raise(ArgumentError, ":y not given")

@@ -9,9 +9,7 @@ module Std
   # activates the box, the jewels are thrown out of the box all at once
   # and move over the field. Use it like this:
   #
-  # <pre class="source">
-  # b = GiantJewelBox.new(UIDS[14], 10)
-  # </pre>
+  #     b = GiantJewelBox.new(UIDS[14], 10)
   #
   # This fills the box with UID 14 with 10 jewels of random
   # nature (red or blue ones).
@@ -30,11 +28,21 @@ module Std
     #
     # Creates a new giant jewel box.
     #
-    # <h4>Parameters</h4>
-    # <dl>
-    # <dt>box</dt><dd>A Box instance to attach the climbing plant to. May also be a raw UID.</dd>
-    # <dt>count</dt><dd>The number of jewels to place in the box.</dd>
-    # </dl>
+    # =head4 Parameters
+    #
+    # =over
+    #
+    # =item [box]
+    #
+    # A Box instance to attach the climbing plant to. May also be a raw UID.
+    #
+    # =item [count]
+    #
+    # The number of jewels to place in the box.
+    #
+    # =back
+    #
+    # =back
     def initialize(box, count)
       @box = box.kind_of?(Integer) ? UIDS[box] : box
       @count = count
