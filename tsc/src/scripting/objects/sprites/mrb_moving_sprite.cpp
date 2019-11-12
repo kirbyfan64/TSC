@@ -21,37 +21,33 @@
 /**
  * Class: MovingSprite
  *
- * Parent: [Sprite](sprite.html)
- * {: .superclass}
+ * Parent: L<Sprite>
  *
  * Everything that is moving on the screen is considered by TSC to be a
- * _MovingSprite_. It is the superclass of most on-screen objects and as
+ * I<MovingSprite>. It is the superclass of most on-screen objects and as
  * such the methods defined here are available to most other objects,
- * e.g. the [Player](player.html) or [enemies](enemy.html).
+ * e.g. the L<LevelPlayer> or L<enemies|Enemy>.
  *
  * This class may not be instanciated directly.
  *
- * Acceleration and velocity
- * -------------------------
+ * =head4 Acceleration and velocity
  *
  * I hope you didn’t sleep in your physics lessons, because you will
- * need your knowledge now. Remember: Velocity is _not_ the same as
+ * need your knowledge now. Remember: Velocity is I<not> the same as
  * acceleration. Velocity means you are currently moving along a given
  * path in a given time. You may for example be moving in your car at
- * 130 km/h, i.e. _in average_ your car makes 130 kilometres in one
+ * 130 km/h, i.e. I<in average> your car makes 130 kilometres in one
  * hour. Acceleration is the process of altering the velocity, either
  * positively or negatively. For example, if you have to brake, your
- * velocity gets _reduced_. This is an acceleration.
+ * velocity gets I<reduced>. This is an acceleration.
  *
  * This difference gets really important when you calculate the
  * distance actually passed by a moving object. The first formula
  * below calculates that distance from a constantly moving, non-accelerating
  * object, whereas the second formula assumes a constant acceleration.
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * s = v * t
- * s = (1/2)at²
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     s = v * t
+ *     s = (1/2)at²
  *
  * The next thing to know is that you don’t have constant acceleration in
  * TSC. Calling methods like #accelerate! give them a one-time acceleration,
@@ -63,30 +59,29 @@
  * the earth’s gravity centre.
  *
  * Keep this in mind when you call the methods on this class. Accelerating
- * something doens’t mean to put it at a specific velocity, but rather to
- * add a delta value to its _current_ velocity. TSC however allows you to
+ * something doesn’t mean to put it at a specific velocity, but rather to
+ * add a delta value to its I<current> velocity. TSC however allows you to
  * cheat physics — rather than having to compute the acceleration you need
  * to get an object to a desired velocity you can do magic and call one of
- * the `velocity=` methods, which skip the acceleration step and directly
+ * the C<velocity=> methods, which skip the acceleration step and directly
  * assign a velocity to an object (no, you can’t do this in reality). After
  * this however, the gravity and other overall forces still apply to the
  * now moving object, deaccelerating and finally stopping it.
  *
  * I’m too lazy at the moment, but it should be possible to look up the
- * value for `g` TSC uses and provide a formula that takes the constant
+ * value for C<g> TSC uses and provide a formula that takes the constant
  * negative acceleration it causes into account. The same could be done
  * for the horizontal resistances, finally emitting a formula that allows
  * you to exactly calculate how a once-accelerated object behaves. If you
  * calculate such a formula, please add it in place of this text to the
  * documentation.
  *
- * Directions
- * ----------
+ * =head4 Directions
  *
  * A moving sprite always has one or more directions it is "looking" into.
  * While which directions are valid depends on the exact sprite being
  * in use (e.g. a gee can’t have :left, or :right, but only :horizontal
- * and :vertical), the common method to set these directions is #direction=
+ * and :vertical), the common method to set these directions is L<#direction=>
  * defined in this class.
  *
  * As with "bare" sprites and coordinates, moving sprites have two attributes
@@ -99,7 +94,7 @@
  * state, he is flying backwards!
  *
  * Again as with "bare" sprites, setting the initial direction via
- * the #start_direction= method also sets the current direction, so
+ * the L<#start_direction=> method also sets the current direction, so
  * you most likely don’t need both at once (unless you really want
  * the backward-flying rokko).
  */
@@ -122,12 +117,15 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  * Add to both the horizontal and the vertical velocity at once.
  *
- * #### Parameters
- * xadd
- * : What to add to the horizontal velocity. May include fractions.
+ * =head4 Parameters
  *
- * yadd
- * : What to add to the vertical velocity. May include fractions.
+ * =over
+ *
+ * =item [xadd] What to add to the horizontal velocity. May include fractions.
+ *
+ * =item [yadd] What to add to the vertical velocity. May include fractions.
+ *
+ * =back
  */
 static mrb_value Accelerate(mrb_state* p_state,  mrb_value self)
 {
@@ -148,36 +146,34 @@ static mrb_value Accelerate(mrb_state* p_state,  mrb_value self)
  *
  * The direction the sprite is "looking" in as a symbol.
  *
- * #### Return value
+ * =head4 Return value
  *
  * This method may return one of the following, self-explanatory symbols:
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * :undefined
- * :left
- * :right
- * :up
- * :down
- * :up_left
- * :up_right
- * :down_left
- * :down_right
- * :left_up
- * :left_down
- * :horizontal
- * :vertical
- * :all
- * :first
- * :last
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     :undefined
+ *     :left
+ *     :right
+ *     :up
+ *     :down
+ *     :up_left
+ *     :up_right
+ *     :down_left
+ *     :down_right
+ *     :left_up
+ *     :left_down
+ *     :horizontal
+ *     :vertical
+ *     :all
+ *     :first
+ *     :last
  *
  * Not all of them are supported by all moving sprites (most only support
- * `:left` and `:right`), but usually you can guess which ones are
+ * C<:left> and C<:right>), but usually you can guess which ones are
  * supported by looking at the images a sprite may use. The last five
- * directions are a bit special, namely `:horizontal`, `:vertical` and
- * `:all` may be returned for objects which support "looking" into more
- * than one direction (e.g. a static enemy may return `:all`), and `:first`
- * and `:last` can only be returned by waypoints on the world map, where
+ * directions are a bit special, namely C<:horizontal>, C<:vertical> and
+ * C<:all> may be returned for objects which support "looking" into more
+ * than one direction (e.g. a static enemy may return C<:all>), and C<:first>
+ * and C<:last> can only be returned by waypoints on the world map, where
  * scripting isn’t supported yet.
  */
 static mrb_value Get_Direction(mrb_state* p_state,  mrb_value self)
@@ -249,11 +245,16 @@ static mrb_value Get_Direction(mrb_state* p_state,  mrb_value self)
  *
  * Set the "looking" direction of the sprite.
  *
- * #### Parameter
+ * =head4 Parameter
  *
- * dir
- * : One of the looking directions supported by this sprite. See
- * [#direction](#direction) for a list of possible symbols.
+ * =over
+ *
+ * =item [dir]
+ *
+ * One of the looking directions supported by this sprite. See
+ * L<#direction> for a list of possible symbols.
+ *
+ * =back
  */
 static mrb_value Set_Direction(mrb_state* p_state,  mrb_value self)
 {
@@ -312,7 +313,7 @@ static mrb_value Set_Direction(mrb_state* p_state,  mrb_value self)
  *
  *   start_direction=( dir ) → dir
  *
- * Like #direction=, but also sets the "initial" looking direction of
+ * Like L<#direction=>, but also sets the "initial" looking direction of
  * the sprite. This is e.g. used by Rokko.
  */
 static mrb_value Set_Start_Direction(mrb_state* p_state, mrb_value self)
@@ -374,7 +375,7 @@ static mrb_value Set_Start_Direction(mrb_state* p_state, mrb_value self)
  *   start_direction() → a_symbol
  *
  * Returns the "initial" looking direction of this sprite. Return
- * values are as per #direction.
+ * values are as per L<#direction>.
  */
 static mrb_value Get_Start_Direction(mrb_state* p_state,  mrb_value self)
 {
@@ -461,10 +462,13 @@ static mrb_value Get_Max_Gravity(mrb_state* p_state, mrb_value self)
  * Setting this to 0 will exempt it from gravity, i.e. it will just
  * stay whereever it currently is and not fall down.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * val
- * : The new maximum gravity.
+ * =over
+ *
+ * =item [val] The new maximum gravity.
+ *
+ * =back
  */
 static mrb_value Set_Max_Gravity(mrb_state* p_state, mrb_value self)
 {
@@ -531,10 +535,13 @@ static mrb_value Get_Velocity(mrb_state* p_state,  mrb_value self)
  *
  * Set the horizontal velocity.
  *
- * #### Parameter
+ * =head4 Parameter
  *
- * xvel
- * : The new velocity. May include fractions.
+ * =over
+ *
+ * =item [xvel] The new velocity. May include fractions.
+ *
+ * =back
  *
  */
 static mrb_value Set_Velocity_X(mrb_state* p_state,  mrb_value self)
@@ -555,11 +562,13 @@ static mrb_value Set_Velocity_X(mrb_state* p_state,  mrb_value self)
  *
  * Set the vertical velocity.
  *
- * #### Parameter
+ * =head4 Parameter
  *
- * yvel
- * : The new velocity. May include fractions.
+ * =over
  *
+ * =item [yvel] The new velocity. May include fractions.
+ *
+ * =back
  */
 static mrb_value Set_Velocity_Y(mrb_state* p_state,  mrb_value self)
 {
@@ -579,20 +588,21 @@ static mrb_value Set_Velocity_Y(mrb_state* p_state,  mrb_value self)
  *
  * Set both the horizontal and vertical velocity at once.
  *
- * #### Parameters
- * xvel
- * : The new horizontal velocity. May include fractions.
+ * =head4 Parameters
  *
- * yvel
- * : The new vertical velocity. May include fractions.
+ * =over
  *
- * #### Example
+ * =item [xvel] The new horizontal velocity. May include fractions.
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * # Make an object moving very fast towards
- * # the top-right corner.
- * UIDS[12].velocity = [200, -200]
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * =item [yvel] The new vertical velocity. May include fractions.
+ *
+ * =back
+ *
+ * =head4 Example
+ *
+ *     # Make an object moving very fast towards
+ *     # the top-right corner.
+ *     UIDS[12].velocity = [200, -200]
  */
 static mrb_value Set_Velocity(mrb_state* p_state,  mrb_value self)
 {
@@ -620,9 +630,13 @@ static mrb_value Set_Velocity(mrb_state* p_state,  mrb_value self)
  *
  * Add to the current horizontal velocity.
  *
- * #### Parameter
- * val
- * : The value to add. May include fractions.
+ * =head4 Parameter
+ *
+ * =over
+ *
+ * =item [val] The value to add. May include fractions.
+ *
+ * =back
  */
 static mrb_value Accelerate_X(mrb_state* p_state,  mrb_value self)
 {
@@ -642,9 +656,13 @@ static mrb_value Accelerate_X(mrb_state* p_state,  mrb_value self)
  *
  * Add to the current vertical velocity.
  *
- * #### Parameter
- * val
- * : The value to add. May include fractions.
+ * =head4 Parameter
+ *
+ * =over
+ *
+ * =item [val] The value to add. May include fractions.
+ *
+ * =back
  */
 static mrb_value Accelerate_Y(mrb_state* p_state,  mrb_value self)
 {
