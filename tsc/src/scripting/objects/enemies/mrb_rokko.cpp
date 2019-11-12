@@ -22,10 +22,9 @@
 /**
  * Class: Rokko
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * _Rokko_ is the biggest enemy in the game. When he appears, the best you can
+ * I<Rokko> is the biggest enemy in the game. When he appears, the best you can
  * do usually is this: Run! Rokko is basically invincable and ignores all
  * restrictions put upon other objects such as massive walls or gravity. He
  * just bursts through everything. The only way to defeat Rokko is to somehow
@@ -35,28 +34,24 @@
  *
  * Rokko may either work in self-activating or manual triggering mode,
  * the former being the default. When self-triggering, Rokko will go off
- * as soon as Alex enters the area Rokko observers towards the front
- * (see `max_front_distance=`) and towards the sides (see `max_sides_distance=`).
+ * as soon as Alex enters the area Rokko observes towards the front
+ * (see L<#max_front_distance=>) and towards the sides (see L<#max_sides_distance=>).
  * While for "ordinary" levels created without scripting this behaviour is
  * just fine, but for scripting you might want to activate Rokko depending
  * on other arbitrary conditions (such as enemy death). This is called
- * _manual triggering_ and can be activated like this:
+ * I<manual> triggering_ and can be activated like this:
  *
- * ~~~~~~~~~~ ruby
- * rokko = Rokko.new
- * rokko.direction = :right
- * rokko.manual = true
- * ~~~~~~~~~~
+ *     rokko = Rokko.new
+ *     rokko.direction = :right
+ *     rokko.manual = true
  *
  * In manual triggering mode, Rokko doesn’t observe anything and hence
  * does not self-trigger, regardless of Alex’s position. To fire off,
- * check your condition and call `activate!`:
+ * check your condition and call L<#activate!>:
  *
- * ~~~~~~~~ ruby
- * if some_condition
- *   rokko.activate!
- * end
- * ~~~~~~~~
+ *     if some_condition
+ *       rokko.activate!
+ *     end
  */
 
 using namespace TSC;
@@ -129,9 +124,15 @@ static mrb_value Get_Speed(mrb_state* p_state, mrb_value self)
  * Sets the maximum number of pixels Rokko will go off in if Alex
  * enters that room before Rokko’s head.
  *
- * #### Parameters
- * val
- * : Maximum number of pixels Rokko will use as detection area.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val]
+ *
+ * Maximum number of pixels Rokko will use as detection area.
+ *
+ * =back
  */
 static mrb_value Set_Max_Distance_Front(mrb_state* p_state, mrb_value self)
 {
@@ -171,9 +172,15 @@ static mrb_value Get_Max_Distance_Front(mrb_state* p_state, mrb_value self)
  * Sets the maximum number of pixels Rokko will go off in if Alex
  * enters that room next to Rokko (but not behind).
  *
- * #### Parameters
- * val
- * : Maximum number of pixels Rokko will use as detection area.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val]
+ *
+ * Maximum number of pixels Rokko will use as detection area.
+ *
+ * =back
  */
 static mrb_value Set_Max_Distance_Sides(mrb_state* p_state, mrb_value self)
 {
@@ -210,7 +217,7 @@ static mrb_value Get_Max_Distance_Sides(mrb_state* p_state, mrb_value self)
  *
  *   manual=( bool ) → bool
  *
- * Set this to `true` in order to activate manual triggering. `false`
+ * Set this to C<true> in order to activate manual triggering. C<false>
  * activates self-triggering mode.
  */
 static mrb_value Set_Manual(mrb_state* p_state, mrb_value self)
@@ -271,7 +278,7 @@ static mrb_value Activate(mrb_state* p_state, mrb_value self)
  *
  *   activate!()
  *
- * Like #activate, but does not play the Rokko start sound. The player
+ * Like L<#activate>, but does not play the Rokko start sound. The player
  * will not notice Rokko has started!
  */
 static mrb_value Activate_Bang(mrb_state* p_state, mrb_value self)

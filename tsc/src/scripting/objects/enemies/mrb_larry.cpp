@@ -21,20 +21,26 @@
 /**
  * Class: Larry
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * If you just heard some loud "BOOOM!", then you have met _Larry_.
- * On exploding, he destroys all enemies (and injures Alex) nearby. Really
+ * If you just heard some loud "BOOOM!", then you have met I<Larry>.
+ * On exploding, it destroys all enemies (and injures Alex) nearby. Really
  * dangerous is a situation with multiple larries, which can result
  * in a giant chain explosion.
  *
- * Downgrade
- * : This event gets triggered each time the Larry takes a hit.
- *   It receives two arguments: how many hits it already received,
- *   and how many it may receive at maximum before it dies (the
- *   latter is always 2). If an already fused larry dies from
- *   reaching the end of fuse, no Downgrade event is issued.
+ * =head2 Events
+ *
+ * =over
+ *
+ * =item [Downgrade]
+ *
+ * This event gets triggered each time the Larry takes a hit.
+ * It receives two arguments: how many hits it already received,
+ * and how many it may receive at maximum before it dies (the
+ * latter is always 2). If an already fused larry dies from
+ * reaching the end of fuse, no Downgrade event is issued.
+ *
+ * =back
  */
 
 using namespace TSC;

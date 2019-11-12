@@ -22,10 +22,9 @@
 /**
  * Class: Eato
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * The small _Eato_ is a plant glued to a wall, ceiling or even the bottom
+ * The small I<Eato> is a plant glued to a wall, ceiling or even the bottom
  * and just sits there. It doesn’t move, but if Alex gets in its reach,
  * it will bite.
  */

@@ -23,20 +23,23 @@
 /**
  * Class: Krush
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * _Krush_! This big dinosour-like enemy may just do with you what its
- * name says. It even requires _two_ hits to be defeated!
+ * I<Krush>! This big dinosour-like enemy may just do with you what its
+ * name says. It even requires I<two> hits to be defeated!
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Downgrade
- * : This event gets triggered each time the Krush takes a hit.
- *   It receives two arguments: how many hits it already received,
- *   and how many it may receive at maximum before it dies (the
- *   latter is always 2).
+ * =over
+ *
+ * =item [Downgrade]
+ *
+ * This event gets triggered each time the Krush takes a hit.
+ * It receives two arguments: how many hits it already received,
+ * and how many it may receive at maximum before it dies (the
+ * latter is always 2).
+ *
+ * =back
  */
 
 using namespace TSC;
