@@ -21,10 +21,9 @@
 /**
  * Class: Crate
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * _Crates_ are heavy boxes Alex can move around. They can be
+ * I<Crates> are heavy boxes Alex can move around. They can be
  * used to unblock paths, kill enemies or just for fun.
  *
  * It is generally a bad idea to use a large number of stacked

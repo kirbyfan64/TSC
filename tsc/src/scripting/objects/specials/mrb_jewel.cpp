@@ -22,23 +22,26 @@
 /**
  * Class: Jewel
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * _Jewels_.
+ * I<Jewels>.
  *
  * Note that this class describes the jewels you can also
  * directly place via the level editor’s "special" category, i.e.
  * the jewels don’t move. You can employ
  * one of the subclasses to get a different behaviour.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Activate
- * : This event is fired when the player collects the jewel. Do
- *   not change the player’s jewel amount inside an event handler
- *   for this event, this will cause undefined behaviour.
+ * =over
+ *
+ * =item [Activate]
+ *
+ * This event is fired when the player collects the jewel. Do
+ * not change the player’s jewel amount inside an event handler
+ * for this event, this will cause undefined behaviour.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -74,10 +77,15 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  * Set the jewel’s color.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * sym
- * : The new jewel color. One of the symbols `:red` or `:yellow`.
+ * =over
+ *
+ * =item [sym]
+ *
+ * The new jewel color. One of the symbols C<:red> or C<:yellow>.
+ *
+ * =back
  */
 static mrb_value Set_Gold_Color(mrb_state* p_state, mrb_value self)
 {
@@ -106,7 +114,7 @@ static mrb_value Set_Gold_Color(mrb_state* p_state, mrb_value self)
  *
  *   gold_color() → a_symbol
  *
- * Returns the jewel’s current color. See #gold_color= for a
+ * Returns the jewel’s current color. See L<#gold_color=> for a
  * list of possible return values.
  */
 static mrb_value Get_Gold_Color(mrb_state* p_state, mrb_value self)

@@ -21,8 +21,7 @@
 /**
  * Class: MovingPlatform
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
  * TODO: Docs.
  */
@@ -56,7 +55,7 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *   move_type() → a_symbol
  *
  * Returns the platforms current move type. One of the following symbols:
- * `:line`, `:circle`, `:path`, `:path_backwards`.
+ * C<:line>, C<:circle>, C<:path>, C<:path_backwards>.
  */
 static mrb_value Get_Move_Type(mrb_state* p_state, mrb_value self)
 {

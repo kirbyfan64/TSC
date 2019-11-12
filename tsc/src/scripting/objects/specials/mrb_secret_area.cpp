@@ -19,10 +19,9 @@
 /**
  * Class: SecretArea
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: C<MovingSprite>
  *
- * Secret Areas are places where the level designer has hidden special
+ * I<Secret Areas> are places where the level designer has hidden special
  * objects, like life berries or a large amount of jewels. They are usually
  * difficult to find and display a notice saying that the player has
  * found a secret area when it is activated by entering it.
@@ -30,13 +29,17 @@
  * This class cannot be instanciated; secret areas may only be created
  * in the level editor.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Activate
- * : Issued when the player enters a secret area for the first time.
- *   Subsequent entering does not cause this event to be emitted
- *   anymore.
+ * =over
+ *
+ * =item [Activate]
+ *
+ * Issued when the player enters a secret area for the first time.
+ * Subsequent entering does not cause this event to be emitted
+ * anymore.
+ *
+ * =back
  */
 
 using namespace TSC;
