@@ -220,14 +220,18 @@ mrb_value Get_UID(mrb_state* p_state, mrb_value self)
  * =over
  *
  * =item C<:passive>
+ *
  * =item C<:front_passive> or C<:frontpassive>
+ *
  * =item C<:massive>
+ *
  * =item C<:half_massive> or C<:halfmassive>
+ *
  * =item C<:climbable>
  *
- * Invalid types will cause an error.
- *
  * =back
+ *
+ * Invalid types will cause an error.
  *
  * =back
  */

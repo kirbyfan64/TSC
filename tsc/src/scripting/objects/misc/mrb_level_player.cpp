@@ -40,8 +40,8 @@ using namespace std;
  *
  * =over
  *
- * =item [Alex (or just "the level player")]
- * The sprite of Alex walking around and jumping on enemies.
+ * =item [Alex (or just "the level player")] The
+ * sprite of Alex walking around and jumping on enemies.
  *
  * =item [Player]
  * The actual user sitting in front of some kind of monitor. Don’t

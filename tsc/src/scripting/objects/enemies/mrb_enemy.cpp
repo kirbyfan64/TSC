@@ -173,6 +173,8 @@ static mrb_value Get_Kill_Sound(mrb_state* p_state,  mrb_value self)
  *
  * The path of the sound file to play. Relative to the L<sounds/>
  * directory.
+ *
+ * =back
 */
 static mrb_value Set_Kill_Sound(mrb_state* p_state,  mrb_value self)
 {
