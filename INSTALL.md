@@ -87,6 +87,7 @@ install to.
 * Boost >= 1.50.0 (to be exact: boost_system, boost_filesystem, boost_thread)
 * SFML >= 2.3.0
 * X11 development headers, namely for libx11 and libxt
+* gperf
 
 #### Example for Fedora ####
 (Tested on Fedora 28)
