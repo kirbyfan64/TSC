@@ -45,7 +45,7 @@
  *
  * =over
  *
- * =list [Downgrade]
+ * =item [Downgrade]
  *
  * This event is triggered each time the furball gets hit.
  * It receives two arguments: the number of hits the furball

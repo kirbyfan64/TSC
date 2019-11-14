@@ -274,7 +274,7 @@ C<Freaky> for instance, and then place your own code below that.
 
     module Freaky
 
-      class FreakyThing &lt; Furball
+      class FreakyThing < Furball
         # Your code...
       end
 
