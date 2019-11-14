@@ -32,6 +32,7 @@ cEditor::cEditor()
     mp_editor_tabpane = NULL;
     mp_menu_listbox = NULL;
     mp_object_config_pane = NULL;
+    mp_status_bar = NULL;
     m_enabled = false;
     m_rested = false;
     m_visibility_timer = 0.0f;
@@ -60,6 +61,7 @@ void cEditor::Init(void)
     mp_editor_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("editor.layout");
     mp_editor_tabpane = static_cast<CEGUI::TabControl*>(mp_editor_root->getChild("editor_tabpane"));
     mp_object_config_pane = mp_editor_root->getChild("object_config_pane");
+    mp_status_bar = mp_editor_root->getChild("status_bar");
     m_tabpane_target_x_position = mp_editor_tabpane->getXPosition();
     m_object_config_pane_target_x_position = mp_object_config_pane->getXPosition();
     mp_editor_root->hide(); // Do not show for now
@@ -67,6 +69,9 @@ void cEditor::Init(void)
     // Object settings window only pops up when selecting an object.
     mp_object_config_pane->setXPosition(CEGUI::UDim(CONFIGPANE_OUT_OF_SIGHT_X, 0.0f));
     m_object_config_pane_shown = false;
+
+    // Status bar
+    mp_status_bar->setText(_("Nothing selected"));
 
     // Ensure multiple editors (level and world) can coexist. CEGUI requires unique
     // window names in that case; m_editor_item_tag must be set by subclasses, so
@@ -119,6 +124,7 @@ void cEditor::Unload(void)
         mp_editor_tabpane = NULL;
         mp_menu_listbox = NULL;
         mp_object_config_pane = NULL;
+        mp_status_bar = NULL;
     }
 }
 
@@ -323,6 +329,7 @@ void cEditor::Update(void)
 
     pMouseCursor->Editor_Update();
     Process_Input();
+    update_status_bar();
 }
 
 void cEditor::Draw(void)
@@ -1501,6 +1508,65 @@ void cEditor::replace_sprites(void)
 
         sel_obj->m_obj->Set_Image(image, 1);
     }
+}
+
+void cEditor::update_status_bar()
+{
+    std::string status_text(_("Nothing selected"));
+
+    if (pMouseCursor->m_hovering_object->m_obj) { // If the cursor is hovering about something
+        status_text.clear();
+
+        // 1a. Object display name
+        status_text += pMouseCursor->m_hovering_object->m_obj->Create_Name();
+
+        // 1b. Object massivetype
+        status_text += " (";
+        switch (pMouseCursor->m_hovering_object->m_obj->m_massive_type) {
+        case MASS_PASSIVE:
+            status_text += _("Passive");
+            break;
+        case MASS_MASSIVE:
+            status_text += _("Massive");
+            break;
+        case MASS_HALFMASSIVE:
+            status_text += _("Halfmassive");
+            break;
+        case MASS_CLIMBABLE:
+            status_text += _("Climbable");
+            break;
+        case MASS_FRONT_PASSIVE:
+            status_text += _("Frontpassive");
+            break;
+        } // No default clause -- let compiler warn about missing values
+
+        status_text += ") | ";
+
+        // 2. UID, X, Y, Z
+        if (game_debug) {
+            status_text += "UID: "
+                + int_to_string(pMouseCursor->m_hovering_object->m_obj->m_uid)
+                + " | Start X: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_x))
+                + " | Start Y: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_y))
+                + " | Curr. X: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_x))
+                + " | Curr  Y: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_y))
+                + " | Z: " + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_pos_z, 6);
+
+            // if also got editor z position
+            if (!Is_Float_Equal(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 0.0f)) {
+                status_text += " | Editor Z: " + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 6);
+            }
+        }
+        else {
+            status_text += "UID: "
+                + int_to_string(pMouseCursor->m_hovering_object->m_obj->m_uid)
+                + " | X: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_x))
+                + " | Y: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_y));
+        }
+    }
+
+    mp_status_bar->setText(status_text);
+
 }
 
 bool cEditor::on_help_window_exit_clicked(const CEGUI::EventArgs& args)
