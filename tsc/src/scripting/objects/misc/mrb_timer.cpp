@@ -19,40 +19,40 @@
 /**
  * Class: Timer
  *
- * _Timers_ are an easy and efficient way to execute MRuby code based on a
+ * I<Timers> are an easy and efficient way to execute MRuby code based on a
  * time span. They can either be periodic, meaning that they will
  * continue to be active for an unspecified amount of time, or
  * non-periodic aka one-shot, meaning that they will only be active for a
  * definite timespan. For both types of timers, you have to call the
- * [#start](#start) method to activate them, and it’s possible to
- * interrupt a timer by means of its [#stop](#stop) method (you can also
+ * L<#start> method to activate them, and it’s possible to
+ * interrupt a timer by means of its L<#stop> method (you can also
  * abort a one-shot timer this way if it has not yet fired).
  *
- * Both types of timers employ a _callback_ concept similar to how events
- * work. When creating a timer with [::new](#new) or one of the
- * convenience methods [::after](#after) and [::every](#every), you pass
- * a _callback_ to the method which will be invoked whenever the timer
+ * Both types of timers employ a I<callback> concept similar to how events
+ * work. When creating a timer with L<::new> or one of the
+ * convenience methods L<::after> and L<::every>, you pass
+ * a I<callback> to the method which will be invoked whenever the timer
  * fires.
  *
- * A _periodic_ timer enters an infine loop when [#start](#start) is
+ * A I<periodic> timer enters an infine loop when L<#start> is
  * called on it. It will then wait the inverval specified when creating
  * the timer and execute the callback. That process is repeated until you
  * either call one of the stop methods or end the level.
  *
- * A _non-periodic_ or _one-shot_ timer doesn’t loop. When [#start](#start) is
+ * A I<non-periodic> or I<one-shot> timer doesn’t loop. When L<#start> is
  * called, it waits the amount of time it is configured for (just like a periodic
  * timer does) and then executes the callback. However, the
  * timer will not continue to do anything beyond this. No looping is
  * done, nor any cleanup.
  *
  * Timers of any type do *not* run in parallel. Although the actual
- * marking of callbacks for run indeed *is* asynchronous, the callback itself
+ * marking of callbacks for run indeed I<is> asynchronous, the callback itself
  * is executed while evaluating the game’s regular mainloop (a consequence
  * of this is that your callback won’t be called with 100% accuracy
  * regarding the timespan, it will be cropped to the next
  * frame). Therefore it is recommended to not put very time-consuming
  * actions into a timer’s callback function as it will slow down the
- * entire game. For example, you do _not_ want to calculate π inside your
+ * entire game. For example, you do I<not> want to calculate π inside your
  * timer’s callback function. Moving objects around on the other hand
  * should be OK.
  *
@@ -61,16 +61,14 @@
  * are remembered in an internal class-instance variable). So, if you
  * create a periodic timer like this:
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * def create_timer
- *   timer = Timer.new(1000, true){puts "Hi there"}
- *   timer.start
- * end
+ *     def create_timer
+ *       timer = Timer.new(1000, true){puts "Hi there"}
+ *       timer.start
+ *     end
  *
- * create_timer
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     create_timer
  *
- * You might expect the periodic timer to stop working when the `timer`
+ * You might expect the periodic timer to stop working when the C<timer>
  * variable goes out of scope and the MRuby DATA it references gets
  * garbage-collected, deallocating the C++ instance. This his however not
  * the case; to prevent you from having to create a massive amount of global
@@ -82,21 +80,19 @@
  * probably not what you want :-).
  *
  * Having that said, I want to enourage you to be brave and let your
- * timers go out of scope. You do not have to call [#stop](#stop)
+ * timers go out of scope. You do not have to call L<#stop>
  * manually when ending the level, this is done automatically for you. So
  * no reason to clutter the global scope with timers.
  *
- * Last but not least you shouldn’t use [::new](#new) directly. Use the
- * [::after](#after) and [::every](#every) class methods instead, as they
- * make your intention more clear and are more readable than a `true` or
- * `false` passed to [::new](#new) and they also call [#start](#start)
+ * Last but not least you shouldn’t use L<::new> directly. Use the
+ * L<::after> and L<::every> class methods instead, as they
+ * make your intention more clear and are more readable than a C<true> or
+ * C<false> passed to L<::new> and they also call L<#start>
  * automatically for you.
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * Timer.every(1000) do
- *   puts "Callback"
- * end
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     Timer.every(1000) do
+ *       puts "Callback"
+ *     end
  */
 
 //////////////////////////////////////////////
@@ -147,7 +143,7 @@
  *
  * The timers created from the MRuby code a user supplies
  * are automatically (in their #initialize method) stored
- * in a class-instance variable `instances' of the Timer
+ * in a class-instance variable C<instances> of the Timer
  * MRuby class, so they can’t go out of scope and get
  * garbage-collected. Also, the callbacks are stored
  * in an instance variable of the Timer instances, which
@@ -300,22 +296,28 @@ void cTimer::Threading_Function(cTimer* timer)
  *
  *   new( interval [, is_periodic ] ){...} → a_timer
  *
- * Creates a new `Timer` instance, either periodic or non-periodic
+ * Creates a new C<Timer> instance, either periodic or non-periodic
  * depending on the last parameter’s value.
  *
- * #### Parameters
+ * =head4 Parameters
  *
- * interval
- * : The timespan to configure the timer for, in milliseconds. With a
- *   periodic timer, this is the waiting time between calls to your
- *   callback function, with a non-periodic timer this is the time to
- *   wait before the one and only call to your callback.
+ * =over
  *
- * is_periodic (false)
- * : If this is a truth value, create a periodic (repeating) timer
- *   instead of a non-repeating (one-shot) timer.
+ * =item [interval]
  *
- * #### Return value
+ * The timespan to configure the timer for, in milliseconds. With a
+ * periodic timer, this is the waiting time between calls to your
+ * callback function, with a non-periodic timer this is the time to
+ * wait before the one and only call to your callback.
+ *
+ * =item [is_periodic (false)]
+ *
+ * If this is a truth value, create a periodic (repeating) timer
+ * instead of a non-repeating (one-shot) timer.
+ *
+ * =back
+ *
+ * =head4 Return value
  *
  * The newly created instance.
  */
@@ -350,14 +352,20 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  *   every( interval ){...} → a_timer
  *
- * Shortcut for calling [new()](#new) with `is_periodic = true` followed
- * by a call to [#start](#start).
+ * Shortcut for calling L<::new> with C<is_periodic = true> followed
+ * by a call to L<#start>.
  *
- * #### Parameters
- * interval
- * : The interval at which to fire the callback, in milliseconds.
+ * =head4 Parameters
  *
- * #### Return value
+ * =over
+ *
+ * =item [interval]
+ *
+ * The interval at which to fire the callback, in milliseconds.
+ *
+ * =back
+ *
+ * =head4 Return value
  *
  * The newly created instance.
  */
@@ -384,15 +392,21 @@ static mrb_value Every(mrb_state* p_state,  mrb_value self)
  *
  *   after( millisecs ){...} → a_timer
  *
- * Shortcut for calling [new()](#new) with `is_periodic = false` followed
- * by a call to [#start](#start)..
+ * Shortcut for calling L<::new> with C<is_periodic = false> followed
+ * by a call to L<#start>.
  *
- * #### Parameters
- * millisecs
- * : The number of milliseconds to wait before the callback gets
- *   executed.
+ * =head4 Parameters
  *
- * #### Return value
+ * =over
+ *
+ * =item [millisecs]
+ *
+ * The number of milliseconds to wait before the callback gets
+ * executed.
+ *
+ * =back
+ *
+ * =head4 Return value
  *
  * The newly created instance.
  */
@@ -483,7 +497,7 @@ static mrb_value Inspect(mrb_state* p_state,  mrb_value self)
  *
  *   active?()
  *
- * Returns `true` if the timer is running, `false` otherwise.
+ * Returns C<true> if the timer is running, C<false> otherwise.
  * An already fired one-shot timer is considered stopped for
  * this matter.
  *

@@ -20,20 +20,23 @@
 /**
  * Class: Powerup
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * _Powerups_ are goodies (well, or badies) that affect Alex’s
+ * I<Powerups> are goodies (well, or badies) that affect Alex’s
  * state somehow. This class is the baseclass for all powerups.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Activate
- * : This event is triggered when the powerup is applied to
- *   the player. Do not apply other powerups to the player
- *   inside the event handler for this, this will cause
- *   undefined behaviour.
+ * =over
+ *
+ * =item [Activate]
+ *
+ * This event is triggered when the powerup is applied to
+ * the player. Do not apply other powerups to the player
+ * inside the event handler for this, this will cause
+ * undefined behaviour.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -56,7 +59,7 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  * Apply the powerup to the player. This method is not really
  * useful on itself, it is overridden in the subclasses to
  * do something meaningful. Currently, it just issues
- * the _Activate_ event.
+ * the C<Activate> event.
  */
 static mrb_value Activate(mrb_state* p_state, mrb_value self)
 {

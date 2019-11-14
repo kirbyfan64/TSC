@@ -69,7 +69,6 @@ install to.
   * This is not required if you have a precompiled mruby available
     that you want to use instead of TSC's included static mruby.
     Ruby is only used to build mruby.
-* The `gperf` program.
 * The `pkg-config` program.
 * The `bison` program.
 * OpenGL.
@@ -87,6 +86,7 @@ install to.
     due to CEGUI bug #1063 (https://bitbucket.org/cegui/cegui/issues/1063).
 * Boost >= 1.50.0 (to be exact: boost_system, boost_filesystem, boost_thread)
 * SFML >= 2.3.0
+* X11 development headers, namely for libx11 and libxt
 
 #### Example for Fedora ####
 (Tested on Fedora 28)
@@ -98,7 +98,7 @@ freetype-devel DevIL-devel boost SFML-devel gcc-c++ \
 cegui-devel cmake @development-tools git libXt-devel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#### Example for Ubuntu ####
+#### Example for Debian/Ubuntu ####
 
 (specific instructions for Lubuntu 16.10 can be found in
 tsc/docs/pages/compile_on_lubuntu_16_10.md).
@@ -109,65 +109,21 @@ Install core dependencies:
 sudo apt install ruby-full rake gperf pkg-config bison libglew-dev \
   freeglut3-dev gettext libpng-dev libpcre3-dev libxml++2.6-dev \
   libfreetype6-dev libdevil-dev libboost1.58-all-dev libsfml-dev \
-  libcegui-mk2-dev cmake build-essential git git-core
+  libcegui-mk2-dev libxt-dev cmake build-essential git git-core
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#### Example for Debian 10 ####
+Note that Debian 10 does not have CEGUI in the repositories anymore,
+thus "libcegui-mk2-dev" needs to be left off from the the above list
+and instead it is required to compile CEGUI manually before compiling
+TSC. Further note that CEGUI 0.8.7 does not compile against Debian
+10's libxml2. TSC offers the special compilation option
+CEGUI_USE_EXPAT to use expat instead of libxml2 to overcome the
+problem. Pass -DCEGUI_USE_EXPAT=ON to cmake when configuring TSC
+to use it.
 
-Debian 10 does not have libcegui-mk2-dev,
-so it can be installed from Debian testing this way:
-
-1) Edit install-build-dependencies.sh and remove from it `libcegui-mk2-dev`.
-   Then run it:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./install-build-dependencies.sh
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-2) Edit apt repos:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sudo nano /etc/apt/sources.list
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-3) There is Debian 10 repos similar to these:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-deb http://www.nic.funet.fi/debian/ buster main non-free contrib
-deb-src http://www.nic.funet.fi/debian/ buster main non-free contrib
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-4) Change those temporarily from buster to testing like this:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-deb http://www.nic.funet.fi/debian/ testing main non-free contrib
-deb-src http://www.nic.funet.fi/debian/ testing main non-free contrib
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-4) Update repos and install cegui:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sudo apt update && sudo apt -y install libcegui-mk2-dev
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-5) Change repos back from testing to buster, see above steps 2 and 3, and then:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sudo apt update
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-6) Restore install dependencies script to original:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-git checkout -- install-build-dependencies.sh
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-7) Build and run TSC:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./build-tsc.sh
-./run-tsc.sh
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Alternatively, you can use a precompiled CEGUI. Example instructions
+for using a precompiled CEGUI are provided in the file
+tsc/docs/pages/compile_on_debian_10.md.
 
 ### 2. Optional Windows dependencies ###
 * The FreeImage library.
@@ -229,6 +185,16 @@ USE_SYSTEM_TINYCLIPBOARD [OFF]
   this library is packaged, set this value to ON and the build
   system will dynamically link to the tinyclipboard library of
   the system and not build its own variant.
+
+USE_SYSTEM_PODPARSER [OFF]
+: This option only has an effect if ENABLE_SCRIPT_DOCS is set to ON.
+  If ON, it configures cmake to link the scripting API generator (scrdg)
+  against the system-provided libpod-cpp. As scrdg is not installed
+  in a normal setup (the programme is really only used for generating
+  the scripting API HTML documents during the build process) there
+  should rarely ever be a need to enable this option. If OFF,
+  libpod-cpp is compiled from the Git submodule and linked into
+  scrdg statically.
 
 USE_LIBXMLPP3 [OFF]
 : Enabling this upgrades TSC's dependency from libxml++2.6 to
@@ -598,7 +564,7 @@ The following packages are optional, you don't have to install these if you don'
 
 For 32-bit:
 
-    $ pacman -S --needed mingw-w64-i686-{doxygen,graphviz,nsis}
+    $ pacman -S --needed mingw-w64-i686-{doxygen,graphviz,nsis,minizip-git}
 
 
 ### 3.1 CMake GUI Qt requirement workaround ###

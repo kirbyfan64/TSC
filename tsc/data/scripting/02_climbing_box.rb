@@ -8,16 +8,14 @@ module Std
   # This class adds a climbing plant into a given box.
   # Use it like this:
   #
-  # <pre class="source">
-  # c = ClimbingBox.new(UIDS[14], count: 4)
-  # c.attach
-  # </pre>
+  #     c = ClimbingBox.new(UIDS[14], count: 4)
+  #     c.attach
   #
   # This will create a climbing plant with 4 middle sprites (and a top
   # sprite) and attaches it to the box with UID 14. When that one gets
   # activated, the climbing plant will come out of it.
   #
-  # Once you called #attach, Climbing boxes automatically save its
+  # Once you called L<#attach>, climbing boxes automatically save its
   # state to a savegame, so you don’t have to do that manually by
   # hooking into the level save and load events.
   class ClimbingBox
@@ -34,22 +32,35 @@ module Std
     #
     # Create a new climbing plant box.
     #
-    # <h4>Parameters</h4>
+    # =head4 Parameters
     #
-    # <dl>
-    # <dt>box</dt>
-    # <dd>A Box instance to attach the climbing plant to.</dd>
-    # <dt>opts</dt>
-    # <dd>Hash for keyword arguments.
-    #   <dl>
-    #   <dt>count</dt>
-    #   <dd>The number of sprites the plant shall have.</dd>
-    #   <dt>middle_graphic = "ground/green_1/ladder.png"</dt>
-    #   <dd>Middle graphic of the plant.</dd>
-    #   <dt>top_graphic = "ground/green_1/ladder_head.png"</dt>
-    #   <dd>Top graphci of the plant.</dd>
-    #   </dl>
-    # </dl>
+    # =over
+    #
+    # =item [box]
+    #
+    # A Box instance to attach the climbing plant to.
+    #
+    # =item [opts]
+    #
+    # Hash for keyword arguments.
+    #
+    # =over
+    #
+    # =item [count]
+    #
+    # The number of sprites the plant shall have.
+    #
+    # =item [middle_graphic = "ground/green_1/ladder.png"]
+    #
+    # Middle graphic of the plant.
+    #
+    # =item [top_graphic = "ground/green_1/ladder_head.png"]
+    #
+    # Top graphci of the plant.
+    #
+    # =back
+    #
+    # =back
     def initialize(box, opts)
       opts[:count]          || raise(ArgumentError, "Required keyword argument :count missing!")
       opts[:middle_graphic] ||= "ground/green_1/ladder.png"

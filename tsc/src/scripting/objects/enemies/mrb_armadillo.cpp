@@ -23,21 +23,24 @@
 /**
  * Class: Armadillo
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * Hit once, the _armadillo_ hides in its shell until it thinks danger
+ * Hit once, the I<armadillo> hides in its shell until it thinks danger
  * is over. If you hit the shell, it will start to roll and kill other
  * enemies in its way — or you if you don’t take care.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Downgrade
- * : This event gets triggered when the armadillo gets stumped upon.
- *   The event handlers gets passed to arguments, but you should
- *   ignore them as they are of no useful value (because an armadillo
- *   does not die from stumping upon it).
+ * =over
+ *
+ * =item [Downgrade]
+ *
+ * This event gets triggered when the armadillo gets stumped upon.
+ * The event handlers gets passed to arguments, but you should
+ * ignore them as they are of no useful value (because an armadillo
+ * does not die from stumping upon it).
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -72,11 +75,17 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  *   color=( col ) → col
  *
- * Specify the armadillo’s color (the default is `:red`).
+ * Specify the armadillo’s color (the default is C<:red>).
  *
- * #### Parameters
- * col
- * : The armadillo’s new color. One of these symbols: `:red`, `:green`.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [col]
+ *
+ * The armadillo’s new color. One of these symbols: C<:red>, C<:green>.
+ *
+ * =back
  */
 static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
 {

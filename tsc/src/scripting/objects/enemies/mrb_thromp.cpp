@@ -22,10 +22,9 @@
 /**
  * Class: Thromp
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * The _Thromp_ falls down on you and squashes you. Occasionally, it
+ * The I<Thromp> falls down on you and squashes you. Occasionally, it
  * doesn’t come from atop, but rather from the sides or even from
  * the bottom. The thromp itself is immune to gravity.
  */
@@ -63,10 +62,16 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *
  * Specify the image directory for the thromp.
  *
- * #### Parameters
- * path
- * : The path to the thromp’s new image directory, relative
- *   to the `pixmaps` directory.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [path]
+ *
+ * The path to the thromp’s new image directory, relative
+ * to the F<pixmaps/> directory.
+ *
+ * =back
  */
 static mrb_value Set_Image_Dir(mrb_state* p_state, mrb_value self)
 {
@@ -85,7 +90,7 @@ static mrb_value Set_Image_Dir(mrb_state* p_state, mrb_value self)
  *   image_dir() → a_string
  *
  * Returns the thromp’s current image directory, relative to
- * the `pixmaps` directory.
+ * the F<pixmaps/> directory.
  */
 static mrb_value Get_Image_Dir(mrb_state* p_state,  mrb_value self)
 {
@@ -100,9 +105,13 @@ static mrb_value Get_Image_Dir(mrb_state* p_state,  mrb_value self)
  *
  * Specify the maximum distance the thromp may fall towarads Alex.
  *
- * #### Parameters
- * distance
- * : The maximum distance in pixels. A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [distance] The maximum distance in pixels. A float.
+ *
+ * =back
  */
 static mrb_value Set_Max_Distance(mrb_state* p_state, mrb_value self)
 {
@@ -141,9 +150,13 @@ static mrb_value Get_Max_Distance(mrb_state* p_state, mrb_value self)
  *
  * Specify the thromp’s new speed.
  *
- * #### Parameters
- * val
- * : The thromp’s new speed. A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val] The thromp’s new speed. A float.
+ *
+ * =back
  */
 static mrb_value Set_Speed(mrb_state* p_state, mrb_value self)
 {
@@ -179,8 +192,8 @@ static mrb_value Get_Speed(mrb_state* p_state, mrb_value self)
  *
  *   moving_backwards?() → true or false
  *
- * Returns `true` if the thromp is moving backwards to its original
- * position, `false` otherwise.
+ * Returns C<true> if the thromp is moving backwards to its original
+ * position, C<false> otherwise.
  */
 static mrb_value Is_Moving_Backwards(mrb_state* p_state, mrb_value self)
 {

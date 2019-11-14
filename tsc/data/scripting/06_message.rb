@@ -4,6 +4,8 @@ module Std
   ##
   # Class: Std::Message
   #
+  # Parent: TextBox (core)
+  #
   # Display a message to the user the same way a TextBox
   # does, i.e. a black box with white text inside appears
   # and the user has to press the Return key in order to
@@ -11,15 +13,13 @@ module Std
   #
   # Usage example:
   #
-  # <pre class="source">
-  # m = Message.new("Lorem ipsum dolor sit amet...")
-  # m.activate
-  # </pre>
+  #     m = Message.new("Lorem ipsum dolor sit amet...")
+  #     m.activate
   #
   # You can reuse your message as often as you want. Also
   # note this is a subclass of the core TextBox class,
   # which especially allows you to change the message text
-  # using the MessageBox#text= method.
+  # using the C<MessageBox#text=> method.
   class Message < TextBox
 
     ##
@@ -27,7 +27,7 @@ module Std
     #
     #   new ( text ) → a_message
     #
-    # Create a new Message with the given <code>text</code>, which
+    # Create a new Message with the given C<text>, which
     # may be multiline.
     def initialize(text)
       super
@@ -42,7 +42,7 @@ module Std
     #   activate()
     #
     # Show the message to the user. This method ensures
-    # the text always appears above Maryo.
+    # the text always appears above Alex.
     def activate
       # Ensure we always appear above the player
       self.start_at(Player.x, Player.y - 50)

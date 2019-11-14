@@ -103,7 +103,11 @@ void cVideo::Init_CEGUI(void)
 
     // create CEGUI renderer and system objects
     mp_cegui_renderer = &CEGUI::OpenGLRenderer::create();
+#ifdef CEGUI_USE_EXPAT
+    mp_cegui_xmlparser = new CEGUI::ExpatParser();
+#else
     mp_cegui_xmlparser = new CEGUI::LibxmlParser();
+#endif
     mp_cegui_imgcodec = new CEGUI::DevILImageCodec();
     CEGUI::System::create(*mp_cegui_renderer, NULL, mp_cegui_xmlparser, mp_cegui_imgcodec, NULL, "", utf8_logpath);
 

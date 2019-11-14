@@ -24,10 +24,9 @@ using namespace TSC::Scripting;
 /**
  * Class: JumpingJewel
  *
- * Parent: [Jewel](jewel.html)
- * {: .superclass}
+ * Parent: L<Jewel>
  *
- * These jewels are used by coin boxes. You will barely
+ * These jewels are used by jewel boxes. You will barely
  * ever need them.
  */
 

@@ -16,6 +16,12 @@
 #
 # Copyright © 2014, 2016 Marvin Gülker
 
+# CEGUI 0.8.7 does not build against Debian 10's libxml2,
+# so provide the possibility to use expat instead.
+# Do not apply this workaround option unless you really
+# need it.
+option(CEGUI_USE_EXPAT "Workaround option: advise CEGUI to use expat instead of libxml2 -- this option has nothing to do with TSC's own use of libxml" OFF)
+
 ########################################
 # pkg-config
 
@@ -67,7 +73,13 @@ endmacro()
 find_cegui_library(Base)
 find_cegui_library(CoreWindowRendererSet)
 find_cegui_library(DevILImageCodec)
-find_cegui_library(LibXMLParser)
+
+if (CEGUI_USE_EXPAT)
+  message(STATUS "Configuring to link with CEGUI's expat parser instead of libxml2")
+  find_cegui_library(ExpatParser)
+else()
+  find_cegui_library(LibXMLParser)
+endif()
 
 ########################################
 # The renderers
@@ -90,8 +102,13 @@ set(CEGUI_LIBRARIES
   ${CEGUI_Base_LIBRARY}
   ${CEGUI_CoreWindowRendererSet_LIBRARY}
   ${CEGUI_DevILImageCodec_LIBRARY}
-  ${CEGUI_LibXMLParser_LIBRARY}
  )
+
+if(CEGUI_USE_EXPAT)
+  list(APPEND CEGUI_LIBRARIES ${CEGUI_ExpatParser_LIBRARY})
+else()
+  list(APPEND CEGUI_LIBRARIES ${CEGUI_LibXMLParser_LIBRARY})
+endif()
 
 ########################################
 # Flags
@@ -119,5 +136,6 @@ mark_as_advanced(CEGUI_INCLUDE_DIR
   CEGUI_CORE_WINDOW_RENDERER_SET_LIBRARY
   CEGUI_DEVIL_CODEC_LIBRARY
   CEGUI_LIBXML_PARSER_LIBRARY
+  CEGUI_EXPAT_PARSER_LIBRARY
   CEGUI_RENDERER_LIBRARIES
   CEGUI_LIBRARIES)

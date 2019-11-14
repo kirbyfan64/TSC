@@ -54,6 +54,12 @@
 		#105 by Chris Jacobsen)
 	* Dependencies: Upgraded CEGUI from 0.7.9 to 0.8.7 (ticket #10 by
 		Marvin Gülker)
+    * Dependencies: CEGUI has ben dropped from Debian 10. It can be
+		compiled manually, but not against the libxml2 contained in
+		Debian 10's repositories. Instead, it can be compiled against
+		libexpat. To allow the use of a CEGUI compiled against
+		libexpat instead of libxml2, TSC now has a new compilation
+		option CEGUI_USE_EXPAT.
 	* Dependencies: Upgraded mruby from 1.0.0 to 1.4.1
 	* Dependencies: New dependency on the `tinyclipboard' library
 	* Dependencies: Dropped dependency on Ruby for building TSC itself
@@ -70,6 +76,7 @@
 	* Misc: New compilation option ENABLE_SCRIPT_DOCS.
 	* Misc: Removed compilation option ENABLE_MRUBY. Scripting is an
 		integral part of TSC that can't be disabled anymore.
+	* Misc: New compilation option USE_SYSTEM_PODPARSER.
 
 2015-08-17  Marvin Gülker  <quintus@quintilianus.eu>
 

@@ -24,8 +24,7 @@ using namespace TSC::Scripting;
 /**
  * Class: FallingJewel
  *
- * Parent: [Jewel](jewel.html)
- * {: .superclass}
+ * Parent: L<Jewel>
  *
  * This kind of jewel jumps around when it falls down
  * something, i.e. it is subject to gravity and moves around.

@@ -36,6 +36,11 @@
 // libxml++2.6.
 #cmakedefine USE_LIBXMLPP3 1
 
+// If set, CEGUI will be advised to dl-load expat instead of libxml2
+// (workaround for CEGUI 0.8.7 not building against libxml2 on
+// Debian 10).
+#cmakedefine CEGUI_USE_EXPAT
+
 // Indicate where the "make install" step put its data to.
 // The value of these macros is ignored on Windows, where
 // the TSC data directory is determined relative to

@@ -25,61 +25,69 @@
 /**
  * Class: Sprite
  *
- * A _Sprite_ is one of the most generic objects available in the MRuby
+ * A I<Sprite> is one of the most generic objects available in the MRuby
  * API. Anything shown on the screen is somehow a sprite, and the methods
  * defined in this class are therefore available to nearly all objects
  * exposed to the MRuby API.
  *
  * All sprites created by the regular TSC editor can be references by
- * indexing the global `UIDS` table, see
- * [Unique Identifiers](index.html#unique-identifiers-uids) for more
+ * indexing the global L<UIDS> table, see
+ * the section “Unique Identifiers” on the main page for more
  * information on this topic.
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ruby
- * UIDS[38].x
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *     UIDS[38].x
  *
- * About coordinates
- * -----------------
+ * =head2 About coordinates
  *
- * Instances of `Sprite` and its subclasses have two kinds of
+ * Instances of C<Sprite> and its subclasses have two kinds of
  * coordinates, the normal ones (usually called just "coordinates") and
  * the starting position’s coordinates (usually called "initial
  * coordinates"). Most sprites don’t really care about the initial
- * coordinates, but some instances of subclasses of `Sprite` do, e.g. the
- * [flyon](flyon.html) remembers its starting position, i.e. where to
+ * coordinates, but some instances of subclasses of C<Sprite> do, e.g. the
+ * L<Flyon> remembers its starting position, i.e. where to
  * return after jumping out, in its initial coordinates. Note that the
- * method for specifying the initial coordinates _also_ set the
+ * method for specifying the initial coordinates I<also> set the
  * "normal" coordinates at the same time to the same value (so you
  * usually don’t need to set both pairs manually).
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Touch
- * : This event is fired when the sprite collides with another
- *   sprite. Note that such a collision actually creates two Touch
- *   events, one for each sprite. This may be useful if you don’t want to
- *   use a long `if-elsif-elsif-elsif...` construct inside an event
- *   handler choosing an action depending on the collided sprite.
+ * =over
  *
- *   The event handler gets passed an instance of this class (or one of
- *   its subclasses) representing the other collision "partner".
+ * =item [Touch]
  *
- * Constants
- * ---------
+ * This event is fired when the sprite collides with another
+ * sprite. Note that such a collision actually creates two Touch
+ * events, one for each sprite. This may be useful if you don’t want to
+ * use a long C<if-elsif-elsif-elsif...> construct inside an event
+ * handler choosing an action depending on the collided sprite.
  *
- * PASSIVE_Z_START
- * : Lowest valid Z coordinate for passive sprites.
+ * The event handler gets passed an instance of this class (or one of
+ * its subclasses) representing the other collision "partner".
  *
- * MASSIVE_Z_START
- * : Lowest valid Z coordinate for massive sprites.
+ * =back
  *
- * FRONTPASSIVE_Z_START
- * : Lowest valid Z coordinate for front-passive sprites.
+ * =head2 Constants
  *
- * HALFMASSIVE_Z_START
- * : Lowest valid Z coordinate for half-massive sprites.
+ * =over
+ *
+ * =item [PASSIVE_Z_START]
+ *
+ * Lowest valid Z coordinate for passive sprites.
+ *
+ * =item [MASSIVE_Z_START]
+ *
+ * Lowest valid Z coordinate for massive sprites.
+ *
+ * =item [FRONTPASSIVE_Z_START]
+ *
+ * Lowest valid Z coordinate for front-passive sprites.
+ *
+ * =item [HALFMASSIVE_Z_START]
+ *
+ * Lowest valid Z coordinate for half-massive sprites.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -95,14 +103,22 @@ MRUBY_IMPLEMENT_EVENT(touch);
  *
  * Adds a sprite to the level.
  *
- * ##### Parameters
- * path
- * : The path to the sprite’s image, relative to the `pixmaps/` directory.
+ * =head4 Parameters
  *
- * uid
- * : The UID for the sprite. If not given, a free one will be used.
+ * =over
  *
- * ##### Return value
+ * =item [path]
+ *
+ * The path to the sprite’s image, relative to the F<pixmaps/> directory.
+ *
+ * =item [uid]
+ *
+ * The UID for the sprite. If not given, a free one will be used.
+ *
+ * =back
+ *
+ * =head4 Return value
+ *
  * The newly created instance.
  */
 
@@ -148,7 +164,7 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  *   show()
  *
- * Makes a sprite visible. See also [hide()](#hide).
+ * Makes a sprite visible. See also L<#hide>.
  */
 mrb_value Show(mrb_state* p_state, mrb_value self)
 {
@@ -162,7 +178,7 @@ mrb_value Show(mrb_state* p_state, mrb_value self)
  *
  *   hide()
  *
- * Makes a sprite invisible. See also [show()](#show).
+ * Makes a sprite invisible. See also L<#show>.
  */
 mrb_value Hide(mrb_state* p_state, mrb_value self)
 {
@@ -192,18 +208,32 @@ mrb_value Get_UID(mrb_state* p_state, mrb_value self)
  *
  * Set the massivity of a sprite.
  *
- * #### Parameters
- * type
- * : One of the following symbols. Their meaning is identical to the one
- *   in the TSC editor.
+ * =head4 Parameters
  *
- *   * `:passive`
- *   * `:front_passive` or `:frontpassive`
- *   * `:massive`
- *   * `:half_massive` or `:halfmassive`
- *   * `:climbable`
+ * =over
  *
- *   Invalid types will cause an error.
+ * =item [type]
+ *
+ * One of the following symbols. Their meaning is identical to the one
+ * in the TSC editor.
+ *
+ * =over
+ *
+ * =item C<:passive>
+ *
+ * =item C<:front_passive> or C<:frontpassive>
+ *
+ * =item C<:massive>
+ *
+ * =item C<:half_massive> or C<:halfmassive>
+ *
+ * =item C<:climbable>
+ *
+ * =back
+ *
+ * Invalid types will cause an error.
+ *
+ * =back
  */
 static mrb_value Set_Massive_Type(mrb_state* p_state,  mrb_value self)
 {
@@ -234,10 +264,10 @@ static mrb_value Set_Massive_Type(mrb_state* p_state,  mrb_value self)
  *
  *   massive_type() → a_symbol
  *
- * Returns the sprite’s current massive type. See #massive_type= for
+ * Returns the sprite’s current massive type. See L<#massive_type=> for
  * a list of possible return values; front passive will always be
- * returned as `:frontpassive`, half massive will always be returned
- * as `:half_massive`.
+ * returned as C<:frontpassive>, half massive will always be returned
+ * as C<:half_massive>.
  */
 static mrb_value Get_Massive_Type(mrb_state* p_state, mrb_value self)
 {
@@ -353,7 +383,7 @@ static mrb_value Get_Start_Y(mrb_state* p_state,  mrb_value self)
  *
  *   start_x=( val )
  *
- * Like #x=, but also sets the sprite’s initial X coordinate.
+ * Like L<#x=>, but also sets the sprite’s initial X coordinate.
  */
 static mrb_value Set_Start_X(mrb_state* p_state, mrb_value self)
 {
@@ -371,7 +401,7 @@ static mrb_value Set_Start_X(mrb_state* p_state, mrb_value self)
  *
  *   start_y=( val )
  *
- * Like #y=, but also sets the sprite’s initial Y coordinate.
+ * Like L<#y=>, but also sets the sprite’s initial Y coordinate.
  */
 static mrb_value Set_Start_Y(mrb_state* p_state, mrb_value self)
 {
@@ -406,7 +436,7 @@ static mrb_value Get_Z(mrb_state* p_state, mrb_value self)
  *
  * Returns the sprite’s current X and Y coordinates.
  *
- * #### Return value
+ * =head4 Return value
  *
  * An array of the current coordinates, both in pixels.
  */
@@ -428,7 +458,7 @@ static mrb_value Pos(mrb_state* p_state, mrb_value self)
  *
  * Returns the initial coordinates for this sprite.
  *
- * #### Return value
+ * =head4 Return value
  *
  * An array of the initial coordinates, both in pixels.
  */
@@ -448,7 +478,7 @@ static mrb_value Start_Pos(mrb_state* p_state, mrb_value self)
  *
  *   rect() → [an_integer, another_integer, yetanother_integer, andafourthinteger]
  *
- * The sprite’s full image rectangle. See also [collision_rect()](#collisionrect).
+ * The sprite’s full image rectangle. See also L<#collision_rect>.
  */
 static mrb_value Rect(mrb_state* p_state, mrb_value self)
 {
@@ -468,7 +498,7 @@ static mrb_value Rect(mrb_state* p_state, mrb_value self)
  *
  *   collision_rect() → [an_integer, another_integer, yetanother_integer, andafourthinteger]
  *
- * The sprite’s collision rectangle. See also [rect()](#rect)
+ * The sprite’s collision rectangle. See also L<#rect>.
  */
 static mrb_value Collision_Rect(mrb_state* p_state, mrb_value self)
 {
@@ -496,12 +526,15 @@ static mrb_value Collision_Rect(mrb_state* p_state, mrb_value self)
  * the TSC level editor and hovering over objects placed near the
  * location where you want to warp to.
  *
- * #### Parameters
- * x
- * : The new X coordinate.
+ * =head4 Parameters
  *
- * y
- * : The new Y coordinate.
+ * =over
+ *
+ * =item [x] The new X coordinate.
+ *
+ * =item [y] The new Y coordinate.
+ *
+ * =back
  */
 static mrb_value Warp(mrb_state* p_state, mrb_value self)
 {
@@ -522,12 +555,15 @@ static mrb_value Warp(mrb_state* p_state, mrb_value self)
  *
  * Sets both the initial X and Y coordinates at once.
  *
- * #### Parameters
- * xpos
- * : The initial X coordinate in pixels.
+ * =head4 Parameters
  *
- * ypos
- * : The initial Y coordinate in pixels.
+ * =over
+ *
+ * =item [xpos] The initial X coordinate in pixels.
+ *
+ * =item [ypos] The initial Y coordinate in pixels.
+ *
+ * =back
  */
 static mrb_value Start_At(mrb_state* p_state, mrb_value self)
 {
@@ -552,7 +588,8 @@ static mrb_value Start_At(mrb_state* p_state, mrb_value self)
  * generates sprites would be saved into the savegame that should
  * actually only ever be inserted by the game's script.
  *
- * #### Return value
+ * =head4 Return value
+ *
  * Returns its argument.
  */
 static mrb_value Set_Suppress_Save(mrb_state* p_state, mrb_value self)
@@ -571,9 +608,10 @@ static mrb_value Set_Suppress_Save(mrb_state* p_state, mrb_value self)
  *   suppress_save() → a_boolean
  *
  * Queries whether this sprite is saved in savegame files.
- * See #suppress_save=.
+ * See L<#suppress_save=>.
  *
- * #### Return value
+ * =head4 Return value
+ *
  * True or false.
  */
 static mrb_value Get_Suppress_Save(mrb_state* p_state, mrb_value self)
@@ -593,10 +631,10 @@ static mrb_value Get_Suppress_Save(mrb_state* p_state, mrb_value self)
  *
  * Checks whether this sprite is the player.
  *
- * #### Return value
+ * =head4 Return value
  *
- * If this sprite is the player, returns `true`. Otherwise, returns
- * `false`.
+ * If this sprite is the player, returns C<true>. Otherwise, returns
+ * C<false>.
  */
 static mrb_value Is_Player(mrb_state* p_state,  mrb_value self)
 {
@@ -615,9 +653,15 @@ static mrb_value Is_Player(mrb_state* p_state,  mrb_value self)
  *
  * Change the sprite’s image to the given one.
  *
- * #### Parameters
- * path
- * : The path to the new image, relative to the `pixmaps/` directory.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [path]
+ *
+ * The path to the new image, relative to the F<pixmaps/> directory.
+ *
+ * =back
  */
 static mrb_value Set_Image(mrb_state* p_state, mrb_value self)
 {
@@ -636,7 +680,7 @@ static mrb_value Set_Image(mrb_state* p_state, mrb_value self)
  *   image() → a_string or nil
  *
  * Returns the path to the sprite’s current image. If the sprite was
- * not constructed from a file, returns `nil`.
+ * not constructed from a file, returns C<nil>.
  */
 static mrb_value Get_Image(mrb_state* p_state, mrb_value self)
 {

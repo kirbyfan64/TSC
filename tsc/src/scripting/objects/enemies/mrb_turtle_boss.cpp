@@ -23,21 +23,24 @@
 /**
  * Class: TurtleBoss
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * The _Turtle Boss_ is a giant turtle that needs multiple hits
+ * The I<Turtle Boss> is a giant turtle that needs multiple hits
  * to be defeated. It can throw fireballs while hiding in its
  * shell.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Downgrade
- * : This event is triggered each time the Turtle Boss takes damage.
- *   Not it doesn't take damage for each hit. The event handler
- *   gets passed two arguments: how often it took damage, and how
- *   often it may take damage before it dies.
+ * =over
+ *
+ * =item [Downgrade]
+ *
+ * This event is triggered each time the Turtle Boss takes damage.
+ * Not it doesn't take damage for each hit. The event handler
+ * gets passed two arguments: how often it took damage, and how
+ * often it may take damage before it dies.
+ *
+ * =back
  */
 
 using namespace TSC;
@@ -126,7 +129,7 @@ static mrb_value Is_Shelled(mrb_state* p_state, mrb_value self)
  *   angry?() → true or false
  *
  * Checks if the turtle boss is angry, and if so, returns
- * `true`, otherwise returns `false`.
+ * C<true>, otherwise returns C<false>.
  */
 static mrb_value Is_Angry(mrb_state* p_state, mrb_value self)
 {
@@ -157,9 +160,13 @@ static mrb_value Stand_Up(mrb_state* p_state, mrb_value self)
  *
  * Throw fireballs in all directions.
  *
- * #### Parameters
- * amount (6)
- * : The number of fireballs to throw.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [amount (6)] The number of fireballs to throw.
+ *
+ * =back
  */
 static mrb_value Throw_Fireballs(mrb_state* p_state, mrb_value self)
 {
@@ -184,9 +191,13 @@ static mrb_value Throw_Fireballs(mrb_state* p_state, mrb_value self)
  * Specify the maximum number of hits this turtle
  * boss needs before it gets a single (!) downgrade.
  *
- * #### Parameters
- * hits
- * : The new number of maximum hits.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [hits] The new number of maximum hits.
+ *
+ * =back
  */
 static mrb_value Set_Max_Hits(mrb_state* p_state, mrb_value self)
 {
@@ -226,9 +237,13 @@ static mrb_value Get_Max_Hits(mrb_state* p_state, mrb_value self)
  * Set the maximum number of downgrades this turtle
  * boss needs before it dies.
  *
- * #### Parameters
- * :count
- * The new maximum number of downgrades.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [:count] The new maximum number of downgrades.
+ *
+ * =back
  */
 static mrb_value Set_Max_Downgrade_Count(mrb_state* p_state, mrb_value self)
 {
@@ -254,9 +269,13 @@ static mrb_value Set_Max_Downgrade_Count(mrb_state* p_state, mrb_value self)
  * Set the time the turtle boss stays in the shell
  * before coming out again.
  *
- * #### Parameters
- * val
- * : The new in-shell-stay time.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [val] The new in-shell-stay time.
+ *
+ * =back
  */
 static mrb_value Set_Shell_Time(mrb_state* p_state, mrb_value self)
 {
@@ -309,9 +328,15 @@ static mrb_value Get_Max_Downgrade_Count(mrb_state* p_state, mrb_value self)
  * Set to true to have the level finish when the turtle
  * boss dies (the default).
  *
- * #### Parameter
- * bool
- * : `true` to end the level on death, `false` to do nothing.
+ * =head4 Parameter
+ *
+ * =over
+ *
+ * =item [bool]
+ *
+ * C<true> to end the level on death, C<false> to do nothing.
+ *
+ * =back
  */
 static mrb_value Set_Level_Ends_If_Killed(mrb_state* p_state, mrb_value self)
 {
@@ -330,7 +355,7 @@ static mrb_value Set_Level_Ends_If_Killed(mrb_state* p_state, mrb_value self)
  *   level_ends_if_killed? → true or false
  *
  * Checks if the level ends when this turtle boss gets
- * killed, and returns `true` if so, `false` otherwise.
+ * killed, and returns C<true> if so, C<false> otherwise.
  */
 static mrb_value Does_Level_End_If_Killed(mrb_state* p_state, mrb_value self)
 {

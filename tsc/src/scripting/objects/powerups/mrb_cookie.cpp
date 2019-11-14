@@ -21,10 +21,9 @@
 /**
  * Class: Cookie
  *
- * Parent: [Powerup](powerup.html)
- * {: .superclass}
+ * Parent: L<Powerup>
  *
- * The _cookie_ is a 3-live-up item that is typically used to make
+ * The I<cookie> is a 3-live-up item that is typically used to make
  * the user aware he has successfully reached a particularly
  * hard-to-reach location. Do not overuse it! Use it sparely!
  *

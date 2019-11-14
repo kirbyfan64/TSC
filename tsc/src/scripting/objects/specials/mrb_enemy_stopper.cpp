@@ -21,15 +21,14 @@
 /**
  * Class: EnemyStopper
  *
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * An _enemy stopper_ acts as a barrier for most enemies
+ * An I<enemy stopper> acts as a barrier for most enemies
  * in TSC. They are not able to cross this invisible barrier
  * and will turn around when they hit it.
  *
  * Enemies that do not walk as usually (for example
- * [gees](gee.html) are not affected by this barrier.
+ * L<gees|Gee> are not affected by this barrier.
  */
 
 using namespace TSC;

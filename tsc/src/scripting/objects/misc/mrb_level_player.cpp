@@ -25,10 +25,9 @@ using namespace std;
 
 /**
  * Class: LevelPlayer
- * Parent: [MovingSprite](movingsprite.html)
- * {: .superclass}
+ * Parent: L<MovingSprite>
  *
- * The sole instance of this class, the singleton `Player`, represents
+ * The sole instance of this class, the singleton C<Player>, represents
  * Alex himself. Naturally you can’t instanciate this class (TSC isn’t a
  * multiplayer game), but otherwise this class is your interface to doing
  * all kinds of evil things with Alex. You should, however, be careful,
@@ -39,66 +38,77 @@ using namespace std;
  * This class’ documentation uses two words that you’re better off not
  * mixing up:
  *
- * Alex (or just "the level player")
- * : The sprite of Alex walking around and jumping on enemies.
+ * =over
  *
- * Player
- * : The actual user sitting in front of some kind of monitor. Don’t
- *   confuse him with Alex, because a) he will probably get angry, and b)
- *   you’ll get funny meanings on sentences like "the player presses the
- *   _jump_ key". The only exception to this rule is the `Player`
- *   constant in Mruby, which obviously represents Alex, not the guy
- *   playing the game.
+ * =item [Alex (or just "the level player")] The
+ * sprite of Alex walking around and jumping on enemies.
+ *
+ * =item [Player]
+ * The actual user sitting in front of some kind of monitor. Don’t
+ * confuse him with Alex, because a) he will probably get angry, and b)
+ * you’ll get funny meanings on sentences like "the player presses the
+ * I<jump> key". The only exception to this rule is the C<Player>
+ * constant in Mruby, which obviously represents Alex, not the guy
+ * playing the game.
+ *
+ * =back
  *
  * Note that the level player is just a normal sprite all its way up
  * through the class hierarchy. So be sure to check the superclasses’
  * methods if you don’t find what you’re looking for here.
  *
- * Events
- * ------
+ * =head2 Events
  *
- * Die
- * : This event gets fired immediately before Alex is killed by the
- *   the game logic. If you call `veto_death` from this event handler,
- *   the player will not die, but note it is your responsibility to
- *   ensure something useful happens. Especially note that Alex
- *   would fall down eternally if he dies on the level lower edge
- *   and you veto the death (you can check for this using the position
- *   information of the player). This event is *not* emitted when
- *   Omega mode or invincibility rescues Alex.
+ * =over
  *
- * Downgrade
- * : Whenever Alex gets hit (but not killed), this event is triggered.
- *   The event handler gets passed Alex’s current downgrade count
- *   (which is always 1) and Alex’s maximum downgrade count (which
- *   is always 2). As you can see, the arguments passed are not really
- *   useful and are just there for symmetry with some enemies’
- *   _Downgrade_ event handlers.
+ * =item [Die]
  *
- * Jewel_100
- * : After Alex has collected 100 jewels, this event
- *   is triggered. The event handler isn’t passed anything, but note
- *   that it is highly discouraged to alter Alex’s amount of jewels from
- *   within the event handler; this may lead to unexpected behaviour
- *   such as Alex having more than 100 jewels after all operations
- *   regarding the amount of jewels have finished or even endless
- *   loops as altering the jewel amount may cause subsequent events
- *   of this type to be triggered.
+ * This event gets fired immediately before Alex is killed by the
+ * the game logic. If you call L<#veto_death> from this event handler,
+ * the player will not die, but note it is your responsibility to
+ * ensure something useful happens. Especially note that Alex
+ * would fall down eternally if he dies on the level lower edge
+ * and you veto the death (you can check for this using the position
+ * information of the player). This event is B<not> emitted when
+ * Omega mode or invincibility rescues Alex.
  *
- * Jump
- * : This event is issued when the Alex does a valid jump, i.e. the
- *   player presses the _Jump_ key and Alex is currently in a state that
- *   actually allows him to jump. The event is triggered immediately
- *   before starting the jump.
+ * =item [Downgrade]
  *
- * Shoot
- * : Fired when Alex executes a valid shoot, either fireball or
- *   iceball. As with the _Jump_ event, this is only triggered when the
- *   player presses the _Shoot_ key and Alex is currently in a state
- *   that allows him to shoot. Likewise, the event is triggered just
- *   prior to the actual shot. The event handler gets passed either the
- *   string `"ice"` when the player fired an iceball, or `"fire"` when it
- *   was a fireball.
+ * Whenever Alex gets hit (but not killed), this event is triggered.
+ * The event handler gets passed Alex’s current downgrade count
+ * (which is always 1) and Alex’s maximum downgrade count (which
+ * is always 2). As you can see, the arguments passed are not really
+ * useful and are just there for symmetry with some enemies’
+ * I<Downgrade> event handlers.
+ *
+ * =item [Jewel_100]
+ *
+ * After Alex has collected 100 jewels, this event is triggered. The
+ * event handler isn’t passed anything, but note that it is highly
+ * discouraged to alter Alex’s amount of jewels from within the event
+ * handler; this may lead to unexpected behaviour such as Alex having
+ * more than 100 jewels after all operations regarding the amount of
+ * jewels have finished or even endless loops as altering the jewel
+ * amount may cause subsequent events of this type to be triggered.
+ *
+ * =item [Jump]
+ *
+ * This event is issued when the Alex does a valid jump, i.e. the
+ * player presses the I<Jump> key and Alex is currently in a state that
+ * actually allows him to jump. The event is triggered immediately
+ * before starting the jump.
+ *
+ * =item [Shoot]
+ *
+ * Fired when Alex executes a valid shoot, either fireball or
+ * iceball. As with the I<Jump> event, this is only triggered when the
+ * player presses the I<Shoot> key and Alex is currently in a state
+ * that allows him to shoot. Likewise, the event is triggered just
+ * prior to the actual shot. The event handler gets passed either the
+ * string C<"ice"> when the player fired an iceball, or C<"fire"> when it
+ * was a fireball.
+ *
+ * =back
  */
 
 /***************************************
@@ -122,11 +132,16 @@ MRUBY_IMPLEMENT_EVENT(shoot);
  *
  * Makes Alex jump.
  *
- * #### Parameter
- * deaccel
- * : Negative acceleration to apply, i.e. defines how high Alex will
- *   jump. Note that this isn’t necessarily the height in pixels as the
- *   force of gravity will be applied to the value while jumping.
+ * =head4 Parameter
+ *
+ * =over
+ *
+ * =item [deaccel]
+ * Negative acceleration to apply, i.e. defines how high Alex will
+ * jump. Note that this isn’t necessarily the height in pixels as the
+ * force of gravity will be applied to the value while jumping.
+ *
+ * =back
  */
 static mrb_value Jump(mrb_state* p_state,  mrb_value self)
 {
@@ -146,7 +161,7 @@ static mrb_value Jump(mrb_state* p_state,  mrb_value self)
  *
  *   type() → a_symbol or nil
  *
- * Returns Alex’s current type. See [#type=](#type-1) for a list of
+ * Returns Alex’s current type. See L<#type=> for a list of
  * possible symbols to be returned. Returns nil if Alex’s state can’t
  * be detected for some reason (and prints a warning on stderr).
  */
@@ -179,38 +194,42 @@ static mrb_value Get_Type(mrb_state* p_state,  mrb_value self)
  *   type=(type)
  *
  * Forcibly applies a powerup/powerdown to the level player. Note this method
- * bypasses any Alex state checks, i.e. you can directly apply `:ice` to
+ * bypasses any Alex state checks, i.e. you can directly apply C<:ice> to
  * small Alex or force Fire Alex back to Normal Big Alex by applying
- * `:big`. This check bypassing is the reason why you shouldn’t use this
+ * C<:big>. This check bypassing is the reason why you shouldn’t use this
  * method for downgrading or killing the player; there might however be
  * situations in which calling this method is more appropriate.
  *
  * Using this method never affects the rescue item (that one shown on top
  * of the screen in the box).
  *
- * #### Parameter
- * type
- * : The powerup or powerdown to apply. One of the following symbols:
+ * =head4 Parameter
  *
- *   `:dead`
- *    : Please use the [kill()](#kill) method instead.
+ * =over
  *
- *   `:small`
- *    : Please use the [downgrade()](#downgrade) method instead.
+ * =item [type]
  *
- *   `:big`
- *   : Apply the normal mushroom.
+ * The powerup or powerdown to apply. One of the following symbols:
  *
- *   `:fire`
- *   : Apply the fireplant.
+ * =over
  *
- *   `:ice`
- *   : Apply the ice mushroom.
+ * =item [C<:dead>] Please use the L<#kill> method instead.
  *
- *   `:ghost`
- *   : Apply the ghost mushroom.
+ * =item [C<:small>] Please use the L<#downgrade> method instead.
  *
- *   Specifying an invalid type causes an error.
+ * =item [C<:big>] Apply the normal mushroom.
+ *
+ * =item [C<:fire>] Apply the fireplant.
+ *
+ * =item [C<:ice>] Apply the ice mushroom.
+ *
+ * =item [C<:ghost>] Apply the ghost mushroom.
+ *
+ * =back
+ *
+ * Specifying an invalid type causes an error.
+ *
+ * =back
  *
  */
 static mrb_value Set_Type(mrb_state* p_state,  mrb_value self)
@@ -279,11 +298,16 @@ static mrb_value Set_Points(mrb_state* p_state,  mrb_value self)
  *
  * Adds more points to the amount of points the player already has.
  *
- * #### Parameter
- * points
- * : The number of points to add.
+ * =head4 Parameter
  *
- * #### Return value
+ * =over
+ *
+ * =item [points] The number of points to add.
+ *
+ * =back
+ *
+ * =head4 Return value
+ *
  * The new number of points.
  */
 static mrb_value Add_Points(mrb_state* p_state,  mrb_value self)
@@ -307,7 +331,7 @@ static mrb_value Add_Points(mrb_state* p_state,  mrb_value self)
  * Forcibly kill the level player. This method kills Alex
  * regardless of being big, fire, etc, but still honours
  * star and other invincibility effects. If you urgently
- * want to kill Alex despite of those, use `#kill!`.
+ * want to kill Alex despite of those, use L<#kill!>.
  */
 static mrb_value Kill(mrb_state* p_state, mrb_value self)
 {
@@ -320,7 +344,7 @@ static mrb_value Kill(mrb_state* p_state, mrb_value self)
  *
  *   kill!()
  *
- * Like `#kill`, but also ignore any invincibility status that
+ * Like L<#kill>, but also ignore any invincibility status that
  * Alex may be in. That is, even kill Alex if he has just been
  * hurt and is thus invincible or despite star being in effect.
  */
@@ -349,13 +373,18 @@ static mrb_value Get_Jewels(mrb_state* p_state,  mrb_value self)
  *   jewels=(num)
  *
  * Reset the number of collected jewels to the given
- * value. If you set a value greater than 100, a `Jewel_100` event is
+ * value. If you set a value greater than 100, a C<Jewel_100> event is
  * triggered.
  *
- * #### Parameter
- * num
- * : The new number of jewels. This value obeys the same
- *   100-rule as the parameter to [add_jewels()](#addjewels).
+ * =head4 Parameter
+ *
+ * =over
+ *
+ * =item [num]
+ * The new number of jewels. This value obeys the same
+ * 100-rule as the parameter to L<#add_jewels>.
+ *
+ * =back
  */
 static mrb_value Set_Gold(mrb_state* p_state,  mrb_value self)
 {
@@ -372,17 +401,24 @@ static mrb_value Set_Gold(mrb_state* p_state,  mrb_value self)
  *   add_jewels(num)    → an_integer
  *
  * Add to the player’s current amount of jewels. If the number of
- * jewels passes 100, a `Jewel_100` event is triggered.
+ * jewels passes 100, a C<Jewel_100> event is triggered.
  *
- * #### Parameter
- * num
- * : The number of jewels to add. If Alex’s resulting
- *   amount of jewels (i.e. the current amount plus `num`)
- *   is greater than 99, Alex gains a life and 100 is subtracted
- *   from the resulting amount. This process is repeated until the total
- *   resulting amount of jewels is not greater than 99.
+ * =head4 Parameter
  *
- * #### Return value
+ * =over
+ *
+ * =item [num]
+ *
+ * The number of jewels to add. If Alex’s resulting
+ * amount of jewels (i.e. the current amount plus C<num>)
+ * is greater than 99, Alex gains a life and 100 is subtracted
+ * from the resulting amount. This process is repeated until the total
+ * resulting amount of jewels is not greater than 99.
+ *
+ * =back
+ *
+ * =head4 Return value
+ *
  * The new amount of jewels (after the 100-rule described
  * above has been applied as often as necessary).
  */
@@ -415,12 +451,17 @@ static mrb_value Get_Lives(mrb_state* p_state,  mrb_value self)
  *
  * Reset Alex’s number of lives to the given value.
  *
- * #### Parameter
- * lives
- * : The new number of lives. This number may be negative, but note that
- *   setting lives to 0 or less doesn’t kill the player immediately as
- *   this number is only checked when the player gets killed by some other
- *   force.
+ * =head4 Parameter
+ *
+ * =over
+ *
+ * =item [lives]
+ * The new number of lives. This number may be negative, but note that
+ * setting lives to 0 or less doesn’t kill the player immediately as
+ * this number is only checked when the player gets killed by some other
+ * force.
+ *
+ * =back
  */
 static mrb_value Set_Lives(mrb_state* p_state,  mrb_value self)
 {
@@ -440,14 +481,20 @@ static mrb_value Set_Lives(mrb_state* p_state,  mrb_value self)
  *
  * Add to the player’s current number of lives.
  *
- * #### Parameter
- * lives
- * : The lives to add. This number may be negative, but note that setting
- *   lives to 0 or less doesn’t kill the player immediately as this
- *   number is only checked when the player gets killed by some other
- *   force.
+ * =head4 Parameter
  *
- * #### Return value
+ * =over
+ *
+ * =item [lives]
+ * The lives to add. This number may be negative, but note that setting
+ * lives to 0 or less doesn’t kill the player immediately as this
+ * number is only checked when the player gets killed by some other
+ * force.
+ *
+ * =back
+ *
+ * =head4 Return value
+ *
  * The number of lives Alex now has.
  */
 static mrb_value Add_Lives(mrb_state* p_state, mrb_value self)
@@ -494,12 +541,12 @@ static mrb_value Release_Item(mrb_state* p_state, mrb_value self)
  *
  *   veto_death()
  *
- * This method is only useful to call inside a `Die` event handler,
+ * This method is only useful to call inside a C<Die> event handler,
  * in which case it causes the game to not kill Alex although all
  * logical conditions for killing him are fulfilled. The veto
  * only affects this one death case the event was emitted for.
  *
- * Calling this method outside of the `Die` event handler has no
+ * Calling this method outside of the C<Die> event handler has no
  * effect.
  */
 static mrb_value Veto_Death(mrb_state* p_state, mrb_value self)

@@ -22,10 +22,9 @@
 /**
  * Class: Gee
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * The _Gee_ is a flying monster that moves slowly or quickly along
+ * The I<Gee> is a flying monster that moves slowly or quickly along
  * a fixed path. Red gees are immunate to fire attacks.
  */
 
@@ -61,14 +60,20 @@ static mrb_value Initialize(mrb_state* p_state,  mrb_value self)
  *   color=( color ) → color
  *
  * Set this gee’s color. Note that changing color also resets some
- * attributes depending on the color (i.e. if you make a gee `:red`,
+ * attributes depending on the color (i.e. if you make a gee C<:red>,
  * it will automatically gain fire resistance, which you could then
- * undo by calling `fire_resistance=` on it afterwards).
+ * undo by calling L<#fire_resistance=> on it afterwards).
  *
- * #### Parameters
- * [color]
- *   One of the following, self-explanatory symbols:
- *   `:red`, `:green`, `:blue`.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [color]
+ *
+ * One of the following, self-explanatory symbols:
+ * C<:red>, C<:green>, C<:blue>.
+ *
+ * =back
  */
 static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
 {
@@ -101,8 +106,9 @@ static mrb_value Set_Color(mrb_state* p_state, mrb_value self)
  *
  * Retrieve the gee’s color.
  *
- * #### Return value
- * The gee’s current color as a symbol. See `color=` for
+ * =head4 Return value
+ *
+ * The gee’s current color as a symbol. See L<#color=> for
  * possible values.
  */
 static mrb_value Get_Color(mrb_state* p_state, mrb_value self)
@@ -128,9 +134,13 @@ static mrb_value Get_Color(mrb_state* p_state, mrb_value self)
  *
  * Set the maximum distance the gee may move.
  *
- * #### Parameters
- * distance
- * : The maximum distance to travel, in pixels.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [distance] The maximum distance to travel, in pixels.
+ *
+ * =back
  */
 static mrb_value Set_Max_Distance(mrb_state* p_state, mrb_value self)
 {
@@ -168,9 +178,13 @@ static mrb_value Get_Max_Distance(mrb_state* p_state, mrb_value self)
  *
  * Set the gee’s flying velocity.
  *
- * #### Parameters
- * speed
- * : The new flying velocity. A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [speed] The new flying velocity. A float.
+ *
+ * =back
  */
 static mrb_value Set_Fly_Speed(mrb_state* p_state, mrb_value self)
 {
@@ -206,7 +220,7 @@ static mrb_value Get_Fly_Speed(mrb_state* p_state, mrb_value self)
  *
  *   always_flying( bool ) → bool
  *
- * Set to `true` to have this gee never wait.
+ * Set to C<true> to have this gee never wait.
  */
 static mrb_value Set_Always_Fly(mrb_state* p_state, mrb_value self)
 {
@@ -238,11 +252,17 @@ static mrb_value Does_Always_Fly(mrb_state* p_state, mrb_value self)
  *   wait_time=( seconds ) → seconds
  *
  * Specify how long to wait between movements. Note this value is
- * ignored if `always_flying` is `true`.
+ * ignored if L<#always_flying> is C<true>.
  *
- * #### Parameters
- * seconds
- * : New number of seconds to wait until next movement. A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [seconds]
+ *
+ * New number of seconds to wait until next movement. A float.
+ *
+ * =back
  */
 static mrb_value Set_Wait_Time(mrb_state* p_state, mrb_value self)
 {

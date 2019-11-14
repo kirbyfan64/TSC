@@ -22,17 +22,16 @@
 /**
  * Class: Flyon
  *
- * Parent: [Enemy](enemy.html)
- * {: .superclass}
+ * Parent: L<Enemy>
  *
- * The _Flyon_ jumps out of its hiding and attacks you. It then quickly
+ * The I<Flyon> jumps out of its hiding and attacks you. It then quickly
  * returns into its typically unreachable hiding and waits a number of
  * seconds before it tries again.
  *
  * Note the flyon is one of the rare objects that makes use of its
- * _starting position_ coordinates. They define the actual position
+ * I<starting position> coordinates. They define the actual position
  * the flyon is returning to after a jump; the normal coordinates
- * merely determine where it is _currently_.
+ * merely determine where it is I<currently>.
  */
 
 using namespace TSC;
@@ -69,11 +68,15 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
  *
  * Set the directory used to retrieve the pictures for the flyon.
  *
- * #### Parameters
- * path
- * : Path for the flyon image directory, relative to `pixmaps` directory.
- *   Note the only real alternative to the default (`pixmaps/flyon/orange`)
- *   is `pixmaps/flyon/blue`.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [path]
+ *
+ * Path for the flyon image directory, relative to F<pixmaps> directory.
+ * Note the only real alternative to the default (F<pixmaps/flyon/orange>)
+ * is F<pixmaps/flyon/blue>.
  */
 static mrb_value Set_Image_Dir(mrb_state* p_state, mrb_value self)
 {
@@ -92,7 +95,7 @@ static mrb_value Set_Image_Dir(mrb_state* p_state, mrb_value self)
  *   image_dir() → a_string
  *
  * Retrieve the path to the directory where the pictures for the
- * flyon are taken from, relative to the `pixmaps` directory.
+ * flyon are taken from, relative to the F<pixmaps> directory.
  */
 static mrb_value Get_Image_Dir(mrb_state* p_state, mrb_value self)
 {
@@ -107,9 +110,15 @@ static mrb_value Get_Image_Dir(mrb_state* p_state, mrb_value self)
  *
  * Specify the maximum distance the flyon may travel.
  *
- * #### Parameters
- * distance
- * : The new maximum distance the flyon may travel, in pixels. A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [distance]
+ *
+ * The new maximum distance the flyon may travel, in pixels. A float.
+ *
+ * =back
  */
 static mrb_value Set_Max_Distance(mrb_state* p_state, mrb_value self)
 {
@@ -173,10 +182,16 @@ static mrb_value Get_Speed(mrb_state* p_state, mrb_value self)
  *
  * Specify the time to wait between jumping.
  *
- * #### Parameters
- * secs
- * : Number of seconds to wait between jumping out again.
- *   A float.
+ * =head4 Parameters
+ *
+ * =over
+ *
+ * =item [secs]
+ *
+ * Number of seconds to wait between jumping out again.
+ * A float.
+ *
+ * =back
  */
 static mrb_value Set_Wait_Time(mrb_state* p_state, mrb_value self)
 {
