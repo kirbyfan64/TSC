@@ -359,6 +359,11 @@ void Generator::generate_indexfile()
     std::string title = "Documentation Index";
     std::string version = tsc_version_str();
 
+    // Parse index file POD markup
+    Pod::PodParser docparser(mainbody, MakeDocFilename, MakeMethodId);
+    docparser.Parse();
+    mainbody = Pod::FormatHTML(docparser.GetTokens()) + "\n";
+
     // Generate module index
     mainbody += "<h3>Modules</h3>\n<ul>";
     for (const ModuleDoc& md: m_modules) {
@@ -503,7 +508,7 @@ static void process_core_files(const fs::path& source_dir, const fs::path& targe
 
     Generator gen(target_dir,
                   source_dir / "docs" / "scripting" / "template.html.part",
-                  source_dir / "docs" / "scripting" / "index.core.html.part",
+                  source_dir / "docs" / "scripting" / "index.core.pod",
                   tsc_version,
                   tsc_gitrevision,
                   parser.GetClasses(),
@@ -522,7 +527,7 @@ static void process_ssl_files(const fs::path& source_dir, const fs::path& target
 
     Generator gen(target_dir,
                   source_dir / "docs" / "scripting" / "template.html.part",
-                  source_dir / "docs" / "scripting" / "index.ssl.html.part",
+                  source_dir / "docs" / "scripting" / "index.ssl.pod",
                   tsc_version,
                   tsc_gitrevision,
                   parser.GetClasses(),
