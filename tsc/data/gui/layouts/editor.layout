@@ -8,8 +8,8 @@
     <Window type="TSCLook256/TabControl" name="editor_tabpane">
       <Property name="TabHeight" value="{0,24}"/>
       <Property name="TabPanePosition" value="Top"/>
-      <!-- Note 50px space at the bottom for the status bar -->
-      <Property name="Area" value="{{0,0},{0,0},{0.2,0},{1,-50}}"/>
+      <!-- 0.94 height to leave space at the bottom for the status bar -->
+      <Property name="Area" value="{{0,0},{0,0},{0.2,0},{0.94,0}}"/>
       <Window type="DefaultWindow" name="editor_tab_menu">
         <Property name="Text" value="Menu"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
@@ -43,8 +43,8 @@
 
     <!-- Following is the editor's right panel (object config) -->
     <Window type="TSCLook256/TabControl" name="object_config_pane">
-      <!-- Note 50px space at the bottom for the status bar -->
-      <Property name="Area" value="{{0.6,0},{0,0},{1,0},{1,-50}}"/>
+      <!-- 0.94 height to leave space at the bottom for the status bar -->
+      <Property name="Area" value="{{0.6,0},{0,0},{1,0},{0.94,0}}"/>
       <Window type="TSCLook256/TabContentPane" name="tab_config">
         <Property name="Text" value="Object Configuration"/>
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}"/>
@@ -57,9 +57,9 @@
     </Window>
 
 
-    <!-- Following is the editor's right panel (object config) -->
+    <!-- Following is the editor's bottom status bar -->
     <Window type="TSCLook256/StaticText" name="status_bar">
-      <Property name="Area" value="{{0,0},{1,-50},{1,0},{1,0}}"/>
+      <Property name="Area" value="{{0,0},{0.94,0},{1,0},{1,0}}"/>
       <Property name="Text" value="Status text is set in-game"/>
       <Property name="Font" value="DejaVuSansMono-Small"/>
     </Window>
