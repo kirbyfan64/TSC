@@ -292,8 +292,6 @@ namespace TSC {
         float m_click_counter;
         // Dragging mode (what happens if dragged)
         DragMode m_dragmode;
-
-        CEGUI::Window* mp_coords_label;
     };
 
     /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
