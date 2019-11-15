@@ -74,6 +74,14 @@ std::vector<std::string> string_split(std::string str, std::string delim)
     return result;
 }
 
+std::string string_shorten(std::string str, size_t maxlen)
+{
+    if (str.length() <= maxlen)
+        return str;
+
+    return str.substr(0, maxlen-1) + "…";
+}
+
 std::string int_to_string(const int number)
 {
     std::ostringstream os;
