@@ -84,6 +84,10 @@ namespace TSC {
 
         void Process_Input(void);
 
+        // This method has to return an identifier for display in
+        // the status bar about what is being edited at this moment.
+        virtual std::string Status_Bar_Ident() const = 0;
+
         virtual void Update(void);
         virtual void Draw(void);
 
@@ -129,6 +133,7 @@ namespace TSC {
         CEGUI::RadioButton* mp_selector_radio_selection;
         CEGUI::RadioButton* mp_selector_radio_secretarea;
         CEGUI::Window* mp_object_config_pane;
+        CEGUI::Window* mp_status_bar;
         float m_visibility_timer;
         CEGUI::UDim m_tabpane_target_x_position;
         CEGUI::UDim m_object_config_pane_target_x_position;
@@ -149,6 +154,7 @@ namespace TSC {
         cSprite* copy_direction(const cSprite* obj, const ObjectDirection dir, int offset /* = 0 */) const;
         void replace_sprites(void);
         std::string load_cegui_image(boost::filesystem::path);
+        void update_status_bar();
         bool on_mouse_enter(const CEGUI::EventArgs& event);
         bool on_mouse_leave(const CEGUI::EventArgs& event);
         bool on_menu_selection_changed(const CEGUI::EventArgs& event);

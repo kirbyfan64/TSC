@@ -97,17 +97,6 @@ cMouseCursor::cMouseCursor(cSprite_Manager* sprite_manager)
 
     m_dragmode = DRAGMODE_SELECTION;
 
-    mp_coords_label = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/Label", "editor_coords");
-    CEGUI::GUIContext& ctx = CEGUI::System::getSingleton().getDefaultGUIContext();
-    ctx.getRootWindow()->addChild(mp_coords_label);
-    mp_coords_label->setMousePassThroughEnabled(true);
-    mp_coords_label->setFont("DejaVuSans-Small-Bold");
-    mp_coords_label->setWidth(CEGUI::UDim(1, 0)); // Width does not matter as the label is transparent, but has to be large enough for the text
-    mp_coords_label->setHeight(CEGUI::UDim(0.5, 0)); // Likewise
-    mp_coords_label->setProperty("HorzFormatting", "Left");
-    mp_coords_label->setProperty("VertFormatting", "Top");
-    mp_coords_label->hide(); // Shown only in editor
-
     Reset_Keys();
     Update_Position();
     // disable mouse initially
@@ -568,11 +557,6 @@ void cMouseCursor::Set_Hovered_Object(cSprite* sprite)
     if (sprite) {
         // add new mouse object to selected objects
         Add_Selected_Object(sprite);
-        // Show coords info
-        mp_coords_label->show();
-    }
-    else {
-        mp_coords_label->hide();
     }
 
     Update_Selected_Object_Offset(m_hovering_object);
@@ -1557,11 +1541,6 @@ void cMouseCursor::Editor_Update(void)
         return;
     }
 
-    // Snap coords text to cursor.
-    CEGUI::GUIContext& ctx = CEGUI::System::getSingleton().getDefaultGUIContext();
-    CEGUI::Vector2f curpos = ctx.getMouseCursor().getPosition();
-    mp_coords_label->setPosition(CEGUI::UVector2(CEGUI::UDim(0, curpos.d_x + 20), CEGUI::UDim(0, curpos.d_y + 35)));
-
     cObjectCollision* col = Get_First_Editor_Collsion();
 
     // if no collision
@@ -1587,110 +1566,12 @@ void cMouseCursor::Editor_Update(void)
         return;
     }
 
-    // mouse object object name to display
-    std::string display_name;
-
     // set object data
     if (col->m_obj) {
-        display_name = col->m_obj->Create_Name();
-
         if ((!m_left || !m_hovering_object->m_obj) && !(pKeyboard->Is_Shift_Down() && !pKeyboard->Is_Ctrl_Down())) {
             Set_Hovered_Object(col->m_obj);
         }
     }
-
-    // Set the massivetype text
-    if (col->m_array == ARRAY_MASSIVE) {
-        if (col->m_obj->m_massive_type == MASS_HALFMASSIVE) {
-            display_name.insert(0, _("Halfmassive - "));
-        }
-        else {
-            display_name.insert(0, _("Massive - "));
-        }
-    }
-    else if (col->m_array == ARRAY_PASSIVE) {
-        if (col->m_obj->m_type == TYPE_OW_LINE_START || col->m_obj->m_type == TYPE_OW_LINE_END || col->m_obj->m_type == TYPE_OW_WAYPOINT) {
-            // ignore
-        }
-        else if (col->m_obj->m_massive_type == MASS_FRONT_PASSIVE) {
-            display_name.insert(0, _("Front Passive - "));
-        }
-        else {
-            display_name.insert(0, _("Passive - "));
-        }
-    }
-    else if (col->m_array == ARRAY_ACTIVE) {
-        if (col->m_obj->m_massive_type == MASS_HALFMASSIVE) {
-            display_name.insert(0, _("Halfmassive - "));
-        }
-        else if (col->m_obj->m_massive_type == MASS_CLIMBABLE) {
-            display_name.insert(0, _("Climbable - "));
-        }
-    }
-
-    // if valid object draw position text
-    if (m_hovering_object->m_obj) {
-        // position text
-        std::string info =
-            "X : "      + int_to_string(static_cast<int>(m_hovering_object->m_obj->m_start_pos_x))
-            + "  Y : "  + int_to_string(static_cast<int>(m_hovering_object->m_obj->m_start_pos_y))
-            + " UID: "  + int_to_string(m_hovering_object->m_obj->m_uid);
-
-        // if in debug mode draw current position X, Y, Z and if available editor Z
-        if (game_debug) {
-            info.insert(0, "Start ");
-            info += "\nCurr.  X : " + int_to_string(static_cast<int>(m_hovering_object->m_obj->m_pos_x)) + "  Y : " + int_to_string(static_cast<int>(m_hovering_object->m_obj->m_pos_y)) + "  Z : " + float_to_string(m_hovering_object->m_obj->m_pos_z, 6);
-
-            // if also got editor z position
-            if (!Is_Float_Equal(m_hovering_object->m_obj->m_editor_pos_z, 0.0f)) {
-                info.insert(info.length(), _("  Editor Z : ") + float_to_string(m_hovering_object->m_obj->m_editor_pos_z, 6));
-            }
-        }
-
-        // if hovering over a level entry or exit, show name/target
-        if (m_hovering_object->m_obj->m_type == TYPE_LEVEL_EXIT ||
-            m_hovering_object->m_obj->m_type == TYPE_LEVEL_ENTRY) {
-            std::stringstream ss;
-            Color color;
-
-            if (m_hovering_object->m_obj->m_type == TYPE_LEVEL_EXIT) { // Level exit
-                cLevel_Exit* p_exit = static_cast<cLevel_Exit*>(m_hovering_object->m_obj);
-                color = p_exit->m_editor_color;
-                color.alpha = 255;
-
-                if (p_exit->m_dest_level.empty() && p_exit->m_dest_entry.empty()) { // Level finish
-                    // TRANS: Displayed when hovering over the level finish object in the editor.
-                    ss << _("FINISH");
-                }
-                else if (!p_exit->m_dest_level.empty() && !p_exit->m_dest_entry.empty()) { // entry in sublevel
-                    ss << "<" << p_exit->m_dest_level << ">→" << p_exit->m_dest_entry;
-                }
-                else if (p_exit->m_dest_level.empty()) { // entry in the active level
-                    ss << p_exit->m_dest_entry;
-                }
-                else { // sublevel without entry specification
-                    ss << "<" << p_exit->m_dest_level << ">";
-                }
-
-            }
-            else { // Level entry
-                cLevel_Entry* p_entry = static_cast<cLevel_Entry*>(m_hovering_object->m_obj);
-                color = p_entry->m_editor_color;
-                color.alpha = 255;
-
-                ss << p_entry->m_entry_name;
-            }
-
-            CEGUI::String colorstr  = CEGUI::PropertyHelper<CEGUI::Colour>::toString(color.Get_cegui_Color());
-            info += std::string("\n[colour='") + colorstr.c_str() + "']" + ss.str();
-        }
-
-        mp_coords_label->setText(reinterpret_cast<const CEGUI::utf8*>(info.c_str()));
-    }
-
-    // OLD if (pHud_Debug->m_counter <= 0.0f) {
-        gp_hud->Set_Text(display_name);
-    // OLD }
 
     delete col;
 }

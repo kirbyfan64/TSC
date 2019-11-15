@@ -62,6 +62,10 @@ namespace TSC {
     // vector does not include `delim` characters anymore.
     std::vector<std::string> string_split(std::string str, std::string delim);
 
+    // If `str` is longer than `maxlen`, shorten it to `maxlen`,
+    // ending it with "…".
+    std::string string_shorten(std::string str, size_t maxlen);
+
 // Return the number as a string
     std::string int_to_string(const int number);
     std::string int64_to_string(const uint64_t number);

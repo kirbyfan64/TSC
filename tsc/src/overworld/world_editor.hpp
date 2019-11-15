@@ -13,6 +13,8 @@ namespace TSC {
         virtual void Disable(void);
         void Set_World(cOverworld* p_world);
 
+        virtual std::string Status_Bar_Ident() const;
+
         // Menu functions
         virtual bool Function_New(void);
         virtual void Function_Load(void);

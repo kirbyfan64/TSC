@@ -19,6 +19,8 @@
 #include "../filesystem/relative.hpp"
 #include "../filesystem/resource_manager.hpp"
 #include "../../video/img_settings.hpp"
+#include "../../objects/level_exit.hpp"
+#include "../../objects/level_entry.hpp"
 #include "../errors.hpp"
 #include "editor.hpp"
 
@@ -32,6 +34,7 @@ cEditor::cEditor()
     mp_editor_tabpane = NULL;
     mp_menu_listbox = NULL;
     mp_object_config_pane = NULL;
+    mp_status_bar = NULL;
     m_enabled = false;
     m_rested = false;
     m_visibility_timer = 0.0f;
@@ -60,6 +63,7 @@ void cEditor::Init(void)
     mp_editor_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("editor.layout");
     mp_editor_tabpane = static_cast<CEGUI::TabControl*>(mp_editor_root->getChild("editor_tabpane"));
     mp_object_config_pane = mp_editor_root->getChild("object_config_pane");
+    mp_status_bar = mp_editor_root->getChild("status_bar");
     m_tabpane_target_x_position = mp_editor_tabpane->getXPosition();
     m_object_config_pane_target_x_position = mp_object_config_pane->getXPosition();
     mp_editor_root->hide(); // Do not show for now
@@ -67,6 +71,9 @@ void cEditor::Init(void)
     // Object settings window only pops up when selecting an object.
     mp_object_config_pane->setXPosition(CEGUI::UDim(CONFIGPANE_OUT_OF_SIGHT_X, 0.0f));
     m_object_config_pane_shown = false;
+
+    // Status bar
+    mp_status_bar->setText("");
 
     // Ensure multiple editors (level and world) can coexist. CEGUI requires unique
     // window names in that case; m_editor_item_tag must be set by subclasses, so
@@ -119,6 +126,7 @@ void cEditor::Unload(void)
         mp_editor_tabpane = NULL;
         mp_menu_listbox = NULL;
         mp_object_config_pane = NULL;
+        mp_status_bar = NULL;
     }
 }
 
@@ -139,11 +147,11 @@ void cEditor::Enable(cSprite_Manager* p_edited_sprite_manager)
     Draw_Static_Text(_("Loading"), &orange, NULL, 0);
 
     pAudio->Play_Sound("editor/enter.ogg");
-    gp_hud->Set_Text(_("Editor enabled"));
     pMouseCursor->Set_Active(true);
 
     pActive_Animation_Manager->Delete_All(); // Stop all animations
 
+    gp_hud->Hide();
     mp_editor_root->show();
     m_enabled = true;
     editor_enabled = true;
@@ -170,6 +178,7 @@ void cEditor::Disable(void)
     pMouseCursor->Set_Active(false);
 
     Hide_Config_Panel();
+    gp_hud->Show();
     mp_editor_root->hide();
     m_enabled = false;
     editor_enabled = false;
@@ -321,6 +330,7 @@ void cEditor::Update(void)
 
     pMouseCursor->Editor_Update();
     Process_Input();
+    update_status_bar();
 }
 
 void cEditor::Draw(void)
@@ -1499,6 +1509,130 @@ void cEditor::replace_sprites(void)
 
         sel_obj->m_obj->Set_Image(image, 1);
     }
+}
+
+void cEditor::update_status_bar()
+{
+    char status_text[512] = {'\0'};
+    char mousepos[32] = {'\0'};
+    char startpos[32] = {'\0'};
+
+    std::string display_name;
+    std::string target_level;
+    std::string levele;
+    std::string massivity;
+    int uid = -1;
+    Color ltarget_color = white;
+    Color mass_color = white;
+
+    // Current mouse coordinates
+    snprintf(mousepos, 32, "(%d,%d)", static_cast<int>(pMouseCursor->m_pos_x), static_cast<int>(pMouseCursor->m_pos_y));
+
+    if (pMouseCursor->m_hovering_object->m_obj) { // If the cursor is hovering about something
+        // Display name
+        display_name = pMouseCursor->m_hovering_object->m_obj->Create_Name();
+
+        // UID
+        uid = pMouseCursor->m_hovering_object->m_obj->m_uid;
+
+        // Object Start position
+        snprintf(startpos, 32, "(%d,%d)",
+                 static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_x),
+                 static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_y));
+
+        // Special info about level exits/entries
+        if (pMouseCursor->m_hovering_object->m_obj->m_type == TYPE_LEVEL_EXIT) {
+            cLevel_Exit* p_exit = static_cast<cLevel_Exit*>(pMouseCursor->m_hovering_object->m_obj);
+            ltarget_color       = p_exit->m_editor_color;
+            ltarget_color.alpha = 255;
+
+            if (p_exit->m_dest_level.empty() && p_exit->m_dest_entry.empty()) { // Level finish
+                // TRANS: Displayed when hovering over the level finish object in the editor.
+                target_level = _("FINISH");
+            }
+            else if (!p_exit->m_dest_level.empty() && !p_exit->m_dest_entry.empty()) { // entry in sublevel
+                target_level = p_exit->m_dest_level;
+                levele = std::string("→ ") + p_exit->m_dest_entry;
+            }
+            else if (p_exit->m_dest_level.empty()) { // entry in the active level
+                // TRANS: Displayed when hovering over a level exit without a target level name.
+                // TRANS: Do not translate the "<" and ">".
+                target_level = _("<This level>");
+                levele = std::string("→ ") + p_exit->m_dest_entry;
+            }
+            else { // sublevel without entry specification
+                target_level = p_exit->m_dest_level;
+            }
+        }
+        else if (pMouseCursor->m_hovering_object->m_obj->m_type == TYPE_LEVEL_ENTRY) {
+            cLevel_Entry* p_entry = static_cast<cLevel_Entry*>(pMouseCursor->m_hovering_object->m_obj);
+            ltarget_color         = p_entry->m_editor_color;
+            ltarget_color.alpha   = 255;
+            levele                = p_entry->m_entry_name;
+        }
+
+        // Massivity
+        mass_color = Get_Massive_Type_Color(pMouseCursor->m_hovering_object->m_obj->m_massive_type);
+        switch (pMouseCursor->m_hovering_object->m_obj->m_massive_type) {
+        case MASS_PASSIVE:
+            massivity = _("Passive");
+            break;
+        case MASS_MASSIVE:
+            massivity = _("Massive");
+            break;
+        case MASS_HALFMASSIVE:
+            massivity = _("Halfmassive");
+            break;
+        case MASS_CLIMBABLE:
+            massivity = _("Climbable");
+            break;
+        case MASS_FRONT_PASSIVE:
+            massivity = _("Front Passive");
+            break;
+        } // No default clause -- let compiler warn about missing values
+    }
+
+    CEGUI::String ltarget_cegui_color = CEGUI::PropertyHelper<CEGUI::Colour>::toString(ltarget_color.Get_cegui_Color());
+    CEGUI::String mass_cegui_color = CEGUI::PropertyHelper<CEGUI::Colour>::toString(mass_color.Get_cegui_Color());
+
+    if (game_debug) { // Provide additional info in status bar if debug mode
+        char currpos[32] = {'\0'};
+        std::string zpos;
+
+        if (pMouseCursor->m_hovering_object->m_obj) {
+            snprintf(currpos, 32, "(%d,%d)",
+                     static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_x),
+                     static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_y));
+
+            zpos = std::string("Z: ") + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_pos_z, 6);
+            // if also got editor z position
+            if (!Is_Float_Equal(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 0.0f)) {
+                zpos += ", Ed.Z: " + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 6);
+            }
+
+        }
+
+        snprintf(status_text, 512, "%-13s │ %-30s │ %-13s │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"
+                                   "[colour='FF00FFFF']%-13s[colour='FFFFFFFF'] │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n",
+                 mousepos, string_shorten(display_name, 30).c_str(),
+                 startpos, ltarget_cegui_color.c_str(),
+                 string_shorten(target_level, 20).c_str(), currpos,
+                 string_shorten(Status_Bar_Ident(), 13).c_str(),
+                 mass_cegui_color.c_str(), massivity.c_str(), uid,
+                 ltarget_cegui_color.c_str(), string_shorten(levele, 20).c_str(),
+                 zpos.c_str());
+    }
+    else {
+        snprintf(status_text, 512, "%-13s │ %-30s │ %-13s │ [colour='%s']%s[colour='FFFFFFFF']\n"
+                                   "[colour='FF00FFFF']%-13s[colour='FFFFFFFF'] │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%s[colour='FFFFFFFF']\n",
+                 mousepos, string_shorten(display_name, 30).c_str(),
+                 startpos, ltarget_cegui_color.c_str(), target_level.c_str(),
+                 string_shorten(Status_Bar_Ident(), 13).c_str(),
+                 mass_cegui_color.c_str(), massivity.c_str(), uid,
+                 ltarget_cegui_color.c_str(), levele.c_str());
+    }
+
+    mp_status_bar->setText(reinterpret_cast<CEGUI::utf8*>(status_text));
 }
 
 bool cEditor::on_help_window_exit_clicked(const CEGUI::EventArgs& args)

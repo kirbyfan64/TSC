@@ -13,6 +13,8 @@ namespace TSC {
         virtual void Disable(void);
         void Set_Level(cLevel* p_level);
 
+        virtual std::string Status_Bar_Ident() const;
+
         virtual bool Key_Down(const sf::Event& evt);
 
         // Menu functions

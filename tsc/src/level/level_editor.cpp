@@ -301,3 +301,11 @@ bool cEditor_Level::cycle_object_massive_type(cSprite* obj) const
 
     return 1;
 }
+
+std::string cEditor_Level::Status_Bar_Ident() const
+{
+    if (mp_level)
+        return mp_level->Get_Level_Name();
+    else
+        return "--";
+}
