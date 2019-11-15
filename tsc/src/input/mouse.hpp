@@ -243,6 +243,8 @@ namespace TSC {
         void Editor_Update(void);
 
         // current internal mouse position
+        // (this is the on-screen coordinate pair, use
+        // the inherited m_pos_x and m_pos_y for the in-level coordinates)
         int m_x;
         int m_y;
 
