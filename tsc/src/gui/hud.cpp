@@ -152,21 +152,26 @@ void cHud::Update()
     static char fps[128];
     static int seconds;
 
-    // Do nothing if not shown anyway
-    if (!mp_hud_root->isVisible())
-        return;
-
+    // Update elapsed time
     if (Game_Mode == MODE_LEVEL) {
-        // Increase playtime
-        std::chrono::system_clock::time_point time_now = std::chrono::system_clock::now();
-        std::chrono::milliseconds time_elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(time_now - m_last_time);
+        // Do not add to elapsed time while in editor. m_last_time
+        // still needs updating, because the subtraction in `else'
+        // below would otherwise add the in-editor time in one big step.
+        if (editor_level_enabled) {
+            m_last_time = std::chrono::system_clock::now();
+        }
+        else {
+            // Increase elapsed time by taking the differentw to m_last_time.
+            std::chrono::system_clock::time_point time_now = std::chrono::system_clock::now();
+            std::chrono::milliseconds time_elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(time_now - m_last_time);
 
-        m_elapsed_time += time_elapsed.count();
-        m_last_time     = time_now;
-        seconds         = m_elapsed_time / 1000;
+            m_elapsed_time += time_elapsed.count();
+            m_last_time     = time_now;
+            seconds         = m_elapsed_time / 1000;
 
-        sprintf(timestr, _("Time %02d:%02d"), seconds / 60, seconds % 60);
-        mp_time_label->setText(timestr);
+            sprintf(timestr, _("Time %02d:%02d"), seconds / 60, seconds % 60);
+            mp_time_label->setText(timestr);
+        }
     }
 
     // Update all minipoints

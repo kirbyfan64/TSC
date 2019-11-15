@@ -48,6 +48,7 @@ void cEditor_Level::Enable(cSprite_Manager* p_sprite_manager)
         return;
 
     cEditor::Enable(p_sprite_manager);
+    mp_level->Pause_All_Timers();
     editor_level_enabled = true;
 }
 
@@ -57,6 +58,7 @@ void cEditor_Level::Disable(void)
         return;
 
     cEditor::Disable();
+    mp_level->Continue_All_Timers();
     editor_level_enabled = false;
 }
 
