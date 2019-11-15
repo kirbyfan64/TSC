@@ -1524,6 +1524,7 @@ void cEditor::update_status_bar()
     std::string massivity;
     int uid = -1;
     Color ltarget_color = white;
+    Color mass_color = white;
 
     // Current mouse coordinates
     snprintf(mousepos, 32, "(%d,%d)", static_cast<int>(pMouseCursor->m_pos_x), static_cast<int>(pMouseCursor->m_pos_y));
@@ -1572,6 +1573,7 @@ void cEditor::update_status_bar()
         }
 
         // Massivity
+        mass_color = Get_Massive_Type_Color(pMouseCursor->m_hovering_object->m_obj->m_massive_type);
         switch (pMouseCursor->m_hovering_object->m_obj->m_massive_type) {
         case MASS_PASSIVE:
             massivity = _("Passive");
@@ -1592,6 +1594,7 @@ void cEditor::update_status_bar()
     }
 
     CEGUI::String ltarget_cegui_color = CEGUI::PropertyHelper<CEGUI::Colour>::toString(ltarget_color.Get_cegui_Color());
+    CEGUI::String mass_cegui_color = CEGUI::PropertyHelper<CEGUI::Colour>::toString(mass_color.Get_cegui_Color());
 
     if (game_debug) { // Provide additional info in status bar if debug mode
         char currpos[32] = {'\0'};
@@ -1612,23 +1615,24 @@ void cEditor::update_status_bar()
 
         // TRANS: This is the status bar content in debug mode. Keep the "│" characters.
         snprintf(status_text, 512, _("%-13s │ %-30s │ %-13s │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"
-                                     "%-13s │ %-30s │ UID: %-8d │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"),
+                                     "%-13s │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"),
                  mousepos, string_shorten(display_name, 30).c_str(),
                  startpos, ltarget_cegui_color.c_str(),
                  string_shorten(target_level, 20).c_str(), currpos,
                  string_shorten(Status_Bar_Ident(), 13).c_str(),
-                 massivity.c_str(), uid, ltarget_cegui_color.c_str(),
-                 string_shorten(levele, 20).c_str(),
+                 mass_cegui_color.c_str(), massivity.c_str(), uid,
+                 ltarget_cegui_color.c_str(), string_shorten(levele, 20).c_str(),
                  zpos.c_str());
     }
     else {
         // TRANS: This is the status bar content. Keep the "│" characters.
         snprintf(status_text, 512, _("%-13s │ %-30s │ %-13s │ [colour='%s']%s[colour='FFFFFFFF']\n"
-                                     "%-13s │ %-30s │ UID: %-8d │ [colour='%s']%s[colour='FFFFFFFF']\n"),
+                                     "%-13s │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%s[colour='FFFFFFFF']\n"),
                  mousepos, string_shorten(display_name, 30).c_str(),
                  startpos, ltarget_cegui_color.c_str(), target_level.c_str(),
                  string_shorten(Status_Bar_Ident(), 13).c_str(),
-                 massivity.c_str(), uid, ltarget_cegui_color.c_str(), levele.c_str());
+                 mass_cegui_color.c_str(), massivity.c_str(), uid,
+                 ltarget_cegui_color.c_str(), levele.c_str());
     }
 
     mp_status_bar->setText(reinterpret_cast<CEGUI::utf8*>(status_text));
