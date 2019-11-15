@@ -1613,9 +1613,8 @@ void cEditor::update_status_bar()
 
         }
 
-        // TRANS: This is the status bar content in debug mode. Keep the "│" characters.
-        snprintf(status_text, 512, _("%-13s │ %-30s │ %-13s │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"
-                                     "[colour='FF00FFFF']%-13s[colour='FFFFFFFF'] │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"),
+        snprintf(status_text, 512, "%-13s │ %-30s │ %-13s │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n"
+                                   "[colour='FF00FFFF']%-13s[colour='FFFFFFFF'] │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%-20s[colour='FFFFFFFF'] │ %s\n",
                  mousepos, string_shorten(display_name, 30).c_str(),
                  startpos, ltarget_cegui_color.c_str(),
                  string_shorten(target_level, 20).c_str(), currpos,
@@ -1625,9 +1624,8 @@ void cEditor::update_status_bar()
                  zpos.c_str());
     }
     else {
-        // TRANS: This is the status bar content. Keep the "│" characters.
-        snprintf(status_text, 512, _("%-13s │ %-30s │ %-13s │ [colour='%s']%s[colour='FFFFFFFF']\n"
-                                     "[colour='FF00FFFF']%-13s[colour='FFFFFFFF'] │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%s[colour='FFFFFFFF']\n"),
+        snprintf(status_text, 512, "%-13s │ %-30s │ %-13s │ [colour='%s']%s[colour='FFFFFFFF']\n"
+                                   "[colour='FF00FFFF']%-13s[colour='FFFFFFFF'] │ [colour='%s']%-30s[colour='FFFFFFFF'] │ UID: %-8d │ [colour='%s']%s[colour='FFFFFFFF']\n",
                  mousepos, string_shorten(display_name, 30).c_str(),
                  startpos, ltarget_cegui_color.c_str(), target_level.c_str(),
                  string_shorten(Status_Bar_Ident(), 13).c_str(),
