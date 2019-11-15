@@ -73,7 +73,7 @@ void cEditor::Init(void)
     m_object_config_pane_shown = false;
 
     // Status bar
-    update_status_bar();
+    mp_status_bar->setText("");
 
     // Ensure multiple editors (level and world) can coexist. CEGUI requires unique
     // window names in that case; m_editor_item_tag must be set by subclasses, so
