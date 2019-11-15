@@ -19,6 +19,8 @@
 #include "../filesystem/relative.hpp"
 #include "../filesystem/resource_manager.hpp"
 #include "../../video/img_settings.hpp"
+#include "../../objects/level_exit.hpp"
+#include "../../objects/level_entry.hpp"
 #include "../errors.hpp"
 #include "editor.hpp"
 
@@ -71,7 +73,7 @@ void cEditor::Init(void)
     m_object_config_pane_shown = false;
 
     // Status bar
-    mp_status_bar->setText(_("Nothing selected"));
+    update_status_bar();
 
     // Ensure multiple editors (level and world) can coexist. CEGUI requires unique
     // window names in that case; m_editor_item_tag must be set by subclasses, so
@@ -1512,61 +1514,114 @@ void cEditor::replace_sprites(void)
 
 void cEditor::update_status_bar()
 {
-    std::string status_text(_("Nothing selected"));
+    char status_text[512] = {'\0'};
+    char mousepos[32] = {'\0'};
+    char startpos[32] = {'\0'};
+
+    std::string display_name;
+    std::string target_level;
+    std::string levele;
+    std::string massivity;
+    int uid = -1;
+
+    // Current mouse coordinates
+    snprintf(mousepos, 32, "(%d,%d)", static_cast<int>(pMouseCursor->m_pos_x), static_cast<int>(pMouseCursor->m_pos_y));
 
     if (pMouseCursor->m_hovering_object->m_obj) { // If the cursor is hovering about something
-        status_text.clear();
+        // Display name
+        display_name = pMouseCursor->m_hovering_object->m_obj->Create_Name();
 
-        // 1a. Object display name
-        status_text += pMouseCursor->m_hovering_object->m_obj->Create_Name();
+        // UID
+        uid = pMouseCursor->m_hovering_object->m_obj->m_uid;
 
-        // 1b. Object massivetype
-        status_text += " (";
-        switch (pMouseCursor->m_hovering_object->m_obj->m_massive_type) {
-        case MASS_PASSIVE:
-            status_text += _("Passive");
-            break;
-        case MASS_MASSIVE:
-            status_text += _("Massive");
-            break;
-        case MASS_HALFMASSIVE:
-            status_text += _("Halfmassive");
-            break;
-        case MASS_CLIMBABLE:
-            status_text += _("Climbable");
-            break;
-        case MASS_FRONT_PASSIVE:
-            status_text += _("Frontpassive");
-            break;
-        } // No default clause -- let compiler warn about missing values
+        // Object Start position
+        snprintf(startpos, 32, "(%d,%d)",
+                 static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_x),
+                 static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_y));
 
-        status_text += ") | ";
-
-        // 2. UID, X, Y, Z
-        if (game_debug) {
-            status_text += "UID: "
-                + int_to_string(pMouseCursor->m_hovering_object->m_obj->m_uid)
-                + " | Start X: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_x))
-                + " | Start Y: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_y))
-                + " | Curr. X: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_x))
-                + " | Curr  Y: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_y))
-                + " | Z: " + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_pos_z, 6);
-
-            // if also got editor z position
-            if (!Is_Float_Equal(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 0.0f)) {
-                status_text += " | Editor Z: " + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 6);
+        // Special info about level exits/entries
+        if (pMouseCursor->m_hovering_object->m_obj->m_type == TYPE_LEVEL_EXIT) {
+            cLevel_Exit* p_exit = static_cast<cLevel_Exit*>(pMouseCursor->m_hovering_object->m_obj);
+            if (p_exit->m_dest_level.empty() && p_exit->m_dest_entry.empty()) { // Level finish
+                // TRANS: Displayed when hovering over the level finish object in the editor.
+                target_level = _("FINISH");
+            }
+            else if (!p_exit->m_dest_level.empty() && !p_exit->m_dest_entry.empty()) { // entry in sublevel
+                target_level = p_exit->m_dest_level;
+                levele = std::string("→ ") + p_exit->m_dest_entry;
+            }
+            else if (p_exit->m_dest_level.empty()) { // entry in the active level
+                // TRANS: Displayed when hovering over a level exit without a target level name.
+                // TRANS: Do not translate the "<" and ">".
+                target_level = _("<This level>");
+                levele = std::string("→ ") + p_exit->m_dest_entry;
+            }
+            else { // sublevel without entry specification
+                target_level = p_exit->m_dest_level;
             }
         }
-        else {
-            status_text += "UID: "
-                + int_to_string(pMouseCursor->m_hovering_object->m_obj->m_uid)
-                + " | X: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_x))
-                + " | Y: " + int_to_string(static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_start_pos_y));
+        else if (pMouseCursor->m_hovering_object->m_obj->m_type == TYPE_LEVEL_ENTRY) {
+            cLevel_Entry* p_entry = static_cast<cLevel_Entry*>(pMouseCursor->m_hovering_object->m_obj);
+            levele = p_entry->m_entry_name;
         }
+
+        // Massivity
+        switch (pMouseCursor->m_hovering_object->m_obj->m_massive_type) {
+        case MASS_PASSIVE:
+            massivity = _("Passive");
+            break;
+        case MASS_MASSIVE:
+            massivity = _("Massive");
+            break;
+        case MASS_HALFMASSIVE:
+            massivity = _("Halfmassive");
+            break;
+        case MASS_CLIMBABLE:
+            massivity = _("Climbable");
+            break;
+        case MASS_FRONT_PASSIVE:
+            massivity = _("Front Passive");
+            break;
+        } // No default clause -- let compiler warn about missing values
     }
 
-    mp_status_bar->setText(status_text);
+    if (game_debug) { // Provide additional info in status bar if debug mode
+        char currpos[32] = {'\0'};
+        std::string zpos;
 
+        if (pMouseCursor->m_hovering_object->m_obj) {
+            snprintf(currpos, 32, "(%d,%d)",
+                     static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_x),
+                     static_cast<int>(pMouseCursor->m_hovering_object->m_obj->m_pos_y));
+
+            zpos = std::string("Z: ") + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_pos_z, 6);
+            // if also got editor z position
+            if (!Is_Float_Equal(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 0.0f)) {
+                zpos += ", Ed.Z: " + float_to_string(pMouseCursor->m_hovering_object->m_obj->m_editor_pos_z, 6);
+            }
+
+        }
+
+        // TRANS: This is the status bar content in debug mode. Keep the "│" characters.
+        snprintf(status_text, 512, _("%-13s │ %-30s │ %-13s │ %-20s │ %s\n"
+                                     "%-13s │ %-30s │ UID: %-8d │ %-20s │ %s\n"),
+                 mousepos, string_shorten(display_name, 30).c_str(),
+                 startpos, string_shorten(target_level, 20).c_str(), currpos,
+                 string_shorten(Status_Bar_Ident(), 13).c_str(),
+                 massivity.c_str(), uid, string_shorten(levele, 20).c_str(),
+                 zpos.c_str());
+    }
+    else {
+        // TRANS: This is the status bar content. Keep the "│" characters.
+        snprintf(status_text, 512, _("%-13s │ %-30s │ %-13s │ %s\n"
+                                     "%-13s │ %-30s │ UID: %-8d │ %s\n"),
+                 mousepos, string_shorten(display_name, 30).c_str(),
+                 startpos, target_level.c_str(),
+                 string_shorten(Status_Bar_Ident(), 13).c_str(),
+                 massivity.c_str(), uid, levele.c_str());
+    }
+
+    mp_status_bar->setText(reinterpret_cast<CEGUI::utf8*>(status_text));
 }
 
 bool cEditor::on_help_window_exit_clicked(const CEGUI::EventArgs& args)

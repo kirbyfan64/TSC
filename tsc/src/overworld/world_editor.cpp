@@ -147,3 +147,11 @@ std::vector<cSprite*> cEditor_World::Parse_Items_File()
     return parser.get_tagged_sprites();
     return std::vector<cSprite*>(); // FIXME ↑ Segfaults
 }
+
+std::string cEditor_World::Status_Bar_Ident() const
+{
+    if (mp_overworld)
+        return mp_overworld->m_description->m_name;
+    else
+        return "--";
+}

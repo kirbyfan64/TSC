@@ -84,6 +84,10 @@ namespace TSC {
 
         void Process_Input(void);
 
+        // This method has to return an identifier for display in
+        // the status bar about what is being edited at this moment.
+        virtual std::string Status_Bar_Ident() const = 0;
+
         virtual void Update(void);
         virtual void Draw(void);
 
