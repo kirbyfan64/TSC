@@ -10,7 +10,7 @@
             <Property name="Text" value="Version"/>
             <Property name="TooltipText" value="Current Game Version."/>
             <Property name="TextColours" value="tl:FF00BB00 tr:FF00CC00 bl:FF00CC00 br:FF00FF00"/>
-            <Property name="HorzFormatting" value="HorzCentred"/>
+            <Property name="HorzFormatting" value="CentreAligned"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.8,0},{0.94,0},{0.99,0},{0.99,0}}"/>
         </Window>
