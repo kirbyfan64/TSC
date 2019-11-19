@@ -40,6 +40,7 @@
 		Marvin Gülker)
 	* Feature: Add an in-game console reachable via [F7] (#518 by
 		Chris Jacobsen, implementation by Marvin Gülker)
+	* Feature: Replace editor HUD with status bar. No more object obscuring!
 	* Feature: Make copy & paste work together with the system clipboard
 	* Feature: Add alternate overworld pathes (#19 by Marvin Gülker)
 	* Feature: Add Downgrade event to several enemies (#133 by sauer2)
