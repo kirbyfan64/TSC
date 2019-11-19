@@ -38,7 +38,7 @@
           <Property name="Text" value="Select Campaign"/>
           <Property name="TextColours" value="tl:FFAAFFAA tr:FFAAFFAA bl:FFAAFFAA br:FFAAFFAA"/>
           <Property name="FrameEnabled" value="False"/>
-          <Property name="HorzFormatting" value="HorzCentred"/>
+          <Property name="HorzFormatting" value="CentreAligned"/>
           <Property name="MaxSize" value="{{1,0},{1,0}}"/>
           <Property name="Area" value="{{0.015,0},{0,0},{0.497184,0},{0.1,0}}"/>
           <Property name="BackgroundEnabled" value="False"/>
@@ -71,7 +71,7 @@
           <Property name="Text" value="Select Overworld"/>
           <Property name="TextColours" value="tl:FFAAFFAA tr:FFAAFFAA bl:FFAAFFAA br:FFAAFFAA"/>
           <Property name="FrameEnabled" value="False"/>
-          <Property name="HorzFormatting" value="HorzCentred"/>
+          <Property name="HorzFormatting" value="CentreAligned"/>
           <Property name="MaxSize" value="{{1,0},{1,0}}"/>
           <Property name="Area" value="{{0.015,0},{0,0},{0.497184,0},{0.1,0}}"/>
           <Property name="BackgroundEnabled" value="False"/>
@@ -90,7 +90,7 @@
           <Property name="Text" value="Select Level"/>
           <Property name="TextColours" value="tl:FFAAFFAA tr:FFAAFFAA bl:FFAAFFAA br:FFAAFFAA"/>
           <Property name="FrameEnabled" value="False"/>
-          <Property name="HorzFormatting" value="HorzCentred"/>
+          <Property name="HorzFormatting" value="CentreAligned"/>
           <Property name="MaxSize" value="{{1,0},{1,0}}"/>
           <Property name="Area" value="{{0.015,0},{0,0},{0.5,0},{0.1,0}}"/>
           <Property name="BackgroundEnabled" value="False"/>

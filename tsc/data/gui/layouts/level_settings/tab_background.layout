@@ -15,19 +15,19 @@
         </Window>
         <Window type="TSCLook256/StaticText" name="text_bg_color_red">
             <Property name="Text" value="Red"/>
-            <Property name="HorzFormatting" value="HorzCentred"/>
+            <Property name="HorzFormatting" value="CentreAligned"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.14,0},{0.01,0},{0.215,0},{0.06,0}}"/>
         </Window>
         <Window type="TSCLook256/StaticText" name="text_bg_color_green">
             <Property name="Text" value="Green"/>
-            <Property name="HorzFormatting" value="HorzCentred"/>
+            <Property name="HorzFormatting" value="CentreAligned"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.22,0},{0.01,0},{0.295,0},{0.06,0}}"/>
         </Window>
         <Window type="TSCLook256/StaticText" name="text_bg_color_blue">
             <Property name="Text" value="Blue"/>
-            <Property name="HorzFormatting" value="HorzCentred"/>
+            <Property name="HorzFormatting" value="CentreAligned"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.3,0},{0.01,0},{0.375,0},{0.06,0}}"/>
         </Window>

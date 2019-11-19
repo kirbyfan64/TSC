@@ -14,7 +14,7 @@
     <Window type="TSCLook256/StaticText" name="keyboard_text_shortcuts">
       <Property name="Text" value="_Shortcuts"/>
       <Property name="FrameEnabled" value="False"/>
-      <Property name="HorzFormatting" value="HorzCentred"/>
+      <Property name="HorzFormatting" value="CentreAligned"/>
       <Property name="MaxSize" value="{{1,0},{1,0}}"/>
       <Property name="Area" value="{{0.08,0},{0.04,0},{0.36,0},{0.14,0}}"/>
       <Property name="BackgroundEnabled" value="False"/>

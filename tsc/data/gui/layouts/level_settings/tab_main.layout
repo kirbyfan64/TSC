@@ -130,7 +130,7 @@
         </Window>
         <Window type="TSCLook256/StaticText" name="text_description">
             <Property name="Text" value="Description"/>
-            <Property name="HorzFormatting" value="HorzCentred"/>
+            <Property name="HorzFormatting" value="CentreAligned"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.42,0},{0.19,0},{0.56,0},{0.24,0}}"/>
         </Window>

@@ -18,7 +18,7 @@
 
         <Window type="TSCLook256/StaticText" name="caption_text">
           <Property name="Text" value="Replace this with the caption"/>
-          <Property name="HorzFormatting" value="HorzCentred"/>
+          <Property name="HorzFormatting" value="CentreAligned"/>
           <Property name="Area" value="{{0.015,0},{0,0},{0.5,0},{0.1,0}}"/>
           <Property name="TextColours" value="tl:FFAAFFAA tr:FFAAFFAA bl:FFAAFFAA br:FFAAFFAA"/>
           <Property name="FrameEnabled" value="False"/>

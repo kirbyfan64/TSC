@@ -19,7 +19,7 @@
         </Window>
         <Window type="TSCLook256/StaticText" name="text_level_settings">
             <Property name="Text" value="Level Settings"/>
-            <Property name="HorzFormatting" value="HorzCentred"/>
+            <Property name="HorzFormatting" value="CentreAligned"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.415083,0},{0.007132,0},{0.590224,0},{0.059864,0}}"/>
         </Window>
