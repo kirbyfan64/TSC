@@ -992,18 +992,6 @@ void cEditor::load_special_items()
     }
 }
 
-cEditor_Menu_Entry* cEditor::get_menu_entry(const std::string& name)
-{
-    std::vector<cEditor_Menu_Entry*>::iterator iter;
-    for(iter=m_menu_entries.begin(); iter != m_menu_entries.end(); iter++) {
-        if ((*iter)->Get_Name() == name) {
-            return (*iter);
-        }
-    }
-
-    throw(std::runtime_error(std::string("Element '") + name + "' not in editor menu list!"));
-}
-
 /**
  * Iterates the list of menu entries and returns a list of those whose
  * requirements match the given taglist. That is, a menu entry declares

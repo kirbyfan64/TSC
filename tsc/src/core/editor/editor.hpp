@@ -148,7 +148,6 @@ namespace TSC {
         void populate_menu();
         void load_image_items();
         void load_special_items();
-        cEditor_Menu_Entry* get_menu_entry(const std::string& name);
         std::vector<cEditor_Menu_Entry*> find_target_menu_entries_for(const std::vector<std::string>& available_tags);
         cSprite_List copy_direction(const cSprite_List& objects, const ObjectDirection dir) const;
         cSprite* copy_direction(const cSprite* obj, const ObjectDirection dir, int offset /* = 0 */) const;
