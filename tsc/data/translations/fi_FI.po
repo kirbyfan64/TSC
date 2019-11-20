@@ -1632,7 +1632,7 @@ msgstr "Pilvet"
 #: ../../src/level/level_editor.cpp:333
 #: ../../src/overworld/world_editor.cpp:169
 msgid "Hedges"
-msgstr "Aidat"
+msgstr "Pensasaidat"
 
 #: ../../src/level/level_editor.cpp:334
 msgid "Trees"
