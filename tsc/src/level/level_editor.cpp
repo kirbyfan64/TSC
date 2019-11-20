@@ -311,3 +311,50 @@ std::string cEditor_Level::Status_Bar_Ident() const
     else
         return "--";
 }
+
+/* Translations for the level editor's menu entries. This has to match
+ * the content in data/editor/level_menu.xml. An always-false if is
+ * used, because the strings are sourced from the XML. This only
+ * exists here to make xgettext(1) find them. */
+#if 0
+// TRANS: Level editor left menu's entries follow
+static std::string values[] = {_("---Sprites---"),
+                               _("Green Ground"),
+                               _("Desert Ground"),
+                               _("Sand Ground"),
+                               _("Castle Ground"),
+                               _("Cave Ground"),
+                               _("Underground"),
+                               _("Plastic Ground"),
+                               _("Jungle Ground"),
+                               _("Snow Ground"),
+                               _("Blocks"),
+                               _("Clouds"),
+                               _("Hedges"),
+                               _("Trees"),
+                               _("Plants"),
+                               _("Cactus"),
+                               _("Platforms"),
+                               _("Pipes"),
+                               _("Pipe Connectors"),
+                               _("Library"),
+                               _("Hills"),
+                               _("Signs"),
+                               _("Ropes"),
+                               _("Doors"),
+                               _("Bones"),
+                               _("Windows"),
+                               _("Candy"),
+                               _("Stuff"),
+                               _("---Objects---"),
+                               _("Boxes"),
+                               _("Enemies"),
+                               _("Special"),
+                               _("---Functions---"),
+                               _("New"),
+                               _("Load"),
+                               _("Save"),
+                               _("Save as"),
+                               _("Delete"),
+                               _("Settings")};
+#endif

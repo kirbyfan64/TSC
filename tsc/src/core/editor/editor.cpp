@@ -938,6 +938,9 @@ void cEditor::parse_menu_file()
         // Burst the tag list into its elements
         std::vector<std::string> tags = string_split(tagstr, ";");
 
+        // Translate label (translation lists are in the respective editor's cpp file)
+        name = gettext(name.c_str());
+
         // Prepare informational menu object
         cEditor_Menu_Entry* p_entry = new cEditor_Menu_Entry(name);
         p_entry->Set_Color(Color(colorstr));
@@ -963,7 +966,7 @@ void cEditor::populate_menu()
     std::vector<cEditor_Menu_Entry*>::iterator iter;
 
     for(iter = m_menu_entries.begin(); iter != m_menu_entries.end(); iter++) {
-        CEGUI::ListboxTextItem* p_item = new CEGUI::ListboxTextItem((*iter)->Get_Name());
+        CEGUI::ListboxTextItem* p_item = new CEGUI::ListboxTextItem((*iter)->Get_CEGUI_Name());
         p_item->setTextColours(CEGUI::ColourRect((*iter)->Get_Color().Get_cegui_Color()));
         p_item->setUserData(*iter);
         mp_menu_listbox->addItem(p_item);

@@ -30,6 +30,7 @@ namespace TSC {
         inline Color Get_Color(){ return m_color; }
 
         inline std::string Get_Name(){ return m_name; }
+        inline const CEGUI::utf8* Get_CEGUI_Name() { return reinterpret_cast<const CEGUI::utf8*>(m_name.c_str()); }
 
         inline void Set_Header(bool is_header){ m_is_header = is_header; }
         inline void Set_Function(bool is_function){ m_is_function = is_function; }

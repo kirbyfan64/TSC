@@ -155,3 +155,33 @@ std::string cEditor_World::Status_Bar_Ident() const
     else
         return "--";
 }
+
+/* Translations for the world editor's menu entries. This has to match
+ * the content in data/editor/world_menu.xml. An always-false if is
+ * used, because the strings are sourced from the XML. This only
+ * exists here to make xgettext(1) find them. */
+#if 0
+// TRANS: World editor left menu's entries follow
+static std::string values[] = {_("---Sprites---"),
+                               _("Way"),
+                               _("Castle"),
+                               _("Clouds"),
+                               _("Hedges"),
+                               _("Plants"),
+                               _("Cactus"),
+                               _("Hills"),
+                               _("Mountains"),
+                               _("Pipes"),
+                               _("Lakes"),
+                               _("Bridges"),
+                               _("Blocks"),
+                               _("Bones"),
+                               _("Special"),
+                               _("---Objects---"),
+                               _("Generic"),
+                               _("---Functions---"),
+                               _("New"),
+                               _("Load"),
+                               _("Save")}
+
+#endif

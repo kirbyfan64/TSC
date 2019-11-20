@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file contains the menu items for the world editor.
+If an item is added, be sure to add the item's label to
+the list of labels in world_editor.cpp to make xgettext(1)
+aware of the new menu entry for translation.
+-->
 <menu>
 	<item>
 		<property name="name" value="---Sprites---" />
