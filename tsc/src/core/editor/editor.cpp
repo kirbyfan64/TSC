@@ -96,6 +96,9 @@ void cEditor::Init(void)
     mp_selector_radio_secretarea = static_cast<CEGUI::RadioButton*>(mp_editor_tabpane->getChild("editor_tab_selector/secretarea"));
     mp_selector_radio_selection->setSelected(true);
 
+    mp_selector_radio_selection->setText(UTF8_("Selection"));
+    mp_selector_radio_secretarea->setText(UTF8_("Secret Area"));
+
     // Create the menu hierarchy
     parse_menu_file();
     populate_menu();
