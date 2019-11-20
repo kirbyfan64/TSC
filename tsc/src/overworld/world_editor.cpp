@@ -182,6 +182,6 @@ static std::string values[] = {_("---Sprites---"),
                                _("---Functions---"),
                                _("New"),
                                _("Load"),
-                               _("Save")}
+                               _("Save")};
 
 #endif
