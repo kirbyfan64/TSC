@@ -66,6 +66,14 @@ void cEditor::Init(void)
     mp_status_bar = mp_editor_root->getChild("status_bar");
     m_tabpane_target_x_position = mp_editor_tabpane->getXPosition();
     m_object_config_pane_target_x_position = mp_object_config_pane->getXPosition();
+
+    // TRANS: Editor left menu 1st tab heading. Keep this short.
+    mp_editor_tabpane->getChild("editor_tab_menu")->setText(UTF8_("Menu"));
+    // TRANS: Editor left menu 2nd tab heading. Keep this short.
+    mp_editor_tabpane->getChild("editor_tab_items")->setText(UTF8_("Items"));
+    // TRANS: Editor left menu 3rd tab heading. Keep this short.
+    mp_editor_tabpane->getChild("editor_tab_selector")->setText(UTF8_("Selector"));
+
     mp_editor_root->hide(); // Do not show for now
 
     // Object settings window only pops up when selecting an object.
