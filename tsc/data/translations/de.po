@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secretchronicles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-20 18:17+0100\n"
-"PO-Revision-Date: 2019-11-20 18:43+0100\n"
+"POT-Creation-Date: 2019-11-20 18:48+0100\n"
+"PO-Revision-Date: 2019-11-20 18:48+0100\n"
 "Last-Translator: Marvin Gülker <post+git@guelker.eu>\n"
 "Language-Team: TSC German translation team\n"
 "Language: de\n"
@@ -388,7 +388,7 @@ msgid "Useable Count"
 msgstr "Verwendbar"
 
 #: ../../src/objects/box.cpp:691 ../../src/objects/box.cpp:696
-#: ../../src/objects/box.cpp:732 ../../src/core/editor/editor.cpp:1580
+#: ../../src/objects/box.cpp:732 ../../src/core/editor/editor.cpp:1583
 msgid "Massive"
 msgstr "Massiv"
 
@@ -428,7 +428,7 @@ msgstr "(Geistblock)"
 msgid "(Invisible Semi Massive)"
 msgstr "(Unsichtbar Teilmassiv) "
 
-#: ../../src/objects/secret_area.cpp:67
+#: ../../src/objects/secret_area.cpp:67 ../../src/core/editor/editor.cpp:100
 msgid "Secret Area"
 msgstr "Versteck"
 
@@ -819,7 +819,7 @@ msgid "This program is distributed under the terms of the GPLv3"
 msgstr "Dieses Programm unterliegt der GPLv3"
 
 #. TRANS: displayed to the user when opening the editor
-#: ../../src/video/loading_screen.cpp:68 ../../src/core/editor/editor.cpp:155
+#: ../../src/video/loading_screen.cpp:68 ../../src/core/editor/editor.cpp:158
 msgid "Loading"
 msgstr "Ladevorgang"
 
@@ -2204,14 +2204,18 @@ msgstr "Ggst"
 msgid "Selector"
 msgstr "Auswahl"
 
+#: ../../src/core/editor/editor.cpp:99
+msgid "Selection"
+msgstr "Auswahl"
+
 #. TRANS: Title of the editor help window
-#: ../../src/core/editor/editor.cpp:434
+#: ../../src/core/editor/editor.cpp:437
 msgid "Editor Help"
 msgstr "Hilfe zum Editor"
 
 #. TRANS: This is the help window in the editor. Do not translate
 #. TRANS: the color codes in the string.
-#: ../../src/core/editor/editor.cpp:448
+#: ../../src/core/editor/editor.cpp:451
 msgid ""
 " \n"
 "----- [colour='FFFFCF5F']General[colour='FFFFFFFF'] -----\n"
@@ -2313,7 +2317,7 @@ msgstr ""
 " Pfeiltasten zum Bewegen der Kamera. Umschalt für schnellere Bewegung.\n"
 " \n"
 
-#: ../../src/core/editor/editor.cpp:1486
+#: ../../src/core/editor/editor.cpp:1489
 #, c-format
 msgid "Change selected sprite's image"
 msgid_plural "Change selected %d sprites' images"
@@ -2321,29 +2325,29 @@ msgstr[0] "Ändere Bild des ausgewählten Elements"
 msgstr[1] "Ändere Bilder der ausgewählten %d Elemente"
 
 #. TRANS: Displayed when hovering over the level finish object in the editor.
-#: ../../src/core/editor/editor.cpp:1550
+#: ../../src/core/editor/editor.cpp:1553
 msgid "FINISH"
 msgstr "ZIEL"
 
 #. TRANS: Displayed when hovering over a level exit without a target level name.
 #. TRANS: Do not translate the "<" and ">".
-#: ../../src/core/editor/editor.cpp:1559
+#: ../../src/core/editor/editor.cpp:1562
 msgid "<This level>"
 msgstr "<Dieser Level>"
 
-#: ../../src/core/editor/editor.cpp:1577
+#: ../../src/core/editor/editor.cpp:1580
 msgid "Passive"
 msgstr "Passiv"
 
-#: ../../src/core/editor/editor.cpp:1583
+#: ../../src/core/editor/editor.cpp:1586
 msgid "Halfmassive"
 msgstr "Halbmassiv"
 
-#: ../../src/core/editor/editor.cpp:1586
+#: ../../src/core/editor/editor.cpp:1589
 msgid "Climbable"
 msgstr "Bekletterbar"
 
-#: ../../src/core/editor/editor.cpp:1589
+#: ../../src/core/editor/editor.cpp:1592
 msgid "Front Passive"
 msgstr "Front-Passiv"
 
