@@ -268,6 +268,11 @@ bool cScene::Joy_Button_Up(unsigned int button)
     return m_action_sequence[0]->Joy_Button_Up(button);
 }
 
+std::string cScene::Get_Name()
+{
+    return m_name;
+}
+
 // Note: This function contains the canonical mapping of
 // scene name -> subclass of cScene.
 cScene* cScene::Load_Scene(std::string name)

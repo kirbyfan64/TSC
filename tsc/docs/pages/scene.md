@@ -126,6 +126,10 @@ cMyScene::cMyScene(void)
   // TSC::SceneActions all the time.
   namespace TSA = TSC::SceneActions;
 
+  // Set a descriptive name for the scene (not shown to the user, only
+  // for debugging purposes)
+  m_name = "Opening";
+
   // Append to action sequence
   m_action_sequence.push_back(new TSA::ImageChange(this, "scene_images/foo.png"));
   // ...

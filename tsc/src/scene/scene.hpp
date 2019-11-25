@@ -104,6 +104,9 @@ namespace TSC {
          */
         bool Joy_Button_Up(unsigned int button);
 
+        /* Name of the scene, set by subclasses as `m_name' */
+        std::string Get_Name();
+
     private:
         void End_Scene();
 
@@ -123,6 +126,7 @@ namespace TSC {
     protected:
         // The actions to play in this scene, one after the other.
         vector<SceneActions::Action*> m_action_sequence;
+        std::string m_name;
     };
 
     extern cScene* pActive_Scene;
