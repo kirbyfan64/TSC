@@ -23,6 +23,7 @@
 #include "../overworld/world_editor.hpp"
 #include "../core/framerate.hpp"
 #include "../gui/menu.hpp"
+#include "../gui/debug_window.hpp"
 #include "../user/preferences.hpp"
 #include "../input/mouse.hpp"
 #include "../input/joystick.hpp"
@@ -337,6 +338,7 @@ void cOverworld::Enter(const GameMode old_mode /* = MODE_NOTHING */)
     pActive_Animation_Manager = m_animation_manager;
 
     pMouseCursor->Set_Sprite_Manager(m_sprite_manager);
+    gp_debug_window->Set_Sprite_Manager(m_sprite_manager);
 
     // if player start waypoint not set
     if (pOverworld_Player->m_current_waypoint < 0) {

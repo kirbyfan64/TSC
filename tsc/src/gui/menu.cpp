@@ -17,6 +17,7 @@
 #include "../core/global_basic.hpp"
 #include "../gui/menu.hpp"
 #include "../gui/menu_data.hpp"
+#include "debug_window.hpp"
 #include "../core/game_core.hpp"
 #include "../core/framerate.hpp"
 #include "../input/mouse.hpp"
@@ -466,6 +467,7 @@ void cMenuCore::Enter(const GameMode old_mode /* = MODE_NOTHING */)
     editor_enabled = 0;
 
     pMouseCursor->Set_Sprite_Manager(m_handler->m_level->m_sprite_manager);
+    gp_debug_window->Set_Sprite_Manager(m_handler->m_level->m_sprite_manager);
     // show mouse
     pMouseCursor->Set_Active(1);
     // camera
