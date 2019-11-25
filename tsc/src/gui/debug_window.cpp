@@ -23,6 +23,7 @@
 #include "../level/level_player.hpp"
 #include "../overworld/overworld.hpp"
 #include "../objects/bonusbox.hpp"
+#include "../scene/scene.hpp"
 #include "debug_window.hpp"
 
 // extern
@@ -112,23 +113,30 @@ void cDebug_Window::Update()
              static_cast<int>(pActive_Camera->m_y));
     mp_debugwin_root->getChild("camera")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
 
-    if (pActive_Level) {
+    switch (Game_Mode) {
+    case MODE_LEVEL:
+    case MODE_LEVEL_SETTINGS: // fall-through
         snprintf(buf,
                  4096,
                  _("Level: %s (return stack size: %ld)"),
                  pActive_Level->Get_Level_Name().c_str(),
                  pLevel_Player->m_return_stack.size());
-    }
-    else if (pActive_Overworld) {
-        snprintf(buf,
-                 4096,
-                 _("Overworld: %s"),
+        break;
+    case MODE_OVERWORLD:
+        snprintf(buf, 4096, _("Overworld: %s"),
                  pActive_Overworld->m_description->m_name.c_str());
-    }
-    else {
-        snprintf(buf, 4096, _("<No level or overworld active>"));
-    }
-    mp_debugwin_root->getChild("level")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+        break;
+    case MODE_MENU:
+        snprintf(buf, 4096, _("<Menu Active>"));
+        break;
+    case MODE_SCENE:
+        snprintf(buf, 4096, _("Scene: %s"), pActive_Scene->Get_Name().c_str());
+        break;
+    case MODE_NOTHING:
+        snprintf(buf, 4096, "--");
+        break;
+    } // No default to let the compiler warn about missed values
+    mp_debugwin_root->getChild("general")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
 
     // Count specific objects
     int halfmassives = 0;

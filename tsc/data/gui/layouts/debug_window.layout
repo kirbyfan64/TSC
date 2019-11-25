@@ -15,7 +15,7 @@
             <Property name="Area" value="{{0,0},{0.1,0},{1,0},{0.2,0}}"/>
             <Property name="Font" value="DejaVuSans-Small"/>
         </Window>
-        <Window type="TSCLook256/StaticText" name="level">
+        <Window type="TSCLook256/StaticText" name="general">
             <Property name="Area" value="{{0,0},{0.2,0},{1,0},{0.3,0}}"/>
             <Property name="Font" value="DejaVuSans-Small"/>
         </Window>
