@@ -18,6 +18,7 @@
 #include "../core/i18n.hpp"
 #include "../core/framerate.hpp"
 #include "../core/camera.hpp"
+#include "../core/property_helper.hpp"
 #include "../level/level.hpp"
 #include "../level/level_player.hpp"
 #include "../overworld/overworld.hpp"
@@ -165,9 +166,38 @@ void cDebug_Window::Update()
              4096,
              // TRANS: Abbreviations mean:
              // TRANS: BBox=Bonus boxes, GBox=Gold boxes, MPlat=Moving platforms
-             "BBox: %d GBox: %d MPlat: %d",
+             _("BBox: %d GBox: %d MPlat: %d"),
              bonusboxes - goldboxes,
              goldboxes,
              moving_platforms);
     mp_debugwin_root->getChild("objectcount2")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+
+    snprintf(buf,
+             4096,
+             _("Player X1: %.4f X2: %.4f"),
+             pActive_Player->m_pos_x,
+             pLevel_Player->m_col_rect.m_x + pLevel_Player->m_col_rect.m_w);
+    mp_debugwin_root->getChild("player_info")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+
+    snprintf(buf,
+             4096,
+             _("Player Y1: %.4f Y2: %.4f"),
+             pActive_Player->m_pos_y,
+             pLevel_Player->m_col_rect.m_y + pLevel_Player->m_col_rect.m_h);
+    mp_debugwin_root->getChild("player_info2")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+
+    snprintf(buf,
+             4096,
+             _("Player XVel: %.4f, YVel: %.4f"),
+             pLevel_Player->m_velx,
+             pLevel_Player->m_vely);
+    mp_debugwin_root->getChild("player_info3")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+
+    snprintf(buf,
+             4096,
+             _("Player MState: %d Ground: %d (%s)"),
+             static_cast<int>(pLevel_Player->m_state),
+             pLevel_Player->m_ground_object ? static_cast<int>(pLevel_Player->m_ground_object->m_massive_type) : -1,
+             pLevel_Player->m_ground_object ? Get_Massive_Type_Name(pLevel_Player->m_ground_object->m_massive_type).c_str() : "--");
+    mp_debugwin_root->getChild("player_info4")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
 }
