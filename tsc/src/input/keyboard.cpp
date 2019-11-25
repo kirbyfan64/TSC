@@ -32,6 +32,7 @@
 #include "../core/i18n.hpp"
 #include "../overworld/world_editor.hpp"
 #include "../gui/game_console.hpp"
+#include "../gui/debug_window.hpp"
 
 namespace TSC {
 
@@ -254,12 +255,14 @@ bool cKeyboard::Key_Down(const sf::Event& evt)
         if (game_debug) {
             gp_hud->Set_Text(_("Debug mode disabled"));
             gp_hud->Hide_Debug_Widgets();
+            gp_debug_window->Hide();
         }
         else {
             pFramerate->m_fps_worst = 100000;
             pFramerate->m_fps_best = 0;
             gp_hud->Set_Text(_("Debug mode enabled"));
             gp_hud->Show_Debug_Widgets();
+            gp_debug_window->Show();
         }
 
         game_debug = !game_debug;

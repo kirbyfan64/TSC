@@ -22,6 +22,7 @@
 #include "../core/game_core.hpp"
 #include "../gui/menu.hpp"
 #include "../gui/game_console.hpp"
+#include "../gui/debug_window.hpp"
 #include "../user/preferences.hpp"
 #include "../audio/audio.hpp"
 #include "../level/level_player.hpp"
@@ -498,6 +499,7 @@ std::string cLevel::Get_Level_Name()
 void cLevel::Set_Sprite_Manager(void)
 {
     pMouseCursor->Set_Sprite_Manager(m_sprite_manager);
+    gp_debug_window->Set_Sprite_Manager(m_sprite_manager);
     pLevel_Editor->Set_Level(this);
     // camera
     pLevel_Manager->m_camera->Set_Sprite_Manager(m_sprite_manager);

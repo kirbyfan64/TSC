@@ -44,6 +44,7 @@
 #include "../core/i18n.hpp"
 #include "../gui/generic.hpp"
 #include "../gui/game_console.hpp"
+#include "../gui/debug_window.hpp"
 
 using namespace std;
 
@@ -321,6 +322,7 @@ void Init_Game(void)
     // note : set any sprite manager as cOverworld_Manager::Load sets it again
     pOverworld_Player = new cOverworld_Player(pActive_Level->m_sprite_manager, NULL);
     pOverworld_Manager = new cOverworld_Manager(pActive_Level->m_sprite_manager);
+    gp_debug_window = new cDebug_Window(pActive_Level->m_sprite_manager);
     // set default overworld active
     pOverworld_Player->Set_Overworld(pOverworld_Manager->Get("World 1"));
     pOverworld_Manager->Set_Active("World 1");
@@ -374,6 +376,11 @@ void Exit_Game(void)
     if (pWorld_Editor) {
         delete pWorld_Editor;
         pWorld_Editor = NULL;
+    }
+
+    if (gp_debug_window) {
+        delete gp_debug_window;
+        gp_debug_window = NULL;
     }
 
     if (gp_game_console) {
@@ -605,6 +612,9 @@ void Update_Game(void)
 
     // ## game console
     gp_game_console->Update();
+
+    // ## debug window
+    gp_debug_window->Update();
 
     // ## update
     if (Game_Mode == MODE_LEVEL) {
