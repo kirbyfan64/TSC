@@ -21,6 +21,7 @@
 #include "../level/level.hpp"
 #include "../level/level_player.hpp"
 #include "../overworld/overworld.hpp"
+#include "../objects/bonusbox.hpp"
 #include "debug_window.hpp"
 
 // extern
@@ -128,23 +129,45 @@ void cDebug_Window::Update()
     }
     mp_debugwin_root->getChild("level")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
 
-    // Count halfmassive objects
-    int halfmassive = 0;
+    // Count specific objects
+    int halfmassives = 0;
+    int bonusboxes = 0;
+    int goldboxes = 0;
+    int moving_platforms = 0;
     for (cSprite* p_obj: mp_sprite_manager->objects) {
         if (p_obj->m_massive_type == MASS_HALFMASSIVE) {
-            halfmassive++;
+            halfmassives++;
+        }
+        if (p_obj->m_type == TYPE_MOVING_PLATFORM) { // not "else if"! A moving platform might be set to halfmassive and has then to be counted twice.
+            moving_platforms++;
+        }
+        else if (p_obj->m_type == TYPE_BONUS_BOX) {
+            bonusboxes++;
+            if (static_cast<const cBonusBox*>(p_obj)->box_type == TYPE_GOLDPIECE) {
+                goldboxes++;
+            }
         }
     }
     snprintf(buf,
              4096,
              // TRANS: Abbreviations mean:
              // TRANS: T=Total, P=Passive, M=Massive, E=Enemy, A=Active, H=Halfmassive
-             "T: %lu P: %d M: %d E: %d A: %d H: %d",
+             _("T: %lu P: %d M: %d E: %d A: %d H: %d"),
              mp_sprite_manager->size(),
              mp_sprite_manager->Get_Size_Array(ARRAY_PASSIVE),
              mp_sprite_manager->Get_Size_Array(ARRAY_MASSIVE),
              mp_sprite_manager->Get_Size_Array(ARRAY_ENEMY),
              mp_sprite_manager->Get_Size_Array(ARRAY_ACTIVE),
-             halfmassive);
+             halfmassives);
     mp_debugwin_root->getChild("objectcount")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+
+    snprintf(buf,
+             4096,
+             // TRANS: Abbreviations mean:
+             // TRANS: BBox=Bonus boxes, GBox=Gold boxes, MPlat=Moving platforms
+             "BBox: %d GBox: %d MPlat: %d",
+             bonusboxes - goldboxes,
+             goldboxes,
+             moving_platforms);
+    mp_debugwin_root->getChild("objectcount2")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
 }
