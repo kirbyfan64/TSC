@@ -52,9 +52,7 @@ namespace TSC {
         ~cHud();
 
         void Show();
-        void Show_Debug_Widgets();
         void Hide();
-        void Hide_Debug_Widgets();
 
         void Set_Points(long points);
         void Add_Points(long points, float x = 0.0f, float y = 0.0f, std::string strtext = "", const Color& color = static_cast<uint8_t>(255), bool allow_multiplier = false);
@@ -107,7 +105,6 @@ namespace TSC {
         CEGUI::Window* mp_time_label;
         CEGUI::Window* mp_jewels_label;
         CEGUI::Window* mp_lives_label;
-        CEGUI::Window* mp_fps_label;
         CEGUI::Window* mp_waypoint_label;
         CEGUI::Window* mp_world_label;
         CEGUI::Window* mp_message_text;

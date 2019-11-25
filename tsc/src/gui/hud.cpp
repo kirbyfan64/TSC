@@ -55,7 +55,7 @@ cHud::cHud()
       mp_display_item(NULL), m_rescue_item_type(TYPE_UNDEFINED),
       m_elapsed_time(0), m_last_time(std::chrono::system_clock::now()),
       m_text_counter(0.0f), mp_hud_root(NULL), mp_points_label(NULL), mp_time_label(NULL),
-      mp_jewels_label(NULL), mp_lives_label(NULL), mp_fps_label(NULL),
+      mp_jewels_label(NULL), mp_lives_label(NULL),
       mp_waypoint_label(NULL), mp_world_label(NULL), mp_message_text(NULL), mp_item_image(NULL)
 {
     load_hud_images_into_cegui();
@@ -68,7 +68,6 @@ cHud::cHud()
     mp_time_label     = mp_hud_root->getChild("time");
     mp_jewels_label   = mp_hud_root->getChild("jewels");
     mp_lives_label    = mp_hud_root->getChild("lives");
-    mp_fps_label      = mp_hud_root->getChild("debug_fps");
     mp_waypoint_label = mp_hud_root->getChild("world_waypoint");
     mp_world_label    = mp_hud_root->getChild("world_name");
     mp_message_text   = mp_hud_root->getChild("message");
@@ -81,7 +80,6 @@ cHud::cHud()
         ->addChild(mp_hud_root);
 
     // Hide by default
-    mp_fps_label->hide();
     mp_message_text->hide();
     mp_item_image->hide();
 
@@ -131,25 +129,14 @@ void cHud::Show()
     }
 }
 
-void cHud::Show_Debug_Widgets()
-{
-    mp_fps_label->show();
-}
-
 void cHud::Hide()
 {
     mp_hud_root->hide();
 }
 
-void cHud::Hide_Debug_Widgets()
-{
-    mp_fps_label->hide();
-}
-
 void cHud::Update()
 {
     static char timestr[32];
-    static char fps[128];
     static int seconds;
 
     // Update elapsed time
@@ -194,17 +181,6 @@ void cHud::Update()
             mp_message_text->hide();
             m_text_counter = 0;
         }
-    }
-
-    // Update FPS counter
-    if (game_debug) {
-        sprintf(fps,
-                // TRANS: Do not translate the part in brackets
-                _("[colour='FFFFFF00']FPS: Best: %.02f Worst: %.02f Current: %0.2f"),
-                pFramerate->m_fps_best,
-                pFramerate->m_fps_worst,
-                pFramerate->m_fps);
-        mp_fps_label->setText(fps);
     }
 }
 

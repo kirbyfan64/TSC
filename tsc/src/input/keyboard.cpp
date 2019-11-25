@@ -254,14 +254,12 @@ bool cKeyboard::Key_Down(const sf::Event& evt)
     else if (evt.key.code == sf::Keyboard::D && evt.key.control) {
         if (game_debug) {
             gp_hud->Set_Text(_("Debug mode disabled"));
-            gp_hud->Hide_Debug_Widgets();
             gp_debug_window->Hide();
         }
         else {
             pFramerate->m_fps_worst = 100000;
             pFramerate->m_fps_best = 0;
             gp_hud->Set_Text(_("Debug mode enabled"));
-            gp_hud->Show_Debug_Widgets();
             gp_debug_window->Show();
         }
 
