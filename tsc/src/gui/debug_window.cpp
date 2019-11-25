@@ -200,4 +200,10 @@ void cDebug_Window::Update()
              pLevel_Player->m_ground_object ? static_cast<int>(pLevel_Player->m_ground_object->m_massive_type) : -1,
              pLevel_Player->m_ground_object ? Get_Massive_Type_Name(pLevel_Player->m_ground_object->m_massive_type).c_str() : "--");
     mp_debugwin_root->getChild("player_info4")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
+
+    snprintf(buf,
+             4096,
+             _("Game Mode: %d"),
+             Game_Mode);
+    mp_debugwin_root->getChild("game_mode")->setText(reinterpret_cast<const CEGUI::utf8*>(buf));
 }

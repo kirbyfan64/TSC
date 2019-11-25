@@ -42,5 +42,9 @@
             <Property name="Area" value="{{0,0},{0.8,0},{1,0},{0.9,0}}"/>
             <Property name="Font" value="DejaVuSans-Small"/>
         </Window>
+        <Window type="TSCLook256/StaticText" name="game_mode">
+            <Property name="Area" value="{{0,0},{0.9,0},{1,0},{1,0}}"/>
+            <Property name="Font" value="DejaVuSans-Small"/>
+        </Window>
     </Window>
 </GUILayout>
