@@ -4,6 +4,7 @@
     <Window type="TSCLook256/FrameWindow" name="debug_window">
         <Property name="Area" value="{{0.7,0},{0.2,0},{1,0},{0.7,0}}"/>
         <Property name="Text" value="Debugging Information"/>
+        <Property name="CloseButtonEnabled" value="False"/>
         <Property name="Alpha" value="0.75"/>
 
         <Window type="TSCLook256/StaticText" name="fps">
