@@ -125,6 +125,8 @@ void cVideo::Init_CEGUI(void)
     // These resource groups are used for displaying the editor images.
     p_rp->setResourceGroupDirectory("ingame-images", path_to_utf8(pResource_Manager->Get_Game_Pixmaps_Directory()));
     p_rp->setResourceGroupDirectory("cache-images", path_to_utf8(pResource_Manager->Get_User_Pixmaps_Directory()));
+    // This group is for using the background images in the editor's background tab's preview
+    p_rp->setResourceGroupDirectory("backgrounds", path_to_utf8(pResource_Manager->Get_Game_Pixmaps_Directory() / "game" / "background"));
 
     // set the default resource groups to be used
     CEGUI::Scheme::setDefaultResourceGroup("schemes");

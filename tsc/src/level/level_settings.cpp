@@ -508,13 +508,28 @@ bool cLevel_Settings::Update_BG_Colors(const CEGUI::EventArgs& event)
     statictext = m_tabcontrol->getChild("level_settings_tab_background/text_color_end");
     statictext->setProperty("TextColours", CEGUI::PropertyHelper<CEGUI::Colour>::toString(m_bg_color_2.Get_cegui_Color()));
 
+    CEGUI::Window* gradient_image = m_tabcontrol->getChild("level_settings_tab_background/window_background_preview_gradient");
+    gradient_image->setProperty("ImageColours",
+                                std::string("tl:") + m_bg_color_1.Get_cegui_Colorstr() +
+                                "tr:" + m_bg_color_1.Get_cegui_Colorstr() +
+                                "bl:" + m_bg_color_2.Get_cegui_Colorstr() +
+                                "br:" + m_bg_color_2.Get_cegui_Colorstr());
+
     return 1;
 }
 
 void cLevel_Settings::Load_BG_Image_List(void)
 {
+    CEGUI::WindowManager& wmgr = CEGUI::WindowManager::getSingleton();
+
+    // Clear list
     CEGUI::Listbox* listbox = static_cast<CEGUI::Listbox*>(m_tabcontrol->getChild("level_settings_tab_background/listbox_backgrounds"));
     listbox->resetList();
+
+    // Clear preview images
+    CEGUI::Window* img_container = m_tabcontrol->getChild("level_settings_tab_background/window_background_preview_images");
+    while (img_container->getChildCount() > 0)
+        img_container->removeChild(img_container->getChildAtIdx(0));
 
     for (vector<cBackground*>::iterator itr = m_level->m_background_manager->objects.begin(); itr != m_level->m_background_manager->objects.end(); ++itr) {
         cBackground* background = (*itr);
@@ -524,10 +539,27 @@ void cLevel_Settings::Load_BG_Image_List(void)
             continue;
         }
 
+        // Add list entry for this background
         CEGUI::ListboxTextItem* item = new CEGUI::ListboxTextItem(float_to_string(background->m_pos_z).c_str(), 0, background);
         item->setSelectionColours(CEGUI::Colour(0.33f, 0.33f, 0.33f));
         item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox->addItem(item);
+
+        if (!background->m_image_1_filename.empty()) {
+            // Replicate CEGUI background name as set in cEditor_Level::load_background_images_into_cegui().
+            std::string cegui_bg_image = path_to_utf8(background->m_image_1_filename.filename());
+            size_t pos = cegui_bg_image.find(".png");
+            cegui_bg_image.replace(pos, 4, "");
+
+            // Add preview image for this background
+            CEGUI::Window* preview_image = wmgr.createWindow("TSCLook256/StaticImage");
+            preview_image->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, 0)));
+            preview_image->setSize(CEGUI::USize(CEGUI::UDim(1, 0), CEGUI::UDim(1, 0)));
+            preview_image->setProperty("FrameEnabled", "False");
+            preview_image->setProperty("BackgroundEnabled", "False");
+            preview_image->setProperty("Image", cegui_bg_image);
+            img_container->addChild(preview_image);
+        }
     }
 
     CEGUI::PushButton* button_add = static_cast<CEGUI::PushButton*>(m_tabcontrol->getChild("level_settings_tab_background/button_add_background_image"));

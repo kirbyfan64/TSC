@@ -52,6 +52,13 @@
             <Property name="Area" value="{{0.14,0},{0.26,0},{0.25,0},{0.31,0}}"/>
             <Property name="BackgroundEnabled" value="False"/>
         </Window>
+        <Window type="TSCLook256/StaticText" name="text_bg_images_preview">
+            <Property name="Text" value="Preview" />
+            <Property name="TooltipText" value="Gradient and selected background image preview" />
+            <Property name="FrameEnabled" value="False" />
+            <Property name="Area" value="{{0.4,0},{0.01,0},{0.5,0},{0.06,0}}"/>
+            <Property name="MaxSize" value="{{1,0},{1,0}}"/>
+        </Window>
         <Window type="TSCLook256/StaticText" name="text_bg_image_speed">
             <Property name="Text" value="Speed X"/>
             <Property name="TooltipText" value="Image X scrolling speed. A value of 5 is the camera speed"/>
@@ -187,6 +194,28 @@
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.01,0},{0.13,0},{0.135,0},{0.18,0}}"/>
             <Property name="BackgroundEnabled" value="False"/>
+        </Window>
+        <!-- Following is the window for displaying the background gradient preview. -->
+        <Window type="TSCLook256/StaticImage" name="window_background_preview_gradient">
+            <Property name="MaxSize" value="{{1,0},{1,0}}"/>
+            <Property name="Area" value="{{0.4,0},{0.07,0},{0.6,0},{0.22,0}}"/>
+            <Property name="FrameEnabled" value="False"/>
+            <!-- GenericBrush is a pure white pixel. It's stretched to fill
+                 the widget then colourised using the ImageColours property
+                 in C++ to show the gradient. -->
+            <Property name="Image" value="TSCLook256/GenericBrush"/>
+            <Property name="VertFormatting" value="Stretched"/>
+            <Property name="HorzFormatting" value="Stretched"/>
+            <Property name="ImageColours" value="tl:FF000000 tr:FF000000 bl:FF000000 br:FF000000"/>
+        </Window>
+        <!-- Following is is the container for all previewed background images.
+             The C++ code adds StaticImage windows with a transparent background
+             into this for each background to preview. This container has thus
+             to sit exactly on top of background_preview_gradient. -->
+        <Window type="DefaultWindow" name="window_background_preview_images">
+            <Property name="MaxSize" value="{{1,0},{1,0}}"/>
+            <!-- The Area property has to mach window_background_preview_gradient's Area -->
+            <Property name="Area" value="{{0.4,0},{0.07,0},{0.6,0},{0.22,0}}"/>
         </Window>
         <Window type="TSCLook256/StaticText" name="text_bg_image_speed_y">
             <Property name="Text" value="Y"/>

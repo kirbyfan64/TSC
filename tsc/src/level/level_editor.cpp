@@ -36,10 +36,38 @@ cEditor_Level::cEditor_Level()
     mp_level = NULL;
     m_editor_item_tag = "level";
     m_menu_filename = pResource_Manager->Get_Game_Editor("level_menu.xml");
+    load_background_images_into_cegui();
 }
 
 cEditor_Level::~cEditor_Level()
 {
+}
+
+/* This function adds the files in pixmaps/game/background into
+ * CEGUI's image manager, as one-image imagesets (cf. cEditor.load_cegui_images()
+ * and cHud.load_images_into_cegui()). These images use the specifically
+ * assigned resource group "backgrounds" (see cVideo.Init_CEGUI()).
+ * They are used in the background preview in the editor's level background
+ * tab. */
+void cEditor_Level::load_background_images_into_cegui()
+{
+    namespace fs                      = boost::filesystem;
+    CEGUI::ImageManager& imgmanager   = CEGUI::ImageManager::getSingleton();
+    std::vector<fs::path> backgrounds = Get_Directory_Files(pResource_Manager->Get_Game_Pixmaps_Directory() / utf8_to_path("game") / utf8_to_path("background"), ".png");
+
+    for(fs::path bgfile: backgrounds) {
+        // Strip leading directory components (CEGUI wants relative path to resource group)
+        // Subdirectories are not supported.
+        bgfile = bgfile.filename();
+
+        // Strip trailing .png for background name (looks nicer on referencing)
+        std::string bgname = path_to_utf8(bgfile);
+        size_t pos = bgname.find(".png");
+        bgname.replace(pos, 4, "");
+
+        // Add image into CEGUI
+        imgmanager.addFromImageFile(bgname, path_to_utf8(bgfile), "backgrounds");
+    }
 }
 
 void cEditor_Level::Enable(cSprite_Manager* p_sprite_manager)

@@ -31,6 +31,7 @@ namespace TSC {
 
     private:
         static std::vector<cSprite*> items_loader_callback(const std::string& name, XmlAttributes& attributes, int engine_version, cSprite_Manager* p_sprite_manager, void* p_data);
+        void load_background_images_into_cegui();
         bool cycle_object_massive_type(cSprite* obj) const;
         cLevel* mp_level;
     };
