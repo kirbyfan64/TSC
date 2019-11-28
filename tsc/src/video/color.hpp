@@ -97,6 +97,15 @@ namespace TSC {
             return CEGUI::Colour(static_cast<float>(red) / 255, static_cast<float>(green) / 255, static_cast<float>(blue) / 255, static_cast<float>(alpha) / 255);
         }
 
+        // Returns it as a CEGUI color string of form "AARRGGBB",
+        // where AA refers to the alpha value.
+        inline std::string Get_cegui_Colorstr(void) const
+        {
+            char buf[9]; /* 8+NUL */
+            snprintf(buf, 9, "%02x%02x%02x%02x", alpha, red, green, blue);
+            return buf;
+        }
+
         // += operator
         inline void operator += (const Color& c)
         {
