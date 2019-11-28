@@ -114,7 +114,7 @@
             <Property name="TooltipText" value="Backgrounds list"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.013296,0},{0.349544,0},{0.128994,0},{0.486703,0}}"/>
-            <Property name="MouseCursorImage" value="set:TSCLook256 image:MouseTarget"/>
+            <Property name="MouseCursorImage" value="TSCLook256/MouseTarget"/>
         </Window>
         <Window type="TSCLook256/Combobox" name="combo_bg_image_name">
             <Property name="TooltipText" value="Background image filename"/>
@@ -163,14 +163,14 @@
             <Property name="TooltipText" value="Add a background image"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.013129,0},{0.254437,0},{0.096879,0},{0.294438,0}}"/>
-            <Property name="MouseCursorImage" value="set:TSCLook256 image:MouseArrow"/>
+            <Property name="MouseCursorImage" value="TSCLook256/MouseArrow"/>
         </Window>
         <Window type="TSCLook256/Button" name="button_delete_background_image">
             <Property name="Text" value="Delete"/>
             <Property name="TooltipText" value="Delete a background image"/>
             <Property name="MaxSize" value="{{1,0},{1,0}}"/>
             <Property name="Area" value="{{0.013131,0},{0.304877,0},{0.098131,0},{0.341545,0}}"/>
-            <Property name="MouseCursorImage" value="set:TSCLook256 image:MouseArrow"/>
+            <Property name="MouseCursorImage" value="TSCLook256/MouseArrow"/>
         </Window>
         <Window type="TSCLook256/StaticText" name="text_color_start">
             <Property name="Text" value="Color Start"/>
