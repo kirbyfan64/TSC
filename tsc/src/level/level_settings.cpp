@@ -531,6 +531,8 @@ void cLevel_Settings::Load_BG_Image_List(void)
     while (img_container->getChildCount() > 0)
         img_container->removeChild(img_container->getChildAtIdx(0));
 
+    std::vector<std::pair<std::string, float>> backgrounds;
+
     for (vector<cBackground*>::iterator itr = m_level->m_background_manager->objects.begin(); itr != m_level->m_background_manager->objects.end(); ++itr) {
         cBackground* background = (*itr);
 
@@ -545,21 +547,34 @@ void cLevel_Settings::Load_BG_Image_List(void)
         item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox->addItem(item);
 
+        // Add index-bgname pair for this background
         if (!background->m_image_1_filename.empty()) {
             // Replicate CEGUI background name as set in cEditor_Level::load_background_images_into_cegui().
             std::string cegui_bg_image = path_to_utf8(background->m_image_1_filename.filename());
             size_t pos = cegui_bg_image.find(".png");
             cegui_bg_image.replace(pos, 4, "");
 
-            // Add preview image for this background
-            CEGUI::Window* preview_image = wmgr.createWindow("TSCLook256/StaticImage");
-            preview_image->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, 0)));
-            preview_image->setSize(CEGUI::USize(CEGUI::UDim(1, 0), CEGUI::UDim(1, 0)));
-            preview_image->setProperty("FrameEnabled", "False");
-            preview_image->setProperty("BackgroundEnabled", "False");
-            preview_image->setProperty("Image", cegui_bg_image);
-            img_container->addChild(preview_image);
+            backgrounds.push_back(std::make_pair(cegui_bg_image, background->m_pos_z));
         }
+    }
+
+    // Add the preview images, respecting the Z order
+    std::sort(
+        backgrounds.begin(),
+        backgrounds.end(),
+        [](const std::pair<std::string, float>& a,
+           const std::pair<std::string, float>& b) {
+            return std::get<1>(a) < std::get<1>(b);
+        });
+    for(std::pair<std::string, float> p: backgrounds) {
+        // Add preview image for this background
+        CEGUI::Window* preview_image = wmgr.createWindow("TSCLook256/StaticImage");
+        preview_image->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, 0)));
+        preview_image->setSize(CEGUI::USize(CEGUI::UDim(1, 0), CEGUI::UDim(1, 0)));
+        preview_image->setProperty("FrameEnabled", "False");
+        preview_image->setProperty("BackgroundEnabled", "False");
+        preview_image->setProperty("Image", std::get<0>(p));
+        img_container->addChild(preview_image);
     }
 
     CEGUI::PushButton* button_add = static_cast<CEGUI::PushButton*>(m_tabcontrol->getChild("level_settings_tab_background/button_add_background_image"));
