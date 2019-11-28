@@ -547,7 +547,7 @@ void cLevel_Settings::Load_BG_Image_List(void)
         item->setSelectionBrushImage("TSCLook256/ListboxSelectionBrush");
         listbox->addItem(item);
 
-        // Add index-bgname pair for this background
+        // Add bgname-Z pair for this background
         if (!background->m_image_1_filename.empty()) {
             // Replicate CEGUI background name as set in cEditor_Level::load_background_images_into_cegui().
             std::string cegui_bg_image = path_to_utf8(background->m_image_1_filename.filename());
