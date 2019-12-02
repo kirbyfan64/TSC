@@ -3366,7 +3366,9 @@ void cMenu_Credits::Init(void)
     // Load all our credits from the g_credits global string.
     size_t position = 0;
     size_t last_position = 0;
+    float pos_y = game_res_h * 1.4f;
     std::string credits(g_credits);
+    credits += "\n";
     while (true) {
         position = credits.find("\n", last_position + 1);
 
@@ -3380,37 +3382,23 @@ void cMenu_Credits::Init(void)
             if (line[0] == '\n')
                 line = line.substr(1, std::string::npos);
 
-            if (line[0] == ' ') // Continuation line
-                Add_Credits_Line(line, 0, -3, white);
-            else if (line[0] == '-') // Separator line
-                Add_Credits_Line(line, 0, 20, red);
+            if (line[0] == '-') // Separator line
+                Add_Credits_Line(line, pos_y, red);
+            else if (line[0] == '*') // Separator line
+                Add_Credits_Line(line, pos_y, red);
             else {
                 float r =  rand() % 80 / 100.0; // Don’t conflict with separator line color
                 float g = rand() % 255 / 100.0;
                 float b = rand() % 255 / 100.0;
-                Add_Credits_Line(line, 0, 20, Color(r, g, b));
+                Add_Credits_Line(line, pos_y, Color(r, g, b));
             }
         }
-
-        last_position = position;
-    }
-
-    float pos_y = game_res_h * 1.4f;
-
-    // set credits position
-    std::vector<CEGUI::Window*>::iterator iter;
-    for(iter=m_credit_lines.begin(); iter != m_credit_lines.end(); iter++) {
-        // get object
-        CEGUI::Window* text = *iter;
-
-        // set shadow if not set
-        // OLD if (obj->m_shadow_pos == 0) {
-        // OLD     obj->Set_Shadow(grey, 1);
-        // OLD }
-        // set position
-        text->setPosition(CEGUI::UVector2(CEGUI::UDim(0.3f, 0.0f), CEGUI::UDim(0, pos_y)));
+        else { // Empty line
+            Add_Credits_Line("", pos_y, white);
+        }
 
         pos_y += 20.0f * global_upscaley;
+        last_position = position;
     }
 
     Init_GUI();
@@ -3586,7 +3574,7 @@ void cMenu_Credits::Draw(void)
     Draw_End();
 }
 
-void cMenu_Credits::Add_Credits_Line(const std::string& text, float posx, float posy, const Color& color /* = black */, float shadow_pos /* = 0.0f */, const Color& shadow_color /* = black */)
+void cMenu_Credits::Add_Credits_Line(const std::string& text, float posy, const Color& color /* = black */)
 {
     CEGUI::ColourRect colrect(color.Get_cegui_Color());
     CEGUI::String strcolrect = CEGUI::PropertyHelper<CEGUI::ColourRect>::toString(colrect);
@@ -3595,9 +3583,10 @@ void cMenu_Credits::Add_Credits_Line(const std::string& text, float posx, float 
     p_line->setText(reinterpret_cast<const CEGUI::utf8*>(text.c_str()));
     p_line->setProperty("FrameEnabled", "False");
     p_line->setProperty("BackgroundEnabled", "False");
+    p_line->setProperty("HorzFormatting", "CentreAligned");
     p_line->setProperty("TextColours", strcolrect);
     p_line->setSize(CEGUI::USize(CEGUI::UDim(1.0f, 0.0f), CEGUI::UDim(0.05f, 0)));
-    p_line->setPosition(CEGUI::UVector2(CEGUI::UDim(0.0f, posx), CEGUI::UDim(0.0f, posy)));
+    p_line->setPosition(CEGUI::UVector2(CEGUI::UDim(0.0f, 0.0f), CEGUI::UDim(0.0f, posy)));
 
     m_credit_lines.push_back(p_line);
     CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild(p_line);

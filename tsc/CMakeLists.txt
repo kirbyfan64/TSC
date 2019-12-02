@@ -134,32 +134,11 @@ configure_file(${TSC_SOURCE_DIR}/src/core/config.hpp.in
 include_directories(${TSC_BINARY_DIR})
 
 ########################################
-# Credits and special-thanks files
+# Credits file
 
-# Silly cmake doesn't support proper "$" regexes (https://cmake.org/pipermail/cmake/2007-July/015194.html)
-# and it cannot iterate over lines either (https://cmake.org/pipermail/cmake/2007-May/014222.html).
-# Thus, make a functon that allows a by-line replace.
-function(linereplace target str regexp replacer)
-  set(newstr "")
-  string(REGEX REPLACE "\n" ";" str "${str}") # Note: Breaks if str contains already ";"
-  foreach(line IN LISTS str)
-    string(REGEX REPLACE "${regexp}" "${replacer}" line "${line}")
-    set(newstr "${newstr}\n${line}")
-  endforeach()
-  set(${target} "${newstr}" PARENT_SCOPE)
-endfunction()
-
-file(READ ${TSC_SOURCE_DIR}/docs/authors.txt       TSC_AUTHORLIST        OFFSET 570)
-file(READ ${TSC_SOURCE_DIR}/docs/specialthanks.txt TSC_SPECIALTHANKSLIST OFFSET 359)
-
-linereplace(TSC_AUTHORLIST "${TSC_AUTHORLIST}" " +<.*>$" "") # Remove e-mail addresses
-string(STRIP "${TSC_AUTHORLIST}" TSC_AUTHORLIST)
-string(REPLACE "\n" "\\n" TSC_AUTHORLIST "${TSC_AUTHORLIST}")
-
-string(STRIP "${TSC_SPECIALTHANKSLIST}" TSC_SPECIALTHANKSLIST)
-string(REPLACE "\n" "\\n" TSC_SPECIALTHANKSLIST "${TSC_SPECIALTHANKSLIST}")
-
-set(TSC_CREDITS_STR "${TSC_AUTHORLIST}\\n-- Special Thanks --\\n${TSC_SPECIALTHANKSLIST}")
+file(READ ${TSC_SOURCE_DIR}/docs/authors.txt TSC_CREDITS_STR OFFSET 457)
+string(STRIP "${TSC_CREDITS_STR}" TSC_CREDITS_STR)
+string(REPLACE "\n" "\\n" TSC_CREDITS_STR "${TSC_CREDITS_STR}")
 configure_file(${TSC_SOURCE_DIR}/src/core/credits.cpp.in ${TSC_BINARY_DIR}/credits.cpp)
 
 ########################################

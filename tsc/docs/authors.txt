@@ -2,60 +2,42 @@ List of TSC contributors & copyright holders
 ============================================
 
 This file lists all people who have contributed to the Secret
-Chronicles of Dr. M. or its former codebase, and hence hold copyright
-on it. All names are shown in categorized alphabetical order.
+Chronicles of Dr. M. or its former SMC codebase at some point.
+All names are shown in categorized alphabetical order. Names
+may appear multiple times if a person contributed in several
+areas.
 
-Apart from this, code taken from other projects under specific
-licenses is marked as such in the code. To find these, issue
-this command from the "tsc" directory:
-
-  $ grep -nr Copyright src | grep -v "TSC Contributors"
+The credits screen is composed from this file.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
--- Coders --
+**
+** The TSC Team **
+**
 
-Marvin Gülker (Quintus) <quintus@quintilianus.eu>
-Tristan Heaven (nyhm) <tristanheaven@gmail.com>
-Chris Jacobsen (datahead) <datahead8888@gmail.com>
-Luiji <luiji@users.sourceforge.net>
-Taran Lynn (lambda-11235) <taranlynn0@gmail.com>
-Tobias Maasland (Weirdnose) <tobias@tobiasmaasland.de>
-Florian Richter (FluXy) <fluxey@gmail.com>
-Brian Allen Vanderburg II (brianvanderburg2) <brianvanderburg@users.sourceforge.net>
-Robert Williams (BowserJr) <bowserjr@users.sourceforge.net>
+-- Project Leader --
+
+Marvin Gülker (Quintus)
+
+-- Programmers --
+
+Marvin Gülker (Quintus)
+Chris Jacobsen (datahead)
+Luiji
+Brian Allen Vanderburg II (brianvanderburg2)
 
 -- Graphic Artists --
 
-Fabian Bissig (Fabianius) <fabian.bissig@bluewin.ch>
-Bugsbane <user581@xymail.info>
-Bodhi Crandall-Rus (Bodhi) <bodhi.biz@gmail.com>
-Crabmaster <crabmaster84@hotmail.com>
-John Daly (Johnlein)
-Sydney Dykstra (sydneyjd) <sydneyjd@openmailbox.org>
-David F. Fernández (skarfester) <skarfester@openmailbox.org>
-Mario Fink (maYO) <losfinkos@web.de>
-Grant (youngheart80) <youngheart80@gmail.com>
-Gustavo Gutierrez (Enzakun)
-Markus Hiebl (Frostbringer) <quandia@gmx.net>
-Polilla86 <mendezpoli86@gmail.com>
-Mark Richards (dteck) <darkteck04@gmail.com>
-Justin Rissler (DarkAceZ) <jbrrissler@gmail.com>
-Anthony Smith (mrvertigo27) <mrvertigo27@gmail.com>
-Ursula (Pipgirl) <pipgirl.smc@gmail.com>
-Yoshis_Fan <yoshis_fan@gmx.de>
+Bugsbane
+Sydney Dykstra (sydneyjd)
+David F. Fernández (skarfester)
+Justin Rissler (DarkAceZ)
 
--- Music Artists --
+-- Music and Sound Artists --
 
-Ashburry <schedafr@gmail.com>
-Johan Brodd (jobromedia) <info@m4um.net>
-Patrick Friel <patrickfriel@hotmail.com>
-Justin (LoXodonte)
-Ryan Gonzalez (kirbyfan64sos) <rymg19@gmail.com>
-David Hernandez (vencabot_teppoo)
-Robert (Consonance) <theangryartist@gmail.com>
-Silensir <silensirmusic@gmail.com>
-Norbu Tsering (RedFT) <ntsering91@gmail.com>
+Johan Brodd (jobromedia)
+Ryan Gonzalez (refi64)
+Norbu Tsering (RedFT)
 
 -- Level Designers --
 
@@ -63,6 +45,47 @@ sauer2
 
 -- Translators --
 
-Rafael Ferreira (josephbgr) <rafael.f.f1@gmail.com>
-Lauri Ojansivu (xet7) <x@xet7.org>
-Benjamin Leduc (giby) <ultimategiby@hotmail.com>
+Rafael Ferreira (josephbgr)
+Lauri Ojansivu (xet7)
+Benjamin Leduc (giby)
+
+**
+** Former SMC Contributors **
+**
+
+-- SMC Founder --
+
+Florian Richter (FluXy)
+
+-- SMC Programmers --
+
+Tristan Heaven (nyhm)
+Taran Lynn (lambda-11235)
+Tobias Maasland (Weirdnose)
+Florian Richter (FluXy)
+Robert Williams (BowserJr)
+
+-- SMC Graphic Artists --
+
+Fabian Bissig (Fabianius)
+Bodhi Crandall-Rus (Bodhi)
+Crabmaster
+John Daly (Johnlein)
+Mario Fink (maYO)
+Grant (youngheart80)
+Gustavo Gutierrez (Enzakun)
+Markus Hiebl (Frostbringer)
+Polilla86
+Mark Richards (dteck)
+Anthony Smith (mrvertigo27)
+Ursula (Pipgirl)
+Yoshis_Fan
+
+-- SMC Music and Sound Artists --
+
+Ashburry
+Patrick Friel
+Justin (LoXodonte)
+David Hernandez (vencabot_teppoo)
+Robert (Consonance)
+Silensir
