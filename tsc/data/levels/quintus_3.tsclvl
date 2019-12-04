@@ -3,7 +3,7 @@
   <information>
     <property name="game_version" value="2.1.0"/>
     <property name="engine_version" value="48"/>
-    <property name="save_time" value="1483651924"/>
+    <property name="save_time" value="1575489468"/>
   </information>
   <settings>
     <property name="lvl_author" value=""/>
@@ -3016,7 +3016,7 @@
     <property name="posx" value="7266"/>
     <property name="posy" value="-208"/>
     <property name="uid" value="453"/>
-    <property name="image" value="ground/green_1/slider/1/brown/right.png"/>
+    <property name="image" value="ground/green_1/slider/1/brown/left.png"/>
     <property name="type" value="0"/>
     <property name="massive_type" value="halfmassive"/>
     <property name="move_type" value="0"/>
@@ -17728,7 +17728,7 @@ coins.each do |coin|
           m.velocity_x = ary.shift
         end
 
-        s = Star.new
+        s = Lemon.new
         s.activate!
       end
     end
