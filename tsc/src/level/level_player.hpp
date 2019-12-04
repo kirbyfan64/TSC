@@ -277,8 +277,8 @@ namespace TSC {
         inline void Set_Warping(bool enable = true){m_is_warping = enable;}
         inline bool Get_Warping(){return m_is_warping;}
 
-        // true if player god mode is active
-        bool m_god_mode;
+        // true if player Omega mode is active
+        bool m_omega_mode;
 
         // Temporaryly forbid the player to die (used by scripting)
         bool m_veto_die;

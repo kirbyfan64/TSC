@@ -87,7 +87,7 @@ cLevel_Player::cLevel_Player(cSprite_Manager* sprite_manager)
     m_walk_count = 0.0f;
     m_running_particle_counter = 0.0f;
 
-    m_god_mode = 0;
+    m_omega_mode = 0;
     m_veto_die = 0;
 
     m_walk_time = 0.0f;
@@ -196,7 +196,7 @@ void cLevel_Player::DownGrade(bool force /* = 0 */)
 
 void cLevel_Player::DownGrade_Player(bool delayed /* = true */, bool force /* = false */, bool ignore_invincible /* = false */)
 {
-    if (m_god_mode)
+    if (m_omega_mode)
         return;
     if (m_invincible && !ignore_invincible)
         return;
@@ -626,7 +626,7 @@ void cLevel_Player::Update_Walking(void)
     }
 
     // validate ground object
-    if ((m_ground_object->m_type == TYPE_EATO || m_ground_object->m_type == TYPE_SPIKA || m_ground_object->m_type == TYPE_ROKKO || m_ground_object->m_type == TYPE_STATIC_ENEMY) && m_invincible <= 0 && !m_god_mode) {
+    if ((m_ground_object->m_type == TYPE_EATO || m_ground_object->m_type == TYPE_SPIKA || m_ground_object->m_type == TYPE_ROKKO || m_ground_object->m_type == TYPE_STATIC_ENEMY) && m_invincible <= 0 && !m_omega_mode) {
         Reset_On_Ground();
     }
 
@@ -1144,7 +1144,7 @@ bool cLevel_Player::Is_On_Climbable(float move_y /* = 0.0f */)
 
 void cLevel_Player::Start_Jump_Keytime(void)
 {
-    if (m_god_mode || m_state == STA_STAY || m_state == STA_WALK || m_state == STA_RUN
+    if (m_omega_mode || m_state == STA_STAY || m_state == STA_WALK || m_state == STA_RUN
         || m_state == STA_FALL || m_state == STA_FLY || m_state == STA_JUMP || m_state == STA_CLIMB) {
         m_up_key_time = speedfactor_fps / 4;
     }
@@ -1153,7 +1153,7 @@ void cLevel_Player::Start_Jump_Keytime(void)
 void cLevel_Player::Update_Jump_Keytime(void)
 {
     // handle jumping start
-    if (m_force_jump || (m_up_key_time && (m_ground_object || m_god_mode || m_state == STA_CLIMB))) {
+    if (m_force_jump || (m_up_key_time && (m_ground_object || m_omega_mode || m_state == STA_CLIMB))) {
         Start_Jump();
     }
 }
@@ -1979,8 +1979,8 @@ void cLevel_Player::Update(void)
             }
         }
     }
-    // draw stars if in godmode or star invincible
-    if (m_god_mode || m_invincible_star > 0.0f) {
+    // draw stars if in omegamode or star invincible
+    if (m_omega_mode || m_invincible_star > 0.0f) {
         if (editor_level_enabled) {
             Set_Color_Combine(0.0f, 0.0f, 0.0f, 0);
         }
@@ -2014,8 +2014,8 @@ void cLevel_Player::Update(void)
                 anim->Set_Fading_Alpha(1);
                 anim->Set_Fading_Size(1);
                 anim->Set_Const_Rotation_Z(-5.0f, 10.0f);
-                // godmode stars
-                if (m_god_mode) {
+                // omegamode stars
+                if (m_omega_mode) {
                     anim->Set_Direction_Range(180.0f, 180.0f);
                     anim->Set_Speed(3.5f, 2.5f);
                     anim->Set_Scale(0.3f);
@@ -3941,7 +3941,7 @@ void cLevel_Player::Handle_out_of_Level(ObjectDirection dir)
         }*/
     }
     else if (dir == DIR_BOTTOM) {
-        if (m_god_mode) {
+        if (m_omega_mode) {
             m_vely = -35.0f;
         }
         else {
