@@ -29,12 +29,10 @@ namespace fs = boost::filesystem;
 
 static std::string timestamp()
 {
-    static const int formatted_length = 19;
-
     time_t now = time(NULL);
     struct tm* timeinfo = localtime(&now);
 
-    char buf[formatted_length];
+    char buf[128];
     sprintf(buf,
             "%04d-%02d-%02d %02d:%02d:%02d",
             timeinfo->tm_year + 1900,
@@ -44,7 +42,7 @@ static std::string timestamp()
             timeinfo->tm_min,
             timeinfo->tm_sec);
 
-    return std::string(buf, formatted_length);
+    return std::string(buf);
 }
 
 cGame_Console::cGame_Console()
