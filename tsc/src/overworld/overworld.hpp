@@ -111,6 +111,8 @@ namespace TSC {
         // Updates the Camera
         void Update_Camera(void);
 
+        void Process_Input();
+
         /* handle key down event
          * returns true if processed
         */
@@ -193,6 +195,8 @@ namespace TSC {
         // music filename
         // FIXME: Should be boost::filesystem::path
         std::string m_musicfile;
+
+        float m_cheat_counter;
 
         // settings
         unsigned int m_player_start_waypoint;

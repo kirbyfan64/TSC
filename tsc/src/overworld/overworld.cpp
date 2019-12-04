@@ -170,6 +170,7 @@ void cOverworld::Init()
     m_background_color = Color();
     m_musicfile = "overworld/land_1.ogg";
     m_next_level = 0;
+    m_cheat_counter = 0.0f;
 
     m_player_start_waypoint = 0;
     m_player_moving_state = STA_STAY;
@@ -457,6 +458,24 @@ void cOverworld::Draw_Layer_1(void)
     m_animation_manager->Draw();
 }
 
+void cOverworld::Process_Input()
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::O) && sf::Keyboard::isKeyPressed(sf::Keyboard::M) && !editor_world_enabled) {
+        if (m_cheat_counter > 50.0f) {
+            // all waypoint access
+            gp_hud->Set_Text(_("Omega Mode unlocks all waypoints"));
+            for (cWaypoint* waypoint: m_waypoints) {
+                waypoint->Set_Access(true);
+                waypoint->Unlock_All_Exits();
+            }
+            m_cheat_counter = 0.0f;
+        }
+        else {
+            m_cheat_counter += pFramerate->m_speed_factor;
+        }
+    }
+}
+
 void cOverworld::Update(void)
 {
     if (!editor_world_enabled) {
@@ -481,6 +500,7 @@ void cOverworld::Update(void)
         }
     }
 
+    Process_Input();
 
     // Editor
     pWorld_Editor->Update();
@@ -555,13 +575,6 @@ bool cOverworld::Key_Down(const sf::Event& evt)
     else if (evt.key.code == sf::Keyboard::L && editor_world_enabled) {
         // toggle layer drawing
         pOverworld_Manager->m_draw_layer = !pOverworld_Manager->m_draw_layer;
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::G) && sf::Keyboard::isKeyPressed(sf::Keyboard::O) && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        // all waypoint access
-        for (cWaypoint* waypoint: m_waypoints) {
-            waypoint->Set_Access(true);
-            waypoint->Unlock_All_Exits();
-        }
     }
     // Exit
     else if (evt.key.code == sf::Keyboard::Escape || evt.key.code == sf::Keyboard::BackSpace) {

@@ -102,6 +102,7 @@ cLevel::cLevel(void)
     Reset_Settings();
 
     m_delayed_unload = 0;
+    m_cheat_counter = 0.0f;
 
     m_mruby = NULL; // Initialized in Init()
     m_mruby_has_been_initialized = false;
@@ -708,9 +709,27 @@ void cLevel::Draw_Layer_2(LevelDrawType type /* = LVL_DRAW */)
 
 void cLevel::Process_Input(void)
 {
-    // only non editor
-    if (!editor_level_enabled) {
-        // none
+    // Omega Mode
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::O) && sf::Keyboard::isKeyPressed(sf::Keyboard::M) && !editor_enabled) {
+        if (m_cheat_counter > 50.0f) {
+            if (pLevel_Player->m_omega_mode) {
+                gp_hud->Set_Text(_("Omega Mode disabled"));
+                pLevel_Player->m_omega_mode = false;
+            }
+            else {
+                gp_hud->Set_Text(_("Omega Mode enabled"));
+                pLevel_Player->m_omega_mode = true;
+            }
+            m_cheat_counter = 0.0f;
+        }
+        else {
+            m_cheat_counter += pFramerate->m_speed_factor;
+        }
+    }
+    // Set Small state
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::K) && sf::Keyboard::isKeyPressed(sf::Keyboard::I) && sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !editor_enabled) {
+        gp_hud->Set_Text(_("Kid cheat activated"));
+        pLevel_Player->Set_Type(ALEX_SMALL, 0);
     }
 }
 
@@ -801,21 +820,6 @@ bool cLevel::Key_Down(const sf::Event& evt)
         Scripting::cKeyDown_Event evt("item");
         evt.Fire(m_mruby, pKeyboard);
         pLevel_Player->Action_Interact(INP_ITEM);
-    }
-    // God Mode
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::G) && sf::Keyboard::isKeyPressed(sf::Keyboard::O) && sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !editor_enabled) {
-        if (pLevel_Player->m_god_mode) {
-            gp_hud->Set_Text(_("Omega Mode disabled"));
-        }
-        else {
-            gp_hud->Set_Text(_("Omega Mode enabled"));
-        }
-
-        pLevel_Player->m_god_mode = !pLevel_Player->m_god_mode;
-    }
-    // Set Small state
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::K) && sf::Keyboard::isKeyPressed(sf::Keyboard::I) && sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !editor_enabled) {
-        pLevel_Player->Set_Type(ALEX_SMALL, 0);
     }
     // Exit
     else if (evt.key.code == sf::Keyboard::Escape) {

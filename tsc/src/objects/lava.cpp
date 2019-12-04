@@ -76,7 +76,7 @@ void cLava::Draw(cSurface_Request* p_request /* = NULL */)
 
 void cLava::Handle_Collision_Player(cObjectCollision* p_collision)
 {
-    if (pLevel_Player->m_god_mode)
+    if (pLevel_Player->m_omega_mode)
         pLevel_Player->m_vely = -35.0f; // Same as in cLevel_Player::Handle_out_of_Level()
     else {
         // Lava collision means instant death, even for invincible Alex

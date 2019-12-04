@@ -209,6 +209,8 @@ namespace TSC {
         // land type
         LevelLandType m_land_type;
 
+        float m_cheat_counter;
+
         // player
         float m_player_start_pos_x;
         float m_player_start_pos_y;
