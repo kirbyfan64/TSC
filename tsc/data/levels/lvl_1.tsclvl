@@ -17949,13 +17949,13 @@ UIDS[52].on_die do
   dead = true
 end
 
-Level.on_save do |store|
-  store["is_dead"] = dead
-end
-
-Level.on_load do |store|
-  if store["is_dead"]
-    UIDS[107].enable
+Level.on_save_load do |store, is_save|
+  if is_save
+    store["is_dead"] = dead
+  else
+    if store["is_dead"]
+      UIDS[107].enable
+    end
   end
 end
 </script>

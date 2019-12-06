@@ -31623,46 +31623,42 @@ Std::Switch.new(switchObject) do
 end
 
 #Logic to save script related data
-Level.on_save do |store|
-    store["doingTimer"] = doingTimer
-    store["blockId"] = blockId
-    blockIds.each do |id|
-        store[id.to_s] = UIDS[id].massive_type
-    end
-end
-
-#Logic to load script related data
-Level.on_load do |store|
-
-    #Load timer and block id
-    doingTimer = store["doingTimer"]
-    blockId = store["blockId"]
-
-    #Load block data for draw bridge
-    blockIds.each do |id|
-        massData = store[id.to_s]        
-        if massData == "massive"
-            UIDS[id].massive_type = :massive
-            UIDS[id].show
+Level.on_save_load do |store, is_save|
+    if is_save
+        store["doingTimer"] = doingTimer
+        store["blockId"] = blockId
+        blockIds.each do |id|
+            store[id.to_s] = UIDS[id].massive_type
         end
-    end
+    else
+        #Load timer and block id
+        doingTimer = store["doingTimer"]
+        blockId = store["blockId"]
 
-    #If draw bridge timer was under way when last saved, reissue timer
-    if doingTimer
-        #To do: this is redundant code - try to externalize it in some sort of Ruby function
-        bridgeTimer = Timer.every(500) do
-            block = UIDS[blockIds[blockId]]
-            block.show
-            block.massive_type = :massive
-            blockId = blockId + 1
-            if blockId &gt;= blockIds.length
-                bridgeTimer.stop!()
-                doingTimer = false
+        #Load block data for draw bridge
+        blockIds.each do |id|
+            massData = store[id.to_s]
+            if massData == "massive"
+                UIDS[id].massive_type = :massive
+                UIDS[id].show
+            end
+        end
+
+        #If draw bridge timer was under way when last saved, reissue timer
+        if doingTimer
+            #To do: this is redundant code - try to externalize it in some sort of Ruby function
+            bridgeTimer = Timer.every(500) do
+                block = UIDS[blockIds[blockId]]
+                block.show
+                block.massive_type = :massive
+                blockId = blockId + 1
+                if blockId &gt;= blockIds.length
+                    bridgeTimer.stop!()
+                    doingTimer = false
+                end
             end
         end
     end
 end
-
-
 </script>
 </level>

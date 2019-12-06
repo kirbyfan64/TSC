@@ -24592,18 +24592,17 @@
     end
   end
 
-  Level.on_save do |store|
-    store["red_jewels"]  = $red_jewels
-    store["total_jewels"]  = $total_jewels
-    store["greeting"]  = $shown_greeting
+  Level.on_save_load do |store, is_save|
+    if is_save
+      store["red_jewels"]  = $red_jewels
+      store["total_jewels"]  = $total_jewels
+      store["greeting"]  = $shown_greeting
+    else
+      $shown_greeting = store["greeting"]
+      $red_jewels = store["red_jewels"]
+      $total_jewels = store["total_jewels"]
+      check100Jewels()
+    end
   end
-
-  Level.on_load do |store|
-    $shown_greeting = store["greeting"]  
-    $red_jewels = store["red_jewels"]
-    $total_jewels= store["total_jewels"]
-    check100Jewels()
-  end
-
 </script>
 </level>

@@ -8940,14 +8940,17 @@ coins.each do |uid|
   end
 end
 
-Level.on_save do |store|
-  store["coins_collected"] = coins_collected
-end
-
-Level.on_load do |store|
-  store["coins_collected"].each do |uid|
-    coins.delete(uid)
-    coins_collected.push(uid)
+Level.on_save_load do |store, is_save|
+  if is_save
+    coins_collected.each do |coin|
+      store[coin.to_s] = true
+    end
+  else
+    store.each do |ary|
+      uid = ary[0].to_i
+      coins.delete(uid)
+      coins_collected.push(uid)
+    end
   end
 end
 </script>
