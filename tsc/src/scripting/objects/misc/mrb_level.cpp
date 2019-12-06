@@ -102,12 +102,8 @@
  * and floats) in the storage object. The attempt to store anything
  * else is going to raise a TypeError mruby exception.
  *
- * Keys used with the storage object should be strings. Use of
- * symbols is possible (just like any other object that responds
- * to C<to_str>), but they will all be converted to strings. Upon
- * loading, all keys of the storage object are thus strings. To
- * maintain a uniform appearance, strings should thus be used
- * also on saving.
+ * Keys used with the storage object have to be strings. Using any
+ * other object as a key results in an exception.
  *
  * Handlers for the B<save_load> event B<must not> be defined in a
  * conditional clause of any kind. To comply with this restriction,
