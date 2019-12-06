@@ -36,8 +36,8 @@
  * event: The B<save_load> event. This event is not
  * fired during regular gameplay, but instead when the player creates a
  * new savegame or restores an existing one. By
- * filling a special object from the event handler, you can
- * advertise TSC to store it in the savegame; later, when the user loads
+ * filling a special object (L<SaveSerializer>) from the event handler, you can
+ * advertise TSC to store arbitrary data in the savegame; later, when the user loads
  * this savegame again, the data is deserialised from the savegame and
  * passed back as an argument to the event handler of the B<save_load>
  * event. This way you can store information on your level from within
@@ -74,7 +74,8 @@
  *     # get lost. To prevent this, we define a handler
  *     # for the `save_load' event that persists
  *     # the state of the global `switches' table on saving,
- *     # and restores it on loading.
+ *     # and restores it on loading. See below for why
+ *     # strings are used as keys on the `store'.
  *     Level.on_save_load do |store, is_save|
  *       if is_save
  *         store["blue"]  = switches[:blue]
@@ -104,6 +105,11 @@
  *
  * Keys used with the storage object have to be strings. Using any
  * other object as a key results in an exception.
+ *
+ * When writing a B<save_load> event handler, it is recommended to
+ * extensively test it. Any exceptions raised during save and
+ * load operations will be printed to the game console (which
+ * can be made visible by pressing [F7] in a level).
  *
  * Handlers for the B<save_load> event B<must not> be defined in a
  * conditional clause of any kind. To comply with this restriction,
@@ -142,14 +148,16 @@
  *
  * =item [save_load]
  *
- * Called when the user saves or loads a savegame containing this level. The
- * event handler gets passed a storage object and a boolean indicator
- * that indicates whether a save (true) or load (false) operation is
- * in progress. Do not assume your level is active when this is called,
- * the player may be in a sublevel (however, usually
- * this has no impact on what you want to restore, but don’t try to
- * warp the player or things like that, it will result in undefined
- * behaviour probably leading TSC to crash).
+ * Called when the user saves or loads a savegame containing this
+ * level. The event handler gets passed a storage object
+ * (L<SaveSerializer>) and a boolean indicator that indicates whether
+ * a save (true) or load (false) operation is in progress. Do not
+ * assume your level is active when this is called, the player may be
+ * in a sublevel. However, usually this has no impact on what you want
+ * to restore, but don’t execute actions on the level player (like
+ * warping it) or on any object managed by the HUD (game timer, amount
+ * of collected jewels, etc.), it will result in undefined behaviour
+ * probably leading TSC to crash.
  *
  * =back
  *
@@ -601,7 +609,7 @@ static mrb_value SE_Get_Entry(mrb_state* p_state, mrb_value self)
  *
  * This is an internal class. Instances of it are created
  * from the C++ code. It's the class for the storage object
- * passed to L<LevelClass>' C<save> event handler.
+ * passed to L<LevelClass>' C<save_load> event handler.
  *
  * This class includes mruby's C<Enumerable> module. Note
  * however that no particular order of the elements is
@@ -623,7 +631,7 @@ static mrb_value SL_Initialize(mrb_state* p_state, mrb_value self)
  *   serializer[str] = value → value
  *
  * Stores the object C<value> in the savegame data under
- * the given C<str>. C<str> has to respond to C<to_str>.
+ * the given C<str>. C<str> has to be a string.
  */
 static mrb_value SL_Set(mrb_state* p_state, mrb_value self)
 {
