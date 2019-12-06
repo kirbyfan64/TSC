@@ -37,7 +37,6 @@ void cLevel_SaveLoad_Event::Run_MRuby_Callback(cMRuby_Interpreter* p_mruby, mrb_
     // and store it in the m_cpp_storage vector. Script developers
     // interact with `storage' (type Level::SaveSerializer) as the
     // mruby interface.
-    // HIER: Irgendwie wird die Instanz nicht richtig erzeugt! (TypeError)
     mrb_state* p_state = p_mruby->Get_MRuby_State();
     mrb_value storage  = mrb_obj_new(p_state, mrb_class_get(p_state, "SaveSerializer"), 0, nullptr);
     mrb_int key        = p_mruby->Protect_From_GC(storage); // Ensure `storage' is not garbage-collected during callback run
