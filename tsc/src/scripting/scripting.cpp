@@ -231,9 +231,6 @@ bool cMRuby_Interpreter::Run_File(const boost::filesystem::path& filepath)
 
 void cMRuby_Interpreter::Load_Scripts()
 {
-    // Load the main scripting file. This file is supposed to
-    // do any custom user scripting startup stuff.
-    boost::filesystem::path mainfile = pResource_Manager->Get_Game_Scripting("main.rb");
     std::vector<boost::filesystem::path> scriptfiles;
 
     for (boost::filesystem::directory_iterator diter(pResource_Manager->Get_Game_Scripting_Directory()); diter != boost::filesystem::directory_iterator(); diter++) {
