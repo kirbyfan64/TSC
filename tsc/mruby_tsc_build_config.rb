@@ -40,11 +40,6 @@ config = lambda do |conf, root|
   conf.gem :core => "mruby-random" # replace with C++11 random-based method?
   conf.gem :core => "mruby-object-ext"
   conf.gem :core => "mruby-kernel-ext"
-
-  # Additional things
-  conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-pcre-regexp"   # PCRE Regular Expressions
-  conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-md5"           # MD5
-  conf.gem "#{THIS_DIR}/../mruby/mgems/mruby-json"          # JSON
 end
 
 MRuby::Build.new do |conf|
