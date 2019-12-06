@@ -40,6 +40,7 @@
 		Marvin Gülker)
 	* Feature: Add an in-game console reachable via [F7] (#518 by
 		Chris Jacobsen, implementation by Marvin Gülker)
+	* Feature: Add save_load event for storing mruby script state.
 	* Feature: Replace editor HUD with status bar. No more object obscuring!
 	* Feature: Make copy & paste work together with the system clipboard
 	* Feature: Add alternate overworld pathes (#19 by Marvin Gülker)
@@ -55,7 +56,7 @@
 		#105 by Chris Jacobsen)
 	* Dependencies: Upgraded CEGUI from 0.7.9 to 0.8.7 (ticket #10 by
 		Marvin Gülker)
-    * Dependencies: CEGUI has ben dropped from Debian 10. It can be
+	* Dependencies: CEGUI has ben dropped from Debian 10. It can be
 		compiled manually, but not against the libxml2 contained in
 		Debian 10's repositories. Instead, it can be compiled against
 		libexpat. To allow the use of a CEGUI compiled against
