@@ -104,7 +104,9 @@
  * else is going to raise a TypeError mruby exception.
  *
  * Keys used with the storage object have to be strings. Using any
- * other object as a key results in an exception.
+ * other object as a key results in an exception. Keys starting
+ * with the string "__" (two consecutive underscores) are reserved
+ * for TSC's internal use and may not be used by level authors.
  *
  * When writing a B<save_load> event handler, it is recommended to
  * extensively test it. Any exceptions raised during save and
