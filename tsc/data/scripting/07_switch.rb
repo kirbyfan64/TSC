@@ -58,7 +58,35 @@ module Std
     #
     # =item [y] Move the switch to this Y position.
     #
-    # =item [color] Color of the switch. Defaults to C<:blue>.
+    # =item [color]
+    #
+    # Color of the switch. Defaults to C<:blue>. Available colors
+    # correspond to those listed in the directory
+    # F<ground/underground/switch>.
+    #
+    # =item [save]
+    #
+    # This option is C<false> by default. If it is a true value,
+    # then this method takes care of storing the switch's state
+    # into savegames (by registering an appropriate C<save_load>
+    # level event handler). If the switch was activated before
+    # saving, it will thus be in an active state when the savegame
+    # is loaded again.
+    #
+    # If this option is set specifically to the symbol C<:callback>,
+    # then in addition to the restoral of the switch state itself,
+    # the callback associated with this switch will be run if on
+    # loading a savegame it is found that the switch was in an
+    # activated state. This is only useful for simple callbacks
+    # and allows to circumvent the need for a manually defined
+    # C<save_load> handler.
+    #
+    # If this option is enabled, the switch must not be created
+    # inside a conditional clause. That is, it can only be used
+    # if this method is called on the script's toplevel. This
+    # restriction comes from the C<save_load> event; see
+    # the documentation for the C<LevelClass> class in the core
+    # API's documentation for further information.
     #
     # =back
     #
@@ -80,6 +108,7 @@ module Std
       # If a single sprite was given, transform for uniform opts handling
       opts = {:sprite => opts} if opts.kind_of?(Sprite)
       opts[:color] ||= :blue
+      opts[:save] ||= false
 
       @color = opts[:color]
       if opts[:sprite]
@@ -101,6 +130,26 @@ module Std
           @activated = true
           @callback.call
           other.reset_on_ground
+        end
+      end
+
+      # Store the switch's state if requested. This conditional execution
+      # of Level.on_save_load is okay as it cannot cause a mismatch
+      # between saved data and amount of handlers, as long as the Switch
+      # instance itself is created not under a conditional.
+      if opts[:save]
+        @callback_on_load = opts[:save] == :callback
+
+        Level.on_save_load do |store, is_save|
+          if is_save
+            store["__std_switch_#{@sprite.uid}"] = @activated
+          else
+            if store["__std_switch_#{@sprite.uid}"]
+              @sprite.image = "ground/underground/switch/#{@color}_active.png"
+              @activated = true
+              @callback.call if @callback_on_load
+            end
+          end
         end
       end
     end
