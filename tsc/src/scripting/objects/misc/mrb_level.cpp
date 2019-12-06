@@ -602,6 +602,10 @@ static mrb_value SE_Get_Entry(mrb_state* p_state, mrb_value self)
  * This is an internal class. Instances of it are created
  * from the C++ code. It's the class for the storage object
  * passed to L<LevelClass>' C<save> event handler.
+ *
+ * This class includes mruby's C<Enumerable> module. Note
+ * however that no particular order of the elements is
+ * guaranteed.
  */
 
 // Leave this undocumented
@@ -670,10 +674,32 @@ static mrb_value SL_Set(mrb_state* p_state, mrb_value self)
     return obj;
 }
 
+// Helper function to convert the C++ish string representation to
+// an actual mruby object.
+static mrb_value sl_convert_cpp_to_mrb(mrb_state* p_state, std::string type, std::string value)
+{
+    if (type == "fixnum")
+        return mrb_fixnum_value(std::stoi(value));
+    else if (type == "symbol")
+        return str2sym(p_state, value);
+    else if (type == "float")
+        return mrb_float_value(p_state, std::stof(value));
+    else if (type == "string")
+        return mrb_str_new(p_state, value.data(), value.length());
+    else if (type == "nil")
+        return mrb_nil_value();
+    else if (type == "boolean")
+            return value == "true" ? mrb_true_value() : mrb_false_value();
+    else {
+        std::cerr << "Unsupported type found in level script storage, returning nil." << std::endl;
+        return mrb_nil_value();
+    }
+}
+
 /**
  * Method: SaveSerializer#[]
  *
- * serializer[str] → an_object
+ *   serializer[str] → an_object
  *
  * Retrieves the object stored under C<str> from the savegame.
  * If there is no object under that key, returns nil.
@@ -687,27 +713,59 @@ static mrb_value SL_Get(mrb_state* p_state, mrb_value self)
     if (p_storage->count(key) > 0) {
         std::string type = std::get<0>((*p_storage)[key]);
         std::string value = std::get<1>((*p_storage)[key]);
-
-        if (type == "fixnum")
-            return mrb_fixnum_value(std::stoi(value));
-        else if (type == "symbol")
-            return str2sym(p_state, value);
-        else if (type == "float")
-            return mrb_float_value(p_state, std::stof(value));
-        else if (type == "string")
-            return mrb_str_new(p_state, value.data(), value.length());
-        else if (type == "nil")
-            return mrb_nil_value();
-        else if (type == "boolean")
-            return value == "true" ? mrb_true_value() : mrb_false_value();
-        else {
-            std::cerr << "Unsupported type found in level script storage, returning nil." << std::endl;
-            return mrb_nil_value();
-        }
+        return sl_convert_cpp_to_mrb(p_state, type, value);
     }
     else {
         return mrb_nil_value();
     }
+}
+
+/**
+ * Method: SaveSerializer#each
+ *
+ *   each() { |ary| ... }
+ *
+ * Iterates all values stored in the serializer. The block
+ * receives a two-argument array of form [key, value].
+ */
+static mrb_value SL_Each(mrb_state* p_state, mrb_value self)
+{
+    mrb_value block;
+    mrb_get_args(p_state, "&!", &block);
+
+    Script_Data* p_storage = Get_Data_Ptr<Script_Data>(p_state, self);
+
+    for(auto iter=p_storage->begin(); iter != p_storage->end(); iter++) {
+        std::string key   = iter->first;
+        std::string type  = std::get<0>(iter->second);
+        std::string value = std::get<1>(iter->second);
+
+        mrb_value ary = mrb_ary_new(p_state);
+        mrb_ary_push(p_state, ary, mrb_str_new_cstr(p_state, key.c_str()));
+        mrb_ary_push(p_state, ary, sl_convert_cpp_to_mrb(p_state, type, value));
+        mrb_yield(p_state, block, ary);
+    }
+
+    return self;
+}
+
+/**
+ * Method: SaveSerializer#inspect
+ *
+ *     inspect() → a_string
+ *
+ * Returns a human-readable description of this object.
+ */
+static mrb_value SL_Inspect(mrb_state* p_state, mrb_value self)
+{
+    std::stringstream ss;
+    Script_Data* p_storage = Get_Data_Ptr<Script_Data>(p_state, self);
+
+    ss << "#<SaveSerializer with "
+       << p_storage->size()
+       << " elements>";
+
+    return mrb_str_new_cstr(p_state, ss.str().c_str());
 }
 
 void TSC::Scripting::Init_Level(mrb_state* p_state)
@@ -754,4 +812,7 @@ void TSC::Scripting::Init_Level(mrb_state* p_state)
     mrb_define_method(p_state, p_rcSaveSerializer, "initialize", SL_Initialize, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcSaveSerializer, "[]=", SL_Set, MRB_ARGS_REQ(2));
     mrb_define_method(p_state, p_rcSaveSerializer, "[]", SL_Get, MRB_ARGS_REQ(1));
+    mrb_define_method(p_state, p_rcSaveSerializer, "each", SL_Each, MRB_ARGS_BLOCK());
+    mrb_define_method(p_state, p_rcSaveSerializer, "inspect", SL_Inspect, MRB_ARGS_NONE());
+    mrb_include_module(p_state, p_rcSaveSerializer, mrb_module_get(p_state, "Enumerable"));
 }
