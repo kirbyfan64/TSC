@@ -27,8 +27,7 @@
 #include "../../core/i18n.hpp"
 #include "../../core/filesystem/filesystem.hpp"
 #include "../../core/filesystem/resource_manager.hpp"
-#include "../../scripting/events/level_load_event.hpp"
-#include "../../scripting/events/level_save_event.hpp"
+#include "../../scripting/events/level_save_load_event.hpp"
 #include "../../core/global_basic.hpp"
 #include "../../audio/audio.hpp"
 #include "../../enemies/army.hpp"
@@ -208,10 +207,11 @@ int cSavegame::Load_Game(unsigned int save_slot)
                 }
             }
 
-            // Feed the data stored by the save event back
-            // to the load event. pSavegame holds the event
+            // Feed the data stored in the file back to the
+            // Saveload event. pSavegame holds the event
             // table required for this.
-            Scripting::cLevel_Load_Event evt(save_level->m_mruby_data);
+            Scripting::cLevel_SaveLoad_Event evt(false);
+            evt.Set_Storage(save_level->m_script_datas);
             evt.Fire(level->m_mruby, pSavegame);
         }
     }
@@ -346,19 +346,9 @@ bool cSavegame::Save_Game(unsigned int save_slot, std::string description)
                 // savegame (pSavegame holds the event table for the
                 // level saving events).
                 // TODO: Why not have mruby saving in sublevels?
-                mrb_state* p_state = pActive_Level->m_mruby->Get_MRuby_State();
-                mrb_value storage_hash = mrb_hash_new(p_state);
-                mrb_int key = pActive_Level->m_mruby->Protect_From_GC(storage_hash);
-
-                Scripting::cLevel_Save_Event evt(storage_hash);
+                Scripting::cLevel_SaveLoad_Event evt(true);
                 evt.Fire(pActive_Level->m_mruby, pSavegame);
-
-                // We use JSON to store the data for now, as mruby doesn’t have Marshal, sadly.
-                mrb_value mod_json = mrb_const_get(p_state, mrb_obj_value(p_state->object_class), mrb_intern_cstr(p_state, "JSON"));
-                mrb_value result = mrb_funcall(p_state, mod_json, "stringify", 1, storage_hash);
-                save_level->m_mruby_data = std::string(mrb_string_value_ptr(p_state, result));
-
-                pActive_Level->m_mruby->Unprotect_From_GC(key); // GC can collect it now
+                save_level->m_script_datas = evt.Get_Storage();
             }
 
             // All the sprites in the level.

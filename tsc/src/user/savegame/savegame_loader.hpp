@@ -46,6 +46,7 @@ namespace TSC {
         void handle_level();
         void handle_level_object();
         void handle_level_spawned_object(const Glib::ustring& name);
+        void handle_script_data();
         void handle_player();
         void handle_return();
         void handle_old_format_overworld_data();
@@ -61,10 +62,14 @@ namespace TSC {
         cSprite_List m_level_spawned_objects;
         // overworld waypoints for parsing
         Save_Overworld_WaypointList m_waypoints;
+        // mruby script storage objects
+        std::vector<Script_Data> m_script_datas;
         // The file we’re parsing.
         boost::filesystem::path m_savefile;
         // The <property> results we found before the current tag.
         XmlAttributes m_current_properties;
+        // The <item>s found in the current script storage.
+        Script_Data m_current_script_data;
         // Whether the old format was detected
         bool m_is_old_format;
     };

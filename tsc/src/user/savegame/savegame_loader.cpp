@@ -96,6 +96,24 @@ void cSavegameLoader::on_start_element(const Glib::ustring& name, const xmlpp::S
 
         m_current_properties[key] = value;
     }
+    else if (name == "script_data_entry") {
+        std::string key;
+        std::string type;
+        std::string value;
+
+        for (xmlpp::SaxParser::AttributeList::const_iterator iter = properties.begin(); iter != properties.end(); iter++) {
+            xmlpp::SaxParser::Attribute attr = *iter;
+
+            if (attr.name == "name")
+                key = attr.value;
+            else if (attr.name == "type")
+                type = attr.value;
+            else if (attr.name == "value")
+                value = attr.value;
+        }
+
+        m_current_script_data[key] = std::make_pair(type, value);
+    }
 }
 
 void cSavegameLoader::on_end_element(const Glib::ustring& name)
@@ -120,6 +138,14 @@ void cSavegameLoader::on_end_element(const Glib::ustring& name)
     }
     else if (name == "spawned_objects")
         return; // don't clear attributes
+    else if (name == "mruby_data")
+        return; // idon't clear attributes for <level>
+    else if (name == "script_data") {
+        handle_script_data();
+        return; // don't clear attributes for <level>
+    }
+    else if (name == "script_data_entry")
+        return; // don't clear attributes for <level>
     else if (name != "player" && cLevel::Is_Level_Object_Element(std::string(name))) { // Glib::ustring is not autoconverted to CEGUI::String
         handle_level_spawned_object(name);
         return; // don't clear attributes
@@ -156,7 +182,6 @@ void cSavegameLoader::handle_level()
 
     // Restore the general attributes.
     p_savelevel->m_name         = m_current_properties["level_name"];
-    p_savelevel->m_mruby_data   = m_current_properties["mruby_data"];
     p_savelevel->m_level_pos_x  = m_current_properties.fetch<float>("player_posx", 0);
     p_savelevel->m_level_pos_y  = m_current_properties.fetch<float>("player_posy", 0);
 
@@ -168,10 +193,22 @@ void cSavegameLoader::handle_level()
     p_savelevel->m_level_objects.swap(m_level_objects);
     // set level spawned objects, clear object list for the next level
     p_savelevel->m_spawned_objects.swap(m_level_spawned_objects);
+    // Copy all storages into the savelevel object (there's one storage
+    // per registerd save_load handler). Clear data list for next level.
+    p_savelevel->m_script_datas.swap(m_script_datas);
 
     // Add this level to the list of levels for this
     // savegame.
     mp_save->m_levels.push_back(p_savelevel);
+}
+
+void cSavegameLoader::handle_script_data()
+{
+    // Place a copy of all the deserialised storage into the script
+    // data list, then clear the working list for the next storage
+    // (each save_load handler has its own storage).
+    m_script_datas.push_back(m_current_script_data);
+    m_current_script_data.clear();
 }
 
 void cSavegameLoader::handle_level_object()

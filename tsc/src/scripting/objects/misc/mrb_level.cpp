@@ -32,17 +32,24 @@
  * within the script?) or could even cause severe confusion for the game
  * (such as changing the filename).
  *
- * This class allows you to register handlers for two very special
- * events: The B<save> and the B<load> event. These events are not
+ * This class allows you to register handlers for a very special
+ * event: The B<save_load> event. This event is not
  * fired during regular gameplay, but instead when the player creates a
- * new savegame (B<save>) or restores an existing one (B<load>). By
- * returning an MRuby hash from the B<save> event handler, you can
+ * new savegame or restores an existing one. By
+ * filling a special object from the event handler, you can
  * advertise TSC to store it in the savegame; later, when the user loads
- * this savegame again, the hash is deserialised from the savegame and
- * passed back as an argument to the even thandler of the B<load>
+ * this savegame again, the data is deserialised from the savegame and
+ * passed back as an argument to the event handler of the B<save_load>
  * event. This way you can store information on your level from within
  * the scripting API that will persist between saves and loads of a
  * level.
+ *
+ * There only is a single B<save_load> event which is used for both
+ * saving and loading a savegame. The event handler gets passed
+ * an argument that is C<true> on a save, and C<false> on a load
+ * operation. This way the API ensures that it cannot accidentally
+ * happen that there is an unbalanced amount of save/load event
+ * handlers, which would cause problems.
  *
  * Consider this example:
  *
@@ -63,22 +70,21 @@
  *     end
  *
  *     # Now, if the player jumps on your switch and
- *     # then saves and reloads, the switch’s state
- *     # gets lost. To prevent this, we define handlers
- *     # for the `save' and `load' events that persist
- *     # the state of the global `switches' table.
- *     # See below to see why we don’t dump the symbols
- *     # into the savegame.
- *     Level.on_save do |store|
- *       store["blue"]  = switches[:blue]
- *       store["red"]   = switches[:red]
- *       store["green"] = switches[:green]
- *     end
- *
- *     Level.on_load do |store|
- *       switches[:blue]  = store["blue"]
- *       switches[:red]   = store["red"]
- *       switches[:green] = store["green"]
+ *     # then saves and reloads, the switches’ states
+ *     # get lost. To prevent this, we define a handler
+ *     # for the `save_load' event that persists
+ *     # the state of the global `switches' table on saving,
+ *     # and restores it on loading.
+ *     Level.on_save_load do |store, is_save|
+ *       if is_save
+ *         store["blue"]  = switches[:blue]
+ *         store["red"]   = switches[:red]
+ *         store["green"] = switches[:green]
+ *       else
+ *         switches["blue"]  = store[:blue]
+ *         switches["red"]   = store[:red]
+ *         switches["green"] = store[:green]
+ *       end
  *     end
  *
  *     # This way the switches will remain in their
@@ -87,32 +93,46 @@
  *     # switches, you still have to do this manually
  *     # in your event handlers, though.
  *
- * Please note that the hash yielded to the block of the C<save> event
- * gets converted to JSON for persistency. This comes with a major
- * limitation: You can’t store arbitrary MRuby objects in this hash,
- * and if you do, they will be autoconverted to strings, which is
- * most likely not what you want. So please stick with the primitive
- * types JSON supports, especially with regard to symbols (as keys
- * and values), which are converted to strings and therefore will
- * show up as strings in the parameter of the C<load> event’s callback.
+ * The storage object passed to the B<save_load> event handler is an
+ * instance of L<SaveSerializer>, which wraps an underlying C++
+ * structure that allows serialisaton of the data stored into XML
+ * format. It's a consequence of this design that it is not possible
+ * to persist arbitrary mruby objects. It is only supported to store
+ * strings, symbols, nil, true and false, and numerics (both fixnums
+ * and floats) in the storage object. The attempt to store anything
+ * else is going to raise a TypeError mruby exception.
  *
- * You are advised to not register more than one event handler for
- * the C<save> and C<load> events, respectively. While this is possible,
- * it has several drawbacks:
+ * Keys used with the storage object should be strings. Use of
+ * symbols is possible (just like any other object that responds
+ * to C<to_str>), but they will all be converted to strings. Upon
+ * loading, all keys of the storage object are thus strings. To
+ * maintain a uniform appearance, strings should thus be used
+ * also on saving.
  *
- * =over
+ * Handlers for the B<save_load> event B<must not> be defined in a
+ * conditional clause of any kind. To comply with this restriction,
+ * simply define any handlers on the level script's toplevel. If
+ * you need conditional saving/loading, place the conditional
+ * I<inside> the B<save_load> event handler.
  *
- * =item For the C<save> event, the lastly called event handler decides
- * which data to store. The other’s data gets skipped.
+ * The reason for this restriction is that the game assumes that
+ * one entry in the savegame's script data section corresponds to
+ * exactly one B<save_load> handler. On savegame loading, it
+ * deconstructs the savegame's script data entries one by one and
+ * passes each deserialised entry to the next event handler defined.
+ * If B<save_load> handlers are defined under a condition, the
+ * assumption breaks and it is not foreseeable which event handler
+ * receives which storage entry.
  *
- * =item For the C<load> event, the JSON data gets parsed once per callback,
- * putting unnecessary strain on the game and delaying level loading.
- *
- * =back
+ * It is recommended to not register more than one event handler
+ * for the B<save_load> event. It is possible, but complicates
+ * compliance with the above restrictions. Registration of additional
+ * event handlers for B<save_load> is mostly useful for scripts that
+ * are part of the SSL.
  *
  * =head2 Internal note
  *
- * You will most likely neither notice nor need it, but the Lua C<Level>
+ * You will most likely neither notice nor need it, but the mruby C<Level>
  * singleton actually doesn’t wrap TSC’s notion of the currently running
  * level, C<pActive_Level>, but rather the pointer to the savegame
  * mechanism, C<pSavegame>. This facilitates the handling of the event
@@ -124,26 +144,16 @@
  *
  * =over
  *
- * =item [Load]
+ * =item [save_load]
  *
- * Called when the user loads a savegame containing this level. The
- * event handler gets passed a hash containing any values
- * requested in the B<save> event’s handler, but note it was
- * deserialised from a JSON representation and hence subject to its
- * limits. Do not assume your level is active when this is called,
+ * Called when the user saves or loads a savegame containing this level. The
+ * event handler gets passed a storage object and a boolean indicator
+ * that indicates whether a save (true) or load (false) operation is
+ * in progress. Do not assume your level is active when this is called,
  * the player may be in a sublevel (however, usually
  * this has no impact on what you want to restore, but don’t try to
  * warp the player or things like that, it will result in undefined
  * behaviour probably leading TSC to crash).
- *
- * =item [Save]
- *
- * Called when the users saves a game. The event handler should store
- * all values you want to preserve between level loading in saving
- * in the hash it receives as a parameter, but please see the explanations
- * further above regarding the limitations of this hash. Do not assume your
- * level is active when this is called, because the player may be in a
- * sublevel (however, usually this has no impact on what you want to save).
  *
  * =back
  *
@@ -160,8 +170,7 @@ using namespace TSC::Scripting;
  * Events
  ***************************************/
 
-MRUBY_IMPLEMENT_EVENT(load);
-MRUBY_IMPLEMENT_EVENT(save);
+MRUBY_IMPLEMENT_EVENT(save_load);
 
 /***************************************
  * Methods
@@ -589,6 +598,122 @@ static mrb_value SE_Get_Entry(mrb_state* p_state, mrb_value self)
     return mrb_iv_get(p_state, self, mrb_intern_cstr(p_state, "@entry"));
 }
 
+/********************* SaveSerializer ********************/
+
+/**
+ * Class: SaveSerializer
+ *
+ * This is an internal class. Instances of it are created
+ * from the C++ code. It's the class for the storage object
+ * passed to L<LevelClass>' C<save> event handler.
+ */
+
+// Leave this undocumented
+static mrb_value SL_Initialize(mrb_state* p_state, mrb_value self)
+{
+    Script_Data* p_storage = new Script_Data();
+    DATA_PTR(self) = p_storage;
+    DATA_TYPE(self) = &rtTSC_Scriptable;
+    return self;
+}
+
+/**
+ * Method: SaveSerializer#[]=
+ *
+ *   serializer[str] = value → value
+ *
+ * Stores the object C<value> in the savegame data under
+ * the given C<str>. C<str> has to respond to C<to_str>.
+ */
+static mrb_value SL_Set(mrb_state* p_state, mrb_value self)
+{
+    Script_Data* p_storage = Get_Data_Ptr<Script_Data>(p_state, self);
+    char* key;
+    mrb_value obj;
+    mrb_get_args(p_state, "zo", &key, &obj);
+
+    std::string type;
+    std::stringstream value;
+    if (mrb_nil_p(obj)) { // There is no MRB_TT_NIL for the below `switch'
+        type = "nil";
+        value << "nil";
+    }
+    else {
+        switch (mrb_type(obj)) {
+        case MRB_TT_FIXNUM:
+            type = "fixnum";
+            value << mrb_int(p_state, obj);
+            break;
+        case MRB_TT_SYMBOL:
+            type = "symbol";
+            value << mrb_sym2name(p_state, mrb_symbol(obj));
+            break;
+        case MRB_TT_FLOAT:
+            type = "float";
+            value << mrb_float(obj);
+            break;
+        case MRB_TT_STRING:
+            type = "string";
+            value << mrb_string_value_ptr(p_state, obj);
+            break;
+        case MRB_TT_FALSE:
+            type = "boolean";
+            value << "false";
+            break;
+        case MRB_TT_TRUE:
+            type = "boolean";
+            value << "true";
+            break;
+        default:
+            mrb_raise(p_state, MRB_TYPE_ERROR(p_state), "Unsupported type for script save storage");
+            return mrb_nil_value();
+        }
+    }
+
+    (*p_storage)[key] = std::make_pair(type, value.str());
+    return obj;
+}
+
+/**
+ * Method: SaveSerializer#[]
+ *
+ * serializer[str] → an_object
+ *
+ * Retrieves the object stored under C<str> from the savegame.
+ * If there is no object under that key, returns nil.
+ */
+static mrb_value SL_Get(mrb_state* p_state, mrb_value self)
+{
+    Script_Data* p_storage = Get_Data_Ptr<Script_Data>(p_state, self);
+    char* key;
+    mrb_get_args(p_state, "z", &key);
+
+    if (p_storage->count(key) > 0) {
+        std::string type = std::get<0>((*p_storage)[key]);
+        std::string value = std::get<1>((*p_storage)[key]);
+
+        if (type == "fixnum")
+            return mrb_fixnum_value(std::stoi(value));
+        else if (type == "symbol")
+            return str2sym(p_state, value);
+        else if (type == "float")
+            return mrb_float_value(p_state, std::stof(value));
+        else if (type == "string")
+            return mrb_str_new(p_state, value.data(), value.length());
+        else if (type == "nil")
+            return mrb_nil_value();
+        else if (type == "boolean")
+            return value == "true" ? mrb_true_value() : mrb_false_value();
+        else {
+            std::cerr << "Unsupported type found in level script storage, returning nil." << std::endl;
+            return mrb_nil_value();
+        }
+    }
+    else {
+        return mrb_nil_value();
+    }
+}
+
 void TSC::Scripting::Init_Level(mrb_state* p_state)
 {
     struct RClass* p_rcLevel = mrb_define_class(p_state, "LevelClass", p_state->object_class);
@@ -619,12 +744,18 @@ void TSC::Scripting::Init_Level(mrb_state* p_state)
     mrb_define_method(p_state, p_rcLevel, "start_position", Get_Start_Position, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcLevel, "fixed_horizontal_velocity", Get_Fixed_Hor_Vel, MRB_ARGS_NONE());
 
-    mrb_define_method(p_state, p_rcLevel, "on_load", MRUBY_EVENT_HANDLER(load), MRB_ARGS_NONE());
-    mrb_define_method(p_state, p_rcLevel, "on_save", MRUBY_EVENT_HANDLER(save), MRB_ARGS_NONE());
+    mrb_define_method(p_state, p_rcLevel, "on_save_load", MRUBY_EVENT_HANDLER(save_load), MRB_ARGS_NONE());
 
     struct RClass* p_rcLevel_StackEntry = mrb_define_class_under(p_state, p_rcLevel, "StackEntry", p_state->object_class);
 
     mrb_define_method(p_state, p_rcLevel_StackEntry, "initialize", SE_Initialize, MRB_ARGS_OPT(2));
     mrb_define_method(p_state, p_rcLevel_StackEntry, "level", SE_Get_Level, MRB_ARGS_NONE());
     mrb_define_method(p_state, p_rcLevel_StackEntry, "entry", SE_Get_Entry, MRB_ARGS_NONE());
+
+    struct RClass* p_rcSaveSerializer = mrb_define_class(p_state, "SaveSerializer", p_state->object_class);
+    MRB_SET_INSTANCE_TT(p_rcSaveSerializer, MRB_TT_DATA);
+
+    mrb_define_method(p_state, p_rcSaveSerializer, "initialize", SL_Initialize, MRB_ARGS_NONE());
+    mrb_define_method(p_state, p_rcSaveSerializer, "[]=", SL_Set, MRB_ARGS_REQ(2));
+    mrb_define_method(p_state, p_rcSaveSerializer, "[]", SL_Get, MRB_ARGS_REQ(1));
 }

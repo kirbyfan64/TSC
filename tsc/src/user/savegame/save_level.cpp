@@ -95,11 +95,23 @@ void cSave_Level::Save_To_Node(xmlpp::Element* p_parent_node)
         Add_Property(p_node, "player_posy", m_level_pos_y);
     }
 
+    // TODO: honour USE_LIBXMLPP3
     /* Custom data a script writer wants to store; empty if the
      * script writer didn’t hook into the on_load and on_save
      * events. */
-    if (!m_mruby_data.empty())
-        Add_Property(p_node, "mruby_data", m_mruby_data);
+    if (!m_script_datas.empty()) {
+        xmlpp::Element* p_datas_node = p_node->add_child("mruby_data");
+        for(const Script_Data& data: m_script_datas) {
+            xmlpp::Element* p_data_node = p_datas_node->add_child("script_data");
+
+            for(auto iter=data.begin(); iter != data.end(); iter++) {
+                xmlpp::Element* p_entry_node = p_data_node->add_child("script_data_entry");
+                p_entry_node->set_attribute("name", iter->first);
+                p_entry_node->set_attribute("type", std::get<0>(iter->second));
+                p_entry_node->set_attribute("value", std::get<1>(iter->second));
+            }
+        }
+    }
 
     // The regular objects.
     // <objects_data>

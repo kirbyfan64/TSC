@@ -1,5 +1,5 @@
 /***************************************************************************
- * level_save_event.hpp
+ * level_save_load_event.hpp
  *
  * Copyright © 2012-2017 The TSC Contributors
  ***************************************************************************
@@ -12,21 +12,25 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TSC_SCRIPTING_LEVEL_SAVE_EVENT_HPP
-#define TSC_SCRIPTING_LEVEL_SAVE_EVENT_HPP
+#ifndef TSC_SCRIPTING_LEVEL_SAVE_LOAD_EVENT_HPP
+#define TSC_SCRIPTING_LEVEL_SAVE_LOAD_EVENT_HPP
 #include "../scripting.hpp"
+#include "../../user/savegame/save_level.hpp"
 #include "event.hpp"
 
 namespace TSC {
     namespace Scripting {
-        class cLevel_Save_Event: public cEvent {
+        class cLevel_SaveLoad_Event: public cEvent {
         public:
-            cLevel_Save_Event(mrb_value storage_hash);
+            cLevel_SaveLoad_Event(bool is_save);
             virtual std::string Event_Name();
+            std::vector<Script_Data> Get_Storage();
+            void Set_Storage(const std::vector<Script_Data>& storage);
         protected:
             virtual void Run_MRuby_Callback(cMRuby_Interpreter* p_mruby, mrb_value callback);
         private:
-            mrb_value m_storage_hash;
+            bool m_is_save;
+            std::vector<Script_Data> m_cpp_storage;
         };
     }
 }

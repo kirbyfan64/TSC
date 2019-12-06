@@ -19,6 +19,11 @@
 #include "../../objects/sprite.hpp"
 
 namespace TSC {
+    // This is used in the scripting API's Save event for storing the
+    // data a script writer needs to save. Format:
+    //     key => [typename, value_as_string]
+    typedef std::map<std::string, std::pair<std::string, std::string>> Script_Data;
+
     /* *** *** *** *** *** *** *** cSave_Level_Object_Property *** *** *** *** *** *** *** *** *** *** */
     /**
     * Legacy class that holds the diff for a single attribute
@@ -98,7 +103,8 @@ namespace TSC {
         Save_Level_ObjectList m_level_objects;
 
         // Data a script writer wants to store
-        std::string m_mruby_data;
+        // This is a list of key-value tables (one table per save event handler).
+        std::vector<Script_Data> m_script_datas;
     };
 
     typedef vector<cSave_Level*> Save_LevelList;
