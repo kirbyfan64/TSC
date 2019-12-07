@@ -19,6 +19,7 @@
 #include "../core/i18n.hpp"
 #include "../core/game_core.hpp"
 #include "../audio/audio.hpp"
+#include "../video/animation.hpp"
 #include "../level/level_player.hpp"
 #include "../user/savegame/savegame.hpp"
 #include "../enemies/enemy.hpp"
@@ -162,6 +163,7 @@ void cCrate::Handle_out_of_Level(ObjectDirection dir)
     if (dir == DIR_BOTTOM) {
         m_crate_state = CRATE_DEAD;
         m_massive_type = MASS_PASSIVE;
+        Set_Active(false);
     }
 
     // Don’t move it outside right/left level edge
@@ -170,4 +172,40 @@ void cCrate::Handle_out_of_Level(ObjectDirection dir)
     else if (dir == DIR_RIGHT)
         Set_Pos_X(pActive_Camera->m_limit_rect.m_x + pActive_Camera->m_limit_rect.m_w - m_col_pos.m_x - m_col_rect.m_w - 0.01f);
 
+}
+
+void cCrate::Smash()
+{
+    m_crate_state = CRATE_DEAD;
+    m_massive_type = MASS_PASSIVE;
+    Set_Active(false);
+    pAudio->Play_Sound("stomp_1.ogg");
+    Smash_Animation();
+
+    // Any objects standing on this crate need to fall down now.
+    cObjectCollisionType* col_list = Collision_Check_Relative(0.0f, -1.0, 0.0f, 1.0f, COLLIDE_ONLY_BLOCKING);
+    for(cObjectCollision* p_col: col_list->objects) {
+        static_cast<cMovingSprite*>(p_col->m_obj)->Reset_On_Ground();
+    }
+}
+
+void cCrate::Smash_Animation()
+{
+    cParticle_Emitter* p_em = new cParticle_Emitter(m_sprite_manager);
+    p_em->Set_Emitter_Rect(m_col_rect);
+    p_em->Set_Quota(4);
+    p_em->Set_Pos_Z(cSprite::m_pos_z_front_passive_start + 0.01f);
+    p_em->Set_Image(pVideo->Get_Surface("animation/particles/axis.png"));
+    p_em->Set_Color(orange);
+    p_em->Set_Time_to_Live(10.0f);
+    p_em->Set_Scale(0.5f);
+    p_em->Set_Const_Rotation_Z(20.0f, 5.0f);
+    p_em->Set_Vertical_Gravity(2.5f, 0.5f);
+    p_em->Set_Horizontal_Gravity(1.0f, 0.5f);
+    p_em->Set_Emitter_Time_to_Live(0.0f); // Only emit exactly...
+    p_em->Emit();                         // ...a single time.
+
+    p_em->Set_Horizontal_Gravity(-1.0f, -0.5f);
+    p_em->Emit();
+    pActive_Animation_Manager->Add(p_em);
 }

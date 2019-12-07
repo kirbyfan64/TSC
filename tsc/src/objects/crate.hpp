@@ -55,11 +55,15 @@ namespace TSC {
         virtual void Handle_Collision_Player(cObjectCollision* p_collision);
         virtual void Handle_out_of_Level(ObjectDirection dir);
 
+        // Destroys the crate with a nice animation.
+        void Smash();
+
     protected:
         virtual std::string Get_XML_Type_Name();
 
     private:
         void Init();
+        void Smash_Animation();
 
         CrateState m_crate_state;
     };
