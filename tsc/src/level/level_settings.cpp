@@ -236,6 +236,7 @@ void cLevel_Settings::Exit(void)
     Game_Action_Data_Start.add("screen_fadeout_speed", "3");
     Game_Action_Data_End.add("screen_fadein", int_to_string(EFFECT_IN_BLACK));
     Game_Action_Data_End.add("screen_fadein_speed", "3");
+    Game_Action_Data_End.add("activate_editor", "1");
 
     pMouseCursor->Set_Active(0);
 }
