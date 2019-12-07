@@ -125,6 +125,22 @@ bool cEditor_Level::Key_Down(const sf::Event& evt)
             pActive_Camera->Set_Pos(new_camera_posx - (game_res_w * 0.5f), new_camera_posy - (game_res_h * 0.5f));
         }
     }
+    // Move camera to level top edge
+    else if (evt.key.code == sf::Keyboard::PageUp && evt.key.shift) {
+        pActive_Camera->Set_Pos(pActive_Camera->m_x, pActive_Level->m_camera_limits.m_h);
+    }
+    // Move camera to level bottom edge
+    else if (evt.key.code == sf::Keyboard::PageDown && evt.key.shift) {
+        pActive_Camera->Set_Pos(pActive_Camera->m_x, -static_cast<float>(game_res_h));
+    }
+    // Move camera to level left edge
+    else if (evt.key.code == sf::Keyboard::PageUp) {
+        pActive_Camera->Set_Pos(0, pActive_Camera->m_y);
+    }
+    // Move camera to level right edge
+    else if (evt.key.code == sf::Keyboard::PageDown) {
+        pActive_Camera->Set_Pos(pActive_Level->m_camera_limits.m_w - static_cast<float>(game_res_w), pActive_Camera->m_y);
+    }
     // Handle level-editor-specific commands
     else if (evt.key.code == sf::Keyboard::M) {
         if (!pMouseCursor->m_selected_objects.empty()) {
