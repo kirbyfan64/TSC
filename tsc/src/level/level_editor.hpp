@@ -34,6 +34,7 @@ namespace TSC {
         void load_background_images_into_cegui();
         bool cycle_object_massive_type(cSprite* obj) const;
         cLevel* mp_level;
+        size_t m_focused_exit;
     };
 
     extern cEditor_Level* pLevel_Editor;

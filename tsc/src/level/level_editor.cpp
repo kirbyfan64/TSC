@@ -22,6 +22,7 @@
 #include "../core/xml_attributes.hpp"
 #include "../core/errors.hpp"
 #include "../gui/hud.hpp"
+#include "../objects/level_exit.hpp"
 #include "level_settings.hpp"
 #include "level_editor.hpp"
 
@@ -37,6 +38,7 @@ cEditor_Level::cEditor_Level()
     m_editor_item_tag = "level";
     m_menu_filename = pResource_Manager->Get_Game_Editor("level_menu.xml");
     load_background_images_into_cegui();
+    m_focused_exit = 0;
 }
 
 cEditor_Level::~cEditor_Level()
@@ -77,6 +79,7 @@ void cEditor_Level::Enable(cSprite_Manager* p_sprite_manager)
 
     cEditor::Enable(p_sprite_manager);
     mp_level->Pause_All_Timers();
+    m_focused_exit = 0;
     editor_level_enabled = true;
 }
 
@@ -103,26 +106,27 @@ bool cEditor_Level::Key_Down(const sf::Event& evt)
     if (cEditor::Key_Down(evt)) {
         return true;
     }
-    // focus last levelexit
+    // cycle levelexits
     else if (evt.key.code == sf::Keyboard::End) {
-        float new_camera_posx = 0.0f;
-        float new_camera_posy = 0.0f;
-
+        std::vector<cLevel_Exit*> level_exits;
         for (cSprite_List::iterator itr = mp_edited_sprite_manager->objects.begin(); itr != mp_edited_sprite_manager->objects.end(); ++itr) {
             cSprite* obj = (*itr);
-
-            if (obj->m_sprite_array != ARRAY_ACTIVE) {
-                continue;
-            }
-
-            if (obj->m_type == TYPE_LEVEL_EXIT && new_camera_posx < obj->m_pos_x) {
-                new_camera_posx = obj->m_pos_x;
-                new_camera_posy = obj->m_pos_y;
+            if (obj->m_sprite_array == ARRAY_ACTIVE && obj->m_type == TYPE_LEVEL_EXIT) {
+                level_exits.push_back(static_cast<cLevel_Exit*>(obj));
             }
         }
 
-        if (!Is_Float_Equal(new_camera_posx, 0.0f) || !Is_Float_Equal(new_camera_posy, 0.0f)) {
-            pActive_Camera->Set_Pos(new_camera_posx - (game_res_w * 0.5f), new_camera_posy - (game_res_h * 0.5f));
+        if (level_exits.size() > 0) { // If there are any level exits (e.g., if level finish is scripting-only, there will be no exits)
+            // The user might have deleted exits, then m_focused_exit is wrong.
+            // Start back at zero.
+            if (m_focused_exit >= level_exits.size())
+                m_focused_exit = 0;
+
+            pActive_Camera->Set_Pos(
+                level_exits[m_focused_exit]->m_pos_x - (game_res_w * 0.5f),
+                level_exits[m_focused_exit]->m_pos_y - (game_res_h * 0.5f));
+
+            m_focused_exit++;
         }
     }
     // Move camera to level top edge

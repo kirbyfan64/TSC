@@ -2,7 +2,7 @@
 
 	* Version unreleased.
 	* Feature: Added PageUp/PageDown key functionality to editor
-		(#568 by unknown)
+		and make End key cycle the level exits (#568 by unknown)
 	* Feature: Allow selection of music and background files in the
 		level settings editor via dropdowns (#14 by Justin Rissler)
 	* Feature: Added "uninstall" target to build system (#391 by Danfun64)
