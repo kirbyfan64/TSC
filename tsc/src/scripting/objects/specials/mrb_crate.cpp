@@ -60,10 +60,25 @@ static mrb_value Initialize(mrb_state* p_state, mrb_value self)
     return self;
 }
 
+/**
+ * Method: Crate#smash
+ *
+ *   smash()
+ *
+ * Smash the crate into pieces, removing it from the level.
+ */
+static mrb_value Smash(mrb_state* p_state, mrb_value self)
+{
+    cCrate* p_crate = Get_Data_Ptr<cCrate>(p_state, self);
+    p_crate->Smash();
+    return mrb_nil_value();
+}
+
 void TSC::Scripting::Init_Crate(mrb_state* p_state)
 {
     struct RClass* p_rcCrate = mrb_define_class(p_state, "Crate", mrb_class_get(p_state, "MovingSprite"));
     MRB_SET_INSTANCE_TT(p_rcCrate, MRB_TT_DATA);
 
     mrb_define_method(p_state, p_rcCrate, "initialize", Initialize, MRB_ARGS_NONE());
+    mrb_define_method(p_state, p_rcCrate, "smash", Smash, MRB_ARGS_NONE());
 }
