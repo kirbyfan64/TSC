@@ -23,6 +23,7 @@
 #include "../level/level.hpp"
 #include "../video/animation.hpp"
 #include "../objects/box.hpp"
+#include "../objects/crate.hpp"
 #include "../core/sprite_manager.hpp"
 #include "../level/level.hpp"
 #include "../level/level_settings.hpp"
@@ -361,6 +362,7 @@ void cLarry::Kill_Objects_in_Explosion_Range()
         cSprite* p_obj = *iter;
         cEnemy* p_enemy = NULL;
         cBaseBox* p_box = NULL;
+        cCrate* p_crate = NULL;
 
         if (p_obj->m_type == TYPE_PLAYER) // This means p_obj == pLevel_Player
             pLevel_Player->DownGrade_Player(true, false);
@@ -368,6 +370,8 @@ void cLarry::Kill_Objects_in_Explosion_Range()
             p_enemy->DownGrade(true);
         else if ((p_box = dynamic_cast<cBaseBox*>(p_obj)))
             p_box->Activate();
+        else if ((p_crate = dynamic_cast<cCrate*>(p_obj)))
+            p_crate->Smash();
     }
 }
 
