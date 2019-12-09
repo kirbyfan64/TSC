@@ -811,6 +811,24 @@ bool cFurball::Editor_Max_Downgrade_Count_Text_Changed(const CEGUI::EventArgs& e
     return 1;
 }
 
+std::string cFurball::Create_Name(void) const
+{
+    std::string name = m_name; // dup
+    name += " ";
+
+    if (m_color_type == COL_BLACK) {
+        name += _("Boss");
+    }
+    else {
+        name += _(Get_Color_Name(m_color_type).c_str());
+    }
+
+    name += " ";
+    name += _(Get_Direction_Name(m_start_direction).c_str());
+
+    return name;
+}
+
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
 
 } // namespace TSC
