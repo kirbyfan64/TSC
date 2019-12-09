@@ -755,6 +755,7 @@ bool cThromp::Editor_Speed_Text_Changed(const CEGUI::EventArgs& event)
 std::string cThromp::Create_Name(void) const
 {
     std::string name = m_name; // dup
+    name += " ";
     name += _(Get_Direction_Name(m_start_direction).c_str());
 
     if (m_start_image && !m_start_image->m_name.empty()) {
