@@ -79,7 +79,7 @@ namespace TSC {
         /// Is the config panel shown to the user?
         inline bool Is_Config_Panel_Shown(){ return m_object_config_pane_shown; }
 
-        bool Try_Add_Image_Item(boost::filesystem::path settings_path);
+        bool Try_Add_Image_Item(boost::filesystem::path settings_path, const cImage_Settings_Data* p_settings);
         bool Try_Add_Special_Item(cSprite* p_sprite); // FIXME: Must take std::vector<cSprite*> due to multi-sprite objects
         void Select_Same_Object_Types(const cSprite* obj);
 

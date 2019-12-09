@@ -784,26 +784,24 @@ bool cEditor::Mouse_Move(const sf::Event& evt)
 
 /**
  * Adds a graphic for a static .settings-file based object to the
- * editor menu. The settings file of this graphic will be parsed and
- * it will be placed in the menu accordingly (subclasses have to set
- * the `m_editor_item_tag` member variable the the master tag required
- * for graphics to show up in this editor; these are "level" and
- * "world" for the level and world editor subclasses,
- * respectively. That is, a graphic tagged with "world" will never
- * appear in the level editor, and vice-versa.).
+ * editor menu. The object will be placed in the menu accordingly
+ * (subclasses have to set the `m_editor_item_tag` member variable the
+ * the master tag required for graphics to show up in this editor;
+ * these are "level" and "world" for the level and world editor
+ * subclasses, respectively. That is, a graphic tagged with "world"
+ * will never appear in the level editor, and vice-versa.).
  *
  * \param settings_path
  * Absolute path that refers to the settings file
  * of the graphic to add.
  *
+ * \param p_settings Pointer to the parsed content of the settings file.
+ *
  * \returns false if the item was not added because the master tag
  * was missing, true otherwise.
  */
-bool cEditor::Try_Add_Image_Item(boost::filesystem::path settings_path)
+bool cEditor::Try_Add_Image_Item(boost::filesystem::path settings_path, const cImage_Settings_Data* p_settings)
 {
-    // Parse the image's settings file
-    cImage_Settings_Parser parser;
-    cImage_Settings_Data* p_settings = parser.Get(settings_path);
     std::vector<std::string> available_tags = string_split(p_settings->m_editor_tags, ";");
 
     // If the master tag is not in the tag list, do not add this graphic to the
@@ -859,7 +857,6 @@ bool cEditor::Try_Add_Image_Item(boost::filesystem::path settings_path)
             );
     }
 
-    delete p_settings;
     return true;
 }
 
@@ -991,11 +988,32 @@ void cEditor::populate_menu()
 /// Load the static .settings-file based objects into the editor menu.
 void cEditor::load_image_items()
 {
-    std::vector<boost::filesystem::path> image_files = Get_Directory_Files(pResource_Manager->Get_Game_Pixmaps_Directory(), ".settings");
-    std::vector<boost::filesystem::path>::iterator iter;
+    namespace fs = boost::filesystem;
 
-    for(iter=image_files.begin(); iter != image_files.end(); iter++) {
-        Try_Add_Image_Item(*iter);
+    std::vector<fs::path> image_files = Get_Directory_Files(pResource_Manager->Get_Game_Pixmaps_Directory(), ".settings");
+    std::vector<std::pair<fs::path, cImage_Settings_Data*>> items;
+
+    // Parse all the settings files
+    for (const fs::path& settings_path: image_files) {
+        cImage_Settings_Parser parser;
+        cImage_Settings_Data* p_settings = parser.Get(settings_path);
+        items.push_back(std::make_pair(settings_path, p_settings));
+    }
+
+    // Sort them by the name from the settings file's contents
+    std::sort(
+        items.begin(),
+        items.end(), [](std::pair<fs::path, cImage_Settings_Data*> a,
+                        std::pair<fs::path, cImage_Settings_Data*> b) {
+                         return std::get<1>(a)->m_name < std::get<1>(b)->m_name;
+                     });
+
+    // Add them all to the editor's menu
+    for (std::pair<fs::path, cImage_Settings_Data*> pair: items) {
+        fs::path settings_path = std::get<0>(pair);
+        cImage_Settings_Data* p_settings = std::get<1>(pair);
+        Try_Add_Image_Item(settings_path, p_settings);
+        delete p_settings;
     }
 }
 
