@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secret Maryo Chronicles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-07 14:57+0200\n"
+"POT-Creation-Date: 2019-12-09 13:14+0200\n"
 "PO-Revision-Date: 2014-08-30 19:46+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -246,8 +246,8 @@ msgstr "Framlengsretning"
 #: ../../src/enemies/static.cpp:419
 #: ../../src/enemies/bosses/turtle_boss.cpp:1035
 #: ../../src/enemies/bosses/turtle_boss.cpp:1039
-#: ../../src/enemies/bosses/turtle_boss.cpp:1096 ../../src/enemies/gee.cpp:585
-#: ../../src/enemies/gee.cpp:590 ../../src/enemies/gee.cpp:643
+#: ../../src/enemies/bosses/turtle_boss.cpp:1096 ../../src/enemies/gee.cpp:586
+#: ../../src/enemies/gee.cpp:591 ../../src/enemies/gee.cpp:644
 msgid "Enabled"
 msgstr "På"
 
@@ -258,8 +258,8 @@ msgstr "På"
 #: ../../src/enemies/furball.cpp:770 ../../src/enemies/static.cpp:347
 #: ../../src/enemies/static.cpp:353
 #: ../../src/enemies/bosses/turtle_boss.cpp:1036
-#: ../../src/enemies/bosses/turtle_boss.cpp:1042 ../../src/enemies/gee.cpp:586
-#: ../../src/enemies/gee.cpp:593
+#: ../../src/enemies/bosses/turtle_boss.cpp:1042 ../../src/enemies/gee.cpp:587
+#: ../../src/enemies/gee.cpp:594
 msgid "Disabled"
 msgstr "Av"
 
@@ -409,7 +409,7 @@ msgstr "Ingen"
 #: ../../src/enemies/spikeball.cpp:515 ../../src/enemies/larry.cpp:422
 #: ../../src/enemies/rokko.cpp:581
 #: ../../src/enemies/bosses/turtle_boss.cpp:1006
-#: ../../src/enemies/thromp.cpp:686 ../../src/enemies/gee.cpp:572
+#: ../../src/enemies/thromp.cpp:686 ../../src/enemies/gee.cpp:573
 #: ../../src/enemies/army.cpp:927 ../../src/enemies/flyon.cpp:567
 msgid "Direction"
 msgstr "Retning"
@@ -1521,7 +1521,7 @@ msgid ""
 " \n"
 msgstr ""
 
-#: ../../src/core/editor/editor.cpp:1493
+#: ../../src/core/editor/editor.cpp:1511
 #, c-format
 msgid "Change selected sprite's image"
 msgid_plural "Change selected %d sprites' images"
@@ -1529,37 +1529,37 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANS: Displayed when hovering over the level finish object in the editor.
-#: ../../src/core/editor/editor.cpp:1557
+#: ../../src/core/editor/editor.cpp:1575
 msgid "FINISH"
 msgstr ""
 
 #. TRANS: Displayed when hovering over a level exit without a target level name.
 #. TRANS: Do not translate the "<" and ">".
-#: ../../src/core/editor/editor.cpp:1566
+#: ../../src/core/editor/editor.cpp:1584
 msgid "<This level>"
 msgstr ""
 
-#: ../../src/core/editor/editor.cpp:1584
+#: ../../src/core/editor/editor.cpp:1602
 #, fuzzy
 msgid "Passive"
 msgstr "Massiv"
 
-#: ../../src/core/editor/editor.cpp:1587 ../../src/objects/box.cpp:691
+#: ../../src/core/editor/editor.cpp:1605 ../../src/objects/box.cpp:691
 #: ../../src/objects/box.cpp:696 ../../src/objects/box.cpp:732
 msgid "Massive"
 msgstr "Massiv"
 
-#: ../../src/core/editor/editor.cpp:1590
+#: ../../src/core/editor/editor.cpp:1608
 #, fuzzy
 msgid "Halfmassive"
 msgstr "Halvmassiv – "
 
-#: ../../src/core/editor/editor.cpp:1593
+#: ../../src/core/editor/editor.cpp:1611
 #, fuzzy
 msgid "Climbable"
 msgstr "Klatrbar – "
 
-#: ../../src/core/editor/editor.cpp:1596
+#: ../../src/core/editor/editor.cpp:1614
 #, fuzzy
 msgid "Front Passive"
 msgstr "Massiv framme – "
@@ -1870,13 +1870,13 @@ msgstr "Namnet på stigen å flytta langs."
 #: ../../src/objects/moving_platform.cpp:958 ../../src/enemies/beetle.cpp:270
 #: ../../src/enemies/furball.cpp:746 ../../src/enemies/krush.cpp:385
 #: ../../src/enemies/spikeball.cpp:515 ../../src/enemies/larry.cpp:422
-#: ../../src/enemies/bosses/turtle_boss.cpp:1006 ../../src/enemies/gee.cpp:572
+#: ../../src/enemies/bosses/turtle_boss.cpp:1006 ../../src/enemies/gee.cpp:573
 #: ../../src/enemies/army.cpp:927
 msgid "Starting direction."
 msgstr "Startretning."
 
 #: ../../src/objects/moving_platform.cpp:962 ../../src/enemies/thromp.cpp:697
-#: ../../src/enemies/gee.cpp:576 ../../src/enemies/flyon.cpp:578
+#: ../../src/enemies/gee.cpp:577 ../../src/enemies/flyon.cpp:578
 msgid "Distance"
 msgstr "Avstand"
 
@@ -2162,7 +2162,7 @@ msgstr ""
 msgid "Cookie (3-UP)"
 msgstr "Måne (3 ekstraliv)"
 
-#: ../../src/objects/lava.cpp:55
+#: ../../src/objects/lava.cpp:55 ../../src/enemies/gee.cpp:684
 msgid "Lava"
 msgstr ""
 
@@ -2301,6 +2301,10 @@ msgstr ""
 msgid "End the level if it is killed."
 msgstr ""
 
+#: ../../src/enemies/furball.cpp:820
+msgid "Boss"
+msgstr ""
+
 #: ../../src/enemies/static.cpp:322
 msgid "Rotation Speed"
 msgstr "Dreiefart"
@@ -2321,7 +2325,7 @@ msgstr "Tåler is"
 msgid "Resistance against Ice (0.0-1.0)"
 msgstr "Motstand mot is (0,0–1,0)"
 
-#: ../../src/enemies/beetle_barrage.cpp:356 ../../src/enemies/gee.cpp:608
+#: ../../src/enemies/beetle_barrage.cpp:356 ../../src/enemies/gee.cpp:609
 msgid "Fly distance"
 msgstr "Flyavstand"
 
@@ -2375,29 +2379,38 @@ msgstr "Tid som skal for oppstoda"
 msgid "Detection distance into its direction"
 msgstr "Oppdagingsavstand i retninga"
 
-#: ../../src/enemies/gee.cpp:576
+#: ../../src/enemies/gee.cpp:577
 msgid "Movable distance"
 msgstr "Flyttbar avstand"
 
-#: ../../src/enemies/gee.cpp:587
+#: ../../src/enemies/gee.cpp:588
 msgid "Always fly"
 msgstr "Fly alltid"
 
-#: ../../src/enemies/gee.cpp:587
+#: ../../src/enemies/gee.cpp:588
 msgid "Move without stopping at the fly distance"
 msgstr "Flytt utan å stoppa ved flyavstanden"
 
-#: ../../src/enemies/gee.cpp:600
+#: ../../src/enemies/gee.cpp:601
 msgid "Wait time"
 msgstr "Ventetid"
 
-#: ../../src/enemies/gee.cpp:600
+#: ../../src/enemies/gee.cpp:601
 msgid "Time to wait until moving again after a stop"
 msgstr "Ventetid for flytting etter stopping"
 
-#: ../../src/enemies/gee.cpp:608
+#: ../../src/enemies/gee.cpp:609
 msgid "The distance to move each time"
 msgstr "Avstanden å flytta kvar gong"
+
+#: ../../src/enemies/gee.cpp:681
+#, fuzzy
+msgid "Electro"
+msgstr "Opna ei oververd"
+
+#: ../../src/enemies/gee.cpp:687
+msgid "Venom"
+msgstr ""
 
 #: ../../src/enemies/flyon.cpp:578
 msgid "Movable Distance into its direction"

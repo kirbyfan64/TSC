@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secretchronicles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-07 14:57+0200\n"
+"POT-Creation-Date: 2019-12-09 13:14+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Lauri Ojansivu <x@xet7.org>\n"
 "Language-Team: TSC Finnish translation team\n"
@@ -248,8 +248,8 @@ msgstr "Eteenpäin suunta"
 #: ../../src/enemies/static.cpp:419
 #: ../../src/enemies/bosses/turtle_boss.cpp:1035
 #: ../../src/enemies/bosses/turtle_boss.cpp:1039
-#: ../../src/enemies/bosses/turtle_boss.cpp:1096 ../../src/enemies/gee.cpp:585
-#: ../../src/enemies/gee.cpp:590 ../../src/enemies/gee.cpp:643
+#: ../../src/enemies/bosses/turtle_boss.cpp:1096 ../../src/enemies/gee.cpp:586
+#: ../../src/enemies/gee.cpp:591 ../../src/enemies/gee.cpp:644
 msgid "Enabled"
 msgstr "Käytössä"
 
@@ -260,8 +260,8 @@ msgstr "Käytössä"
 #: ../../src/enemies/furball.cpp:770 ../../src/enemies/static.cpp:347
 #: ../../src/enemies/static.cpp:353
 #: ../../src/enemies/bosses/turtle_boss.cpp:1036
-#: ../../src/enemies/bosses/turtle_boss.cpp:1042 ../../src/enemies/gee.cpp:586
-#: ../../src/enemies/gee.cpp:593
+#: ../../src/enemies/bosses/turtle_boss.cpp:1042 ../../src/enemies/gee.cpp:587
+#: ../../src/enemies/gee.cpp:594
 msgid "Disabled"
 msgstr "Ei käytössä"
 
@@ -407,7 +407,7 @@ msgstr "Ei mikään"
 #: ../../src/enemies/spikeball.cpp:515 ../../src/enemies/larry.cpp:422
 #: ../../src/enemies/rokko.cpp:581
 #: ../../src/enemies/bosses/turtle_boss.cpp:1006
-#: ../../src/enemies/thromp.cpp:686 ../../src/enemies/gee.cpp:572
+#: ../../src/enemies/thromp.cpp:686 ../../src/enemies/gee.cpp:573
 #: ../../src/enemies/army.cpp:927 ../../src/enemies/flyon.cpp:567
 msgid "Direction"
 msgstr "Suunta"
@@ -1570,7 +1570,7 @@ msgstr ""
 " liikkuaksesi nopeammin\n"
 " \n"
 
-#: ../../src/core/editor/editor.cpp:1493
+#: ../../src/core/editor/editor.cpp:1511
 #, c-format
 msgid "Change selected sprite's image"
 msgid_plural "Change selected %d sprites' images"
@@ -1578,34 +1578,34 @@ msgstr[0] "Vaihda valitun spriten kuva"
 msgstr[1] "Vaihda valittujen %d spriten kuvat"
 
 #. TRANS: Displayed when hovering over the level finish object in the editor.
-#: ../../src/core/editor/editor.cpp:1557
+#: ../../src/core/editor/editor.cpp:1575
 msgid "FINISH"
 msgstr "TASON LOPPU"
 
 #. TRANS: Displayed when hovering over a level exit without a target level name.
 #. TRANS: Do not translate the "<" and ">".
-#: ../../src/core/editor/editor.cpp:1566
+#: ../../src/core/editor/editor.cpp:1584
 msgid "<This level>"
 msgstr "<Tämä taso>"
 
-#: ../../src/core/editor/editor.cpp:1584
+#: ../../src/core/editor/editor.cpp:1602
 msgid "Passive"
 msgstr "Passiivinen"
 
-#: ../../src/core/editor/editor.cpp:1587 ../../src/objects/box.cpp:691
+#: ../../src/core/editor/editor.cpp:1605 ../../src/objects/box.cpp:691
 #: ../../src/objects/box.cpp:696 ../../src/objects/box.cpp:732
 msgid "Massive"
 msgstr "Massiivinen"
 
-#: ../../src/core/editor/editor.cpp:1590
+#: ../../src/core/editor/editor.cpp:1608
 msgid "Halfmassive"
 msgstr "Puolimassiivinen"
 
-#: ../../src/core/editor/editor.cpp:1593
+#: ../../src/core/editor/editor.cpp:1611
 msgid "Climbable"
 msgstr "Kiivettävä"
 
-#: ../../src/core/editor/editor.cpp:1596
+#: ../../src/core/editor/editor.cpp:1614
 msgid "Front Passive"
 msgstr "Etupassiivinen"
 
@@ -1908,13 +1908,13 @@ msgstr "Nimi polulle jota myöten liikutaan."
 #: ../../src/objects/moving_platform.cpp:958 ../../src/enemies/beetle.cpp:270
 #: ../../src/enemies/furball.cpp:746 ../../src/enemies/krush.cpp:385
 #: ../../src/enemies/spikeball.cpp:515 ../../src/enemies/larry.cpp:422
-#: ../../src/enemies/bosses/turtle_boss.cpp:1006 ../../src/enemies/gee.cpp:572
+#: ../../src/enemies/bosses/turtle_boss.cpp:1006 ../../src/enemies/gee.cpp:573
 #: ../../src/enemies/army.cpp:927
 msgid "Starting direction."
 msgstr "Aloitus suunta."
 
 #: ../../src/objects/moving_platform.cpp:962 ../../src/enemies/thromp.cpp:697
-#: ../../src/enemies/gee.cpp:576 ../../src/enemies/flyon.cpp:578
+#: ../../src/enemies/gee.cpp:577 ../../src/enemies/flyon.cpp:578
 msgid "Distance"
 msgstr "Etäisyys"
 
@@ -2192,7 +2192,7 @@ msgstr "Tulimarja"
 msgid "Cookie (3-UP)"
 msgstr "Keksi (3-YLÖS)"
 
-#: ../../src/objects/lava.cpp:55
+#: ../../src/objects/lava.cpp:55 ../../src/enemies/gee.cpp:684
 msgid "Lava"
 msgstr "Laava"
 
@@ -2318,6 +2318,10 @@ msgstr "Lopeta taso"
 msgid "End the level if it is killed."
 msgstr "Lopeta taso jos se kuolee."
 
+#: ../../src/enemies/furball.cpp:820
+msgid "Boss"
+msgstr "Pomo"
+
 #: ../../src/enemies/static.cpp:322
 msgid "Rotation Speed"
 msgstr "Pyörimisnopeus"
@@ -2338,7 +2342,7 @@ msgstr "Jää vastustuskyky"
 msgid "Resistance against Ice (0.0-1.0)"
 msgstr "Vastustuskyky jäälle (0.0-1.0)"
 
-#: ../../src/enemies/beetle_barrage.cpp:356 ../../src/enemies/gee.cpp:608
+#: ../../src/enemies/beetle_barrage.cpp:356 ../../src/enemies/gee.cpp:609
 msgid "Fly distance"
 msgstr "Lentoetäisyys"
 
@@ -2391,29 +2395,37 @@ msgstr "Juoksuaika kun kilpi nousee jälleen"
 msgid "Detection distance into its direction"
 msgstr "Tunnistusetäisyys sen suuntaan"
 
-#: ../../src/enemies/gee.cpp:576
+#: ../../src/enemies/gee.cpp:577
 msgid "Movable distance"
 msgstr "Liikkumisetäisyys"
 
-#: ../../src/enemies/gee.cpp:587
+#: ../../src/enemies/gee.cpp:588
 msgid "Always fly"
 msgstr "Aina lennä"
 
-#: ../../src/enemies/gee.cpp:587
+#: ../../src/enemies/gee.cpp:588
 msgid "Move without stopping at the fly distance"
 msgstr "Liiku pysähtymättä lentoetäisyys"
 
-#: ../../src/enemies/gee.cpp:600
+#: ../../src/enemies/gee.cpp:601
 msgid "Wait time"
 msgstr "Odotusaika"
 
-#: ../../src/enemies/gee.cpp:600
+#: ../../src/enemies/gee.cpp:601
 msgid "Time to wait until moving again after a stop"
 msgstr "Aika odottaa kunnes liikkua jälleen pysähdyksen jälkeen"
 
-#: ../../src/enemies/gee.cpp:608
+#: ../../src/enemies/gee.cpp:609
 msgid "The distance to move each time"
 msgstr "Etäisyys joka liikkua joka kerta"
+
+#: ../../src/enemies/gee.cpp:681
+msgid "Electro"
+msgstr "Elektro"
+
+#: ../../src/enemies/gee.cpp:687
+msgid "Venom"
+msgstr "Myrkky"
 
 #: ../../src/enemies/flyon.cpp:578
 msgid "Movable Distance into its direction"
