@@ -90,6 +90,7 @@ void cGee::Init(void)
     Set_Color(COL_YELLOW);
 
     m_kill_sound = "enemy/gee/die.ogg";
+    m_name = "Gee";
 
     m_wait_time_counter = 0.0f;
     m_fly_distance_counter = 0.0f;
@@ -668,6 +669,32 @@ bool cGee::Editor_Fly_Distance_Text_Changed(const CEGUI::EventArgs& event)
     m_fly_distance = string_to_int(str_text);
 
     return 1;
+}
+
+std::string cGee::Create_Name(void) const
+{
+    std::string name = m_name; // dup
+    name += " ";
+
+    switch (m_color_type) {
+    case COL_YELLOW:
+        name += _("Electro");
+        break;
+    case COL_RED:
+        name += _("Lava");
+        break;
+    case COL_GREEN:
+        name += _("Venom");
+        break;
+    default: // Extend this switch/case if new gee types are added
+        name += _(Get_Color_Name(m_color_type).c_str());
+        break;
+    }
+
+    name += " ";
+    name += _(Get_Direction_Name(m_start_direction).c_str());
+
+    return name;
 }
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** */
