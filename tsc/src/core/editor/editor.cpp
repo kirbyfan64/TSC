@@ -1223,7 +1223,7 @@ void cEditor_Menu_Entry::Add_Item(cSprite* p_template_sprite, std::string cegui_
     static const int yskip = 24;
 
     CEGUI::Window* p_label = CEGUI::WindowManager::getSingleton().createWindow("TSCLook256/StaticText"/* , std::string("label-of-") + name */);
-    p_label->setText(name);
+    p_label->setText(reinterpret_cast<const CEGUI::utf8*>(name.c_str()));
     p_label->setSize(CEGUI::USize(CEGUI::UDim(1, 0), CEGUI::UDim(0, labelheight)));
     p_label->setPosition(CEGUI::UVector2(CEGUI::UDim(0, 0), CEGUI::UDim(0, m_element_y)));
     p_label->setProperty("FrameEnabled", "False");
