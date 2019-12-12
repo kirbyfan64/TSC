@@ -250,7 +250,7 @@ install(TARGETS tsc
   COMPONENT base)
 
 if(WIN32)
-  install(CODE 
+  install(CODE
     "include(GetPrerequisites)
     get_prerequisites(\"${CMAKE_CURRENT_BINARY_DIR}/tsc.exe\" LIBLIST 1 1 \"\" \"\" )
     get_filename_component(CEGUI_CoreWindowRendererSet ${CEGUI_CoreWindowRendererSet_LIBRARY} NAME)
