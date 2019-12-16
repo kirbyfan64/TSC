@@ -19,7 +19,7 @@
 
 TSC_SIGNKEY     ?= "0000000"
 TSC_VERSION     != grep 'set(TSC_VERSION' CMakeLists.txt | cut -d ' ' -f 2 | tr -d ')"' | xargs | tr ' ' . | sed -E 's/.([a-z]+)$$/-\1/'
-TSC_TARFILE     := $(shell pwd)/../../TSC-$(TSC_VERSION).tar.xz
+TSC_TARFILE     := $(shell pwd)/../../TSC-$(TSC_VERSION).tar.gz
 
 # Ensure users don't just blindly call make for compilation.
 default:
@@ -40,7 +40,7 @@ $(TSC_TARFILE):
 	rm -f ../../TSC-$(TSC_VERSION)
 	ln -s TSC ../../TSC-$(TSC_VERSION)
 	rm -f $@
-	tar -f $@ -C ../.. --exclude=.git --exclude=.gitignore --exclude=.gitmodules --exclude=tsc/build --exclude=org.secretchronicles.TSC.json --exclude=flatpak --exclude=.travis.yml --exclude='*.sh' --exclude drafts --exclude-backups --exclude-vcs-ignores -cvJh TSC-$(TSC_VERSION)
+	tar -f $@ -C ../.. --exclude=.git --exclude=.gitignore --exclude=.gitmodules --exclude=tsc/build --exclude=org.secretchronicles.TSC.json --exclude=flatpak --exclude=.travis.yml --exclude='*.sh' --exclude drafts --exclude-backups --exclude-vcs-ignores -cvzh TSC-$(TSC_VERSION)
 	rm ../../TSC-$(TSC_VERSION)
 	@ls -hl $@
 
@@ -65,8 +65,8 @@ release: $(TSC_TARFILE)
 	@echo ">>>>> Signing release tarball with $(TSC_SIGNKEY) (set TSC_SIGNKEY in environment to change this)"
 	gpg --local-user $(TSC_SIGNKEY) --detach-sign $<
 	@echo ">>>>> Generating checksums"
-	md5sum $< > ../../TSC-$(TSC_VERSION).tar.xz.md5sum
-	sha256sum $< > ../../TSC-$(TSC_VERSION).tar.xz.sha256sum
+	md5sum $< > ../../TSC-$(TSC_VERSION).tar.gz.md5sum
+	sha256sum $< > ../../TSC-$(TSC_VERSION).tar.gz.sha256sum
 	@echo ">>>>> Done. Release files are:"
 	@ls -hl ../../TSC-$(VERSION)*
 
