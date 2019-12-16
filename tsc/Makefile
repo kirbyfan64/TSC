@@ -40,7 +40,7 @@ $(TSC_TARFILE):
 	rm -f ../../TSC-$(TSC_VERSION)
 	ln -s TSC ../../TSC-$(TSC_VERSION)
 	rm -f $@
-	tar -f $@ -C ../.. --exclude=.git --exclude=.gitignore --exclude=.gitmodules --exclude=org.secretchronicles.TSC.json --exclude=flatpak --exclude=.travis.yml --exclude='*.sh' --exclude drafts --exclude-backups --exclude-vcs-ignores -cvJh TSC-$(TSC_VERSION)
+	tar -f $@ -C ../.. --exclude=.git --exclude=.gitignore --exclude=.gitmodules --exclude=tsc/build --exclude=org.secretchronicles.TSC.json --exclude=flatpak --exclude=.travis.yml --exclude='*.sh' --exclude drafts --exclude-backups --exclude-vcs-ignores -cvJh TSC-$(TSC_VERSION)
 	rm ../../TSC-$(TSC_VERSION)
 	@ls -hl $@
 
