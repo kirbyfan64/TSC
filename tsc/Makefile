@@ -57,7 +57,7 @@ release: $(TSC_TARFILE)
 	tar -C /tmp/tsc-release -xf $<
 	mkdir /tmp/tsc-release/TSC-$(TSC_VERSION)/tsc/build
 	cd /tmp/tsc-release/TSC-$(TSC_VERSION)/tsc/build && \
-		cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/tsc-release/build .. && \
+		cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/tsc-release/build -DCEGUI_USE_EXPAT=ON .. && \
 		make -j$(shell nproc) && \
 		make install
 	@echo ">>>>> Running the game now. Test a bit and close when you are satisfied."
