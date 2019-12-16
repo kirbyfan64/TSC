@@ -52,6 +52,7 @@ release: $(TSC_TARFILE)
 	@echo ">>>>> Checking syntax of translation PO files"
 	$(MAKE) -C data/translations checkpo
 	@echo ">>>>> Compiling from the release tarball"
+	rm -rf /tmp/tsc-release
 	mkdir /tmp/tsc-release
 	tar -C /tmp/tsc-release -xf $<
 	mkdir /tmp/tsc-release/TSC-$(TSC_VERSION)/tsc/build
