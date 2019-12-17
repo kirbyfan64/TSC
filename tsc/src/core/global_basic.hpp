@@ -69,6 +69,7 @@
 #include <unordered_map>
 #include <utility>
 #include <iomanip>
+#include <stack>
 
 // TSC build configuration header
 #include "config.hpp"
