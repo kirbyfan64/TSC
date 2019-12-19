@@ -20,3 +20,8 @@ ExternalProject_Add(
   INSTALL_COMMAND "")
 
 set(MRuby_INCLUDE_DIR ${TSC_SOURCE_DIR}/../mruby/mruby/include)
+
+add_library(MRuby::MRuby INTERFACE IMPORTED)
+set_target_properties(MRuby::MRuby PROPERTIES
+                      INTERFACE_INCLUDE_DIRECTORIES "${MRuby_INCLUDE_DIR}"
+                      INTERFACE_LINK_LIBRARIES "${MRuby_LIBRARIES}")

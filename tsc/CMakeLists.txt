@@ -103,11 +103,19 @@ else()
   # SFML requires us to link in -lX11 ourselves for whatever reason (otherwise
   # linking error).
   find_package(X11 REQUIRED)
+
+  if(NOT TARGET X11::X11)
+    add_library(X11::X11 INTERFACE)
+    set_target_properties(X11::X11 PROPERTIES
+                          INTERFACE_INCLUDE_DIRECTORIES "${X11_INCLUDE_DIR}"
+                          INTERFACE_LINK_LIBRARIES "${X11_LIBRARIES}")
+  endif()
 endif()
 
 find_package(SFML COMPONENTS audio graphics window system REQUIRED)
+set(SFML_COMPONENTS SFML::audio SFML::graphics SFML::window SFML::system)
+
 find_package(CEGUI COMPONENTS OpenGL REQUIRED)
-find_package(OpenGL REQUIRED)
 find_package(PNG REQUIRED)
 find_package(PCRE REQUIRED)
 
@@ -116,6 +124,8 @@ if (USE_LIBXMLPP3)
 else()
   find_package(LibXmlPP 2.6 REQUIRED)
 endif()
+
+find_package(OpenGL REQUIRED)
 
 find_package(Boost 1.50.0 COMPONENTS filesystem chrono thread REQUIRED)
 set(Boost_COMPONENTS Boost::filesystem Boost::chrono Boost::thread)
@@ -139,22 +149,6 @@ file(READ ${TSC_SOURCE_DIR}/docs/authors.txt TSC_CREDITS_STR OFFSET 457)
 string(STRIP "${TSC_CREDITS_STR}" TSC_CREDITS_STR)
 string(REPLACE "\n" "\\n" TSC_CREDITS_STR "${TSC_CREDITS_STR}")
 configure_file(${TSC_SOURCE_DIR}/src/core/credits.cpp.in ${TSC_BINARY_DIR}/credits.cpp)
-
-########################################
-# Compiler flags by dependencies
-
-include_directories(
-  ${SFML_INCLUDE_DIR}
-  ${Boost_INCLUDE_DIRS}
-  ${LibXmlPP_INCLUDE_DIRS}
-  ${Tinyclipboard_INCLUDE_DIRS}
-  ${PodParser_INCLUDE_DIRS}
-  ${CEGUI_INCLUDE_DIR}
-  ${OPENGL_INCLUDE_DIR}
-  ${PCRE_INCLUDE_DIRS}
-  ${MRuby_INCLUDE_DIR}
-  ${X11_INCLUDE_DIR}
-  ${PNG_INCLUDE_DIRS})
 
 ########################################
 # Source files
@@ -197,16 +191,16 @@ endif()
 add_executable(tsc ${tsc_sources} ${TSC_BINARY_DIR}/credits.cpp)
 
 target_link_libraries(tsc
-  ${CEGUI_LIBRARIES}
-  ${SFML_LIBRARIES}
-  ${SFML_DEPENDENCIES}
+  CEGUI::CEGUI
+  ${SFML_COMPONENTS}
   ${Boost_COMPONENTS}
-  ${OPENGL_LIBRARIES}
-  ${PNG_LIBRARIES}
-  ${MRuby_LIBRARIES}
-  ${Tinyclipboard_LIBRARIES}
-  ${LibXmlPP_LIBRARIES}
-  ${PCRE_LIBRARIES})
+  OpenGL::GLU
+  OpenGL::OpenGL
+  PNG::PNG
+  MRuby::MRuby
+  Tinyclipboard::Tinyclipboard
+  LibXmlPP::LibXmlPP
+  PCRE::PCRE)
 
 # Passing --as-needed to ld ensures that we get the Win32 ld's behaviour
 # even on Linux and discover linking problems before building for Win32.
@@ -216,7 +210,8 @@ if (WIN32)
   target_link_libraries(tsc iconv intl ws2_32)
 else()
   target_link_libraries(tsc
-    ${X11_LIBRARIES}
+    OpenGL::GLX
+    X11::X11
     ${CMAKE_DL_LIBS})
   if (CMAKE_SYSTEM_NAME MATCHES "BSD")
     target_link_libraries(tsc iconv intl)
@@ -227,7 +222,7 @@ add_dependencies(tsc mruby)
 
 if (ENABLE_SCRIPT_DOCS)
   add_executable(scrdg ${scrdg_sources})
-  target_link_libraries(scrdg ${Boost_COMPONENTS} ${PodParser_LIBRARIES})
+  target_link_libraries(scrdg ${Boost_COMPONENTS} PodParser::PodParser)
 
   add_custom_command(OUTPUT "${TSC_BINARY_DIR}/scriptdocs"
     COMMAND scrdg "${TSC_BINARY_DIR}/scriptdocs" "${TSC_SOURCE_DIR}" ${TSC_VERSION} ${TSC_VERSION_GIT}
