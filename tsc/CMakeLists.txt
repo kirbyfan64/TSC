@@ -51,7 +51,6 @@ option(ENABLE_NLS "Enable translations and localisations" ON)
 option(ENABLE_SCRIPT_DOCS "Build the scripting documentation" ON)
 option(USE_SYSTEM_TINYCLIPBOARD "Use the system's tinyclipboard library" OFF)
 option(USE_SYSTEM_PODPARSER "Use the system's pod-cpp library" OFF)
-option(USE_SYSTEM_MRUBY "Use the system's mruby library" OFF)
 option(USE_LIBXMLPP3 "Use libxml++3.0 instead of libxml++2.6 (experimental)" OFF)
 
 ########################################
@@ -224,9 +223,7 @@ else()
   endif()
 endif()
 
-if (NOT USE_SYSTEM_MRUBY)
-  add_dependencies(tsc mruby)
-endif()
+add_dependencies(tsc mruby)
 
 if (ENABLE_SCRIPT_DOCS)
   add_executable(scrdg ${scrdg_sources})
@@ -423,7 +420,6 @@ message(STATUS "Enable native language support:    ${ENABLE_NLS}")
 message(STATUS "Enable the scripting API docs:     ${ENABLE_SCRIPT_DOCS}")
 message(STATUS "Use system-provided tinyclipboard: ${USE_SYSTEM_TINYCLIPBOARD}")
 message(STATUS "Use system-provided pod-cpp:       ${USE_SYSTEM_PODPARSER}")
-message(STATUS "Use system-provided mruby:         ${USE_SYSTEM_MRUBY}")
 
 message(STATUS "--------------- Path configuration -----------------")
 message(STATUS "Install prefix:        ${CMAKE_INSTALL_PREFIX}")
