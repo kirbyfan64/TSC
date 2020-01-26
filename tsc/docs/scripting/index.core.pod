@@ -235,33 +235,11 @@ folder of your TSC data path.
 
 The SSL is documented in a separate set of documents.
 
-In order to use these standard extensions, you have to C<require>
-them. You can choose between loading the entire standard library at
-once, which can slow down level startup and will likely pull in many
-things you don’t even use, and loading specific helpers directly, thus
-resulting in probably many C<require> statements on the top of your
-level code. Due to the performance gain however, the latter choice is
-preferred.
+It used to be necessary to C<require> the SSL's extensions, but
+starting with version 2.1.0 of TSC this was removed. The C<Std>
+namespace is now by default available to all level scripts.
 
-To load the entire SSL, simply place this at the top of your scripting
-code:
-
-    TSC.require "std/all"
-
-If you want to load specific helpers like the C<ImmediateSprite> class
-that allows you to create static sprites quickly, do it like this
-instead:
-
-    TSC.require "std/immediate_sprite"
-
-In either case, you could then use C<ImmediateSprite> like this:
-
-    Std::ImmediateSprite.new("blocks/extra/corded.png", x: 300, y: -300)
-
-which will create, place, and show a corded block at the given
-coordinates.
-
-Note that all standard library stuff is defined under the C<Std>
+Note that all standard library code is defined under the C<Std>
 namespace. Do B<not> use that namespace for your own scripting
 expansion packs (see below).
 
