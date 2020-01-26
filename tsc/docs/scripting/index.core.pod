@@ -119,12 +119,12 @@ always the same.
 
 =item 1.
 
-You want to listen for a specific event, e.g. the <code>touch</code> event.
+You want to listen for a specific event, e.g. the C<touch> event.
 
 =item 2.
 
 You write an event handler accepting the parameters the event will
-hand to you (e.g. the other sprite in case of the <code>touch</code>
+hand to you (e.g. the other sprite in case of the C<touch>
 event).
 
 =item 3.
