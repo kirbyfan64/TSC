@@ -259,14 +259,15 @@ C<Freaky> for instance, and then place your own code below that.
     end
 
 Each class should have its own file, and all files related to the
-"freaky" expansion-pack should reside in a folder F<freaky/>. That
-folder should also contain a file F<all.rb> that pulls in all classes
-under the C<Freaky> namespace so a user can require them all at once
-the same way as the SSL shown above. When you’re done, place the
-F<freaky/> folder next to the F<std/> folder in your TSC’s F<scripting/>
-directory. You will then be able to L<TSC::require> files from below
-that folder. To get an impression of how all that works, you can
-always look on the SSL’s code itself.
+"freaky" expansion-pack should reside in a folder F<freaky/>. When
+you’re done, place the F<freaky/> folder below the F<scripting/>
+directory in your TSC user data directory (under Linux, this is
+F<~/.local/share/tsc/scripting>). Each time TSC loads a level, all
+these files are loaded in alphabetical order automatically and their
+content becomes accessible via the scripting engine.
+
+To get an impression of what to write in a scripting expansion pack,
+you can always look on the SSL’s code itself.
 
 You can also create a ZIP file or Tarball from your F<freaky/> folder
 and upload it to the Internet, so everybody can download it an add it
